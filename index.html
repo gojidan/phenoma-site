@@ -1,0 +1,81 @@
+<title>Phenoma</title>
+<style>
+  :root{
+    --ground:#0c0a08; --ink:#efe7d5; --ink-dim:#9c8f76;
+    --gold:#ffb347; --gold-deep:#e08e2a; --line:#3a2c1c;
+    --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--disp);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:2rem 1.4rem;
+    -webkit-font-smoothing:antialiased; overflow:hidden; position:relative;
+  }
+  /* alone d'oro tenuissimo dietro il nome, profondità senza rumore */
+  body::before{
+    content:""; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(58% 46% at 50% 42%,
+      rgba(255,179,71,.11) 0%, rgba(255,179,71,.03) 38%, transparent 72%);
+    pointer-events:none;
+  }
+  .wrap{position:relative; z-index:1; max-width:38rem;}
+
+  .eyebrow{
+    font-family:var(--mono); font-size:.66rem; letter-spacing:.42em; text-transform:uppercase;
+    color:var(--ink-dim); margin:0 0 2.1rem;
+  }
+
+  h1{
+    font-weight:600; font-size:clamp(3.6rem,17vw,7rem); line-height:.94; margin:0;
+    letter-spacing:.005em;
+    background:linear-gradient(180deg, #fff2dd 0%, var(--gold) 58%, var(--gold-deep) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .rule{
+    width:0; height:1px; margin:1.9rem auto 1.7rem;
+    background:linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+    animation:grow 1.1s .5s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .sub{
+    font-family:var(--mono); font-size:clamp(.7rem,2.4vw,.82rem);
+    letter-spacing:.34em; text-transform:uppercase; color:var(--ink-dim); margin:0;
+  }
+  .motto{
+    font-style:italic; font-size:clamp(1.08rem,3.6vw,1.42rem); color:var(--ink);
+    margin:2.5rem auto 0; max-width:26rem; text-wrap:balance; line-height:1.4;
+  }
+  .soon{
+    font-family:var(--mono); font-size:.64rem; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--gold); margin:2.9rem 0 0;
+  }
+  .soon .dot{display:inline-block; margin:0 .55em; opacity:.5;}
+
+  .foot{
+    position:absolute; left:0; right:0; bottom:1.4rem; z-index:1;
+    font-family:var(--mono); font-size:.58rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--ink-dim); opacity:.7;
+  }
+
+  .fade{opacity:0; animation:fade 1.2s ease forwards;}
+  .d1{animation-delay:.15s;} .d2{animation-delay:.35s;} .d3{animation-delay:.95s;} .d4{animation-delay:1.2s;}
+  @keyframes fade{to{opacity:1;}}
+  @keyframes grow{to{width:min(78%,22rem);}}
+  @media (prefers-reduced-motion: reduce){
+    .fade{opacity:1; animation:none;}
+    .rule{width:min(78%,22rem); animation:none;}
+  }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow fade d1">MMXXVI</p>
+  <h1 class="fade d1">Phenoma</h1>
+  <div class="rule"></div>
+  <p class="sub fade d2">Laserdisc&nbsp;Rom&nbsp;Atlas</p>
+  <p class="motto fade d3">Un atlante di ciò che le macchine ricordano.</p>
+  <p class="soon fade d4">In costruzione <span class="dot">·</span> presto</p>
+</div>
+<p class="foot fade d4">Preservazione &nbsp;·&nbsp; Ricerca</p>
