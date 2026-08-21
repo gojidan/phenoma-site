@@ -336,9 +336,9 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <blockquote><p>&laquo;Alla fine il jolly sostituisce proprio una scena che non giocherai mai.&raquo;</p><cite>Alan, 2 agosto 2026 &mdash; giocando fino al Drago</cite></blockquote>
 <p>Avevamo scritto che erano <b>scene in piu&rsquo;</b>, regalate senza scalarle. <b>Era falso</b>, e la correzione e&rsquo; venuta dall&rsquo;occhio di chi giocava. L&rsquo;equivoco stava in due parole confuse: <b>il passo</b> e <b>la possibilita&rsquo;</b>. Il passo avanza comunque. Quello che non viene segnato e&rsquo; la possibilita&rsquo;: la casella &laquo;questa alternativa l&rsquo;ho gia&rsquo; usata&raquo; resta bianca. Ma <b>le visite a una tappa sono tre, quante le sue alternative</b>: se una visita se la prende il jolly, <b>una delle tre non uscira&rsquo; mai</b>.</p>
 <div class="nota"><span class="cap">Il gioco non aggiunge: scambia</span><p>Ogni scena in piu&rsquo; che ricevi e&rsquo; <b>una scena regolare che perdi</b>, e non la vedrai ne&rsquo; in quella partita ne&rsquo; in nessun altro passaggio, perche&rsquo; i passaggi sono finiti. <b>Una partita con tre jolly e&rsquo; una partita con tre scene mai giocate.</b></p></div>
-<h2>Chi altro lo sa</h2>
-<p>Non e&rsquo; una teoria ricostruita da fuori: <b>la macchina se lo scrive</b>. Le alternative gia&rsquo; uscite stanno in tre bit, la coda dei morti in otto caselle, e la griglia in cinquantasei byte.</p>
-<div class="nota freddo"><span class="cap">Un secondo testimone, indipendente</span><p>Il <b>Dragon&rsquo;s Lair Project</b> pubblico&rsquo; questa stessa struttura anni fa, ricavata dal <i>comportamento</i> del gioco. La loro tabella e la nostra <b>combaciano riga per riga</b> &mdash; e noi siamo arrivati dai byte. Due strade diverse, la stessa mappa.</p></div>
+<h2>Dove sta scritto</h2>
+<p>Tutto quello che avete letto qui la macchina se lo scrive da sola, e in pochissimo spazio: le alternative gia&rsquo; uscite stanno in tre bit, la coda dei morti in otto caselle, la griglia intera in cinquantasei byte.</p>
+<div class="nota freddo"><span class="cap">Non siamo i primi ad arrivarci</span><p>Il <b>Dragon&rsquo;s Lair Project</b> pubblico&rsquo; questa stessa struttura anni fa, ricavandola dal <i>comportamento</i> del gioco. Noi siamo passati dai byte, e le due tabelle combaciano riga per riga. Se cercate una seconda fonte, quella e&rsquo; la&rsquo;.</p></div>
 <section class="tecnico">
 <h2>Come si legge nei byte</h2>
 <p>ROM <b>Dragon&rsquo;s Lair revisione F2</b>, Cinematronics 1983, Z80, quattro chip da 8 KB.</p>
@@ -351,7 +351,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 0x94  tappa 13   sub0  fotogramma <b>14847</b>   prosegue al sub <b>3</b>
                  sub7  uscita, prosegue alla tappa <b>1</b>  (byte 81)
                  morti: sub 5, 8, 9   bit "non accodare" <b>acceso</b></pre>
-<p>Il lavoro di scavo sta in <b>SCAVO_SEQUENCER.md</b> e <b>SCAVO_DADO_FLAG.md</b>: 1252 sotto-nodi decodificati su tutta la ROM con zero errori, e la mappa fotogramma&rarr;scena che combacia col catalogo del disco scena per scena.</p>
+<p>Il grafo dei nodi, la tavola dei passi e la coda dei morti sono documentati in <b>SCAVO_SEQUENCER.md</b> e <b>SCAVO_DADO_FLAG.md</b>.</p>
 </section>
 <nav class="altrove"><span class="cap">Le altre macchine</span><ul>
 <li><a href="dragons-lair.html" class="qui"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983</span>Come il castello sceglie</a></li>
@@ -362,14 +362,9 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <li><a href="esh.html"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>21 agosto 2026</b></span><span><span class="et">banco di prova</span><b>63 su 63</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>63 su 63</b></span></div>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
-  <a href="/sequenze/">Le sequenze di gioco</a><br>
-  Ogni cifra di questa pagina e' letta dalla ROM da
-  <span class="mono">tools/pagine_sequenze.py</span>, e ogni affermazione
-  passa il banco di prova <span class="mono">tools/verifica_sequenze.py</span>
-  prima che la pagina venga scritta. La revisione sale solo quando il
-  contenuto cambia davvero.
+  <a href="/sequenze/">Le sequenze di gioco</a>
 </footer>
 </div>
 </body>

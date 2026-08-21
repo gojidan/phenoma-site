@@ -187,31 +187,26 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <a class="stanza" href="esh.html"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">I diciassette giri</span><span class="che">Nessun sorteggio: <b>una pagina sola</b> di diciassette righe, e un segnaposto che cammina senza tornare indietro. Il gioco non finisce perche&rsquo; il finale non era previsto.</span></a>
 </div>
 <h2>E una stanza a parte</h2>
-<p>Scavando nella sequenza di Super Don Quix-ote e&rsquo; venuta fuori un&rsquo;altra faccenda, che con l&rsquo;ordine delle scene non c&rsquo;entra niente ed e&rsquo; bella quanto quella. Sta di la&rsquo;, per conto suo.</p>
+<p>Scavando nella sequenza di Super Don Quix-ote e&rsquo; venuta fuori un&rsquo;altra faccenda, che con l&rsquo;ordine delle scene non c&rsquo;entra niente. Sta di la&rsquo;, per conto suo.</p>
 <div class="stanze">
 <a class="stanza" href="super-don-quix-ote-disobbedienze.html"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span><span class="come">Le quattordici disobbedienze</span><span class="che">L&rsquo;icona a schermo ti mostra una mossa. Nella ROM, accanto a quel momento, a volte ce n&rsquo;e&rsquo; una seconda &mdash; e <b>quella vale diecimila punti in piu&rsquo;</b>. Un giocatore le trovo&rsquo; tutte nel 1984, e per quarant&rsquo;anni non ha saputo di averle trovate tutte.</span></a>
 </div>
-<h2>Come sono fatte queste pagine</h2>
-<p>Ogni pagina dichiara <b>una tesi</b> in testa, la mostra con una figura disegnata dai dati veri, e in fondo apre le carte: <b>&laquo;come si legge nei byte&raquo;</b>, con gli indirizzi, le tavole e i frammenti di codice. Se volete rifare il conto, avete tutto quello che serve.</p>
-<p>Non c&rsquo;e&rsquo; una cifra trascritta a mano. Tabelle, mazzi, quote, ordini e punteggi vengono letti dalle ROM ogni volta che queste pagine si generano. E prima che vengano scritte, un <b>banco di prova</b> rifa&rsquo; il conto su ogni singola affermazione: se una sola non regge, le pagine non nascono.</p>
-<div class="nota caldo"><span class="cap">Perche&rsquo; e&rsquo; una regola e non una civetteria</span><p>Rifacendo questa verifica, in queste stesse pagine, abbiamo trovato <b>quattro errori nostri</b> &mdash; due nomi di scena presi dalla tradizione invece che dal catalogo, un punteggio sbagliato di cento, una scena attribuita al numero sbagliato &mdash; e una frase che diceva &laquo;due&raquo; dove i byte dicono <b>tre</b>. Sono corretti. Il banco di prova serve a questo: <b>a rendere impossibile pubblicare una cosa che non abbiamo ricontrollato.</b></p></div>
+<h2>Come leggerle</h2>
+<p>Ogni pagina dice in testa <b>che cosa sostiene</b>, lo mostra con una figura, e in fondo apre le carte: <b>&laquo;come si legge nei byte&raquo;</b>, con gli indirizzi, le tavole e i frammenti di codice. Serve a una cosa sola: <b>metterci in condizione di essere smentiti</b>. Se rifate il conto e non torna, avete tutto quello che vi serve per dircelo.</p>
+<p>Le cifre non sono trascritte a mano: tabelle, mazzi, quote, ordini e punteggi vengono riletti dalle ROM ogni volta che queste pagine si generano, e un controllo automatico li ricontrolla prima che vengano scritte.</p>
+<div class="nota caldo"><span class="cap">Sono pagine gia&rsquo; state sbagliate</span><p>Una versione precedente di queste stesse pagine conteneva <b>quattro errori</b>: due scene chiamate col nome della tradizione invece che con quello del catalogo, un punteggio sbagliato di cento, una scena attribuita al numero sbagliato, e una frase che diceva &laquo;due&raquo; dove i byte dicono <b>tre</b>. Sono corretti qui.</p><p>Lo scriviamo perche&rsquo; e&rsquo; probabile che qualcosa di sbagliato ci sia ancora. Dove non sappiamo, sta scritto che non sappiamo.</p></div>
 <h2>Le tre macchine di Dragon's Lair non si mescolano</h2>
 <p>Tre delle cinque pagine parlano dello stesso film: l&rsquo;edizione americana, quella europea e quella italiana della Sidam. Sono <b>tre macchine diverse</b>, e vanno confrontate senza mai importare niente dall&rsquo;una all&rsquo;altra: lo stesso indirizzo di memoria, nelle tre ROM, e&rsquo; tre cose diverse &mdash; in una e&rsquo; codice, in un&rsquo;altra sono dati. Dove le confrontiamo lo diciamo, e diciamo su che cosa.</p>
 <section class="tecnico">
 <h2>Gli strumenti</h2>
-<ul><li><b>Il generatore</b>: <code>tools/pagine_sequenze.py</code>. Legge le ROM e scrive queste sei pagine.</li><li><b>Il banco di prova</b>: <code>tools/verifica_sequenze.py</code>. Rifa&rsquo; il conto su ogni affermazione e si rifiuta di dare l&rsquo;ok se una sola non regge. Il generatore lo chiama prima di scrivere.</li><li><b>Le ROM</b>: originali del 1983-84, non rimaneggiate. Dove esistono versioni corrette dalla comunita&rsquo;, le studiamo ma non le adottiamo: qui si racconta la macchina com&rsquo;era.</li></ul>
-<p>Phenoma e&rsquo; un atlante di cio&rsquo; che le macchine ricordano. Queste pagine sono il primo capitolo pubblicato.</p>
+<ul><li><b>Il generatore</b>: <code>tools/pagine_sequenze.py</code>. Legge le ROM e scrive queste pagine.</li><li><b>I controlli</b>: <code>tools/verifica_sequenze.py</code>. Rifa&rsquo; il conto su ogni affermazione; il generatore lo chiama prima di scrivere.</li><li><b>Le ROM</b>: originali del 1983-84, non rimaneggiate. Dove esistono versioni corrette dalla comunita&rsquo;, le studiamo ma non le adottiamo: qui si racconta la macchina com&rsquo;era.</li><li><b>Il numero di revisione</b> in fondo a ogni pagina non conta le ripubblicazioni: sale solo quando cambia il testo.</li></ul>
+<p>Correzioni, obiezioni e fonti piu&rsquo; vecchie delle nostre sono benvenute.</p>
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>21 agosto 2026</b></span><span><span class="et">banco di prova</span><b>63 su 63</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>63 su 63</b></span></div>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
-  <a href="/sequenze/">Le sequenze di gioco</a><br>
-  Ogni cifra di questa pagina e' letta dalla ROM da
-  <span class="mono">tools/pagine_sequenze.py</span>, e ogni affermazione
-  passa il banco di prova <span class="mono">tools/verifica_sequenze.py</span>
-  prima che la pagina venga scritta. La revisione sale solo quando il
-  contenuto cambia davvero.
+  <a href="/sequenze/">Le sequenze di gioco</a>
 </footer>
 </div>
 </body>
