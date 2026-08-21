@@ -53,6 +53,14 @@
     color:var(--gold); margin:2.9rem 0 0;
   }
   .soon .dot{display:inline-block; margin:0 .55em; opacity:.5;}
+  /* 21 ago 2026 - la prima stanza aperta: le sequenze di gioco */
+  .soon a{
+    color:var(--gold); text-decoration:none;
+    border-bottom:1px solid rgba(255,179,71,.35); padding-bottom:.2em;
+    transition:border-color .25s ease;
+  }
+  .soon a:hover{border-bottom-color:var(--gold);}
+  .soon a:focus-visible{outline:1px solid var(--gold); outline-offset:.4em;}
 
   .foot{
     position:absolute; left:0; right:0; bottom:1.4rem; z-index:1;
@@ -76,6 +84,6 @@
   <div class="rule"></div>
   <p class="sub fade d2">Laserdisc&nbsp;Rom&nbsp;Atlas</p>
   <p class="motto fade d3">Un atlante di ciò che le macchine ricordano.</p>
-  <p class="soon fade d4">In costruzione <span class="dot">·</span> presto</p>
+  <p class="soon fade d4"><a href="/sequenze/">Le sequenze di gioco</a><span class="dot">·</span>cinque macchine, lette dai byte</p>
 </div>
 <p class="foot fade d4">Preservazione &nbsp;·&nbsp; Ricerca</p>

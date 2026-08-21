@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le sequenze di gioco — Phenoma</title>
+<meta name="description" content="Cinque macchine, cinque modi diversi di rispondere alla stessa domanda: che cosa ti da&amp;rsquo; da giocare, e come lo decide. Tutto letto dai byte delle ROM originali.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la barra di casa --- */
+.casa{display:flex;align-items:baseline;gap:.75em;flex-wrap:wrap;
+  padding:22px 0 0;font-family:var(--mono);font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase}
+.casa a{border:0;color:var(--oro)}
+.casa .sep{color:var(--tenue2)}
+.casa .qui{color:var(--tenue)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="casa"><a href="/">Phenoma</a><span class="sep">/</span><a href="/sequenze/">Le sequenze di gioco</a></nav>
+<header>
+  <p class="occhiello">Phenoma &middot; Laserdisc Rom Atlas</p>
+  <h1>Le sequenze di gioco</h1>
+  <p class="tesi">Cinque macchine, cinque modi diversi di rispondere alla stessa domanda: <b>che cosa ti da&rsquo; da giocare, e come lo decide.</b> Tutto letto dai byte delle ROM originali.</p>
+</header>
+<p>Sono cinque macchine da sala degli anni Ottanta, tutte costruite sullo stesso principio: un <b>film su laserdisc</b> e una ROM che decide quale pezzo farti vedere. Ma su una domanda si comportano in cinque modi completamente diversi, e la domanda e&rsquo; questa:</p>
+<div class="nota"><p style="font-size:19px"><b>Quando infili il gettone, che cosa ti da&rsquo; da giocare la macchina &mdash; e come lo decide?</b></p></div>
+<p>Nessuna di queste cinque risposte era scritta da nessuna parte. Le abbiamo lette <b>dai byte delle ROM originali</b>: non dedotte guardando il gioco, non ricostruite dai racconti &mdash; lette dentro la memoria della macchina, dove il progettista le ha scritte.</p>
+<div class="stanze">
+<a class="stanza" href="dragons-lair.html"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983</span><span class="come">Come il castello sceglie</span><span class="che">Tredici tappe, tre alternative ciascuna, e <b>tre giri</b> per consumarle tutte. Piu&rsquo; la coda dove finiscono le tue morti, e cinque jolly che non regalano niente.</span></a>
+<a class="stanza" href="dragons-lair-europa.html"><span class="dove">Dragon&rsquo;s Lair europeo &middot; 1983</span><span class="come">Il mazzo che cammina</span><span class="che">Niente giri: un mazzo di <b>trentasei carte</b>, mescolato mentre il cabinato e&rsquo; da solo. E quando muori, la carta fallita <b>torna in testa</b>.</span></a>
+<a class="stanza" href="dragons-lair-sidam.html"><span class="dove">Dragon&rsquo;s Lair &middot; edizione Sidam, Italia</span><span class="come">Il mazzo stratificato</span><span class="che">Diciassette carte, <b>dodici da superare</b>, prese a quota fissa da quattro gruppi. E una scala della difficolta&rsquo; tarata sulle stesse dodici. Se sbagli, la carta e&rsquo; persa.</span></a>
+<a class="stanza" href="super-don-quix-ote.html"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span><span class="come">Sei blocchi, e dodici partite</span><span class="che">La catena non cambia mai; mescolano solo i primi due blocchi, e mescolano <b>mazzetti interi</b>. Dentro, quattordici momenti in cui <b>conviene disobbedire</b>.</span></a>
+<a class="stanza" href="esh.html"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">I diciassette giri</span><span class="che">Nessun sorteggio: <b>una pagina sola</b> di diciassette righe, e un segnaposto che cammina senza tornare indietro. Il gioco non finisce perche&rsquo; il finale non era previsto.</span></a>
+</div>
+<h2>Come sono fatte queste pagine</h2>
+<p>Ogni pagina dichiara <b>una tesi</b> in testa, la mostra con una figura disegnata dai dati veri, e in fondo apre le carte: <b>&laquo;come si legge nei byte&raquo;</b>, con gli indirizzi, le tavole e i frammenti di codice. Se volete rifare il conto, avete tutto quello che serve.</p>
+<p>Non c&rsquo;e&rsquo; una cifra trascritta a mano. Tabelle, mazzi, quote, ordini e punteggi vengono letti dalle ROM ogni volta che queste pagine si generano. E prima che vengano scritte, un <b>banco di prova</b> rifa&rsquo; il conto su ogni singola affermazione: se una sola non regge, le pagine non nascono.</p>
+<div class="nota caldo"><span class="cap">Perche&rsquo; e&rsquo; una regola e non una civetteria</span><p>Rifacendo questa verifica, in queste stesse pagine, abbiamo trovato <b>quattro errori nostri</b> &mdash; due nomi di scena presi dalla tradizione invece che dal catalogo, un punteggio sbagliato di cento, una scena attribuita al numero sbagliato &mdash; e una frase che diceva &laquo;due&raquo; dove i byte dicono <b>tre</b>. Sono corretti. Il banco di prova serve a questo: <b>a rendere impossibile pubblicare una cosa che non abbiamo ricontrollato.</b></p></div>
+<h2>Le tre macchine di Dragon's Lair non si mescolano</h2>
+<p>Tre delle cinque pagine parlano dello stesso film: l&rsquo;edizione americana, quella europea e quella italiana della Sidam. Sono <b>tre macchine diverse</b>, e vanno confrontate senza mai importare niente dall&rsquo;una all&rsquo;altra: lo stesso indirizzo di memoria, nelle tre ROM, e&rsquo; tre cose diverse &mdash; in una e&rsquo; codice, in un&rsquo;altra sono dati. Dove le confrontiamo lo diciamo, e diciamo su che cosa.</p>
+<section class="tecnico">
+<h2>Gli strumenti</h2>
+<ul><li><b>Il generatore</b>: <code>tools/pagine_sequenze.py</code>. Legge le ROM e scrive queste sei pagine.</li><li><b>Il banco di prova</b>: <code>tools/verifica_sequenze.py</code>. Rifa&rsquo; il conto su ogni affermazione e si rifiuta di dare l&rsquo;ok se una sola non regge. Il generatore lo chiama prima di scrivere.</li><li><b>Le ROM</b>: originali del 1983-84, non rimaneggiate. Dove esistono versioni corrette dalla comunita&rsquo;, le studiamo ma non le adottiamo: qui si racconta la macchina com&rsquo;era.</li></ul>
+<p>Phenoma e&rsquo; un atlante di cio&rsquo; che le macchine ricordano. Queste pagine sono il primo capitolo pubblicato.</p>
+</section>
+<footer>
+  Phenoma &middot; Laserdisc Rom Atlas &middot; <a href="/sequenze/">le altre macchine</a><br>
+  Ogni cifra di questa pagina e' letta dalla ROM da <span class="mono">tools/pagine_sequenze.py</span>,
+  e ogni affermazione passa il banco di prova <span class="mono">tools/verifica_sequenze.py</span>
+  prima che la pagina venga scritta.
+</footer>
+</div>
+</body>
+</html>
