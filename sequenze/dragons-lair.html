@@ -24,13 +24,39 @@ a:hover{border-bottom-color:var(--oro)}
 a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
 .wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
 
-/* --- la barra di casa --- */
-.casa{display:flex;align-items:baseline;gap:.75em;flex-wrap:wrap;
-  padding:22px 0 0;font-family:var(--mono);font-size:11px;
-  letter-spacing:.24em;text-transform:uppercase}
-.casa a{border:0;color:var(--oro)}
-.casa .sep{color:var(--tenue2)}
-.casa .qui{color:var(--tenue)}
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
 
 /* --- testata --- */
 header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
@@ -128,15 +154,23 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
-footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--bordo);
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
   font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
   letter-spacing:.04em;line-height:1.9}
-footer a{color:var(--tenue)}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav class="casa"><a href="/">Phenoma</a><span class="sep">/</span><a href="/sequenze/">Le sequenze di gioco</a><span class="sep">/</span><span class="qui">Dragon&rsquo;s Lair</span></nav>
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/sequenze/">Le sequenze di gioco</a><span class="sep">/</span><span class="qui">Dragon&rsquo;s Lair</span></nav></div>
 <header>
   <p class="occhiello">Phenoma &middot; Dragon&rsquo;s Lair &middot; Cinematronics, 1983 &middot; revisione F2</p>
   <h1>Come il castello sceglie</h1>
@@ -319,11 +353,23 @@ footer a{color:var(--tenue)}
                  morti: sub 5, 8, 9   bit "non accodare" <b>acceso</b></pre>
 <p>Il lavoro di scavo sta in <b>SCAVO_SEQUENCER.md</b> e <b>SCAVO_DADO_FLAG.md</b>: 1252 sotto-nodi decodificati su tutta la ROM con zero errori, e la mappa fotogramma&rarr;scena che combacia col catalogo del disco scena per scena.</p>
 </section>
+<nav class="altrove"><span class="cap">Le altre macchine</span><ul>
+<li><a href="dragons-lair.html" class="qui"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983</span>Come il castello sceglie</a></li>
+<li><a href="dragons-lair-europa.html"><span class="dove">Dragon&rsquo;s Lair europeo &middot; 1983</span>Il mazzo che cammina</a></li>
+<li><a href="dragons-lair-sidam.html"><span class="dove">Dragon&rsquo;s Lair &middot; edizione Sidam, Italia</span>Il mazzo stratificato</a></li>
+<li><a href="super-don-quix-ote.html"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="super-don-quix-ote-disobbedienze.html"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Le quattordici disobbedienze</a></li>
+<li><a href="esh.html"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+</ul></nav>
 <footer>
-  Phenoma &middot; Laserdisc Rom Atlas &middot; <a href="/sequenze/">le altre macchine</a><br>
-  Ogni cifra di questa pagina e' letta dalla ROM da <span class="mono">tools/pagine_sequenze.py</span>,
-  e ogni affermazione passa il banco di prova <span class="mono">tools/verifica_sequenze.py</span>
-  prima che la pagina venga scritta.
+<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>21 agosto 2026</b></span><span><span class="et">banco di prova</span><b>63 su 63</b></span></div>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/sequenze/">Le sequenze di gioco</a><br>
+  Ogni cifra di questa pagina e' letta dalla ROM da
+  <span class="mono">tools/pagine_sequenze.py</span>, e ogni affermazione
+  passa il banco di prova <span class="mono">tools/verifica_sequenze.py</span>
+  prima che la pagina venga scritta. La revisione sale solo quando il
+  contenuto cambia davvero.
 </footer>
 </div>
 </body>
