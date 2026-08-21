@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le quattordici disobbedienze — Super Don Quix-ote</title>
+<meta name="description" content="L&amp;rsquo;icona a schermo ti mostra una mossa. Nella ROM, accanto a quel momento, a volte ce n&amp;rsquo;e&amp;rsquo; una seconda &amp;mdash; e quella vale diecimila punti in piu&amp;rsquo;.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la barra di casa --- */
+.casa{display:flex;align-items:baseline;gap:.75em;flex-wrap:wrap;
+  padding:22px 0 0;font-family:var(--mono);font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase}
+.casa a{border:0;color:var(--oro)}
+.casa .sep{color:var(--tenue2)}
+.casa .qui{color:var(--tenue)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="casa"><a href="/">Phenoma</a><span class="sep">/</span><a href="/sequenze/">Le sequenze di gioco</a><span class="sep">/</span><span class="qui">Le quattordici disobbedienze</span></nav>
+<header>
+  <p class="occhiello">Phenoma &middot; Super Don Quix-ote &middot; Universal, 1984</p>
+  <h1>Le quattordici disobbedienze</h1>
+  <p class="tesi">L&rsquo;icona a schermo ti mostra una mossa. Nella ROM, accanto a quel momento, a volte ce n&rsquo;e&rsquo; una seconda &mdash; e <b>quella vale diecimila punti in piu&rsquo;.</b></p>
+</header>
+<h2>La lista che l'icona non ti mostra tutta</h2>
+<p>In Super Don Quix-ote, a ogni momento buono, lo schermo ti mostra <b>un&rsquo;icona</b>: la mossa da fare. Quello che l&rsquo;icona non dice e&rsquo; che nella ROM, accanto a quel momento, non c&rsquo;e&rsquo; una mossa sola: c&rsquo;e&rsquo; <b>una lista di ingressi accettati</b>, scritta come una maschera di bit. L&rsquo;icona che vedi e&rsquo; semplicemente <b>il primo</b> della lista.</p>
+<p>Nella maggior parte dei momenti la lista ha una voce sola, e l&rsquo;icona dice tutta la verita&rsquo;. Ma in <b>quattordici momenti</b> ce n&rsquo;e&rsquo; una <b>seconda</b>. E quella seconda, oltre ai punti normali della mossa, paga <b>diecimila punti</b>.</p>
+<div class="nota"><span class="cap">Cioe': in quattordici punti il gioco ti chiede di disobbedirgli</span><p>Non e&rsquo; un baco e non e&rsquo; una tolleranza. E&rsquo; una ricompensa, scritta apposta, con un suo premio in una sua tabella. Qualcuno nel 1983 ha deciso che chi non si fida dell&rsquo;icona meritava di essere pagato.</p></div>
+<blockquote><p>Un giocatore lo scopri&rsquo; nel 1984, guardando uno sconosciuto fare piu&rsquo; punti <i>pur avendo perso una vita</i>. Per quarant&rsquo;anni si e&rsquo; chiesto se le avesse trovate tutte. <b>Le aveva trovate tutte.</b></p><cite>la testimonianza, ricontrollata sui byte quarant&rsquo;anni dopo</cite></blockquote>
+<h2>Le quattordici</h2>
+<div class="scroll"><table><thead><tr><th class="num">scena</th><th class="num">mossa</th><th>l&rsquo;icona che vedi</th><th>quello che invece conviene fare</th><th class="num">la mossa vale</th><th class="num">e in piu&rsquo;</th></tr></thead><tbody><tr><td class="num">04</td><td class="num">06</td><td class="dim">a destra</td><td>la spada</td><td class="num">800</td><td class="num">+10.000</td></tr><tr><td class="num">06</td><td class="num">07</td><td class="dim">in basso</td><td>a sinistra</td><td class="num">1.000</td><td class="num">+10.000</td></tr><tr><td class="num">07</td><td class="num">01</td><td class="dim">in alto</td><td>a sinistra</td><td class="num">650</td><td class="num">+10.000</td></tr><tr><td class="num">07</td><td class="num">03</td><td class="dim">a destra</td><td>la spada</td><td class="num">950</td><td class="num">+10.000</td></tr><tr><td class="num">08</td><td class="num">04</td><td class="dim">a destra</td><td>la spada</td><td class="num">450</td><td class="num">+10.000</td></tr><tr><td class="num">09</td><td class="num">04</td><td class="dim">in alto</td><td>a sinistra</td><td class="num">700</td><td class="num">+10.000</td></tr><tr><td class="num">10</td><td class="num">03</td><td class="dim">in basso</td><td>a sinistra</td><td class="num">2.050</td><td class="num">+10.000</td></tr><tr><td class="num">13</td><td class="num">03</td><td class="dim">a destra</td><td>in basso</td><td class="num">1.450</td><td class="num">+10.000</td></tr><tr><td class="num">13</td><td class="num">08</td><td class="dim">in alto</td><td>a sinistra</td><td class="num">1.600</td><td class="num">+10.000</td></tr><tr><td class="num">15</td><td class="num">01</td><td class="dim">in alto</td><td>a sinistra</td><td class="num">1.050</td><td class="num">+10.000</td></tr><tr><td class="num">15</td><td class="num">02</td><td class="dim">in alto</td><td>a destra</td><td class="num">1.450</td><td class="num">+10.000</td></tr><tr><td class="num">16</td><td class="num">03</td><td class="dim">a destra</td><td>la spada</td><td class="num">2.650</td><td class="num">+10.000</td></tr><tr><td class="num">16</td><td class="num">04</td><td class="dim">in alto</td><td>a sinistra</td><td class="num">3.250</td><td class="num">+10.000</td></tr><tr><td class="num">22</td><td class="num">09</td><td class="dim">a sinistra</td><td>la spada</td><td class="num">6.000</td><td class="num">+10.000</td></tr><tr class="punta"><td colspan="4">quattordici momenti</td><td class="num">24.050</td><td class="num">140.000</td></tr></tbody></table></div>
+<p>E non sono sparse a caso. <b>10 delle quattordici</b> stanno nei due blocchi che mescolano, cioe&rsquo; nella prima meta&rsquo; del gioco; il blocco 5 &mdash; le tre scene dove la morte ti manda avanti invece di rimetterti li&rsquo; &mdash; non ne ha nessuna. E la piu&rsquo; ricca sta nell&rsquo;<b>ultima scena del gioco, sulla penultima mossa</b>: 6.000 punti di mossa piu&rsquo; diecimila.</p>
+<div class="scroll"><table><thead><tr><th>dove cadono</th><th class="num">quante</th></tr></thead><tbody><tr><td class="dim">blocco 1 &mdash; mescola</td><td class="num">6</td></tr><tr><td class="dim">blocco 2 &mdash; mescola</td><td class="num">4</td></tr><tr><td class="dim">blocco 3</td><td class="num">1</td></tr><tr><td class="dim">blocco 4</td><td class="num">2</td></tr><tr><td class="dim">blocco 5</td><td class="num">0</td></tr><tr><td class="dim">blocco 6</td><td class="num">1</td></tr></tbody></table></div>
+<div class="nota caldo"><span class="cap">E la mossa davvero sbagliata?</span><p><b>Non uccide.</b> Il gioco suona un verso e ti <b>lega le mani per mezzo secondo</b>: quanto basta a farti mancare la finestra. In Super Don Quix-ote non muori per l&rsquo;errore &mdash; muori per la clessidra che l&rsquo;errore ti ha rubato.</p></div>
+<h2>Il tetto: 776.500</h2>
+<p>Sapere tutte e quattordici le disobbedienze vuol dire sapere anche qual e&rsquo; il massimo possibile. Tutte le mosse, piu&rsquo; le quattordici, piu&rsquo; i premi di fine scena, piu&rsquo; la cerimonia finale che paga <b>51.000 per ogni vita ancora in mano</b>.</p>
+<div class="scroll"><table><thead><tr><th>da dove viene</th><th class="num">quanto</th></tr></thead><tbody><tr><td class="dim">tutte le mosse del gioco, giocate bene</td><td class="num">240.900</td></tr><tr><td class="dim">le quattordici disobbedienze</td><td class="num">140.000</td></tr><tr><td class="dim">i premi di fine scena, dalla 0 alla 21</td><td class="num">191.600</td></tr><tr><td class="dim">la cerimonia, con quattro vite in mano</td><td class="num">204.000</td></tr><tr class="punta"><td>il massimo con la taratura di fabbrica</td><td class="num">776.500</td></tr></tbody></table></div>
+<p>E&rsquo; anche, <b>alla cifra</b>, il punteggio che quel giocatore dichiaro&rsquo;. Il record ufficialmente omologato si ferma molto piu&rsquo; sotto: nessuno di chi ha omologato sapeva delle quattordici.</p>
+<div class="nota freddo"><span class="cap">L'unico posto dove morire rende</span><p>C&rsquo;e&rsquo; un punto solo, in tutto il gioco, dove perdere una vita <b>conviene</b>: l&rsquo;ultima mossa dell&rsquo;ultima scena. Rigiocarla frutta piu&rsquo; di quanto quella vita renderebbe in cerimonia. E&rsquo; una previsione dai byte, non ancora vista a schermo: la teniamo come tale finche&rsquo; qualcuno non la mette alla prova.</p></div>
+<section class="tecnico">
+<h2>Come si legge nei byte</h2>
+<ul><li><b>La lista degli ingressi</b>: byte <code>+04</code> del record da 24 byte, una maschera del joystick, piu&rsquo; il byte <code>+05</code> per il pulsante. La routine a <code>0x0B97</code> scandisce la maschera in <b>ordine fisso</b> e accende il primo bit che trova: quella e&rsquo; l&rsquo;icona che vedi. Se nella maschera c&rsquo;e&rsquo; un <b>secondo</b> bit, quella e&rsquo; la disobbedienza.</li><li><b>Il premio</b>: <code>0x3A8E</code>, in BCD, diecimila. Nell&rsquo;emulatore Daphne la routine che lo paga si chiamava <code>HandleBadMove</code> &mdash; &laquo;gestisci la mossa sbagliata&raquo;. Era la cassa del tesoro, etichettata al contrario per venticinque anni.</li><li><b>I punteggi delle mosse</b>: puntatori a <code>0x3A00</code>, quattro byte per mossa in BCD. I premi di fine scena a <code>0x3A2E</code>; l&rsquo;ultimo di quella tavola non e&rsquo; un premio di scena ma <b>la goccia della cerimonia</b>, 51.000 per vita.</li><li><b>Le icone</b> non sono ridisegnate: sono le stesse venti tessere che la macchina accende sullo schermo, lette da <code>0x1773</code> e tinte con la PROM colori della scheda.</li></ul>
+<div class="nota freddo"><span class="cap">Un inciampo che vale la pena raccontare</span><p>La tavola dei punteggi <b>non e&rsquo; indicizzata dal numero della mossa</b>. In tutto il gioco ci sono <b>due</b> record che non pagano &mdash; scena 8 mossa 2 e scena 14 mossa 2 &mdash; e quelli non consumano una casella nella tavola. Chi conta le mosse e legge i punti alla stessa posizione sbaglia, da li&rsquo; in poi, tutta la scena.</p><p>E&rsquo; successo a noi: in una stesura precedente di questa pagina la disobbedienza della scena 8 valeva 550 invece di <b>450</b>, e quella da 2.050 era attribuita alla scena 11 invece che alla <b>10</b>. Le ha trovate il banco di prova, rifacendo il conto sui byte.</p></div>
+<p>Il lavoro sta in <b>LA_TESTIMONIANZA_E_I_776500.md</b>: la testimonianza di un giocatore del 1984 verificata voce per voce, quarant&rsquo;anni dopo, sulla memoria della macchina.</p>
+</section>
+<footer>
+  Phenoma &middot; Laserdisc Rom Atlas &middot; <a href="/sequenze/">le altre macchine</a><br>
+  Ogni cifra di questa pagina e' letta dalla ROM da <span class="mono">tools/pagine_sequenze.py</span>,
+  e ogni affermazione passa il banco di prova <span class="mono">tools/verifica_sequenze.py</span>
+  prima che la pagina venga scritta.
+</footer>
+</div>
+</body>
+</html>
