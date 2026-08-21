@@ -163,6 +163,9 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
 footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
   font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
   letter-spacing:.04em;line-height:1.9}
@@ -175,6 +178,57 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
   font-variant-numeric:tabular-nums}
 .timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
 </style>
 </head>
 <body>
@@ -212,6 +266,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 </ul></nav>
 <footer>
 <div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>74 su 74</b></span></div>
+<p class="stampa">phenoma.org/it/dragons-lair/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>
