@@ -163,6 +163,17 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
 /* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
 .stampa{display:none}
 
@@ -262,7 +273,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>6</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>74 su 74</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>6</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>82 su 82</b></span></div>
 <p class="stampa">phenoma.org/it/sequenze/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

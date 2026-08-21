@@ -163,6 +163,17 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
 /* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
 .stampa{display:none}
 
@@ -242,7 +253,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <h2>Prima i byte, il ricordo</h2>
 <blockquote><p>&laquo;Parte che ti dà tutte le scene in ordine: 1, 2, 3, 4, 5, 6, 7, 8&hellip; se muori, nell&rsquo;ordine in cui muori, <b>le sposta in cima alla lista</b>.&raquo;</p><cite>Alan, 8 agosto 2026 &mdash; a memoria, prima di qualunque prova</cite></blockquote>
 <p>Detto così, dalla parte di chi ci ha giocato. Poi siamo andati a vedere se la macchina era d&rsquo;accordo. Lo era.</p>
-<h2>Trentasei carte, e un Drago che non e' una carta</h2>
+<h2>Trentasei carte, e un Drago che non è una carta</h2>
 <p>L&rsquo;europeo non ha i tre giri dell&rsquo;americano: ha un <b>mazzo</b>, e lo percorre. Il conto sta in un byte solo, in testa alla tavola: <b>36</b>. Il Drago sta a parte, e non è una carta del mazzo.</p>
 <p>&rArr; <b>In Europa giochi tutto il gioco.</b> Non ci sono tre alternative fra cui il caso sceglie: ci sono trentasei scene, e sono tutte tue. Quello che il caso decide è soltanto l&rsquo;<b>ordine</b>.</p>
 <div class="nota freddo"><span class="cap">E il dado gira mentre nessuno guarda</span><p>Il mescolamento non avviene quando premi Start: avviene <b>durante l&rsquo;attrazione</b>, mentre il cabinato è lì da solo. Il codice scambia la prima carta con una a caso, dodici volte e mezzo al secondo. Dopo una decina di secondi di vetrina il mazzo è già irriconoscibile.</p><p>&rArr; <b>Dal momento in cui infili il gettone l&rsquo;ordine è già deciso, e non cambierà più.</b> La tua partita è stata mescolata da quanto a lungo la sala è rimasta vuota.</p></div>
@@ -317,7 +328,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <div class="nota"><span class="cap">Il gioco non rimescola: restringe e promuove</span><p>Non ti rimette il mazzo a caso: ti rimette davanti gli sbagli, e te li rimette <b>presto</b>. E siccome la sentinella avanza a ogni morte mentre il traguardo resta lo stesso, <b>ogni caduta allunga la partita</b>. Alan, giocando con quaranta vite e morendo apposta: <i>&laquo;siamo arrivati alla scena 36 e il gioco ha ricominciato a darti le scene da capo, non ci ha dato il Drago&raquo;</i>.</p></div>
 <h2>E l'Italia, allo stesso indirizzo</h2>
 <p>La cosa si vede meglio da fuori. Nella ROM italiana, <b>esattamente allo stesso punto del programma</b> &mdash; stesso indirizzo, stesso ingresso, stessa uscita &mdash; non c&rsquo;è lo scambio.</p>
-<div class="scroll"><table><thead><tr><th>il gestore della morte</th><th class="num">quanto e' lungo</th><th>che cosa fa</th></tr></thead><tbody><tr><td>Europa</td><td class="num">129 byte</td><td>scambia, confronta col fondo, riavvolge, avanza i due segnaposti</td></tr><tr class="punta"><td>Italia</td><td class="num">13 byte</td><td>avanza il cursore, avanza la sentinella, e salta fuori</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>il gestore della morte</th><th class="num">quanto è lungo</th><th>che cosa fa</th></tr></thead><tbody><tr><td>Europa</td><td class="num">129 byte</td><td>scambia, confronta col fondo, riavvolge, avanza i due segnaposti</td></tr><tr class="punta"><td>Italia</td><td class="num">13 byte</td><td>avanza il cursore, avanza la sentinella, e salta fuori</td></tr></tbody></table></div>
 <div class="nota caldo"><p><b>In Europa, se sbagli una scena la rivedi.</b><br><b>In Italia, se sbagli una scena l&rsquo;hai persa per sempre</b> &mdash; e in cambio la partita si accorcia di una.</p><p>Stesso film, stesso disco, stesso punto del programma. <b>Due idee opposte di che cosa hai comprato col gettone.</b> &rarr; <a href="/it/dragons-lair/sidam/sequenza/">il mazzo della Sidam</a></p></div>
 <section class="tecnico">
 <h2>Come si legge nei byte</h2>
@@ -344,7 +355,7 @@ EU   109E ... 111E          <b>129 byte</b>  ; scambio, fondo, riavvolgimento</p
 <li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>5</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>74 su 74</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>6</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>82 su 82</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/europa/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

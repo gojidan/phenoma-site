@@ -163,6 +163,17 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
 /* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
 .stampa{display:none}
 
@@ -398,7 +409,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <div class="legenda"><span><i class="sw" style="background:rgba(226,104,92,.6);border-color:var(--brace)"></i> lo stage 0: apre <b>ogni</b> giro</span><span><i class="sw" style="background:rgba(99,201,188,.25);border-color:#3D5A5C"></i> unità che viaggiano intere</span><span><i class="sw" style="background:rgba(99,201,188,.6);border-color:var(--acqua)"></i> la coda, sempre in fondo</span><span><i class="sw" style="background:var(--piano2)"></i> le unità che si permutano</span></div></div>
 <div class="nota caldo"><span class="cap">A rimescolare sono solo i primi sei giri</span><p>Questo è il dettaglio che si perde raccontando Esh come &laquo;un gioco che rimescola&raquo;: <b>le righe diverse sono sei</b>. Dalla settima in poi la riga è sempre la stessa, identica alla prima. Chi arriva al settimo giro non vedrà mai più un ordine nuovo: gioca la stessa scaletta per sempre.</p></div>
 <h2>Le tre cose che non cambiano mai</h2>
-<ul class="inv"><li><b>Ogni giro comincia con lo stage 0.</b> Tutti e diciassette. <i>&mdash; era un&rsquo;intuizione di Alan davanti al cabinato, prima che i byte la confermassero.</i></li><li><b>La coda 12-13-14 è fissa</b>, in fondo, sempre.</li><li><b>Tre unità non si separano mai</b> &mdash; 2-3, 8-9, 10-11 &mdash; perché sono scene <i>in continuita&rsquo;</i>: la seconda comincia dove finisce la prima, senza stacco. La ROM lo dice con un bit: se il bit alto del numero è acceso, quella scena <b>non fa ricercare il disco</b>, parte attaccata alla precedente.</li></ul>
+<ul class="inv"><li><b>Ogni giro comincia con lo stage 0.</b> Tutti e diciassette. <i>&mdash; era un&rsquo;intuizione di Alan davanti al cabinato, prima che i byte la confermassero.</i></li><li><b>La coda 12-13-14 è fissa</b>, in fondo, sempre.</li><li><b>Tre unità non si separano mai</b> &mdash; 2-3, 8-9, 10-11 &mdash; perché sono scene <i>in continuità</i>: la seconda comincia dove finisce la prima, senza stacco. La ROM lo dice con un bit: se il bit alto del numero è acceso, quella scena <b>non fa ricercare il disco</b>, parte attaccata alla precedente.</li></ul>
 <p>&rArr; Le unità in una riga sono <b>dieci</b>, non quindici. La prima è inchiodata in testa, l&rsquo;ultima in fondo: <b>a permutarsi restano otto</b>.</p>
 <div class="nota freddo"><span class="cap">E qui la cosa bella</span><p>In <b>tutti</b> i giri lo <b>stage 6</b> &mdash; il primo incontro con Orishala &mdash; viene <b>prima</b> dello <b>stage 11</b>, il combattimento con Orishala. Cinque rimescolamenti su cinque, dove il caso darebbe una probabilità su trentadue.</p><p><b>La macchina mescola, ma non rompe la storia.</b> Non incontri il mostro dopo averlo già ucciso.</p></div>
 <h2>E il diciottesimo</h2>
@@ -407,7 +418,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <section class="tecnico">
 <h2>Come si legge nei byte</h2>
 <p>ROM <b>Esh&rsquo;s Aurunmilla</b>, Funai 1984, Z80. La pagina dei giri sta nel chip <code>f8_is2.bin</code>, mappato a <code>0x2000</code>.</p>
-<ul><li><b>La pagina</b>: <code>0x2000</code>-<code>0x20FE</code>, diciassette righe da quindici byte. Duecentocinquantacinque byte in tutto.</li><li><b>Il byte in piu&rsquo;</b>: <code>0x20FF</code> = <code>0x01</code>. Subito dopo, a <code>0x2100</code>, comincia la tavola dei fotogrammi.</li><li><b>Il valore</b>: nei byte gli stage valgono da 1 a 15; a schermo si vedono come 0-14. Il <b>bit alto</b> non fa parte del numero: è il segno della continuità &mdash; quella scena parte senza far ricercare il disco.</li><li><b>Il segnaposto</b>: <code>0xE424</code> (P1) / <code>0xE425</code> (P2). Cammina in linea retta e non si riavvolge mai; è il motivo per cui non serve nessun sorteggio.</li></ul>
+<ul><li><b>La pagina</b>: <code>0x2000</code>-<code>0x20FE</code>, diciassette righe da quindici byte. Duecentocinquantacinque byte in tutto.</li><li><b>Il byte in più</b>: <code>0x20FF</code> = <code>0x01</code>. Subito dopo, a <code>0x2100</code>, comincia la tavola dei fotogrammi.</li><li><b>Il valore</b>: nei byte gli stage valgono da 1 a 15; a schermo si vedono come 0-14. Il <b>bit alto</b> non fa parte del numero: è il segno della continuità &mdash; quella scena parte senza far ricercare il disco.</li><li><b>Il segnaposto</b>: <code>0xE424</code> (P1) / <code>0xE425</code> (P2). Cammina in linea retta e non si riavvolge mai; è il motivo per cui non serve nessun sorteggio.</li></ul>
 <p>Le prime righe della pagina, come stanno nella ROM &mdash; in grassetto i byte col bit alto acceso, quelli che non fanno ricercare il disco:</p>
 <pre>0x2000  giro 1     01 02 03 <b>84</b> 05 06 07 08 09 <b>8A</b> 0B <b>8C</b> 0D <b>8E</b> <b>8F</b>
 0x200F  giro 2     01 05 03 <b>84</b> 07 09 <b>8A</b> 08 02 06 0B <b>8C</b> 0D <b>8E</b> <b>8F</b>
@@ -426,7 +437,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <li><a href="/it/eshs-aurunmilla/sequenza/" class="qui"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>4</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>74 su 74</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>5</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>82 su 82</b></span></div>
 <p class="stampa">phenoma.org/it/eshs-aurunmilla/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

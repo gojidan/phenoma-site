@@ -163,6 +163,17 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
 /* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
 .stampa{display:none}
 
@@ -248,7 +259,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <div class="scroll"><table><thead><tr><th>&nbsp;</th><th>l'ordine, come sta nella ROM</th></tr></thead><tbody><tr><td class="dim">ordine 1</td><td>00 &nbsp; 03 &nbsp; 08 &nbsp; 09 &nbsp; 04 &nbsp; 05 &nbsp; 06 &nbsp; 07 &nbsp; 01 &nbsp; 02</td></tr><tr><td class="dim">ordine 2</td><td>00 &nbsp; 03 &nbsp; 04 &nbsp; 05 &nbsp; 06 &nbsp; 07 &nbsp; 08 &nbsp; 09 &nbsp; 01 &nbsp; 02</td></tr><tr><td class="dim">ordine 3</td><td>00 &nbsp; 08 &nbsp; 09 &nbsp; 03 &nbsp; 04 &nbsp; 05 &nbsp; 06 &nbsp; 07 &nbsp; 01 &nbsp; 02</td></tr><tr><td class="dim">ordine 4</td><td>00 &nbsp; 08 &nbsp; 09 &nbsp; 04 &nbsp; 05 &nbsp; 06 &nbsp; 07 &nbsp; 03 &nbsp; 01 &nbsp; 02</td></tr><tr><td class="dim">ordine 5</td><td>00 &nbsp; 04 &nbsp; 05 &nbsp; 06 &nbsp; 07 &nbsp; 03 &nbsp; 08 &nbsp; 09 &nbsp; 01 &nbsp; 02</td></tr><tr><td class="dim">ordine 6</td><td>00 &nbsp; 04 &nbsp; 05 &nbsp; 06 &nbsp; 07 &nbsp; 08 &nbsp; 09 &nbsp; 03 &nbsp; 01 &nbsp; 02</td></tr></tbody></table></div>
 <div class="nota freddo"><span class="cap">Quando si tira il dado</span><p>Non all&rsquo;inizio della partita: <b>all&rsquo;inizio di ogni blocco</b>. Il primo ordine esce quando premi Start; il testa-o-croce del secondo blocco esce <b>dopo dieci scene</b>, quando quel blocco comincia. Il dado è un contatore che gira a ogni fotogramma: nessuno può prevederlo, ma la macchina lo estrae <b>una volta sola per blocco</b> e poi non ci torna più.</p></div>
 <h2>E vale per tutte e due le macchine</h2>
-<p>Di Super Don Quix-ote sono usciti dalla fabbrica <b>due set di ROM</b>: questo, e uno che salta le introduzioni delle scene. Nella seconda non c'e' un solo indirizzo in comune con la prima &mdash; le tavole stanno altrove, e perfino i record del copione sono di lunghezza diversa. Eppure la tavola dei sei blocchi, letta nelle due macchine, <b>e' la stessa voce per voce</b>: stesse varianti, stesse soglie, stesse sei permutazioni dei tre mazzetti, e gli stessi tre blocchi che alla morte ti rimettono sulla scena.</p>
+<p>Di Super Don Quix-ote sono usciti dalla fabbrica <b>due set di ROM</b>: questo, e uno che salta le introduzioni delle scene. Nella seconda non c'è un solo indirizzo in comune con la prima &mdash; le tavole stanno altrove, e perfino i record del copione sono di lunghezza diversa. Eppure la tavola dei sei blocchi, letta nelle due macchine, <b>è la stessa voce per voce</b>: stesse varianti, stesse soglie, stesse sei permutazioni dei tre mazzetti, e gli stessi tre blocchi che alla morte ti rimettono sulla scena.</p>
 <div class="nota freddo"><span class="cap">Quello che avete letto qui vale per tutte e due</span><p>Le due macchine differiscono nel <b>montaggio</b> del film e nel <b>modo di pagare</b>. Nella <b>sequenza</b> sono la stessa macchina. Per questo questa pagina non porta il nome di un set: <b>non ne ha bisogno</b>.</p></div>
 <div class="nota"><span class="cap">E dentro le scene, un'altra cosa ancora</span><p>Fin qui l&rsquo;ordine delle scene. Ma Super Don Quix-ote nasconde una seconda faccenda, che non c&rsquo;entra con la sequenza e vale una pagina sua: in <b>quattordici momenti</b> il gioco accetta anche l&rsquo;ingresso <i>contrario</i> a quello che ti mostra, e lo paga diecimila punti.<br>&rarr; <a href="/it/super-don-quix-ote/scene-lunghe/mosse-disobbedienti/">Le quattordici disobbedienze</a></p></div>
 <section class="tecnico">
@@ -274,7 +285,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>5</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>74 su 74</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>6</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>82 su 82</b></span></div>
 <p class="stampa">phenoma.org/it/super-don-quix-ote/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
