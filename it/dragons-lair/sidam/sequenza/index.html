@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Il mazzo stratificato — Dragon's Lair Sidam</title>
+<meta name="description" content="La Sidam non ha accorciato il mazzo europeo: l&amp;rsquo;ha stratificato &amp;mdash; e ha tarato la scala della difficolta&amp;rsquo; sulle stesse dodici carte.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a><span class="sep">/</span><span class="qui">la ROM Sidam</span></nav></div>
+<header>
+  <p class="occhiello">Phenoma &middot; Dragon&rsquo;s Lair &middot; edizione Sidam, Italia</p>
+  <h1>Il mazzo stratificato</h1>
+  <p class="tesi">La Sidam non ha accorciato il mazzo europeo: <b>l&rsquo;ha stratificato</b> &mdash; e ha tarato la scala della difficolta&rsquo; sulle stesse dodici carte.</p>
+</header>
+<h2>Diciassette carte, dodici da superare</h2>
+<p>La Sidam prende il gioco europeo e ne fa un&rsquo;altra cosa. Il mazzo non e&rsquo; piu&rsquo; di trentasei carte: la macchina ne distribuisce <b>diciassette</b>, e il Drago arriva quando ne hai <b>superate dodici</b>.</p>
+<p>Le altre cinque sono <b>riserve</b>: servono se muori. E la diciassettesima viene distribuita ma <b>non si gioca mai</b> &mdash; e&rsquo; il muro contro cui si ferma il conto.</p>
+<div class="nota caldo"><span class="cap">La differenza che cambia tutto</span><p>In Europa, se muori, la carta fallita torna in testa al mazzo e la rigiochi. <b>In Italia no.</b> Allo stesso punto del programma dove l&rsquo;europea ha centoventinove byte, l&rsquo;italiana ne ha <b>tredici</b>, e fanno una cosa sola: avanzano di uno tutti e due i segnaposti.</p><p>&rArr; <b>La carta su cui sei caduto e&rsquo; persa.</b> Non la rivedrai. In cambio ti si consuma una riserva, e la partita resta lunga dodici. &rarr; <a href="/it/dragons-lair/europa/sequenza/">il mazzo europeo</a></p></div>
+<h2>Chi ti e' capitato: i quattro gruppi, a quota fissa</h2>
+<p>Le carte non vengono pescate da un mucchio solo. Le ventotto caselle del gioco sono divise in <b>quattro gruppi</b> &mdash; da 4, 10, 9, 5 &mdash; e da ogni gruppo la macchina prende un numero <b>fisso</b> di carte, sempre lo stesso, in ogni partita.</p>
+<div class="fig"><svg viewBox="0 0 880 180" width="880" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="I quattro gruppi della Sidam e la quota fissa" font-family="var(--mono)">
+<text x="0" y="16" font-size="10.5" letter-spacing="1.6" fill="var(--tenue)">IL GRUPPO</text>
+<text x="118" y="16" font-size="10.5" letter-spacing="1.6" fill="var(--tenue)">LE SUE CASELLE &mdash; accese quelle che questa partita ti ha dato</text>
+<text x="0" y="50" font-size="11" fill="#9FB4BE" font-weight="700">da 4</text>
+<text x="46" y="50" font-size="11" fill="var(--tenue)">1+1</text>
+<rect x="118" y="34" width="185" height="22" fill="rgba(255,255,255,.06)" stroke="#9FB4BE" opacity="1" rx="2"/>
+<rect x="308" y="34" width="185" height="22" fill="none" stroke="#9FB4BE" opacity=".55" rx="2"/>
+<rect x="498" y="34" width="185" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<rect x="688" y="34" width="185" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<text x="0" y="84" font-size="11" fill="#69CD82" font-weight="700">da 10</text>
+<text x="46" y="84" font-size="11" fill="var(--tenue)">6+2</text>
+<rect x="118" y="68" width="71" height="22" fill="rgba(255,255,255,.06)" stroke="#69CD82" opacity="1" rx="2"/>
+<rect x="194" y="68" width="71" height="22" fill="rgba(255,255,255,.06)" stroke="#69CD82" opacity="1" rx="2"/>
+<rect x="270" y="68" width="71" height="22" fill="rgba(255,255,255,.06)" stroke="#69CD82" opacity="1" rx="2"/>
+<rect x="346" y="68" width="71" height="22" fill="rgba(255,255,255,.06)" stroke="#69CD82" opacity="1" rx="2"/>
+<rect x="422" y="68" width="71" height="22" fill="rgba(255,255,255,.06)" stroke="#69CD82" opacity="1" rx="2"/>
+<rect x="498" y="68" width="71" height="22" fill="rgba(255,255,255,.06)" stroke="#69CD82" opacity="1" rx="2"/>
+<rect x="574" y="68" width="71" height="22" fill="none" stroke="#69CD82" opacity=".55" rx="2"/>
+<rect x="650" y="68" width="71" height="22" fill="none" stroke="#69CD82" opacity=".55" rx="2"/>
+<rect x="726" y="68" width="71" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<rect x="802" y="68" width="71" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<text x="0" y="118" font-size="11" fill="#E1AA4B" font-weight="700">da 9</text>
+<text x="46" y="118" font-size="11" fill="var(--tenue)">4+1</text>
+<rect x="118" y="102" width="79" height="22" fill="rgba(255,255,255,.06)" stroke="#E1AA4B" opacity="1" rx="2"/>
+<rect x="202" y="102" width="79" height="22" fill="rgba(255,255,255,.06)" stroke="#E1AA4B" opacity="1" rx="2"/>
+<rect x="286" y="102" width="79" height="22" fill="rgba(255,255,255,.06)" stroke="#E1AA4B" opacity="1" rx="2"/>
+<rect x="370" y="102" width="79" height="22" fill="rgba(255,255,255,.06)" stroke="#E1AA4B" opacity="1" rx="2"/>
+<rect x="454" y="102" width="79" height="22" fill="none" stroke="#E1AA4B" opacity=".55" rx="2"/>
+<rect x="538" y="102" width="79" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<rect x="622" y="102" width="79" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<rect x="706" y="102" width="79" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<rect x="790" y="102" width="79" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<text x="0" y="152" font-size="11" fill="#D778B4" font-weight="700">da 5</text>
+<text x="46" y="152" font-size="11" fill="var(--tenue)">1+1</text>
+<rect x="118" y="136" width="147" height="22" fill="rgba(255,255,255,.06)" stroke="#D778B4" opacity="1" rx="2"/>
+<rect x="270" y="136" width="147" height="22" fill="none" stroke="#D778B4" opacity=".55" rx="2"/>
+<rect x="422" y="136" width="147" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<rect x="574" y="136" width="147" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+<rect x="726" y="136" width="147" height="22" fill="none" stroke="var(--bordo)" opacity="1" rx="2"/>
+</svg>
+<div class="legenda"><span><i class="sw" style="background:rgba(255,255,255,.12);border-color:#69CD82"></i> accesa: una delle dodici che devi superare</span><span><i class="sw" style="border-color:#69CD82;opacity:.55"></i> contorno: una delle cinque di riserva</span><span><i class="sw"></i> spenta: questa partita non te la dara&rsquo;</span></div></div>
+<div class="scroll"><table><thead><tr><th>gruppo</th><th class="num">caselle</th><th class="num">nelle dodici</th><th class="num">di riserva</th><th class="num">in tutto</th></tr></thead><tbody><tr><td class="dim">il gruppo da 4</td><td class="num">4</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr><tr><td class="dim">il gruppo da 10</td><td class="num">10</td><td class="num">6</td><td class="num">2</td><td class="num">8</td></tr><tr><td class="dim">il gruppo da 9</td><td class="num">9</td><td class="num">4</td><td class="num">1</td><td class="num">5</td></tr><tr><td class="dim">il gruppo da 5</td><td class="num">5</td><td class="num">1</td><td class="num">1</td><td class="num">2</td></tr><tr class="punta"><td class="dim">totale</td><td class="num">28</td><td class="num">12</td><td class="num">5</td><td class="num">17</td></tr></tbody></table></div>
+<p>&rArr; <b>La Sidam non ha accorciato il mazzo europeo: l&rsquo;ha stratificato.</b> Non prende dodici scene a caso fra ventotto &mdash; ne prende <b>una</b> dal primo gruppo, <b>sei</b> dal secondo, <b>quattro</b> dal terzo, <b>una</b> dal quarto. Sempre. E le riserve seguono la stessa regola, in scala.</p>
+<div class="nota"><span class="cap">Il criterio dei gruppi resta aperto</span><p>I gruppi ci sono, sono nei byte, e la quota e&rsquo; ferrea. <b>Perche&rsquo; siano fatti cosi&rsquo; non lo sappiamo.</b> Il primo si spiega da solo &mdash; sono le quattro scene piu&rsquo; corte e povere del gioco. Gli altri tre non si separano su nessuna misura che abbiamo provato: ne&rsquo; per lunghezza, ne&rsquo; per punteggio, ne&rsquo; per difficolta&rsquo;. Percio&rsquo; qui non hanno un nome: dargliene uno vorrebbe dire spacciare per risposta una domanda aperta.</p></div>
+<h2>In che ordine: il gruppo dice CHI, non QUANDO</h2>
+<p>Una cosa che al collaudo ha ingannato anche noi: sapere da quale gruppo viene una carta <b>non dice quando la giocherai</b>. I gruppi decidono <i>chi</i> entra nel mazzo; l&rsquo;ordine lo decide un mescolamento che viene dopo, e che mescola tutte e dodici insieme. Puoi benissimo cominciare da una carta del secondo gruppo e finire con una del primo.</p>
+<h2>La scala della difficolta', tarata sulle stesse dodici</h2>
+<p>La Sidam ha anche una cosa che l&rsquo;europea non ha: la difficolta&rsquo; <b>cresce durante la partita</b>. Non e&rsquo; una costante scelta dall&rsquo;operatore: e&rsquo; una <b>scala a quattro scatti</b>, e il dip decide soltanto <b>quanto presto</b> li sali.</p>
+<div class="scroll"><table><thead><tr><th>taratura (i nomi sono quelli del manuale Sidam)</th><th class="num">1&deg; scatto</th><th class="num">2&deg;</th><th class="num">3&deg;</th><th class="num">4&deg;</th><th class="num">somma</th></tr></thead><tbody><tr class="punta"><td class="dim">Facile</td><td class="num">alla 5&ordf;</td><td class="num">alla 8&ordf;</td><td class="num">alla 11&ordf;</td><td class="num">alla 12&ordf;</td><td class="num">12</td></tr><tr><td class="dim">Intermedio</td><td class="num">alla 4&ordf;</td><td class="num">alla 7&ordf;</td><td class="num">alla 10&ordf;</td><td class="num">alla 12&ordf;</td><td class="num">12</td></tr><tr><td class="dim">Difficile</td><td class="num">alla 3&ordf;</td><td class="num">alla 5&ordf;</td><td class="num">alla 8&ordf;</td><td class="num">alla 12&ordf;</td><td class="num">12</td></tr><tr><td class="dim">Difficilissimo</td><td class="num">alla 2&ordf;</td><td class="num">alla 4&ordf;</td><td class="num">alla 7&ordf;</td><td class="num">alla 12&ordf;</td><td class="num">12</td></tr></tbody></table></div>
+<div class="nota freddo"><span class="cap">La riga somma sempre dodici</span><p>I quattro numeri di ogni riga sono <b>intervalli</b>, non posizioni: il contatore si azzera a ogni scatto. E la loro somma, in tutte e quattro le tarature, fa <b>dodici</b> &mdash; esattamente le carte che devi superare per arrivare al Drago.</p><p>&rArr; <b>La scala della difficolta&rsquo; e&rsquo; tarata sulla stessa lunghezza del mazzo.</b> Chi ha scritto questa ROM sapeva che la partita e&rsquo; lunga dodici, e ha diviso quei dodici in quattro tratti. Non e&rsquo; un caso: e&rsquo; un progetto.</p></div>
+<p>Quello che lo scatto cambia e&rsquo; la <b>finestra utile</b>: quanto tempo hai per rispondere. Al primo scatto e&rsquo; intera, poi tre quarti, poi meta&rsquo;, poi <b>un quarto</b>. E qui c&rsquo;e&rsquo; la seconda sorpresa: la finestra guarda <b>solo lo scatto</b>, non la taratura. Un giocatore a &laquo;Difficilissimo&raquo; e uno a &laquo;Facile&raquo; che siano allo stesso scatto hanno la stessa identica finestra. Il dip non cambia <i>quanto</i> si stringe: cambia <b>quando</b>.</p>
+<div class="nota"><span class="cap">Una domanda che lasciamo aperta</span><p>Se il terzo scatto porta gia&rsquo; la finestra al minimo, <b>a che serve il quarto?</b> Il sospetto e&rsquo; che serva solo a far tornare la somma a dodici. Ma e&rsquo; un sospetto, e finche&rsquo; non lo dimostriamo resta scritto cosi&rsquo;.</p></div>
+<section class="tecnico">
+<h2>Come si legge nei byte</h2>
+<p>ROM <b>Dragon&rsquo;s Lair, edizione Sidam</b> (Italia), Z80. Condivide col fratello europeo due chip su quattro.</p>
+<ul><li><b>Le carte distribuite</b>: <code>0x1C07: 06 11</code> = <code>LD B,0x11</code> = diciassette giri di distribuzione.</li><li><b>I gruppi</b>: offset a <code>0x0DED</code>, ampiezze a <code>0x0DFA</code>. Valori a <code>0x10EF</code>, indici a <code>0x110B</code>, record a <code>0x0E06</code>.</li><li><b>La controprova</b>: la ROM si porta dietro dodici byte di firma a <code>0x1CA7</code>, che usa lei per i fatti suoi. Ricalcolati dalla nostra lettura dei gruppi, combaciano dodici su dodici. Se la lettura dei gruppi fosse sbagliata, non tornerebbero.</li><li><b>I due segnaposti</b>: cursore <code>A13A</code>, fermo <code>A13E</code>. Allo Start il fermo va a <code>A01A</code>, che e&rsquo; <code>A002 + 0x18</code>, cioe&rsquo; <b>dodici carte piu&rsquo; avanti</b> della base: e&rsquo; li&rsquo; che sta scritto che la partita e&rsquo; lunga dodici.</li><li><b>La morte</b>: <code>0x109E</code>, tredici byte, avanza tutti e due i segnaposti. Nessuno scambio.</li><li><b>La scala</b>: tavola a <code>0x120D</code>, quattro righe da quattro byte. La riga la sceglie il dip, la colonna lo scatto raggiunto; il contatore si azzera a ogni scatto (<code>0x1206</code>), percio&rsquo; i valori sono intervalli. Ogni byte vale <i>valore + 1</i> scene.</li><li><b>La finestra</b>: <code>0x0D10</code>-<code>0x0D24</code>. Legge <b>solo</b> lo scatto: 0 &rarr; intera, 1 &rarr; tre quarti, 2 &rarr; meta&rsquo;, 3 e oltre &rarr; un quarto. Il dip non compare.</li><li><b>Il grado di partenza</b>: in Italia si parte da zero (<code>0x0927: XOR A</code>), in Europa dal dip (<code>0x092B: LD A,(A18E)</code>).</li></ul>
+<p>La tavola della scala, come sta nella ROM &mdash; i numeri grezzi e la scena a cui cadono gli scatti:</p>
+<pre>0x120D  <b>04 02 02 00</b>   Facile          scatti alla scena   5  8 11 12
+0x1211  <b>03 02 02 01</b>   Intermedio      scatti alla scena   4  7 10 12
+0x1215  <b>02 01 02 03</b>   Difficile       scatti alla scena   3  5  8 12
+0x1219  <b>01 01 02 04</b>   Difficilissimo  scatti alla scena   2  4  7 12</pre>
+<p>Le stesse celle si possono leggere anche a gioco acceso, con un pannello di LaserDisc Game Legends che le mostra mentre giri. Il dettaglio sta in <b>IL_MAZZO_DELLA_SIDAM.md</b> e <b>LA_SIDAM_SI_LEGGE.md</b>.</p>
+</section>
+<nav class="altrove"><span class="cap">Le altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/" class="qui"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/scene-lunghe/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984 &middot; il set a scene lunghe</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/scene-lunghe/mosse-disobbedienti/"><span class="dove">Super Don Quix-ote &middot; Universal 1984 &middot; il set a scene lunghe</span>Le quattordici disobbedienze</a></li>
+<li><a href="/it/esh/originale/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984 &middot; il set originale</span>I diciassette giri</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>3</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>63 su 63</b></span></div>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>

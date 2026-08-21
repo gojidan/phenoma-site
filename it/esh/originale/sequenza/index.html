@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>I diciassette giri — Esh's Aurunmilla</title>
+<meta name="description" content="Esh non finisce mai, e a ogni giro cambia l&amp;rsquo;ordine delle sue quindici scene. Ma non tira i dadi: non c&amp;rsquo;e&amp;rsquo; un solo bit di caso in tutta la macchina.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/esh/">Esh&rsquo;s Aurunmilla</a><span class="sep">/</span><span class="qui">il set originale</span></nav></div>
+<header>
+  <p class="occhiello">Phenoma &middot; Esh&rsquo;s Aurunmilla &middot; Funai, 1984</p>
+  <h1>I diciassette giri</h1>
+  <p class="tesi">Esh non finisce mai, e a ogni giro cambia l&rsquo;ordine delle sue quindici scene. Ma non tira i dadi: <b>non c&rsquo;e&rsquo; un solo bit di caso in tutta la macchina.</b></p>
+</header>
+<h2>Che cosa fa, davvero</h2>
+<p>Esh non ha una fine: arrivato in fondo ricomincia, e l&rsquo;ordine delle scene cambia. Sembra un mescolamento &mdash; e per quarant&rsquo;anni chi ci ha giocato l&rsquo;ha raccontato cosi&rsquo;.</p>
+<p><b>Non lo e&rsquo;.</b> Nella memoria del gioco c&rsquo;e&rsquo; <b>una pagina sola</b>: <b>diciassette righe da quindici numeri</b>, scritte una dopo l&rsquo;altra. E c&rsquo;e&rsquo; un segnaposto che le percorre <b>senza mai tornare indietro</b>. Quando un giro finisce, il segnaposto non si riavvolge e non pesca: <b>continua da dove era arrivato</b>. In tutta la macchina non c&rsquo;e&rsquo; <b>un solo bit di caso</b>.</p>
+<div class="fig"><svg viewBox="0 0 880 224" width="880" height="224" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="I diciassette giri di Esh" font-family="var(--mono)">
+<text x="0" y="16" font-size="10.5" letter-spacing="1.6" fill="var(--tenue)">GIRO</text>
+<text x="68" y="16" font-size="10.5" letter-spacing="1.6" fill="var(--tenue)">L&rsquo;ORDINE DEGLI STAGE, COSI&rsquo; COME LA ROM LI ELENCA</text>
+<text x="0" y="45" font-size="11" fill="var(--inchiostro)" font-weight="600">1</text>
+<rect x="68" y="30" width="26" height="20" fill="rgba(226,104,92,.2)" stroke="var(--brace)" rx="2"/>
+<text x="81" y="44" font-size="10.5" text-anchor="middle" fill="var(--brace)">0</text>
+<rect x="99" y="30" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="112" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">1</text>
+<rect x="130" y="30" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="147" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">2-3</text>
+<rect x="170" y="30" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="183" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">4</text>
+<rect x="201" y="30" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="214" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">5</text>
+<rect x="232" y="30" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="245" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">6</text>
+<rect x="263" y="30" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="276" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">7</text>
+<rect x="294" y="30" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="311" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">8-9</text>
+<rect x="334" y="30" width="51" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="359" y="44" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">10-11</text>
+<rect x="390" y="30" width="75" height="20" fill="rgba(99,201,188,.2)" stroke="var(--acqua)" rx="2"/>
+<text x="427" y="44" font-size="10.5" text-anchor="middle" fill="var(--acqua)">12-13-14</text>
+<text x="476" y="44" font-size="10.5" fill="var(--tenue)" font-style="italic" font-family="var(--disp)">canonico</text>
+<text x="0" y="71" font-size="11" fill="var(--inchiostro)" font-weight="600">2</text>
+<rect x="68" y="56" width="26" height="20" fill="rgba(226,104,92,.2)" stroke="var(--brace)" rx="2"/>
+<text x="81" y="70" font-size="10.5" text-anchor="middle" fill="var(--brace)">0</text>
+<rect x="99" y="56" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="112" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">4</text>
+<rect x="130" y="56" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="147" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">2-3</text>
+<rect x="170" y="56" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="183" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">6</text>
+<rect x="201" y="56" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="218" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">8-9</text>
+<rect x="241" y="56" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="254" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">7</text>
+<rect x="272" y="56" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="285" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">1</text>
+<rect x="303" y="56" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="316" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">5</text>
+<rect x="334" y="56" width="51" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="359" y="70" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">10-11</text>
+<rect x="390" y="56" width="75" height="20" fill="rgba(99,201,188,.2)" stroke="var(--acqua)" rx="2"/>
+<text x="427" y="70" font-size="10.5" text-anchor="middle" fill="var(--acqua)">12-13-14</text>
+<text x="0" y="97" font-size="11" fill="var(--inchiostro)" font-weight="600">3</text>
+<rect x="68" y="82" width="26" height="20" fill="rgba(226,104,92,.2)" stroke="var(--brace)" rx="2"/>
+<text x="81" y="96" font-size="10.5" text-anchor="middle" fill="var(--brace)">0</text>
+<rect x="99" y="82" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="112" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">5</text>
+<rect x="130" y="82" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="143" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">6</text>
+<rect x="161" y="82" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="178" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">2-3</text>
+<rect x="201" y="82" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="214" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">1</text>
+<rect x="232" y="82" width="51" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="257" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">10-11</text>
+<rect x="288" y="82" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="301" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">7</text>
+<rect x="319" y="82" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="332" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">4</text>
+<rect x="350" y="82" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="367" y="96" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">8-9</text>
+<rect x="390" y="82" width="75" height="20" fill="rgba(99,201,188,.2)" stroke="var(--acqua)" rx="2"/>
+<text x="427" y="96" font-size="10.5" text-anchor="middle" fill="var(--acqua)">12-13-14</text>
+<text x="0" y="123" font-size="11" fill="var(--inchiostro)" font-weight="600">4</text>
+<rect x="68" y="108" width="26" height="20" fill="rgba(226,104,92,.2)" stroke="var(--brace)" rx="2"/>
+<text x="81" y="122" font-size="10.5" text-anchor="middle" fill="var(--brace)">0</text>
+<rect x="99" y="108" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="116" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">2-3</text>
+<rect x="139" y="108" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="152" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">6</text>
+<rect x="170" y="108" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="183" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">1</text>
+<rect x="201" y="108" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="218" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">8-9</text>
+<rect x="241" y="108" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="254" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">7</text>
+<rect x="272" y="108" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="285" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">5</text>
+<rect x="303" y="108" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="316" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">4</text>
+<rect x="334" y="108" width="51" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="359" y="122" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">10-11</text>
+<rect x="390" y="108" width="75" height="20" fill="rgba(99,201,188,.2)" stroke="var(--acqua)" rx="2"/>
+<text x="427" y="122" font-size="10.5" text-anchor="middle" fill="var(--acqua)">12-13-14</text>
+<text x="0" y="149" font-size="11" fill="var(--inchiostro)" font-weight="600">5</text>
+<rect x="68" y="134" width="26" height="20" fill="rgba(226,104,92,.2)" stroke="var(--brace)" rx="2"/>
+<text x="81" y="148" font-size="10.5" text-anchor="middle" fill="var(--brace)">0</text>
+<rect x="99" y="134" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="112" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">6</text>
+<rect x="130" y="134" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="143" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">5</text>
+<rect x="161" y="134" width="51" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="186" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">10-11</text>
+<rect x="217" y="134" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="230" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">7</text>
+<rect x="248" y="134" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="265" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">2-3</text>
+<rect x="288" y="134" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="301" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">4</text>
+<rect x="319" y="134" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="332" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">1</text>
+<rect x="350" y="134" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="367" y="148" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">8-9</text>
+<rect x="390" y="134" width="75" height="20" fill="rgba(99,201,188,.2)" stroke="var(--acqua)" rx="2"/>
+<text x="427" y="148" font-size="10.5" text-anchor="middle" fill="var(--acqua)">12-13-14</text>
+<text x="0" y="175" font-size="11" fill="var(--inchiostro)" font-weight="600">6</text>
+<rect x="68" y="160" width="26" height="20" fill="rgba(226,104,92,.2)" stroke="var(--brace)" rx="2"/>
+<text x="81" y="174" font-size="10.5" text-anchor="middle" fill="var(--brace)">0</text>
+<rect x="99" y="160" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="116" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">8-9</text>
+<rect x="139" y="160" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="152" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">7</text>
+<rect x="170" y="160" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="183" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">4</text>
+<rect x="201" y="160" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="214" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">6</text>
+<rect x="232" y="160" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="245" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">5</text>
+<rect x="263" y="160" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="280" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">2-3</text>
+<rect x="303" y="160" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="316" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">1</text>
+<rect x="334" y="160" width="51" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="359" y="174" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">10-11</text>
+<rect x="390" y="160" width="75" height="20" fill="rgba(99,201,188,.2)" stroke="var(--acqua)" rx="2"/>
+<text x="427" y="174" font-size="10.5" text-anchor="middle" fill="var(--acqua)">12-13-14</text>
+<text x="0" y="201" font-size="11" fill="var(--inchiostro)" font-weight="600">7-17</text>
+<rect x="68" y="186" width="26" height="20" fill="rgba(226,104,92,.2)" stroke="var(--brace)" rx="2"/>
+<text x="81" y="200" font-size="10.5" text-anchor="middle" fill="var(--brace)">0</text>
+<rect x="99" y="186" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="112" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">1</text>
+<rect x="130" y="186" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="147" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">2-3</text>
+<rect x="170" y="186" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="183" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">4</text>
+<rect x="201" y="186" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="214" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">5</text>
+<rect x="232" y="186" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="245" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">6</text>
+<rect x="263" y="186" width="26" height="20" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<text x="276" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">7</text>
+<rect x="294" y="186" width="35" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="311" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">8-9</text>
+<rect x="334" y="186" width="51" height="20" fill="rgba(99,201,188,.09)" stroke="#3D5A5C" rx="2"/>
+<text x="359" y="200" font-size="10.5" text-anchor="middle" fill="var(--inchiostro)">10-11</text>
+<rect x="390" y="186" width="75" height="20" fill="rgba(99,201,188,.2)" stroke="var(--acqua)" rx="2"/>
+<text x="427" y="200" font-size="10.5" text-anchor="middle" fill="var(--acqua)">12-13-14</text>
+<text x="476" y="200" font-size="10.5" fill="var(--tenue)" font-style="italic" font-family="var(--disp)">canonico</text>
+</svg>
+<div class="legenda"><span><i class="sw" style="background:rgba(226,104,92,.6);border-color:var(--brace)"></i> lo stage 0: apre <b>ogni</b> giro</span><span><i class="sw" style="background:rgba(99,201,188,.25);border-color:#3D5A5C"></i> unita&rsquo; che viaggiano intere</span><span><i class="sw" style="background:rgba(99,201,188,.6);border-color:var(--acqua)"></i> la coda, sempre in fondo</span><span><i class="sw" style="background:var(--piano2)"></i> le unita&rsquo; che si permutano</span></div></div>
+<div class="nota caldo"><span class="cap">A rimescolare sono solo i primi sei giri</span><p>Questo e&rsquo; il dettaglio che si perde raccontando Esh come &laquo;un gioco che rimescola&raquo;: <b>le righe diverse sono sei</b>. Dalla settima in poi la riga e&rsquo; sempre la stessa, identica alla prima. Chi arriva al settimo giro non vedra&rsquo; mai piu&rsquo; un ordine nuovo: gioca la stessa scaletta per sempre.</p></div>
+<h2>Le tre cose che non cambiano mai</h2>
+<ul class="inv"><li><b>Ogni giro comincia con lo stage 0.</b> Tutti e diciassette. <i>&mdash; era un&rsquo;intuizione di Alan davanti al cabinato, prima che i byte la confermassero.</i></li><li><b>La coda 12-13-14 e&rsquo; fissa</b>, in fondo, sempre.</li><li><b>Tre unita&rsquo; non si separano mai</b> &mdash; 2-3, 8-9, 10-11 &mdash; perche&rsquo; sono scene <i>in continuita&rsquo;</i>: la seconda comincia dove finisce la prima, senza stacco. La ROM lo dice con un bit: se il bit alto del numero e&rsquo; acceso, quella scena <b>non fa ricercare il disco</b>, parte attaccata alla precedente.</li></ul>
+<p>&rArr; Le unita&rsquo; in una riga sono <b>dieci</b>, non quindici. La prima e&rsquo; inchiodata in testa, l&rsquo;ultima in fondo: <b>a permutarsi restano otto</b>.</p>
+<div class="nota freddo"><span class="cap">E qui la cosa bella</span><p>In <b>tutti</b> i giri lo <b>stage 6</b> &mdash; il primo incontro con Orishala &mdash; viene <b>prima</b> dello <b>stage 11</b>, il combattimento con Orishala. Cinque rimescolamenti su cinque, dove il caso darebbe una probabilita&rsquo; su trentadue.</p><p><b>La macchina mescola, ma non rompe la storia.</b> Non incontri il mostro dopo averlo gia&rsquo; ucciso.</p></div>
+<h2>E il diciottesimo</h2>
+<p>Dopo le diciassette righe c&rsquo;e&rsquo; <b>un byte solo</b>, e poi comincia un&rsquo;altra tavola. Quel byte fa giocare lo stage 0 una volta in piu&rsquo;; poi il segnaposto va oltre l&rsquo;ultima casella, torna a zero, <b>e si ricomincia dal primo giro</b>.</p>
+<p>E&rsquo; per questo che <b>Esh non finisce</b>: non perche&rsquo; manchi un finale, ma perche&rsquo; <b>il finale non era previsto</b>. La macchina e&rsquo; costruita per girare finche&rsquo; c&rsquo;e&rsquo; qualcuno che paga.</p>
+<section class="tecnico">
+<h2>Come si legge nei byte</h2>
+<p>ROM <b>Esh&rsquo;s Aurunmilla</b>, Funai 1984, Z80. La pagina dei giri sta nel chip <code>f8_is2.bin</code>, mappato a <code>0x2000</code>.</p>
+<ul><li><b>La pagina</b>: <code>0x2000</code>-<code>0x20FE</code>, diciassette righe da quindici byte. Duecentocinquantacinque byte in tutto.</li><li><b>Il byte in piu&rsquo;</b>: <code>0x20FF</code> = <code>0x01</code>. Subito dopo, a <code>0x2100</code>, comincia la tavola dei fotogrammi.</li><li><b>Il valore</b>: nei byte gli stage valgono da 1 a 15; a schermo si vedono come 0-14. Il <b>bit alto</b> non fa parte del numero: e&rsquo; il segno della continuita&rsquo; &mdash; quella scena parte senza far ricercare il disco.</li><li><b>Il segnaposto</b>: <code>0xE424</code> (P1) / <code>0xE425</code> (P2). Cammina in linea retta e non si riavvolge mai; e&rsquo; il motivo per cui non serve nessun sorteggio.</li></ul>
+<p>Le prime righe della pagina, come stanno nella ROM &mdash; in grassetto i byte col bit alto acceso, quelli che non fanno ricercare il disco:</p>
+<pre>0x2000  giro 1     01 02 03 <b>84</b> 05 06 07 08 09 <b>8A</b> 0B <b>8C</b> 0D <b>8E</b> <b>8F</b>
+0x200F  giro 2     01 05 03 <b>84</b> 07 09 <b>8A</b> 08 02 06 0B <b>8C</b> 0D <b>8E</b> <b>8F</b>
+0x201E  giro 3     01 06 07 03 <b>84</b> 02 0B <b>8C</b> 08 05 09 <b>8A</b> 0D <b>8E</b> <b>8F</b>
+0x202D  giro 4     01 03 <b>84</b> 07 02 09 <b>8A</b> 08 06 05 0B <b>8C</b> 0D <b>8E</b> <b>8F</b>
+0x203C  giro 5     01 07 06 0B <b>8C</b> 08 03 <b>84</b> 05 02 09 <b>8A</b> 0D <b>8E</b> <b>8F</b>
+0x204B  giro 6     01 09 <b>8A</b> 08 05 07 06 03 <b>84</b> 02 0B <b>8C</b> 0D <b>8E</b> <b>8F</b>
+0x205A  giro 7-17  01 02 03 <b>84</b> 05 06 07 08 09 <b>8A</b> 0B <b>8C</b> 0D <b>8E</b> <b>8F</b></pre>
+<p>Non ci risulta che questa tavola sia mai stata descritta prima; se qualcuno ha una fonte piu&rsquo; vecchia ci fa piacere saperlo. La domanda da cui e&rsquo; partita, comunque, non e&rsquo; nata da un disassemblatore: Alan, davanti al cabinato vero, si accorse che l&rsquo;ordine cambiava &mdash; e che una scena stava sempre al suo posto.</p>
+</section>
+<nav class="altrove"><span class="cap">Le altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/scene-lunghe/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984 &middot; il set a scene lunghe</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/scene-lunghe/mosse-disobbedienti/"><span class="dove">Super Don Quix-ote &middot; Universal 1984 &middot; il set a scene lunghe</span>Le quattordici disobbedienze</a></li>
+<li><a href="/it/esh/originale/sequenza/" class="qui"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984 &middot; il set originale</span>I diciassette giri</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>63 su 63</b></span></div>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
