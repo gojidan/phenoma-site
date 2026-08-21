@@ -163,6 +163,29 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
 /* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
    nero anche sulla carta -- se no il giallo su bianco sparisce */
 .telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
@@ -253,6 +276,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <p>Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta. Qui c&rsquo;è quella di fabbrica.</p>
 <div class="stanze">
 <a class="stanza" href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">I diciassette giri</span><span class="che">Nessun sorteggio: <b>una pagina sola</b> di diciassette righe, e un segnaposto che cammina senza tornare indietro. Il gioco non finisce perché il finale non era previsto.</span></a>
+<a class="stanza" href="/it/eshs-aurunmilla/grafica/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">Tre chip sovrapposti</span><span class="che">Tre chip sovrapposti, uno per bit: ogni pixel prende un valore da zero a sette. Cinquecentododici tessere &mdash; e una tavolozza che <b>non abbiamo ancora capito come si legge</b>.</span></a>
 </div>
 <h2>Come sono fatti questi indirizzi</h2>
 <p>Il pezzo di indirizzo dopo il titolo <b>nomina ciò che distingue quella ROM dalle altre dello stesso gioco</b>. Non è un&rsquo;etichetta uniforme messa lì per simmetria: <span class="mono">f2</span> è una revisione, perché le revisioni americane di Dragon&rsquo;s Lair sono una fila; <span class="mono">sidam</span> è un fabbricante, perché lì a cambiare non è la revisione ma chi ha scritto la ROM; <span class="mono">scene-lunghe</span> è un montaggio. Ogni nome dice la differenza vera, e per questo non si assomigliano.</p>
@@ -260,12 +284,13 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <h2>Le macchine di questo titolo</h2>
 <ul>
 <li><code>/it/eshs-aurunmilla/sequenza/</code> &mdash; Esh&rsquo;s Aurunmilla &middot; Funai 1984</li>
+<li><code>/it/eshs-aurunmilla/grafica/</code> &mdash; Esh&rsquo;s Aurunmilla &middot; Funai 1984</li>
 </ul>
 <p>Il nome dell&rsquo;insieme ROM &mdash; quello con cui la macchina è catalogata &mdash; sta scritto in fondo a ogni pagina, nella sezione &laquo;come si legge nei byte&raquo;. Non lo mettiamo nell&rsquo;indirizzo perché annidato darebbe cose come <span class="mono">esh/esh</span>.</p>
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>5</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>82 su 82</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>6</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>90 su 90</b></span></div>
 <p class="stampa">phenoma.org/it/eshs-aurunmilla/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

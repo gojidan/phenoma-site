@@ -163,6 +163,29 @@ pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
   overflow-x:auto;margin:0 0 16px}
 pre b{color:var(--oro)}
 
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
 /* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
    nero anche sulla carta -- se no il giallo su bianco sparisce */
 .telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
@@ -322,6 +345,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <nav class="altrove"><span class="cap">Di Dragon&rsquo;s Lair c&rsquo;è anche</span><ul>
 <li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
 <li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/grafica/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Il tabellone diventato software</a></li>
 </ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
 <li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
 <li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
@@ -330,7 +354,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>6</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>82 su 82</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>6</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>21 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>90 su 90</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/sidam/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
