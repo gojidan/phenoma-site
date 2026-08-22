@@ -369,7 +369,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <div class="nota"><span class="cap">Una domanda che lasciamo aperta</span><p>Se il terzo scatto porta già la finestra al minimo, <b>a che serve il quarto?</b> Il sospetto è che serva solo a far tornare la somma a dodici. Ma è un sospetto, e finché non lo dimostriamo resta scritto così.</p></div>
 <section class="tecnico">
 <h2>Come si legge nei byte</h2>
-<p>ROM <b>Dragon&rsquo;s Lair, edizione Sidam</b> (Italia), Z80. Condivide col fratello europeo due chip su quattro.</p>
+<p>ROM <b>Dragon&rsquo;s Lair, edizione Sidam</b> (Italia), Z80. Condivide col fratello europeo <b>due chip su quattro</b>: <code>ELU46</code> e <code>ELU47</code> sono gli stessi, e a cambiare sono il primo e l&rsquo;ultimo. Chi la cerca fra le raccolte di ROM la trova come <b>lair_ita</b>.</p>
 <ul><li><b>Le carte distribuite</b>: <code>0x1C07: 06 11</code> = <code>LD B,0x11</code> = diciassette giri di distribuzione.</li><li><b>I gruppi</b>: offset a <code>0x0DED</code>, ampiezze a <code>0x0DFA</code>. Valori a <code>0x10EF</code>, indici a <code>0x110B</code>, record a <code>0x0E06</code>.</li><li><b>La controprova</b>: la ROM si porta dietro dodici byte di firma a <code>0x1CA7</code>, che usa lei per i fatti suoi. Ricalcolati dalla nostra lettura dei gruppi, combaciano dodici su dodici. Se la lettura dei gruppi fosse sbagliata, non tornerebbero.</li><li><b>I due segnaposti</b>: cursore <code>A13A</code>, fermo <code>A13E</code>. Allo Start il fermo va a <code>A01A</code>, che è <code>A002 + 0x18</code>, cioè <b>dodici carte più avanti</b> della base: è lì che sta scritto che la partita è lunga dodici.</li><li><b>La morte</b>: <code>0x109E</code>, tredici byte, avanza tutti e due i segnaposti. Nessuno scambio.</li><li><b>La scala</b>: tavola a <code>0x120D</code>, quattro righe da quattro byte. La riga la sceglie il dip, la colonna lo scatto raggiunto; il contatore si azzera a ogni scatto (<code>0x1206</code>), perciò i valori sono intervalli. Ogni byte vale <i>valore + 1</i> scene.</li><li><b>La finestra</b>: <code>0x0D10</code>-<code>0x0D24</code>. Legge <b>solo</b> lo scatto: 0 &rarr; intera, 1 &rarr; tre quarti, 2 &rarr; metà, 3 e oltre &rarr; un quarto. Il dip non compare.</li><li><b>Il grado di partenza</b>: in Italia si parte da zero (<code>0x0927: XOR A</code>), in Europa dal dip (<code>0x092B: LD A,(A18E)</code>).</li></ul>
 <p>La tavola della scala, come sta nella ROM &mdash; i numeri grezzi e la scena a cui cadono gli scatti:</p>
 <pre>0x120D  <b>04 02 02 00</b>   Facile          scatti alla scena   5  8 11 12
@@ -390,7 +390,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>10</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>22 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>158 su 158</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>11</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>22 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>159 su 159</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/sidam/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

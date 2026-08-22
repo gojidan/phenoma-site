@@ -365,7 +365,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <div class="nota caldo"><p><b>In Europa, se sbagli una scena la rivedi.</b><br><b>In Italia, se sbagli una scena l&rsquo;hai persa per sempre</b> &mdash; e in cambio la partita si accorcia di una.</p><p>Stesso film, stesso disco, stesso punto del programma. <b>Due idee opposte di che cosa hai comprato col gettone.</b> &rarr; <a href="/it/dragons-lair/sidam/sequenza/">il mazzo della Sidam</a></p></div>
 <section class="tecnico">
 <h2>Come si legge nei byte</h2>
-<p>ROM <b>Dragon&rsquo;s Lair europeo</b>, 1983, Z80, chip <code>ELU45</code>-<code>ELU48</code> mappati a <code>0x0000</code>, <code>0x2000</code>, <code>0x4000</code>, <code>0x6000</code>.</p>
+<p>ROM <b>Dragon&rsquo;s Lair europeo</b>, 1983, Z80, chip <code>ELU45</code>-<code>ELU48</code> mappati a <code>0x0000</code>, <code>0x2000</code>, <code>0x4000</code>, <code>0x6000</code>. Chi la cerca fra le raccolte di ROM la trova come <b>laireuro</b>.</p>
 <ul><li><b>Il conto delle carte</b>: <code>0x2000</code> = <code>0x24</code> = 36. Il mazzo di fabbrica sono 36 parole a partire da <code>0x2008</code>; il Drago è <code>0x029E</code>, fuori dal mazzo.</li><li><b>La copia in RAM</b> (avvio partita, <code>0x07C6</code>): il mazzo va in <code>A002</code> per il giocatore 1 e in <code>A082</code> per il secondo.</li><li><b>Il mescolatore</b>: <code>0x0DED</code>, <code>LD A,R</code> modulo 36, scambia <code>mazzo[0]</code> con <code>mazzo[caso]</code>. Chiamato solo se il bit 0 di <code>A001</code> dice &laquo;sono in attrazione&raquo;. La catena chiamante gira una volta ogni quattro fotogrammi PAL: 12,5 scambi al secondo.</li><li><b>I due segnaposti</b>: cursore <code>A13A</code> (P1) / <code>A13C</code> (P2), sentinella <code>A13E</code> / <code>A140</code>. Il codice li raggiunge per interposta persona, da <code>A154</code> e <code>A156</code>.</li><li><b>Lo scambio</b>: <code>0x10A3</code>. Legge la parola sotto il cursore e quella sotto la sentinella e se le scambia; poi <code>0x10D6</code> <code>INC (HL)</code> due volte (una carta è una parola), <code>0x10DB</code> confronto col fondo (<code>A158</code>), <code>0x10E4</code> <code>LD DE,(A15C)</code> = si ricomincia dalla base. Da <code>0x10F9</code> lo stesso per la sentinella.</li><li><b>Il confronto con la Sidam</b>: stesso ingresso (<code>0x109E</code>), stessa uscita (<code>0x111F</code>). In Italia in mezzo ci sono tredici byte:</li></ul>
 <pre>ITA  109E  <b>2A 54 A1</b>  LD HL,(A154)     ; il cursore
      10A1  <b>34 34</b>     INC (HL) x2      ; avanti di una carta
@@ -389,7 +389,7 @@ EU   109E ... 111E          <b>129 byte</b>  ; scambio, fondo, riavvolgimento</p
 <li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>10</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>22 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>158 su 158</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>11</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>22 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>159 su 159</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/europa/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
