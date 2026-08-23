@@ -135,6 +135,13 @@ td.num,th.num{text-align:right}
 td.dim{color:var(--tenue)}
 tr.punta td{color:var(--oro)}
 
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
 /* --- l'indice --- */
 .stanze{display:grid;gap:14px;margin:34px 0 0;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
@@ -438,6 +445,11 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <h2>E il diciottesimo</h2>
 <p>Dopo le diciassette righe c&rsquo;è <b>un byte solo</b>, e poi comincia un&rsquo;altra tavola. Quel byte fa giocare lo Stage Nr 000 una volta in più; poi il segnaposto va oltre l&rsquo;ultima casella, torna a zero, <b>e si ricomincia dal primo giro</b>.</p>
 <p>È per questo che <b>Esh non finisce</b>: non perché manchi un finale, ma perché <b>la fine della partita non era prevista</b>. La macchina è costruita per girare finché c&rsquo;è qualcuno che gioca.</p>
+<h2>Guardalo succedere</h2>
+<p>Quello che c&rsquo;è scritto qui sopra viene dai byte. Questi video lo fanno vedere <b>dalla macchina che lo fa</b>, con il veggente che gioca al posto nostro e i pannelli accesi: sono la stessa cosa provata in un altro modo.</p>
+<ul class="video">
+<li><a href="https://www.youtube.com/watch?v=bGFVcmdkJs8" rel="noopener">Esh's Aurunmilla — La sequenza delle scene e il loop di gioco</a><br><span class="dim">che l'ordine dei quindici Stage cambia a ogni giro senza che nessun dado venga tirato: il pannello mostra il giro e la sua riga, e la riga viene dalla pagina scritta in ROM.</span></li>
+</ul>
 <section class="tecnico">
 <h2>Come si legge nei byte</h2>
 <p>ROM <b>Esh&rsquo;s Aurunmilla</b>, Funai 1984, Z80. La pagina dei giri sta nel chip <code>f8_is2.bin</code>, mappato a <code>0x2000</code>.</p>
@@ -462,7 +474,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <li><a href="/it/eshs-aurunmilla/sequenza/" class="qui"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>8</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>23 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>202 su 202</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>9</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>23 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>202 su 202</b></span></div>
 <p class="stampa">phenoma.org/it/eshs-aurunmilla/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

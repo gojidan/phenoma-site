@@ -135,6 +135,13 @@ td.num,th.num{text-align:right}
 td.dim{color:var(--tenue)}
 tr.punta td{color:var(--oro)}
 
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
 /* --- l'indice --- */
 .stanze{display:grid;gap:14px;margin:34px 0 0;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
@@ -443,6 +450,12 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <h2>Dove sta scritto</h2>
 <p>Tutto quello che avete letto qui la macchina se lo scrive da sola, e in pochissimo spazio: le alternative già uscite stanno in tre bit, la coda dei morti in otto caselle, la griglia intera in cinquantasei byte.</p>
 <div class="nota freddo"><span class="cap">Non siamo i primi ad arrivarci</span><p>Il <b>Dragon&rsquo;s Lair Project</b> pubblicò questa stessa struttura anni fa, e noi, passando dai byte, possiamo dire che le due tabelle <b>combaciano</b>. Se cercate una seconda fonte, quella è là.</p></div>
+<h2>Guardalo succedere</h2>
+<p>Quello che c&rsquo;è scritto qui sopra viene dai byte. Questi video lo fanno vedere <b>dalla macchina che lo fa</b>, con il veggente che gioca al posto nostro e i pannelli accesi: sono la stessa cosa provata in un altro modo.</p>
+<ul class="video">
+<li><a href="https://www.youtube.com/watch?v=4m5x0YUvPeM" rel="noopener">Dragon's Lair F2, Facile — I cicli e la coda delle morti</a><br><span class="dim">i tre giri che consumano le tre alternative di ogni tappa, e la scena fallita che torna dopo il terzo giro, prima del Drago.</span></li>
+<li><a href="https://www.youtube.com/watch?v=99zcypsM8AQ" rel="noopener">Dragon's Lair F2, Molto difficile — Cicli, coda delle morti e scene jolly</a><br><span class="dim">le stesse cose alla taratura dura, piu' le cinque scene jolly che compaiono al posto della terza alternativa.</span></li>
+</ul>
 <section class="tecnico">
 <h2>Come si legge nei byte</h2>
 <p>ROM <b>Dragon&rsquo;s Lair revisione F2</b>, Cinematronics 1983, Z80, quattro chip da 8 KB &mdash; <code>dl_f2_u1</code>&hellip;<code>u4</code>, mappati a <code>0x0000</code>, <code>0x2000</code>, <code>0x4000</code>, <code>0x6000</code>. Chi la cerca fra le raccolte di ROM la trova come <b>lair</b>.</p>
@@ -462,7 +475,7 @@ footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
 <li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>24</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>23 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>202 su 202</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>25</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>23 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>202 su 202</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/f2/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
