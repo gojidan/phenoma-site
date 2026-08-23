@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Un ascensore dove si scende soltanto — Dragon's Lair</title>
+<meta name="description" content="Di tutte le stanze del castello, l&amp;rsquo;Elevator è quella su cui le tre macchine si separano di più. Stessa pellicola, tre idee diverse di quanto in basso ti lasciano scendere: ventiquattro piani in America, sei in Europa, e in Italia tre &amp;mdash; o nessuno.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a><span class="sep">/</span><span class="qui">la scena Elevator</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983</p>
+  <h1>Un ascensore dove si scende soltanto</h1>
+  <p class="tesi">Di tutte le stanze del castello, l&rsquo;Elevator è quella su cui le tre macchine <b>si separano di più</b>. Stessa pellicola, tre idee diverse di <b>quanto in basso ti lasciano scendere</b>: ventiquattro piani in America, sei in Europa, e in Italia tre &mdash; o nessuno.</p>
+</header>
+<h2>Che cosa succede, sullo schermo</h2>
+<p>Il piano su cui sta Dirk <b>sprofonda in un baratro</b>, e mentre precipita lui può <b>saltare di lato</b> e salvarsi. Si va solo verso il basso: <b>se non salti, ti schianti</b>.</p>
+<p>E i byte dicono la stessa cosa. In tutte e tre le macchine, dal primo nodo all&rsquo;ultimo, il numero di fotogramma sul disco <b>cresce e basta</b>: non c&rsquo;è un solo passaggio che torni indietro. La piattaforma non risale mai, e la ROM non ha nemmeno il modo di chiederglielo.</p>
+<h2>Le tre macchine non ti lasciano scendere uguale</h2>
+<p>Il conto delle discese cala scendendo la carta geografica, e non di poco. Qui confrontiamo <b>i conti</b>, non gli indirizzi: nelle tre ROM lo stesso indirizzo è tre cose diverse, e non si importa niente da una macchina all&rsquo;altra.</p>
+<div class="scroll"><table><thead><tr><th>la macchina</th><th>quante volte scendi</th><th class="num">piani in tutto</th><th>come te lo dà</th></tr></thead><tbody><tr><td>americana, revisione F2</td><td><b>quattro</b>, sempre</td><td class="num"><b>24</b></td><td>due caselle alla tappa 4, due alla tappa 13 &mdash; <a href="/it/dragons-lair/f2/sequenza/">la sequenza</a></td></tr><tr><td>europea</td><td><b>due</b>, sempre</td><td class="num"><b>6</b></td><td>due carte su trentasei: la ventesima e la trentesima del mazzo di fabbrica &mdash; <a href="/it/dragons-lair/europa/sequenza/">la sequenza</a></td></tr><tr class="punta"><td>italiana, Sidam</td><td><b>una al massimo</b> &mdash; e può non uscire affatto</td><td class="num"><b>3</b>, o nessuno</td><td>una casella sola su ventotto, in un gruppo da dieci da cui la macchina ne pesca otto &mdash; <a href="/it/dragons-lair/sidam/sequenza/">la sequenza</a></td></tr></tbody></table></div>
+<p>&rArr; <b>La scena più lunga del castello è rimasta di là dall&rsquo;oceano.</b> In Europa e in Italia l&rsquo;ascensore è da tre piani in tutte e due le stesure: la discesa da nove non c&rsquo;è.</p>
+<h2>Dove sta un piano, dentro la ROM</h2>
+<p>Un piano non è un nodo: <b>sta dentro un nodo</b>, ed è un pezzo di tempo. Ogni nodo dell&rsquo;Elevator porta una fila di contatori, e quei contatori disegnano una striscia a righe: <b>dieci fotogrammi in cui saltando ti salvi, dieci in cui ti schianti, e daccapo</b>. Tre volte, in ogni nodo. Sono i tre piani.</p>
+<div class="fig"><svg viewBox="0 0 880 208" width="880" height="208" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="I nove piani dell Elevator americano: tre nodi, tre finestre di salto per nodo" font-family="var(--mono)">
+<text x="0" y="22" font-size="10.5" letter-spacing="1.6" fill="var(--tenue)">IL NODO</text>
+<text x="128" y="22" font-size="10.5" letter-spacing="1.6" fill="var(--oro-cupo)" font-weight="700">IL TEMPO CHE DURA, DA QUANDO COMINCIA</text>
+<text x="0" y="57" font-size="11" fill="var(--inchiostro)">sub 0</text>
+<text x="0" y="70" font-size="9" fill="var(--tenue2)">frame 14847</text>
+<rect x="128" y="40" width="660" height="22" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<rect x="614" y="40" width="33" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 1 &mdash; salti fra il tick 149 e il 159</title></rect>
+<text x="630" y="55" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">1</text>
+<rect x="680" y="40" width="32" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 2 &mdash; salti fra il tick 169 e il 179</title></rect>
+<text x="696" y="55" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">2</text>
+<rect x="745" y="40" width="33" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 3 &mdash; salti fra il tick 189 e il 199</title></rect>
+<text x="761" y="55" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">3</text>
+<text x="796" y="55" font-size="9" fill="var(--tenue2)">202 tick</text>
+<text x="0" y="103" font-size="11" fill="var(--inchiostro)">sub 3</text>
+<text x="0" y="116" font-size="9" fill="var(--tenue2)">frame 15011</text>
+<rect x="128" y="86" width="414" height="22" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<rect x="366" y="86" width="33" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 4 &mdash; salti fra il tick 73 e il 83</title></rect>
+<text x="382" y="101" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">4</text>
+<rect x="431" y="86" width="33" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 5 &mdash; salti fra il tick 93 e il 103</title></rect>
+<text x="447" y="101" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">5</text>
+<rect x="497" y="86" width="32" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 6 &mdash; salti fra il tick 113 e il 123</title></rect>
+<text x="513" y="101" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">6</text>
+<text x="550" y="101" font-size="9" fill="var(--tenue2)">127 tick</text>
+<text x="0" y="149" font-size="11" fill="var(--inchiostro)">sub 4</text>
+<text x="0" y="162" font-size="9" fill="var(--tenue2)">frame 15115</text>
+<rect x="128" y="132" width="539" height="22" fill="var(--piano2)" stroke="var(--bordo)" rx="2"/>
+<rect x="366" y="132" width="33" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 7 &mdash; salti fra il tick 73 e il 83</title></rect>
+<text x="382" y="147" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">7</text>
+<rect x="431" y="132" width="33" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 8 &mdash; salti fra il tick 93 e il 103</title></rect>
+<text x="447" y="147" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">8</text>
+<rect x="497" y="132" width="32" height="22" fill="rgba(99,201,188,.55)" stroke="var(--acqua)" rx="1"><title>piano 9 &mdash; salti fra il tick 113 e il 123</title></rect>
+<text x="513" y="147" font-size="9" fill="var(--inchiostro)" text-anchor="middle" font-weight="700">9</text>
+<text x="675" y="147" font-size="9" fill="var(--tenue2)">165 tick</text>
+<text x="128" y="196" font-size="11" fill="var(--tenue)" font-style="italic" font-family="var(--disp)">le tacche chiare sono i piani: dieci fotogrammi ciascuna, con dieci fotogrammi di vuoto in mezzo &mdash; e nel vuoto ti schianti</text>
+</svg>
+<div class="legenda"><span><i class="sw" style="background:rgba(99,201,188,.55);border-color:var(--acqua)"></i> qui saltando ti salvi</span><span><i class="sw" style="background:var(--piano2)"></i> qui ti schianti</span></div></div>
+<p>&rArr; <b>Un nodo fa tre piani.</b> L&rsquo;Elevator della tappa 4 ha un nodo solo: <b>tre piani</b>. Quello della tappa 13 ne ha tre: <b>nove</b>. E dieci fotogrammi, sul disco americano, sono <b>un terzo di secondo</b>: tanto dura un piano.</p>
+<div class="nota freddo"><span class="cap">I due numeri erano già scritti, e non da noi</span><p>Che le due stesure americane fossero da <b>tre</b> e da <b>nove</b> piani sta scritto da anni sul <b>Dragon&rsquo;s Lair Project</b>, che le cataloga come <i>Elevator Floor (3 levels available)</i> e <i>(9 levels available)</i>. Noi li abbiamo <b>ritrovati nei byte</b> &mdash; ed è tutto quello che possiamo dire di aver fatto: non li abbiamo scoperti, li abbiamo verificati.</p></div>
+<h2>In America, due tagli della stessa pellicola</h2>
+<p>E non è una ripetizione pigra: <b>è la stessa pellicola montata in due modi</b>. Le due scene aprono sullo stesso identico fotogramma del disco, il <b>14847</b>. Poi si separano &mdash; e quello che cambia è <b>per quanti piani ti fanno scendere</b>.</p>
+<div class="scroll"><table><thead><tr><th>&nbsp;</th><th>alla tappa 4</th><th>alla tappa 13</th></tr></thead><tbody><tr><td class="dim">etichetta ROM</td><td>0xA6</td><td>0x94</td></tr><tr><td class="dim">come lo chiama il catalogo</td><td>Elevator da 3 piani</td><td>Elevator da 9 piani</td></tr><tr><td class="dim">apre al fotogramma</td><td>14847</td><td>14847</td></tr><tr><td class="dim">nodi nella ROM</td><td>uno</td><td>tre</td></tr><tr class="punta"><td class="dim">quanti piani scendi</td><td><b>tre</b></td><td><b>nove</b></td></tr><tr><td class="dim">se non ti muovi</td><td>muori subito</td><td>scendi al piano dopo</td></tr><tr><td class="dim">se muori</td><td>vai in coda</td><td>la rigiochi sul posto</td></tr><tr><td class="dim">quando la passi, il gioco va</td><td>alla tappa 5</td><td><b>alla tappa 1: giro nuovo</b></td></tr></tbody></table></div>
+<p>&rArr; In una partita intera puoi scendere <b>ventiquattro piani</b>: tre più tre alla tappa 4, nove e nove alla tappa 13.</p>
+<div class="nota"><span class="cap">E il taglio non cancella: scavalca</span><p>Alla tappa 4 i sei piani che non giochi <b>non sono stati tolti</b>. I loro nodi stanno ancora nella tavola di quella scena, con le loro tre finestre ciascuno e con la loro tariffa &mdash; 49 e 1.939, le stesse. Semplicemente, <b>dal primo nodo non ci arriva nessuno</b>.</p><p>&rArr; Il taglio non è una forbice sulla pellicola: è un byte che manda altrove.</p></div>
+<h2>E per il massimo dei punti ne bastano sedici</h2>
+<p>Il salto vale <b>sempre lo stesso</b>: <b>3.255</b> punti, che tu ti butti al primo piano o al nono. Quello che cambia è <b>quanto hai incassato per strada</b> &mdash; perché ogni gruppo di tre piani che passi <i>senza</i> saltare ha una sua tariffa.</p>
+<div class="scroll"><table><thead><tr><th>dove salti</th><th class="num">incassato per strada</th><th class="num">il salto</th><th class="num">in tutto</th></tr></thead><tbody><tr><td>ai piani 1&ndash;3</td><td class="num">49</td><td class="num">3.255</td><td class="num">3.304</td></tr><tr><td>ai piani 4&ndash;6</td><td class="num">49 + 49</td><td class="num">3.255</td><td class="num">3.353</td></tr><tr class="punta"><td>ai piani <b>7&ndash;9</b></td><td class="num">49 + 49 + 1.939</td><td class="num">3.255</td><td class="num"><b>5.292</b></td></tr></tbody></table></div>
+<p>&rArr; <b>Nell&rsquo;Elevator da tre piani salti dove vuoi</b>: c&rsquo;è un gruppo solo, e fa <b>3.304</b> comunque. <b>In quello da nove devi arrivare al settimo</b>, o all&rsquo;ottavo, o al nono &mdash; prima porti a casa poco più della metà.</p>
+<div class="nota"><span class="cap">Sedici piani, e sono il minimo</span><p>Metti insieme le quattro discese di una partita: nell&rsquo;Elevator da tre basta il <b>primo</b> piano, in quello da nove serve il <b>settimo</b>. Uno, uno, sette e sette: <b>sedici piani</b>, contro i ventiquattro che potresti scenderne.</p><p>&rArr; <b>Non ti pagano per averlo passato: ti pagano per quanto sei sceso prima di tirarti fuori.</b></p></div>
+<div class="nota freddo"><span class="cap">Lo specchio paga di più</span><p>Le due discese da nove piani sembrano la stessa cosa ribaltata, e per i piani lo sono. Ma <b>le tariffe di mezzo sono diverse</b>: dove quella della prima volta paga 49 e 1.939, il suo specchio paga <b>124</b> e <b>2.191</b>. Scendere fino al settimo piano vale <b>5.292</b> nella prima e <b>5.619</b> nella seconda.</p><p>Stesso montaggio, stesso numero di piani, <b>due prezzi diversi</b>.</p></div>
+<div class="nota freddo"><span class="cap">Da che parte si salta, e dove stanno i punti</span><p>Il lato cambia a ogni gruppo: <b>sinistra, destra, sinistra</b>. La piattaforma dondola scendendo, e il salto segue lei.</p><p>I punti non stanno scritti dentro il nodo: nel nodo c&rsquo;è un <b>numero da zero a quindici</b>, e quel numero è una riga in una <b>tavola sola per tutto il gioco</b>. Sedici tariffe, dallo zero ai cinquemila, e ogni scena del castello sceglie fra quelle. <b>Dragon&rsquo;s Lair non ha un listino per stanza: ne ha uno solo.</b></p><p class="mono">0 &middot; 49 &middot; 124 &middot; 251 &middot; 379 &middot; 495 &middot; 915 &middot; 1.326 &middot; 1.939 &middot; 2.191 &middot; 2.675 &middot; 3.255 &middot; 3.551 &middot; 4.026 &middot; 4.750 &middot; 5.000</p></div>
+<div class="nota caldo"><span class="cap">E la macchina difficile ti ruba un fotogramma</span><p>Di ogni scena la ROM porta <b>due stesure</b>: quella normale e una più dura, che l&rsquo;operatore accende con un interruttore. Sull&rsquo;Elevator la differenza è di una precisione quasi crudele.</p><p><b>Le nove finestre di salto si accorciano da dieci fotogrammi a nove.</b> E si accorciano <b>sempre dall&rsquo;inizio</b>: la fine resta esattamente dov&rsquo;era. Il momento buono non finisce prima &mdash; <b>comincia dopo</b>. Chi era abituato a saltare appena vede il piano cedere, sulla macchina dura muore.</p><p>Nello specchio la cura è meno regolare: otto finestre su nove si accorciano, una resta com&rsquo;era, e la quarta ne perde <b>due</b>. E l&rsquo;Elevator da tre piani, quello della tappa 4, <b>non viene toccato affatto</b>: lì le due stesure sono identiche, fotogramma per fotogramma.</p><p>&#10067; <b>Perché lo specchio sia stato ritoccato con meno cura non lo sappiamo</b>: se sia una scelta o una svista, i byte non lo dicono.</p></div>
+<h2>In Europa: tre piani, e si scende con la spada</h2>
+<p>La macchina europea monta la stessa scena in un altro modo, e cambia perfino il comando. A ogni piano <b>un solo comando</b> ti fa scendere ancora, ed è sempre lo stesso: <b>la spada</b>. Tutto il resto è un nodo di morte.</p>
+<div class="scroll"><table><thead><tr><th>&nbsp;</th><th>Elevator (carta 20)</th><th>Elevator Rev (carta 30)</th></tr></thead><tbody><tr class="punta"><td class="dim">quanti piani &mdash; cioè quante volte puoi saltare di lato</td><td><b>tre</b></td><td><b>tre</b></td></tr><tr><td class="dim">nodi nella ROM</td><td>sei</td><td>cinque</td></tr><tr><td class="dim">scendere paga</td><td>500, poi 1.000</td><td>1.000, poi 1.500</td></tr><tr class="punta"><td class="dim">e uscire vale</td><td>2.050</td><td>2.500</td></tr><tr><td class="dim">da che parte si esce</td><td>a sinistra</td><td>a destra</td></tr><tr><td class="dim">se resti fino in fondo</td><td colspan="2">muori: all&rsquo;ultimo piano la spada porta a un nodo di morte</td></tr></tbody></table></div>
+<div class="nota caldo"><span class="cap">Più scendi, più prendi &mdash; e il fondo ti ammazza</span><p>Messe in fila, quelle righe dicono una cosa sola: <b>il punteggio sta in fondo, e in fondo c&rsquo;è la morte</b>. Chi si butta al primo piano utile porta a casa <b>2.050</b>; chi resta su fino all&rsquo;ultimo momento e solo allora salta ne porta <b>3.550</b>. Nello specchio si va da <b>2.500</b> a <b>5.000</b>: il doppio, per aver aspettato due piani in più. E chi resta un piano di troppo non porta a casa niente.</p><p>&rArr; <b>Non ti pagano per averlo passato: ti pagano per quanto sei sceso prima di tirarti fuori.</b> La stessa legge dell&rsquo;americana, scritta con altri numeri.</p></div>
+<div class="nota freddo"><span class="cap">E lo specchio è la stessa scena con un nodo in meno</span><p>La stesura specchiata non è la normale ribaltata e basta. <b>Le manca il primo nodo</b> &mdash; quello d&rsquo;ingresso, dove non si salta ancora. Togli il primo nodo all&rsquo;Elevator normale, scambia destra con sinistra, e i due combaciano nodo per nodo.</p></div>
+<h2>In Italia: può non esserci affatto</h2>
+<p>La ROM italiana della Sidam eredita la stessa tavola delle scene dell&rsquo;europea &mdash; e quindi lo stesso ascensore da tre piani &mdash; ma distribuisce le carte in un altro modo, e l&rsquo;ascensore ci rimette.</p>
+<p>L&rsquo;Elevator sta in <b>una casella sola su ventotto</b>, e quella casella sta in un gruppo da <b>dieci</b> da cui la macchina ne pesca <b>otto</b>. Due carte di quel gruppo restano fuori a ogni partita, e l&rsquo;Elevator può essere una di quelle.</p>
+<p>&rArr; <b>In Italia si scende al massimo una volta &mdash; e può capitare di non scendere mai.</b> È la sola delle tre macchine in cui il castello può non avere un sotto.</p>
+<section class="tecnico">
+<h2>Come si legge nei byte</h2>
+<ul><li><b>Le etichette</b>: in F2 <code>0x94</code> (tappa 13), <code>0x9E</code> (il suo specchio) e <code>0xA6</code> (tappa 4); le stesure dure sono le stesse più <code>0x2A</code> &mdash; <code>0xBE</code>, <code>0xC8</code>, <code>0xD0</code>. In Europa e in Italia sono i record <b>334</b> e <b>508</b> della tavola a <code>0x2060</code>.</li><li><b>I piani</b>: dentro ogni entrata del nodo il primo contatore è l&rsquo;istante d&rsquo;inizio, gli altri sono spanne consecutive, e gli esiti girano sulle spanne. Le spanne il cui esito è il nodo d&rsquo;uscita sono le finestre in cui saltando ti salvi. Formato del record in <b>SCAVO_SEQUENCER.md</b> §6.</li><li><b>Il punteggio</b>: il <b>nibble basso</b> del byte di stato del nodo è un indice nella tavola a <code>0x209A</code>, sedici parole. Caricamento a <code>0x166E</code>&ndash;<code>0x1683</code>, il pendente in <code>A013/A014</code>. La stessa tavola, spostata di <code>0x20</code>, è quella dei suoni &mdash; e Space Ace ha lo stesso impianto a <code>0x2115</code>.</li><li><b>Chi non va in coda</b>: bit 2 del byte <code>+05</code> dell&rsquo;intestazione del nodo, letto a <code>0x14D7</code>. Acceso sui nodi di morte di <code>0x94</code> e <code>0x9E</code>, <b>spento</b> su quelli di <code>0xA6</code>.</li><li><b>La scheda europea</b>: 32 byte per scena a partire da <code>0x2060</code> &mdash; <code>+8/+9</code> fotogramma, <code>+10</code> bandiera (0x10 morte), <code>+11</code> durata, <code>+12/+13</code> punteggio in BCD, <code>+14..+29</code> gli otto comandi. Le posizioni 3&ndash;7 sono <b>spada, destra, sinistra, giù, su</b>.</li></ul>
+<p>Le due colonne americane, lette dal grafo dei nodi:</p>
+<pre>0xA6  tappa 4    sub0  fotogramma <b>14847</b>   prosegue al sub <b>5</b>
+                 sub7  uscita, prosegue alla tappa <b>5</b>  (byte 85)
+                 morti: sub 5, 8, 9   bit "non accodare" <b>spento</b>
+
+0x94  tappa 13   sub0  fotogramma <b>14847</b>   prosegue al sub <b>3</b>
+                 sub7  uscita, prosegue alla tappa <b>1</b>  (byte 81)
+                 morti: sub 5, 8, 9   bit "non accodare" <b>acceso</b></pre>
+<p>Le finestre di salto, nodo per nodo, come le legge il banco:</p>
+<pre>0x94  sub 0   attesa 202 tick   piani  [149..159]  [169..179]  [189..199]
+0x94  sub 3   attesa 127 tick   piani  [73..83]  [93..103]  [113..123]
+0x94  sub 4   attesa 165 tick   piani  [73..83]  [93..103]  [113..123]</pre>
+</section>
+<nav class="altrove"><span class="cap">Di Dragon&rsquo;s Lair c&rsquo;è anche</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/dragons-lair/grafica/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Il tabellone diventato software</a></li>
+</ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>23 agosto 2026</b></span><span><span class="et">controlli sui byte</span><b>176 su 176</b></span></div>
+<p class="stampa">phenoma.org/it/dragons-lair/elevator/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
