@@ -69,6 +69,24 @@
   .soon a:hover{border-bottom-color:var(--gold);}
   .soon a:focus-visible{outline:1px solid var(--gold); outline-offset:.4em;}
 
+  /* 3 set 2026 (Alan: «mettiamo in homepage l'elenco dei giochi»).  Qui e'
+     la SOGLIA -- la pagina che si apre scrivendo phenoma.org -- e finora
+     aveva un solo link: chi entrava di qui non sapeva che ci fosse altro.
+     I nomi si leggono senza maiuscoletto ne' spaziatura larga: e' un elenco
+     da leggere, non un fregio (lezione del 3 set, dal telefono di Alan). */
+  .giochi{
+    font-family:var(--disp); font-size:.95rem; letter-spacing:.01em;
+    color:var(--ink-dim); margin:1.1rem 0 0; line-height:2;
+  }
+  .giochi a{
+    color:var(--ink); text-decoration:none;
+    border-bottom:1px solid rgba(239,231,213,.28); padding-bottom:.12em;
+    transition:border-color .25s ease, color .25s ease;
+  }
+  .giochi a:hover{color:var(--gold); border-bottom-color:var(--gold);}
+  .giochi a:focus-visible{outline:1px solid var(--gold); outline-offset:.3em;}
+  .giochi .dot{display:inline-block; margin:0 .5em; opacity:.45;}
+
   .foot{
     position:absolute; left:0; right:0; bottom:1.4rem; z-index:1;
     font-family:var(--mono); font-size:.58rem; letter-spacing:.22em; text-transform:uppercase;
@@ -93,5 +111,6 @@
   <p class="motto fade d3">Un atlante di ciò che le macchine ricordano.</p>
   <p class="cosa fade d3">I videogiochi su laserdisc dal 1983 al 1991,<br>letti dentro le loro ROM.</p>
   <p class="soon fade d4"><a href="/it/sequenze/">Le sequenze di gioco</a><span class="dot">·</span>cinque macchine, lette dai byte</p>
+  <p class="giochi fade d4"><a href="/it/dragons-lair/">Dragon’s Lair</a><span class="dot">·</span><a href="/it/super-don-quix-ote/">Super Don Quix-ote</a><span class="dot">·</span><a href="/it/eshs-aurunmilla/">Esh’s Aurunmilla</a></p>
 </div>
 <p class="foot fade d4">Preservazione &nbsp;·&nbsp; Ricerca</p>
