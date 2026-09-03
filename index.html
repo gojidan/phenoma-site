@@ -1,116 +1,327 @@
-<title>Phenoma</title>
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phenoma &mdash; Laserdisc Rom Atlas</title>
+<meta name="description" content="Un atlante di cio' che le macchine ricordano. I videogiochi su laserdisc dal 1983 al 1991, letti dentro le loro ROM.">
 <style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e spaziato --- */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
   :root{
-    --ground:#0c0a08; --ink:#efe7d5; --ink-dim:#9c8f76;
-    --gold:#ffb347; --gold-deep:#e08e2a; --line:#3a2c1c;
-    --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
-    --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
   }
-  *{box-sizing:border-box;}
-  html,body{height:100%;}
-  body{
-    margin:0; background:var(--ground); color:var(--ink);
-    font-family:var(--disp);
-    display:flex; align-items:center; justify-content:center;
-    text-align:center; padding:2rem 1.4rem;
-    -webkit-font-smoothing:antialiased; overflow:hidden; position:relative;
-  }
-  /* alone d'oro tenuissimo dietro il nome, profondità senza rumore */
-  body::before{
-    content:""; position:absolute; inset:0; z-index:0;
-    background:radial-gradient(58% 46% at 50% 42%,
-      rgba(255,179,71,.11) 0%, rgba(255,179,71,.03) 38%, transparent 72%);
-    pointer-events:none;
-  }
-  .wrap{position:relative; z-index:1; max-width:38rem;}
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
 
-  .eyebrow{
-    font-family:var(--mono); font-size:.72rem; letter-spacing:.34em; text-transform:uppercase;
-    color:var(--ink-dim); margin:0 0 2.1rem;
-  }
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  .coda{color:#6E6E6E}
 
-  h1{
-    font-weight:600; font-size:clamp(3.6rem,17vw,7rem); line-height:.94; margin:0;
-    letter-spacing:.005em;
-    background:linear-gradient(180deg, #fff2dd 0%, var(--gold) 58%, var(--gold-deep) 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .rule{
-    width:0; height:1px; margin:1.9rem auto 1.7rem;
-    background:linear-gradient(90deg, transparent, var(--gold-deep), transparent);
-    animation:grow 1.1s .5s cubic-bezier(.2,.7,.2,1) forwards;
-  }
-  .sub{
-    font-family:var(--mono); font-size:clamp(.7rem,2.4vw,.82rem);
-    letter-spacing:.34em; text-transform:uppercase; color:var(--ink-dim); margin:0;
-  }
-  .motto{
-    font-style:italic; font-size:clamp(1.08rem,3.6vw,1.42rem); color:var(--ink);
-    margin:2.5rem auto 0; max-width:26rem; text-wrap:balance; line-height:1.4;
-  }
-  /* 21 ago 2026 - Alan: "non si capisce dalla homepage che parliamo di
-     lasergame, bisogna iniziare a leggere qualcosa per capirlo" */
-  .cosa{
-    font-family:var(--mono); font-size:clamp(.66rem,2.1vw,.74rem);
-    line-height:1.85; letter-spacing:.13em; text-transform:uppercase;
-    color:var(--ink-dim); margin:1.5rem auto 0; max-width:24rem;
-  }
-  .soon{
-    font-family:var(--mono); font-size:.8rem; letter-spacing:.2em; text-transform:uppercase;
-    color:var(--gold); margin:2.9rem 0 0;
-  }
-  .soon .dot{display:inline-block; margin:0 .55em; opacity:.5;}
-  /* 21 ago 2026 - la prima stanza aperta: le sequenze di gioco */
-  .soon a{
-    color:var(--gold); text-decoration:none;
-    border-bottom:1px solid rgba(255,179,71,.35); padding-bottom:.2em;
-    transition:border-color .25s ease;
-  }
-  .soon a:hover{border-bottom-color:var(--gold);}
-  .soon a:focus-visible{outline:1px solid var(--gold); outline-offset:.4em;}
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
 
-  /* 3 set 2026 (Alan: «mettiamo in homepage l'elenco dei giochi»).  Qui e'
-     la SOGLIA -- la pagina che si apre scrivendo phenoma.org -- e finora
-     aveva un solo link: chi entrava di qui non sapeva che ci fosse altro.
-     I nomi si leggono senza maiuscoletto ne' spaziatura larga: e' un elenco
-     da leggere, non un fregio (lezione del 3 set, dal telefono di Alan). */
-  .giochi{
-    font-family:var(--disp); font-size:.95rem; letter-spacing:.01em;
-    color:var(--ink-dim); margin:1.1rem 0 0; line-height:2;
-  }
-  .giochi a{
-    color:var(--ink); text-decoration:none;
-    border-bottom:1px solid rgba(239,231,213,.28); padding-bottom:.12em;
-    transition:border-color .25s ease, color .25s ease;
-  }
-  .giochi a:hover{color:var(--gold); border-bottom-color:var(--gold);}
-  .giochi a:focus-visible{outline:1px solid var(--gold); outline-offset:.3em;}
-  .giochi .dot{display:inline-block; margin:0 .5em; opacity:.45;}
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
 
-  .foot{
-    position:absolute; left:0; right:0; bottom:1.4rem; z-index:1;
-    font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase;
-    color:var(--ink-dim); opacity:.7;
-  }
-
-  .fade{opacity:0; animation:fade 1.2s ease forwards;}
-  .d1{animation-delay:.15s;} .d2{animation-delay:.35s;} .d3{animation-delay:.95s;} .d4{animation-delay:1.2s;}
-  @keyframes fade{to{opacity:1;}}
-  @keyframes grow{to{width:min(78%,22rem);}}
-  @media (prefers-reduced-motion: reduce){
-    .fade{opacity:1; animation:none;}
-    .rule{width:min(78%,22rem); animation:none;}
-  }
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
 </style>
-
+</head>
+<body>
 <div class="wrap">
-  <p class="eyebrow fade d1">MMXXVI</p>
-  <h1 class="fade d1">Phenoma</h1>
-  <div class="rule"></div>
-  <p class="sub fade d2">Laserdisc&nbsp;Rom&nbsp;Atlas</p>
-  <p class="motto fade d3">Un atlante di ciò che le macchine ricordano.</p>
-  <p class="cosa fade d3">I videogiochi su laserdisc dal 1983 al 1991,<br>letti dentro le loro ROM.</p>
-  <p class="soon fade d4"><a href="/it/sequenze/">Le sequenze di gioco</a><span class="dot">·</span>cinque macchine, lette dai byte</p>
-  <p class="giochi fade d4"><a href="/it/dragons-lair/">Dragon’s Lair</a><span class="dot">·</span><a href="/it/eshs-aurunmilla/">Esh’s Aurunmilla</a><span class="dot">·</span><a href="/it/super-don-quix-ote/">Super Don Quix-ote</a></p>
+<div class="barra"><span class="marchio">Phenoma</span>
+<span class="coda">Laserdisc Rom Atlas</span>
+<nav class="briciole"><span class="qui">Italiano</span>
+<span class="sep">/</span><a href="/en/">English</a></nav></div>
+<header>
+  <p class="occhiello">MMXXVI</p>
+  <h1 class="marchione">Phenoma</h1>
+  <p class="tesi">Un atlante di ci&ograve; che le macchine ricordano.
+  I videogiochi su <b>laserdisc</b> dal 1983 al 1991, letti dentro le loro
+  <b>ROM</b> &mdash; non come li ricordiamo, ma come sono scritti nella
+  memoria della macchina.</p>
+</header>
+<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>3 settembre 2026</b>.</p>
+<h2>Le macchine</h2>
+<p>Ogni gioco ha la sua pagina, con tutto quello che ne abbiamo scritto.</p>
+<div class="stanze" style="grid-template-columns:1fr">
+<a class="stanza" href="/it/dragons-lair/"><span class="dove">Cinematronics, 1983</span><span class="come">Dragon&rsquo;s Lair</span><span class="che">Lo stesso film, tre macchine diverse. Non tre varianti dello stesso programma: tre ROM che allo stesso indirizzo fanno cose diverse, e che rispondono in tre modi opposti alla domanda &laquo;che cosa succede se sbagli&raquo;.</span></a>
+<a class="stanza" href="/it/eshs-aurunmilla/"><span class="dove">Funai, 1984</span><span class="come">Esh&rsquo;s Aurunmilla</span><span class="che">Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta. Qui c&rsquo;è quella di fabbrica.</span></a>
+<a class="stanza" href="/it/super-don-quix-ote/"><span class="dove">Universal, 1984</span><span class="come">Super Don Quix-ote</span><span class="che">Due pagine, e raccontano due cose diverse: come il gioco decide l&rsquo;ordine delle scene, e che cosa accetta dentro una scena già cominciata. Di Super Don esistono anche due set di ROM usciti dalla fabbrica &mdash; uno mostra le scene per intero, l&rsquo;altro salta le introduzioni &mdash; e quale dei due sia venuto prima non lo sappiamo. Qui c&rsquo;è quello a scene intere.</span></a>
 </div>
-<p class="foot fade d4">Preservazione &nbsp;·&nbsp; Ricerca</p>
+
+<h2>Oppure per domanda</h2>
+<p>Le pagine si possono leggere anche di traverso, mettendo le macchine a
+confronto su una domanda sola &mdash; <b>quando infili il gettone, che cosa
+ti d&agrave; da giocare la macchina, e come lo decide?</b></p>
+<div class="stanze" style="grid-template-columns:1fr">
+<a class="stanza" href="/it/sequenze/"><span class="dove">l&rsquo;indice</span>
+<span class="come">Le sequenze di gioco</span>
+<span class="che">Cinque macchine a confronto, lette dai byte: come ognuna
+sceglie che cosa farti vedere.</span></a>
+</div>
+
+<footer>
+<p>Phenoma legge le ROM dei videogiochi su laserdisc e scrive quello che
+c&rsquo;&egrave; dentro. Ogni pagina apre le carte in fondo &mdash;
+<b>&laquo;come si legge nei byte&raquo;</b> &mdash; con indirizzi, tavole e
+frammenti di codice, perch&eacute; chi vuole rifare i conti possa
+smentirci.</p>
+<p>Preservazione &nbsp;&middot;&nbsp; Ricerca</p>
+</footer>
+</div>
+</body>
+</html>
