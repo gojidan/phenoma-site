@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Le tre difficolt&amp;agrave; &amp;mdash; Dragon's Lair</title>
+<meta name="description" content="Mite, dura e durissima. Fra la prima e la seconda cambiano cinque scene sole; fra la seconda e la terza non cambia nessuna mossa &amp;mdash; cambia quando puoi darla. E una volta che la partita si indurisce, indietro non si torna.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e spaziato --- */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a><span class="sep">/</span><span class="qui">revisione F2</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983 &middot; revisione F2</p>
+  <h1>Le tre difficolt&agrave;</h1>
+  <p class="tesi">Mite, dura e durissima. Fra la prima e la seconda cambiano <b>cinque scene sole</b>; fra la seconda e la terza <b>non cambia nessuna mossa</b> &mdash; cambia quando puoi darla. E una volta che la partita si indurisce, <b>indietro non si torna</b>.</p>
+</header>
+<h2>Tre regimi, non due</h2>
+<p>Di Dragon&rsquo;s Lair si dice &laquo;facile e difficile&raquo;, e chi ha il cabinato sa che i modi sono di pi&ugrave;. Nei byte sono <b>tre</b>, e li chiamiamo con i nomi che ha dato loro Alan: <b>mite</b>, <b>dura</b> e <b>durissima</b>.</p>
+<div class="scroll"><table><thead><tr><th>il regime</th><th>che cosa serve la macchina</th><th>quando</th></tr></thead><tbody><tr><td><b>mite</b></td><td>le scene cos&igrave; come stanno nella tavola del sequencer</td><td>di fabbrica, e finch&eacute; l&rsquo;adattiva non scatta</td></tr><tr><td><b>dura</b></td><td>la <b>seconda stesura</b> di ogni scena, cio&egrave; il suo identificativo <b>+0x2A</b></td><td>col dip &laquo;dura sempre&raquo;, oppure quando scatta l&rsquo;adattiva</td></tr><tr class="punta"><td><b>durissima</b></td><td>la stessa seconda stesura, <b>pi&ugrave; il mazzo dei cinque jolly</b></td><td>col dip &laquo;molto difficile&raquo; acceso</td></tr></tbody></table></div>
+<p>La differenza fra dura e durissima <b>non &egrave; nelle scene normali</b>: quelle sono le stesse. Durissima arma un ramo in pi&ugrave; del sequencer, e da l&igrave; escono cinque scene che a difficolt&agrave; pi&ugrave; bassa <b>non escono mai</b>.</p>
+<h2>Mite &rarr; dura: cambiano cinque scene sole</h2>
+<p>Fra le due stesure la ROM tiene <b>ogni</b> scena in doppia copia, ma la copia dura non &egrave; sempre diversa: quasi sempre &egrave; la stessa scena con le finestre pi&ugrave; strette. Le scene in cui cambia <b>la strada</b> — cio&egrave; il numero o l&rsquo;ordine dei gesti, o il punteggio massimo — sono <b>cinque</b>.</p>
+<div class="scroll"><table><thead><tr><th>la scena</th><th>mite &rarr; dura</th><th class="num">gesti</th><th class="num">massimo</th><th class="num">scarto</th></tr></thead><tbody><tr><td>Pirates</td><td><span class="mono">0x9F</span> &rarr; <span class="mono">0xC9</span></td><td class="num">13 &rarr; <b>12</b></td><td class="num">5.044 &rarr; <b>4.673</b></td><td class="num"><b>-371</b></td></tr><tr><td>Black Knight</td><td><span class="mono">0xA1</span> &rarr; <span class="mono">0xCB</span></td><td class="num">3 &rarr; <b>4</b></td><td class="num">6.602 &rarr; <b>6.981</b></td><td class="num"><b>+379</b></td></tr><tr><td>Giant Bat</td><td><span class="mono">0x93</span> &rarr; <span class="mono">0xBD</span></td><td class="num">4 &rarr; <b>5</b></td><td class="num">8.492 &rarr; <b>8.492</b></td><td class="num"><b>0</b></td></tr><tr><td>Mudmen</td><td><span class="mono">0xA0</span> &rarr; <span class="mono">0xCA</span></td><td class="num">9 &rarr; <b>10</b></td><td class="num">14.197 &rarr; <b>14.692</b></td><td class="num"><b>+495</b></td></tr><tr><td>Dragon's Lair Final</td><td><span class="mono">0xA4</span> &rarr; <span class="mono">0xCE</span></td><td class="num">11 &rarr; <b>14</b></td><td class="num">31.795 &rarr; <b>37.251</b></td><td class="num"><b>+5.456</b></td></tr><tr><td><b>in tutto</b></td><td></td><td class="num">194 &rarr; <b>199</b></td><td class="num">320.289 &rarr; <b>326.248</b></td><td class="num"><b>+5.959</b></td></tr></tbody></table></div>
+<p>Due righe meritano una parola. Ai <b>Pirati</b> la stesura dura paga <b>meno</b>, e con un gesto in meno: non tutto quello che &egrave; pi&ugrave; difficile rende di pi&ugrave;. E al <b>Pipistrello Gigante</b> la stesura dura chiede <b>un gesto in pi&ugrave; per lo stesso identico punteggio</b>: pi&ugrave; lavoro, zero premio.</p>
+<p>In tutte le altre 35 carte del mazzo la strada &egrave; la stessa. Quello che cambia è il <b>tempo</b>: nell&rsquo;Ascensore, per esempio, le nove finestre di salto della stesura dura sono pi&ugrave; strette, e si accorciano sempre <b>dall&rsquo;inizio</b> — il momento buono non finisce prima, comincia dopo.</p>
+<h2>Dura &rarr; durissima: le stesse mosse, meno tempo</h2>
+<p>I cinque jolly sono <span class="mono">0xD4</span>&ndash;<span class="mono">0xD8</span>, e sono le uniche scene della ROM che <b>non ricevono l&rsquo;addendo</b> <span class="mono">+0x2A</span>: il sequencer alza una bandiera sul blocco e salta la somma. Ognuna ha una gemella fra le scene normali, e mostra <b>lo stesso film</b>.</p>
+<div class="scroll"><table><thead><tr><th>jolly</th><th>la scena</th><th>gemella dura</th><th class="num">attese dura</th><th class="num">attese jolly</th><th class="num">scarto</th></tr></thead><tbody><tr><td><span class="mono">0xD4</span></td><td>Fire Pit Rev</td><td><span class="mono">0xBB</span></td><td class="num">714</td><td class="num">714</td><td class="num"><b>+0</b></td></tr><tr><td><span class="mono">0xD5</span></td><td>Flying Horse Rev</td><td><span class="mono">0xC0</span></td><td class="num">919</td><td class="num">869</td><td class="num"><b>-50</b></td></tr><tr><td><span class="mono">0xD6</span></td><td>Grim Reaper Rev</td><td><span class="mono">0xC4</span></td><td class="num">847</td><td class="num">798</td><td class="num"><b>-49</b></td></tr><tr><td><span class="mono">0xD7</span></td><td>Yellow Brick Road Rev</td><td><span class="mono">0xBC</span></td><td class="num">1047</td><td class="num">951</td><td class="num"><b>-96</b></td></tr><tr><td><span class="mono">0xD8</span></td><td>Tilting Room</td><td><span class="mono">0xC5</span></td><td class="num">665</td><td class="num">667</td><td class="num"><b>+2</b></td></tr><tr><td><b>in tutto</b></td><td></td><td></td><td class="num">4192</td><td class="num">3999</td><td class="num"><b>-193</b></td></tr></tbody></table></div>
+<p class="punta">&#11088; <b>A durissima non c&rsquo;&egrave; nessuna mossa nuova da imparare.</b> In tutti i <b>65</b> sotto-nodi che si possono confrontare, il gesto giusto &egrave; lo stesso e porta allo stesso posto. Quello che cambia &egrave; <b>quando</b>: in <b>24</b> di quei sotto-nodi la finestra buona <b>si sposta pi&ugrave; in l&agrave;</b>, in media di sei tick e fino a ventidue.</p>
+<p>Un esempio al tick, dallo Yellow Brick Road Rev. Stesso fotogramma d&rsquo;ingresso (13357), stessa attesa (61 tick), stesso gesto (<b>SU</b>) verso lo stesso frammento:</p>
+<pre>dura      0xBC  sub 3   SU dal tick 27  -&gt; vivi
+durissima 0xD7  sub 3   SU dal tick  0  -&gt; MUORI
+                        SU dal tick 49  -&gt; vivi</pre>
+<p>Non ti tolgono la mossa: ti mettono <b>la morte davanti</b>. Dove a difficolt&agrave; dura premere presto non faceva niente, a durissima premere presto ammazza. &Egrave; la stessa legge con cui la stesura dura accorcia le finestre dell&rsquo;Ascensore, applicata un terzo giro.</p>
+<p class="min">&#9888; E le eccezioni si dicono: il Fire Pit Rev (<span class="mono">0xD4</span>) &egrave; identico al tick, la Tilting Room (<span class="mono">0xD8</span>) &egrave; perfino due tick pi&ugrave; lenta, e in qualche sotto-nodo la finestra buona si apre due tick <i>prima</i>. Non &egrave; una regola pulita: &egrave; quello che c&rsquo;&egrave; nei byte.</p>
+<h2>E le altre due macchine?</h2>
+<p>Domanda di Alan, il 4 settembre: <i>&laquo;chiss&agrave; in DL EU e Sidam&hellip; l&igrave; non dovrebbe cambiare niente a parte le finestre di validit&agrave;&raquo;</i>. È quasi esatto, e il raschio lo stringe ancora di pi&ugrave;.</p>
+<p>✅ <b>La seconda stesura &egrave; una faccenda americana.</b> L&rsquo;istruzione che la produce &mdash; <span class="mono">ADD A,0x2A</span> &mdash; compare <b>una volta sola</b> nella F2 e <b>zero volte</b> nell&rsquo;europea e nella Sidam. Quelle due macchine non hanno proprio un secondo copione da servire.</p>
+<p>✅ E in Europa non lo hanno <b>per mancanza di posto</b>, non per scelta di codice: la tavola dei record europea ne ha 706 e ne sono gi&agrave; impegnati 703 dalle 37 scene, dall&rsquo;attrattiva e dal castello. Gli orfani sono <b>tre</b>. Non c&rsquo;&egrave; spazio fisico per una seconda stesura nascosta.</p>
+<p>Che cosa fa allora il dip europeo? Il valore di difficolt&agrave; vive in <b>due sole celle</b>, e in tutta la ROM ha <b>sette usi</b>: nessuno di essi &egrave; un indice, un puntatore o un indirizzo. Finiscono tutti in <b>una soglia di tempo</b> e in un confronto fra due contatori. Non sposta scene, e non sposta nemmeno le finestre delle mosse: stringe <b>una vite sola</b>, la scadenza del ripensamento.</p>
+<p class="punta">&#10067; E qui resta una domanda aperta, che diciamo invece di nasconderla: rifacendo il conto byte per byte, quella soglia scende <i>insieme</i> alla clessidra, e il cancello del rifiuto pu&ograve; scattare &mdash; su tutti i 258 record ascoltanti del gioco &mdash; <b>in un posto solo</b>: il record d&rsquo;apertura del Grim Reaper Rev, e solo a un grado di difficolt&agrave;. O il dip europeo stringe molto meno di quanto si &egrave; sempre detto, o al nostro modello del tick manca un pezzo. Serve la misura a video.</p>
+<p>👁️ Un testimone c&rsquo;&egrave; gi&agrave;, ed &egrave; il joystick: <i>&laquo;ho provato a fare una partita a difficilissimo ma non ho avuto nessuna alterazione dell&rsquo;elenco delle scene&raquo;</i> (Alan, 1&deg; agosto 2026). I byte al mattino e le mani la sera, e dicono la stessa cosa.</p>
+<p>⚠️ Un doppione, in Europa, per&ograve; c&rsquo;&egrave;: i <b>Pirati</b> e i <b>Pirati bis</b>, con undici finestre su tredici pi&ugrave; corte nel bis e nessuna pi&ugrave; lunga. Ma non lo sceglie il dip: sta <b>nel mazzo</b>, e viene servito a tutti, a qualunque difficolt&agrave;. È il gemello europeo dell&rsquo;idea americana, messo in un posto diverso.</p>
+<h2>La difficolt&agrave; che cambia mentre giochi</h2>
+<p>I dip non sono l&rsquo;ultima parola. La ROM tiene un <b>contatore</b> di scene completate: azzerato a inizio turno, cresce di uno a ogni scena finita, e quando arriva alla soglia (<b>cinque</b> o <b>nove</b>, secondo un dip) alza un <b>latch</b> e da quel momento serve la stesura dura.</p>
+<p class="punta">&#128142; <b>E indietro non si torna.</b> Quel latch ha un solo posto che lo accende e <b>nessuno</b> che lo spegne, in tutti i 32 KB: una volta che la partita si &egrave; indurita, resta dura fino al game over. Quello che torna indietro &egrave; il <b>contatore</b>, che crolla a zero a ogni morte &mdash; per cui morire <i>prima</i> dello scatto rimanda l&rsquo;indurimento, e morire <i>dopo</i> non serve pi&ugrave; a niente.</p>
+<p>Percio&rsquo; la domanda &laquo;a che difficolt&agrave; sto giocando?&raquo; non si risponde guardando un dip, e nemmeno il latch da solo: serve la catena intera. In formula, come sta nei byte:</p>
+<pre>dura = nessun jolly in corso
+       &amp;&amp; interruttore generale acceso
+       &amp;&amp; ( dip &quot;dura sempre&quot;  ||  latch adattivo scattato )</pre>
+<p>E i jolly, sopra a questo, si aprono <b>solo</b> in fase dura col dip &laquo;molto difficile&raquo; acceso: a difficolt&agrave; di fabbrica <b>non escono mai</b>.</p>
+<section class="tecnico">
+<p>I dip atterrano in RAM <b>grezzi</b> (<span class="mono">A010</span> banco A, <span class="mono">A011</span> banco B: copie dei latch AY <span class="mono">0x0E/0x0F</span>, scritte senza complemento) e in partita <b>non cambiano mai</b> — si aggiornano solo al boot, in attrattiva e nel self-test. Il valore logico del manifest &egrave; il loro complemento.</p>
+<pre>ADD A,0x2A          @ 1D38   ← l&#39;UNICO in tutti i 32 KB
+catena del cancello @ 1D1F / 1D24 / 1D2E / 1D33
+bandiera jolly      @ 0098 SET 1,(HL)  /  1D1F BIT 1,(HL)
+dip very-hard       @ 1DE5  (letto ogni volta, non e&#39; un latch)
+contatore adattivo  @ blocco+7: azzerato 141D, +1 a 1FB8,
+                      confrontato a 1FC6 con 9 o 5
+latch               @ 1FCC SET 4,(blocco+5)   — zero RES in ROM</pre>
+<p>Le sedici combinazioni dei quattro interruttori di difficolt&agrave; collassano in <b>sette classi</b> distinte: sette combinazioni danno la stessa &laquo;Facile&raquo;, una la &laquo;Difficile&raquo;, una la &laquo;Molto difficile&raquo;. La catena completa è stata verificata contro <b>188 savestate su 188</b>; il solo bit del latch, da solo, ne sbaglierebbe 150.</p>
+<p class="min">Le misure sui jolly di questa pagina sono rifatte dal banco leggendo i byte (voci <span class="mono">JOLLY</span>): i 65 sotto-nodi confrontabili, i 24 con la finestra spostata, i 193 tick di attese in meno.</p>
+</section>
+<nav class="altrove"><span class="cap">Di Dragon&rsquo;s Lair c&rsquo;è anche</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/dragons-lair/elevator/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Un ascensore dove si scende soltanto</a></li>
+<li><a href="/it/dragons-lair/grafica/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Il tabellone diventato software</a></li>
+</ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/" class="qui"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>4 settembre 2026</b>, aggiornata il <b>4 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>224 su 224</b></span></div>
+<p class="stampa">phenoma.org/it/dragons-lair/f2/le-difficolta/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
