@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La costruzione del Campione &amp;mdash; Dragon's Lair</title>
+<meta name="description" content="Sopravvivere &amp;egrave; scritto nella ROM; guadagnare no. In 28 punti del gioco due gesti che non ti ammazzano valgono diverso &amp;mdash; e il pi&amp;ugrave; caro ne vale 5.570. Questa pagina li conta tutti, dai byte.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e spaziato --- */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a><span class="sep">/</span><span class="qui">revisione F2</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983 &middot; revisione F2</p>
+  <h1>La costruzione del Campione</h1>
+  <p class="tesi">Sopravvivere &egrave; scritto nella ROM; guadagnare no. In <b>28</b> punti del gioco due gesti che non ti ammazzano valgono diverso &mdash; e il pi&ugrave; caro ne vale <b>5.570</b>. Questa pagina li conta tutti, dai byte.</p>
+</header>
+<h2>Due conoscenze, non una</h2>
+<p>Per giocare bene a Dragon&rsquo;s Lair servono due cose diverse, e si tende a confonderle: <b>dove si sopravvive</b> &mdash; quale gesto, in quale istante, non ti ammazza &mdash; e <b>dove si guadagna</b>, cio&egrave; quale gesto <i>fra quelli che non ti ammazzano</i> paga di pi&ugrave;.</p>
+<p>La prima sta nella ROM in chiaro: ogni sotto-nodo porta la lista delle entry accettate, la finestra di ciascuna e la destinazione, e i nodi di morte hanno il loro bit. Chi legge la RAM viva la sa <b>per costruzione</b>. La seconda <b>non &egrave; scritta da nessuna parte</b>: il punteggio sta nel nodo, ma quanto valga <i>arrivarci</i> dipende da tutto quello che viene dopo.</p>
+<p class="punta">&#9888; Un giocatore artificiale che scelga il gesto che non uccide &egrave; <b>cieco al punteggio</b>. Davanti a due gesti buoni prende il primo. Quasi sempre non cambia niente; in <b>28</b> punti s&igrave;.</p>
+<h2>Il cammino pi&ugrave; lungo</h2>
+<p>Il massimo di una scena &egrave; un problema di grafo: i nodi sono i sotto-nodi, gli archi sono i gesti, e il peso di un arco &egrave; il punteggio del nodo in cui arrivi. Il valore di un nodo &egrave; il massimo, fra le sue uscite, di <span class="mono">punti(destinazione) + valore(destinazione)</span>.</p>
+<p>Un&rsquo;uscita entra nel conto se &egrave; <b>sicura</b> (la destinazione non ha il bit di morte) e <b>raggiungibile</b>: la sua finestra si apre prima che il conto alla rovescia arrivi a zero. Una finestra che si apre a tempo scaduto sta nei byte ma non esiste per chi gioca, e contarla falserebbe tutto.</p>
+<p>Due avvertenze, e tutte e due le abbiamo imparate sbagliando. <b>Un sotto-nodo va contato una volta sola</b>: nella ROM due indici possono puntare allo stesso record, e sono lo stesso frammento. E <b>non basta stare nella lista</b>: bisogna camminare la raggiungibilit&agrave; dall&rsquo;ingresso, perch&eacute; ci sono record che nessuno chiama.</p>
+<h2>I 28 bivi che pagano</h2>
+<p>Ogni riga &egrave; un sotto-nodo da cui si esce in pi&ugrave; modi tutti buoni e tutti raggiungibili, ma che valgono diverso. <b>15</b> capitano nel mazzo a difficolt&agrave; alta (in grassetto).</p>
+<div class="scroll"><table><thead><tr><th>scena</th><th>nome</th><th class="num">sub</th><th class="num">fotogramma</th><th class="num">differenza</th><th>il meglio</th><th>il peggio</th></tr></thead><tbody><tr><td><span class="mono">0x9E</span></td><td>Elevator Rev 9-piani</td><td class="num">0</td><td class="num">21959</td><td class="num">5.570</td><td><i>non premere</i></td><td><b>gi&ugrave;</b> <span class="min">3&ordf; fin.</span></td></tr><tr><td><b><span class="mono">0xC8</span></b></td><td><b>Elevator Rev 9-piani</b></td><td class="num">0</td><td class="num">21959</td><td class="num"><b>5.570</b></td><td><i>non premere</i></td><td><b>gi&ugrave;</b> <span class="min">3&ordf; fin.</span></td></tr><tr><td><span class="mono">0x9E</span></td><td>Elevator Rev 9-piani</td><td class="num">3</td><td class="num">22181</td><td class="num">5.446</td><td><i>non premere</i></td><td><b>gi&ugrave;</b></td></tr><tr><td><b><span class="mono">0xC8</span></b></td><td><b>Elevator Rev 9-piani</b></td><td class="num">3</td><td class="num">22181</td><td class="num"><b>5.446</b></td><td><i>non premere</i></td><td><b>gi&ugrave;</b></td></tr><tr><td><span class="mono">0x93</span></td><td>Giant Bat</td><td class="num">4</td><td class="num">14387</td><td class="num">4.926</td><td><b>sinistra</b> <i>o</i> <b>su+sinistra</b> <i>o</i> <b>su</b></td><td><i>non premere</i></td></tr><tr><td><b><span class="mono">0xBD</span></b></td><td><b>Giant Bat</b></td><td class="num">4</td><td class="num">14389</td><td class="num"><b>4.926</b></td><td><b>sinistra</b> <i>o</i> <b>su+sinistra</b> <i>o</i> <b>su</b></td><td><i>non premere</i></td></tr><tr><td><span class="mono">0x86</span></td><td>Giddy Goons</td><td class="num">3</td><td class="num">5758</td><td class="num">4.581</td><td><b>destra</b> <i>o</i> <b>su+destra</b></td><td><b>spada</b></td></tr><tr><td><b><span class="mono">0xB0</span></b></td><td><b>Giddy Goons</b></td><td class="num">3</td><td class="num">5758</td><td class="num"><b>4.581</b></td><td><b>destra</b> <i>o</i> <b>su+destra</b></td><td><b>spada</b></td></tr><tr><td><span class="mono">0x8C</span></td><td>Fire Room</td><td class="num">3</td><td class="num">9615</td><td class="num">3.567</td><td><b>sinistra</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su</b> <span class="min">3&ordf; fin.</span></td><td><b>sinistra</b></td></tr><tr><td><b><span class="mono">0xB6</span></b></td><td><b>Fire Room</b></td><td class="num">3</td><td class="num">9615</td><td class="num"><b>3.567</b></td><td><b>sinistra</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su</b> <span class="min">3&ordf; fin.</span></td><td><b>sinistra</b></td></tr><tr><td><span class="mono">0x9E</span></td><td>Elevator Rev 9-piani</td><td class="num">4</td><td class="num">22225</td><td class="num">3.255</td><td><b>destra</b> <i>o</i> <b>destra</b> <span class="min">2&ordf; fin.</span></td><td><b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td><b><span class="mono">0xC8</span></b></td><td><b>Elevator Rev 9-piani</b></td><td class="num">4</td><td class="num">22225</td><td class="num"><b>3.255</b></td><td><b>destra</b> <i>o</i> <b>destra</b> <span class="min">2&ordf; fin.</span></td><td><b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td><span class="mono">0x8C</span></td><td>Fire Room</td><td class="num">4</td><td class="num">9667</td><td class="num">2.241</td><td><b>gi&ugrave;+sinistra</b> <i>o</i> <b>gi&ugrave;</b> <i>o</i> <b>sinistra</b></td><td><b>destra</b></td></tr><tr><td><b><span class="mono">0xB6</span></b></td><td><b>Fire Room</b></td><td class="num">4</td><td class="num">9667</td><td class="num"><b>2.241</b></td><td><b>gi&ugrave;+sinistra</b> <i>o</i> <b>gi&ugrave;</b> <i>o</i> <b>sinistra</b></td><td><b>destra</b></td></tr><tr><td><span class="mono">0x94</span></td><td>Elevator</td><td class="num">0</td><td class="num">14847</td><td class="num">1.988</td><td><i>non premere</i></td><td><b>sinistra</b></td></tr><tr><td><b><span class="mono">0xAC</span></b></td><td><b>Snake Room</b></td><td class="num">4</td><td class="num">3206</td><td class="num"><b>1.988</b></td><td><b>spada</b></td><td><i>non premere</i></td></tr><tr><td><b><span class="mono">0xBE</span></b></td><td><b>Elevator</b></td><td class="num">0</td><td class="num">14847</td><td class="num"><b>1.988</b></td><td><i>non premere</i></td><td><b>sinistra</b></td></tr><tr><td><span class="mono">0x82</span></td><td>Snake Room</td><td class="num">9</td><td class="num">3252</td><td class="num">1.939</td><td><b>destra</b> <i>o</i> <b>su+destra</b> <i>o</i> <b>su</b></td><td><i>non premere</i></td></tr><tr><td><span class="mono">0x94</span></td><td>Elevator</td><td class="num">3</td><td class="num">15011</td><td class="num">1.939</td><td><i>non premere</i></td><td><b>destra</b></td></tr><tr><td><b><span class="mono">0xAC</span></b></td><td><b>Snake Room</b></td><td class="num">9</td><td class="num">3242</td><td class="num"><b>1.939</b></td><td><b>destra</b> <i>o</i> <b>su+destra</b> <i>o</i> <b>su</b></td><td><i>non premere</i></td></tr><tr><td><b><span class="mono">0xBE</span></b></td><td><b>Elevator</b></td><td class="num">3</td><td class="num">15011</td><td class="num"><b>1.939</b></td><td><i>non premere</i></td><td><b>destra</b></td></tr><tr><td><span class="mono">0x83</span></td><td>Fire Pit</td><td class="num">3</td><td class="num">3693</td><td class="num">1.789</td><td><b>destra</b> <span class="min">2&ordf; fin.</span></td><td><i>non premere</i></td></tr><tr><td><b><span class="mono">0xAD</span></b></td><td><b>Fire Pit</b></td><td class="num">3</td><td class="num">3693</td><td class="num"><b>1.789</b></td><td><b>destra</b> <span class="min">2&ordf; fin.</span></td><td><i>non premere</i></td></tr><tr><td><span class="mono">0x83</span></td><td>Fire Pit</td><td class="num">4</td><td class="num">3739</td><td class="num">1.410</td><td><b>destra</b> <span class="min">2&ordf; fin.</span></td><td><i>non premere</i></td></tr><tr><td><b><span class="mono">0xAD</span></b></td><td><b>Fire Pit</b></td><td class="num">4</td><td class="num">3739</td><td class="num"><b>1.410</b></td><td><b>destra</b> <span class="min">2&ordf; fin.</span></td><td><i>non premere</i></td></tr><tr><td><span class="mono">0x8C</span></td><td>Fire Room</td><td class="num">5</td><td class="num">9716</td><td class="num">1.326</td><td><b>sinistra</b></td><td><b>su</b></td></tr><tr><td><b><span class="mono">0xB6</span></b></td><td><b>Fire Room</b></td><td class="num">5</td><td class="num">9716</td><td class="num"><b>1.326</b></td><td><b>sinistra</b></td><td><b>su</b></td></tr><tr><td><b><span class="mono">0xCA</span></b></td><td><b>Mudmen</b></td><td class="num">10</td><td class="num">24906</td><td class="num"><b>495</b></td><td><b>su</b></td><td><b>destra</b></td></tr></tbody></table></div>
+<h2>Il pi&ugrave; piccolo: i Mudmen, e lo stesso pezzo di film</h2>
+<p>Al sotto-nodo <b>10</b> dei Mudmen ci sono due uscite buone, e nei byte sono <b>identiche</b>: <span class="mono">up</span> e <span class="mono">right</span>, stessa finestra <span class="mono">[84..140]</span>, tutte e due senza salto di pellicola. Nella stesura mite (<span class="mono">0xA0</span>) portano tutte e due al sotto-nodo 11. Nella dura (<span class="mono">0xCA</span>) il <span class="mono">up</span> porta al <b>18</b>, che vale <b>495</b> punti e ha una sola entry (<span class="mono">up</span>, finestra <span class="mono">[0..19]</span>) di nuovo verso l&rsquo;11.</p>
+<p>I due record del sotto-nodo 10 sono lunghi <b>36 byte</b> e ne differisce <b>uno solo</b>: la destinazione del <span class="mono">up</span>.</p>
+<div class="scroll"><table><thead><tr><th>dal fotogramma 25025</th><th>come &egrave; tagliato</th><th class="num">punti</th></tr></thead><tbody><tr><td>stesura mite <span class="mono">0xA0</span></td><td><i>un</i> sotto-nodo, <b>81</b> tick</td><td class="num">1326</td></tr><tr class="punta"><td>stesura dura <span class="mono">0xCA</span></td><td>25025 per <b>19</b> tick, poi 25040 per <b>62</b></td><td class="num"><b>495</b> + 1326</td></tr></tbody></table></div>
+<p class="punta">&#11088; <b>19 + 62 = 81.</b> &Egrave; lo stesso identico pezzo di film. La stesura dura non aggiunge un fotogramma: <b>lo taglia in due, e ti paga il taglio</b>. Non &egrave; una scorciatoia e non &egrave; un rischio: &egrave; la stessa strada con un dito in pi&ugrave;.</p>
+<h2>Il pi&ugrave; caro: e perch&eacute; un Elevator ha tre piani e l&rsquo;altro nove</h2>
+<p>Il bivio che vale di pi&ugrave; &mdash; <b>5.570</b> punti &mdash; &egrave; il primo sotto-nodo dell&rsquo;Elevator Rev, e la mossa giusta &egrave; <b>non premere</b>: i nodi che attraversi scendendo pagano poco in cima e tantissimo in fondo, e saltare subito &egrave; la cosa che costa di pi&ugrave;. &#11088; Il conto lo dice da solo, e dice esattamente quello che i giocatori bravi sanno con le mani.</p>
+<p>Cercando quel numero &egrave; venuta fuori un&rsquo;altra cosa. L&rsquo;Elevator <b>da tre piani</b> (<span class="mono">0xA6</span>) e quello <b>da nove</b> (<span class="mono">0x94</span>) non sono due scene diverse: partono dallo stesso fotogramma (<b>14847</b>), hanno le stesse porte dei morti e la stessa uscita.</p>
+<p class="punta">&#11088; La differenza sta in <b>un numero</b>: allo scadere del primo sotto-nodo la scena da nove va al <b>3</b> e continua a scendere, quella da tre va al <b>5</b> e atterra. I sotto-nodi 3 e 4 nella scena corta <b>ci sono</b>, identici, e non li raggiunge nessuno. Nove piani sono tre gruppi da tre; tre piani sono un gruppo, e gli altri due restano nella ROM senza che nessuno ci arrivi.</p>
+<p>E anche l&rsquo;atterraggio &egrave; lo stesso pezzo di film: nella scena corta il sotto-nodo 5 entra al <b>15226</b> e dura <b>90</b> tick, nella lunga entra al <b>15250</b> e ne dura <b>60</b> &mdash; comincia dopo perch&eacute; sei caduto pi&ugrave; a lungo, e i due finiscono sullo <b>stesso fotogramma, il 15298</b>.</p>
+<h2>Il conto delle 37 scene</h2>
+<p>Il massimo che ogni scena del mazzo duro pu&ograve; rendere, giocata una volta e senza morire, con il numero di gesti che servono a raccoglierlo. <b>Non &egrave; la trascrizione di una partita</b>: &egrave; il calcolo, e una partita ci si pu&ograve; misurare contro.</p>
+<div class="scroll"><table><thead><tr><th class="num">#</th><th>scena</th><th>nome</th><th class="num">sotto-nodi</th><th class="num">gesti</th><th class="num">massimo</th><th>la strada</th></tr></thead><tbody><tr><td class="num">1</td><td><span class="mono">0xAA</span></td><td>Vestibule</td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td><i>nessuna</i></td></tr><tr><td class="num">2</td><td><span class="mono">0xAB</span></td><td>Tentacles</td><td class="num">7</td><td class="num">6</td><td class="num">5.152</td><td><b>spada</b> &middot; <b>su</b> &middot; <b>destra</b> &middot; <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>su</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">3</td><td><span class="mono">0xAC</span></td><td>Snake Room</td><td class="num">5</td><td class="num">4</td><td class="num">5.207</td><td><b>spada</b> &middot; <b>spada</b> &middot; <b>spada</b> &middot; <b>su</b></td></tr><tr><td class="num">4</td><td><span class="mono">0xAD</span></td><td>Fire Pit</td><td class="num">5</td><td class="num">4</td><td class="num">2.089</td><td><b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">5</td><td><span class="mono">0xAE</span></td><td>Yellow Brick Road</td><td class="num">10</td><td class="num">9</td><td class="num">28.762</td><td><b>sinistra</b> &middot; <b>su</b> &middot; <b>destra</b> &middot; <b>su</b> &middot; <b>sinistra</b> &middot; <b>su</b> &middot; <b>spada</b> &middot; <b>destra</b> &middot; <b>su</b></td></tr><tr><td class="num">6</td><td><span class="mono">0xAF</span></td><td>Bubbling Cauldron</td><td class="num">6</td><td class="num">5</td><td class="num">12.267</td><td><b>su</b> &middot; <b>spada</b> &middot; <b>gi&ugrave;</b> &middot; <b>spada</b> &middot; <b>destra</b></td></tr><tr><td class="num">7</td><td><span class="mono">0xB0</span></td><td>Giddy Goons</td><td class="num">5</td><td class="num">4</td><td class="num">5.009</td><td><b>spada</b> &middot; <b>su+destra</b> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>su+sinistra</b></td></tr><tr><td class="num">8</td><td><span class="mono">0xB1</span></td><td>Flattening Staircase</td><td class="num">5</td><td class="num">4</td><td class="num">4.724</td><td><b>sinistra</b> &middot; <b>spada</b> &middot; <b>sinistra</b> &middot; <b>sinistra</b></td></tr><tr><td class="num">9</td><td><span class="mono">0xB2</span></td><td>Forge</td><td class="num">6</td><td class="num">5</td><td class="num">6.470</td><td><b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b></td></tr><tr><td class="num">10</td><td><span class="mono">0xB3</span></td><td>Grim Reaper</td><td class="num">5</td><td class="num">4</td><td class="num">8.507</td><td><b>su</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b> &middot; <b>gi&ugrave;</b> &middot; <b>su</b></td></tr><tr><td class="num">11</td><td><span class="mono">0xB4</span></td><td>Wind Room</td><td class="num">2</td><td class="num">1</td><td class="num">428</td><td><b>destra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">12</td><td><span class="mono">0xB5</span></td><td>Bower</td><td class="num">2</td><td class="num">1</td><td class="num">428</td><td><b>su</b></td></tr><tr><td class="num">13</td><td><span class="mono">0xB6</span></td><td>Fire Room</td><td class="num">5</td><td class="num">4</td><td class="num">4.531</td><td><b>destra</b> &middot; <b>su</b> <span class="min">3&ordf; fin.</span> &middot; <b>sinistra</b> &middot; <b>sinistra</b></td></tr><tr><td class="num">14</td><td><span class="mono">0xB7</span></td><td>Flying Horse</td><td class="num">7</td><td class="num">6</td><td class="num">3.850</td><td><b>su+destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">15</td><td><span class="mono">0xB8</span></td><td>Robot Knight</td><td class="num">9</td><td class="num">8</td><td class="num">18.152</td><td><b>destra</b> &middot; <b>sinistra</b> &middot; <b>su</b> &middot; <b>sinistra</b> &middot; <b>destra</b> &middot; <b>sinistra</b> &middot; <b>destra</b> &middot; <b>spada</b></td></tr><tr><td class="num">16</td><td><span class="mono">0xB9</span></td><td>Crypt Creeps</td><td class="num">7</td><td class="num">6</td><td class="num">3.859</td><td><b>su</b> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>su</b> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> &middot; <b>spada</b></td></tr><tr><td class="num">17</td><td><span class="mono">0xBA</span></td><td>Catwalk Bats</td><td class="num">6</td><td class="num">5</td><td class="num">9.020</td><td><b>su</b> &middot; <b>su+sinistra</b> &middot; <b>spada</b> &middot; <b>destra</b> &middot; <b>destra</b></td></tr><tr><td class="num">18</td><td><span class="mono">0xBB</span></td><td>Fire Pit Rev</td><td class="num">5</td><td class="num">4</td><td class="num">923</td><td><b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">19</td><td><span class="mono">0xBC</span></td><td>Yellow Brick Road Rev</td><td class="num">10</td><td class="num">9</td><td class="num">31.462</td><td><b>destra</b> &middot; <b>su</b> &middot; <b>sinistra</b> &middot; <b>su</b> &middot; <b>destra</b> &middot; <b>su</b> &middot; <b>spada</b> &middot; <b>sinistra</b> &middot; <b>su</b></td></tr><tr><td class="num">20</td><td><span class="mono">0xBD</span></td><td>Giant Bat</td><td class="num">6</td><td class="num">5</td><td class="num">8.492</td><td><b>spada</b> &middot; <b>sinistra</b> &middot; <b>su+sinistra</b> &middot; <b>spada</b> &middot; <b>sinistra</b></td></tr><tr><td class="num">21</td><td><span class="mono">0xBE</span></td><td>Elevator</td><td class="num">4</td><td class="num">1</td><td class="num">5.292</td><td><b>sinistra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">22</td><td><span class="mono">0xBF</span></td><td>Forge Rev</td><td class="num">6</td><td class="num">5</td><td class="num">7.133</td><td><b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b></td></tr><tr><td class="num">23</td><td><span class="mono">0xC0</span></td><td>Flying Horse Rev</td><td class="num">7</td><td class="num">6</td><td class="num">5.303</td><td><b>su+sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">24</td><td><span class="mono">0xC1</span></td><td>Pot of Gold</td><td class="num">13</td><td class="num">12</td><td class="num">12.738</td><td><b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> &middot; <b>destra</b> &middot; <b>destra</b> &middot; <b>destra</b> &middot; <b>destra</b> &middot; <b>su</b> &middot; <b>spada</b> &middot; <b>spada</b> &middot; <b>spada</b> &middot; <b>spada</b> &middot; <b>spada</b></td></tr><tr><td class="num">25</td><td><span class="mono">0xC2</span></td><td>Alice Room</td><td class="num">2</td><td class="num">1</td><td class="num">428</td><td><b>destra</b></td></tr><tr><td class="num">26</td><td><span class="mono">0xC3</span></td><td>Crypt Creeps Rev</td><td class="num">7</td><td class="num">6</td><td class="num">6.411</td><td><b>su</b> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>su</b> &middot; <b>spada</b> <span class="min">2&ordf; fin.</span> &middot; <b>destra</b> &middot; <b>spada</b></td></tr><tr><td class="num">27</td><td><span class="mono">0xC4</span></td><td>Grim Reaper Rev</td><td class="num">5</td><td class="num">4</td><td class="num">9.231</td><td><b>su</b> <span class="min">2&ordf; fin.</span> &middot; <b>spada</b> &middot; <b>gi&ugrave;</b> &middot; <b>su</b></td></tr><tr><td class="num">28</td><td><span class="mono">0xC5</span></td><td>Tilting Room</td><td class="num">4</td><td class="num">3</td><td class="num">6.602</td><td><b>gi&ugrave;</b> &middot; <b>su</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b></td></tr><tr><td class="num">29</td><td><span class="mono">0xC6</span></td><td>Throne Room</td><td class="num">5</td><td class="num">4</td><td class="num">9.244</td><td><b>destra</b> <span class="min">2&ordf; fin.</span> &middot; <b>su</b> &middot; <b>destra</b> &middot; <b>destra</b> <span class="min">3&ordf; fin.</span></td></tr><tr><td class="num">30</td><td><span class="mono">0xC7</span></td><td>Robot Knight Rev</td><td class="num">9</td><td class="num">8</td><td class="num">21.104</td><td><b>sinistra</b> &middot; <b>destra</b> &middot; <b>su</b> &middot; <b>destra</b> &middot; <b>sinistra</b> &middot; <b>destra</b> &middot; <b>sinistra</b> &middot; <b>spada</b></td></tr><tr><td class="num">31</td><td><span class="mono">0xC8</span></td><td>Elevator Rev 9-piani</td><td class="num">4</td><td class="num">1</td><td class="num">5.619</td><td><b>destra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">32</td><td><span class="mono">0xC9</span></td><td>Pirates (variante +2A, seconda passata)</td><td class="num">15</td><td class="num">12</td><td class="num">4.673</td><td><b>sinistra</b> &middot; <b>destra</b> &middot; <b>sinistra</b> &middot; <b>destra</b> &middot; <b>su</b> <span class="min">3&ordf; fin.</span> &middot; <b>su</b> <span class="min">3&ordf; fin.</span> &middot; <b>su</b> <span class="min">3&ordf; fin.</span> &middot; <b>su</b> <span class="min">3&ordf; fin.</span> &middot; <b>sinistra</b> &middot; <b>destra</b> &middot; <b>sinistra</b> &middot; <b>su+destra</b></td></tr><tr><td class="num">33</td><td><span class="mono">0xCA</span></td><td>Mudmen</td><td class="num">11</td><td class="num">10</td><td class="num">14.692</td><td><b>spada</b> &middot; <b>su</b> <span class="min">2&ordf; fin.</span> &middot; <b>su</b> &middot; <b>su</b> &middot; <b>su</b> &middot; <b>su</b> &middot; <b>su+sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>su</b> &middot; <b>su</b> &middot; <b>su</b></td></tr><tr><td class="num">34</td><td><span class="mono">0xCB</span></td><td>Black Knight</td><td class="num">5</td><td class="num">4</td><td class="num">6.981</td><td><b>destra</b> &middot; <b>sinistra</b> &middot; <b>sinistra</b> &middot; <b>destra</b></td></tr><tr><td class="num">35</td><td><span class="mono">0xCC</span></td><td>Boulder Trench</td><td class="num">8</td><td class="num">7</td><td class="num">2.574</td><td><b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> &middot; <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> &middot; <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> &middot; <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> &middot; <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> &middot; <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> &middot; <b>su</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td class="num">36</td><td><span class="mono">0xCD</span></td><td>Three Caves</td><td class="num">4</td><td class="num">3</td><td class="num">4.481</td><td><b>su</b> &middot; <b>su</b> &middot; <b>sinistra</b></td></tr><tr><td class="num">37</td><td><span class="mono">0xCE</span></td><td>Dragon's Lair Final</td><td class="num">15</td><td class="num">14</td><td class="num">37.251</td><td><b>sinistra</b> &middot; <b>sinistra</b> <span class="min">2&ordf; fin.</span> &middot; <b>sinistra</b> &middot; <b>gi&ugrave;+sinistra</b> &middot; <b>su</b> &middot; <b>gi&ugrave;</b> &middot; <b>su</b> &middot; <b>destra</b> &middot; <b>destra</b> &middot; <b>spada</b> &middot; <b>spada</b> &middot; <b>sinistra</b> &middot; <b>spada</b> &middot; <b>spada</b></td></tr><tr><td></td><td></td><td><b>in tutto</b></td><td></td><td></td><td class="num"><b>319.089</b></td><td></td></tr></tbody></table></div>
+<h2>La prova</h2>
+<p>Un calcolo cos&igrave; si pu&ograve; sbagliare in silenzio. Ecco perch&eacute; a questo crediamo.</p>
+<p>Il 4 settembre 2026 la macchina ha giocato e ha fatto <b>454.757</b> punti; il record mondiale &egrave; <b>455.252</b>. <b>495</b> di differenza. Poi abbiamo preso questo conto &mdash; che il punteggio non lo guarda mai, e di quella partita non sa niente &mdash; e gli abbiamo chiesto quanti dei bivi attraversati fossero stati giocati al meglio. Risposta: <b>quattordici su quindici</b>, e l&rsquo;unico sbagliato &egrave; quello dei Mudmen.</p>
+<p class="punta">Che vale <b>495</b> punti. Due conti che non si parlano &mdash; uno legge il tabellone, l&rsquo;altro legge i byte &mdash; e cadono sullo stesso numero.</p>
+<h2>L&rsquo;anello ancora aperto</h2>
+<p>Sommando i massimi delle 37 scene, giocate <b>una volta ciascuna</b>, viene <b>319.089</b>. Il record &egrave; 455.252: mancano <b>136.163 punti, il 30% del totale</b>, e non vengono dal giocare bene &mdash; vengono dal <b>rigiocare</b>.
+<p>Alla Tana del Drago c&rsquo;&egrave; una stoccata che, <b>trattenuta</b>, fa incassare il punteggio e poi morire: la scena ricomincia e si incassa di nuovo. Quante volte si possa fare dipende da quante vite hai; le vite dipendono dal punteggio; il punteggio dipende da quante volte l&rsquo;hai fatto.</p>
+<p class="punta">&#10067; Finch&eacute; quell&rsquo;anello non &egrave; chiuso <b>non possiamo dire che 455.252 sia il massimo</b>. Possiamo dire una cosa pi&ugrave; piccola e pi&ugrave; solida: che giocando ogni scena una volta il massimo &egrave; <b>319.089</b>.</p>
+<section class="tecnico">
+<p>Il conto si rif&agrave; due volte, con due lettori diversi, e i due devono cadere sulla stessa lista. Uno legge il raschio (<span class="mono">data/dl_rom_scene_table.json</span>) in <span class="mono">tools/censimento_scelte_che_pagano.py</span>; l&rsquo;altro rif&agrave; tutto dai byte della ROM dentro il banco di prova (<span class="mono">verifica_bivi</span>). Il 4 settembre 2026 i due dicevano 34 e 32: la differenza era il primo lettore che contava due volte gli alias e che elencava la lista invece di camminare la raggiungibilit&agrave;. Adesso dicono tutti e due <b>28</b>.</p>
+<pre>struttura di un record di sotto-nodo (spazio Z80, ROM F2)
+
+  entry, finche&#39; b0 ha il bit 7 acceso:
+     b0  bit7=1 | bit6-5 = quante destinazioni - 1 | bit4 = cond
+         bit3-0 = il codice del gesto (1=su 2=giu 4=sx 8=dx 0=spada)
+     b1  bit1-0 = quanti conteggi - 1
+     poi le destinazioni (0xFF = premere li&#39; non fa niente),
+     poi la cond se c&#39;e&#39;, poi i conteggi
+  header, 7 byte:  flags | next | attesa (2) | f05 | fotogramma (2)
+
+  punti  = tavola 0x209A, indice nel nibble basso di flags
+  morte  = bit 4 di flags
+  la finestra k si apre alla somma dei primi k+1 conteggi</pre>
+<p>La destinazione del <span class="mono">up</span> ai Mudmen, nelle due stesure, &egrave; l&rsquo;unico byte che cambia in trentasei:</p>
+<pre>0xA0 sub 10 @ 0x3F21     0xCA sub 10 @ 0x613B
+   up    -&gt; sub 11           up    -&gt; sub 18   &lt;-- l&#39;unico byte
+   right -&gt; sub 11           right -&gt; sub 11
+   down  -&gt; sub 15, 14       down  -&gt; sub 15, 14
+   left  -&gt; sub 15           left  -&gt; sub 15
+   fire  -&gt; sub 15           fire  -&gt; sub 15</pre>
+</section>
+<nav class="altrove"><span class="cap">Di Dragon&rsquo;s Lair c&rsquo;è anche</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/dragons-lair/elevator/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Un ascensore dove si scende soltanto</a></li>
+<li><a href="/it/dragons-lair/grafica/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Il tabellone diventato software</a></li>
+</ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/" class="qui"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>4 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>217 su 217</b></span></div>
+<p class="stampa">phenoma.org/it/dragons-lair/f2/il-campione/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
