@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>La costruzione del Campione &amp;mdash; Dragon's Lair</title>
-<meta name="description" content="Sopravvivere &amp;egrave; scritto nella ROM; guadagnare no. In 9 punti del gioco due gesti che non ti ammazzano valgono diverso &amp;mdash; e il pi&amp;ugrave; caro ne vale 2.315. Questa pagina li conta tutti, dai byte.">
+<meta name="description" content="Per una persona, sopravvivere in Dragon&amp;rsquo;s Lair &amp;egrave; gi&amp;agrave; tutto il gioco. Una macchina che legge la memoria viva sopravvive senza sforzo &amp;mdash; non perch&amp;eacute; sia brava, perch&amp;eacute; &amp;egrave; informata. Ma il punteggio non lo sa nessuno dei due: in 9 punti due gesti che non ti ammazzano valgono diverso, e il pi&amp;ugrave; caro ne vale 2.315. Questa pagina li conta tutti, dai byte.">
 <style>
 :root{
   --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
@@ -286,11 +286,14 @@ h1.marchione + .tesi{font-size:21px}
 <header>
   <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983 &middot; revisione F2</p>
   <h1>La costruzione del Campione</h1>
-  <p class="tesi">Sopravvivere &egrave; scritto nella ROM; guadagnare no. In <b>9</b> punti del gioco due gesti che non ti ammazzano valgono diverso &mdash; e il pi&ugrave; caro ne vale <b>2.315</b>. Questa pagina li conta tutti, dai byte.</p>
+  <p class="tesi">Per una persona, sopravvivere in Dragon&rsquo;s Lair &egrave; gi&agrave; tutto il gioco. Una macchina che legge la memoria viva sopravvive senza sforzo &mdash; non perch&eacute; sia brava, perch&eacute; &egrave; <b>informata</b>. Ma il punteggio non lo sa nessuno dei due: in <b>9</b> punti due gesti che non ti ammazzano valgono diverso, e il pi&ugrave; caro ne vale <b>2.315</b>. Questa pagina li conta tutti, dai byte.</p>
 </header>
-<h2>Due conoscenze, non una</h2>
+<h2>Prima di tutto: per un uomo, sopravvivere &egrave; gi&agrave; tutto</h2>
+<p>Va detto subito, perch&eacute; il resto di questa pagina rischia di far pensare il contrario. <b>Dragon&rsquo;s Lair, per una persona, &egrave; un gioco spietato.</b> Nel 1983 lo era per fama: mezzo secondo di ritardo e sei morto, e sullo schermo non c&rsquo;&egrave; niente che ti dica quando muovere. Chi arrivava in fondo ci arrivava dopo mesi e dopo una montagna di gettoni. <b>Sopravvivere non &egrave; la parte facile: &egrave; il gioco.</b></p>
+<p>Se in questa pagina sembra facile, non &egrave; perch&eacute; la nostra macchina sia brava. &Egrave; perch&eacute; &egrave; <b>informata</b>: legge la memoria viva del gioco mentre gira, e quindi sa gi&agrave;, in ogni istante, quale gesto &egrave; accettato e dove porta. Non ha riflessi migliori dei tuoi &mdash; ha il copione in mano. &Egrave; un vantaggio che nessun giocatore ha mai avuto davanti al cabinato, ed &egrave; giusto chiamarlo col suo nome invece di farlo passare per bravura.</p>
+<h2>E allora due conoscenze, non una</h2>
 <p>Per giocare bene a Dragon&rsquo;s Lair servono due cose diverse, e si tende a confonderle: <b>dove si sopravvive</b> &mdash; quale gesto, in quale istante, non ti ammazza &mdash; e <b>dove si guadagna</b>, cio&egrave; quale gesto <i>fra quelli che non ti ammazzano</i> paga di pi&ugrave;.</p>
-<p>La prima sta nella ROM in chiaro: ogni sotto-nodo porta la lista delle entry accettate, la finestra di ciascuna e la destinazione, e i nodi di morte hanno il loro bit. Chi legge la RAM viva la sa <b>per costruzione</b>. La seconda <b>non &egrave; scritta da nessuna parte</b>: il punteggio sta nel nodo, ma quanto valga <i>arrivarci</i> dipende da tutto quello che viene dopo.</p>
+<p>La prima sta nella ROM in chiaro &mdash; ma <b>solo per chi la sa leggere</b>: al giocatore nessuno la mostra. Ogni sotto-nodo porta la lista delle entry accettate, la finestra di ciascuna e la destinazione, e i nodi di morte hanno il loro bit. Chi legge la RAM viva la sa <b>per costruzione</b>. La seconda <b>non &egrave; scritta da nessuna parte</b>: il punteggio sta nel nodo, ma quanto valga <i>arrivarci</i> dipende da tutto quello che viene dopo.</p>
 <p class="punta">&#9888; Un giocatore artificiale che scelga il gesto che non uccide &egrave; <b>cieco al punteggio</b>. Davanti a due gesti buoni prende il primo. Quasi sempre non cambia niente; in <b>9</b> punti s&igrave;.</p>
 <p class="punta">&#9888; <b>Si parla della difficolt&agrave; alta.</b> La ROM tiene due stesure di ogni scena e serve le seconde solo a difficolt&agrave; alta: a difficolt&agrave; bassa <b>le mosse sono meno</b> e i punti sono meno, e nessuno dei numeri di questa pagina vale l&igrave;. Il confronto fra i due mazzi &egrave; in fondo.</p>
 <h2>Il cammino pi&ugrave; lungo</h2>
@@ -379,7 +382,7 @@ h1.marchione + .tesi{font-size:21px}
 <li><a href="/it/dragons-lair/f2/il-campione/" class="qui"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>7</b></span><span>Pubblicata il <b>4 settembre 2026</b>, aggiornata il <b>4 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>226 su 226</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>8</b></span><span>Pubblicata il <b>4 settembre 2026</b>, aggiornata il <b>4 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>226 su 226</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/f2/il-campione/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
