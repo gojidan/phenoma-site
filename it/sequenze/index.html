@@ -323,6 +323,11 @@ h1.marchione + .tesi{font-size:21px}
 <div class="nota caldo"><span class="cap">Sono pagine già state sbagliate</span><p>Una versione precedente di queste stesse pagine conteneva <b>quattro errori</b>: due scene chiamate col nome della tradizione invece che con quello del catalogo, un punteggio sbagliato di cento, una scena attribuita al numero sbagliato, e una frase che diceva &laquo;due&raquo; dove i byte dicono <b>tre</b>. Sono corretti qui.</p><p>Lo scriviamo perché è probabile che qualcosa di sbagliato ci sia ancora. Dove non sappiamo, sta scritto che non sappiamo.</p></div>
 <h2>Le tre macchine di Dragon's Lair non si mescolano</h2>
 <p>Tre delle cinque pagine parlano dello stesso film: l&rsquo;edizione americana, quella europea e quella italiana della Sidam. Sono <b>tre macchine diverse</b>, e vanno confrontate senza mai importare niente dall&rsquo;una all&rsquo;altra: lo stesso indirizzo di memoria, nelle tre ROM, è tre cose diverse &mdash; in una è codice, in un&rsquo;altra sono dati. Dove le confrontiamo lo diciamo, e diciamo su che cosa.</p>
+<h2>Guardalo succedere</h2>
+<p>Quello che c&rsquo;è scritto qui sopra viene dai byte. Questi video lo fanno vedere <b>dalla macchina che lo fa</b>, con il veggente che gioca al posto nostro e i pannelli accesi: sono la stessa cosa provata in un altro modo.</p>
+<ul class="video">
+<li><a href="https://www.youtube.com/watch?v=HK7Q65gRf70" rel="noopener">Sei partite senza morti — 2 x DL USA F2, 2 x DL EU, 2 x DL Sidam</a><br><span class="dim">che il dado di Dragon's Lair tocca l'ORDINE ma non il TOTALE — tranne in Italia. Sei partite perfette di Prometeo, affiancate con un cronometro per riquadro. (1) DURATA: le due americane finiscono a 11:41,63 e 11:41,70 (differenza 0,07 s, due fotogrammi); le due europee a 13:05,33 e 13:05,53 (0,20 s); le due Sidam a 5:16,34 e 5:41,73 (25,39 s di differenza, tutt'e due dentro la forbice 4:13-5:59 calcolata dai byte). (2) PUNTEGGIO: identico fra le due americane, identico fra le due europee, diverso fra le due italiane (73.750 contro 82.049). (3) E L'ORDINE CAMBIA COMUNQUE: nello stesso fotogramma le due americane giocano scene diverse, e a meta' partita segnano 19.140 contro 16.039 — arrivano allo stesso totale per strade diverse. Il perche' e' strutturale: USA ed EU giocano TUTTE le loro scene (39 e 36) ogni partita, quindi l'ordine non cambia la somma; la Sidam distribuisce 17 carte e ne fa giocare 12, e quali 12 lo decide il sorteggio.</span></li>
+</ul>
 <section class="tecnico">
 <h2>Gli strumenti</h2>
 <ul><li><b>Il generatore</b>: <code>tools/pagine_sequenze.py</code>. Legge le ROM e scrive queste pagine.</li><li><b>I controlli</b>: <code>tools/verifica_sequenze.py</code>. Rifà il conto su ogni affermazione; il generatore lo chiama prima di scrivere.</li><li><b>Le ROM</b>: originali del 1983-84, non rimaneggiate. Dove esistono versioni corrette dalla comunità, le studiamo ma non le adottiamo: qui si racconta la macchina com&rsquo;era.</li><li><b>Il numero di revisione</b> in fondo a ogni pagina non conta le ripubblicazioni: sale solo quando cambia il testo.</li></ul>
@@ -330,7 +335,7 @@ h1.marchione + .tesi{font-size:21px}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>20</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>4 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>226 su 226</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>21</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>4 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>226 su 226</b></span></div>
 <p class="stampa">phenoma.org/it/sequenze/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
