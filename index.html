@@ -212,9 +212,22 @@ footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
   letter-spacing:.04em;line-height:1.9}
 footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
 footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
-/* --- il nome sulla soglia: piu' grande dell'h1 normale, e spaziato --- */
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e SFUMATO ---
+   5 set 2026, Alan: <<nella home del sito riusciamo a scrivere Phenoma
+   grande con il colore sfumato?>>.  E' la stessa sfumatura del marchio
+   piccolo in barra -- crema, oro, oro cupo -- perche' il nome grande e il
+   nome piccolo devono essere la stessa cosa; con due fermate in piu', che a
+   92px due sole diventano una tinta piatta.
+   ⚠️ `background-clip:text` ritaglia lo sfondo sulle lettere di TUTTO
+   quello che sta dentro l'elemento: qui dentro non ci va nient'altro.
+   📌 `width:max-content` fa aderire il riquadro alla parola: senza, il
+   riquadro sarebbe largo quanto la pagina e l'inclinazione non si
+   vedrebbe. */
 h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
-  margin:6px 0 20px;line-height:1}
+  margin:6px 0 20px;line-height:1;width:max-content;max-width:100%;
+  background:linear-gradient(176deg,#FFF6E7 0%,#FFDCA6 24%,var(--oro) 54%,
+    var(--oro-cupo) 80%,#C0761D 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
 h1.marchione + .tesi{font-size:21px}
 
 /* --- la data dell'ultimo aggiornamento, in cima alla home --- */
@@ -253,6 +266,9 @@ h1.marchione + .tesi{font-size:21px}
   footer a{color:inherit}
   .barra{padding:0 0 10px;margin-bottom:14px}
   .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  /* il nome sulla soglia: sfumato a schermo, inchiostro sul foglio */
+  h1.marchione{background:none;color:#111;-webkit-text-fill-color:#111;
+    width:auto;font-size:30pt}
   .coda{color:#6E6E6E}
 
   header{padding:12px 0 14px}
@@ -283,9 +299,7 @@ h1.marchione + .tesi{font-size:21px}
 <body>
 <div class="wrap">
 <div class="barra"><span class="marchio">Phenoma</span>
-<span class="coda">Laserdisc Rom Atlas</span>
-<nav class="briciole"><span class="qui">Italiano</span>
-<span class="sep">/</span><a href="/en/">English</a></nav></div>
+<span class="coda">Laserdisc Rom Atlas</span></div>
 <header>
   <p class="occhiello">MMXXVI</p>
   <h1 class="marchione">Phenoma</h1>
