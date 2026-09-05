@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La costruzione del Campione &amp;mdash; Space Ace &amp;mdash; Phenoma</title>
+<meta name="description" content="Sopravvivere in Space Ace &amp;egrave; gi&amp;agrave; un&amp;rsquo;impresa. Ma il punteggio non premia il sopravvivere: premia dove passi, e soprattutto quando tieni la mano ferma. Questa pagina elenca, contati sui byte, tutti i punti in cui una mossa che ti salva vale meno di un&amp;rsquo;altra che ti salva uguale.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:62ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:68ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:68ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e SFUMATO ---
+   5 set 2026, Alan: <<nella home del sito riusciamo a scrivere Phenoma
+   grande con il colore sfumato?>>.  E' la stessa sfumatura del marchio
+   piccolo in barra -- crema, oro, oro cupo -- perche' il nome grande e il
+   nome piccolo devono essere la stessa cosa; con due fermate in piu', che a
+   92px due sole diventano una tinta piatta.
+   ⚠️ `background-clip:text` ritaglia lo sfondo sulle lettere di TUTTO
+   quello che sta dentro l'elemento: qui dentro non ci va nient'altro.
+   📌 `width:max-content` fa aderire il riquadro alla parola: senza, il
+   riquadro sarebbe largo quanto la pagina e l'inclinazione non si
+   vedrebbe. */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1;width:max-content;max-width:100%;
+  background:linear-gradient(176deg,#FFF6E7 0%,#FFDCA6 24%,var(--oro) 54%,
+    var(--oro-cupo) 80%,#C0761D 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  /* il nome sulla soglia: sfumato a schermo, inchiostro sul foglio */
+  h1.marchione{background:none;color:#111;-webkit-text-fill-color:#111;
+    width:auto;font-size:30pt}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+
+.dettaglio{color:#A8901C}
+.barra{border-bottom-color:rgba(239,210,46,.30)}
+header{border-bottom-color:rgba(239,210,46,.24)}
+body{background:
+  radial-gradient(1200px 400px at 50% -180px,rgba(239,210,46,.14),transparent 68%),
+  var(--fondo)}
+.timbro .colore b{color:#A8901C;font-weight:600}
+.timbro .colore .mono{color:inherit}
+@media print{.dettaglio{color:#555}
+  body{background:#fff}
+  .timbro .colore b{color:#111}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/space-ace/">Space Ace</a><span class="sep">/</span><span class="qui">revisione A3</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/space-ace/">Space Ace</a></p><p class="dettaglio">Cinematronics, 1984 &middot; revisione A3</p>
+  <h1>La costruzione del Campione</h1>
+  <p class="tesi">Sopravvivere in Space Ace &egrave; gi&agrave; un&rsquo;impresa. Ma il punteggio non premia il sopravvivere: premia <b>dove passi</b>, e soprattutto <b>quando tieni la mano ferma</b>. Questa pagina elenca, contati sui byte, tutti i punti in cui una mossa che ti salva vale meno di un&rsquo;altra che ti salva uguale.</p>
+</header>
+<p class="punta">&#9888; <b>Si parla dell&rsquo;abilit&agrave; Space Ace</b>, la pi&ugrave; dura delle tre. &Egrave; quella che d&agrave; il gioco intero: tredici scene, e le altre due &mdash; Cadet e Captain &mdash; ne danno di meno. Nessuno dei numeri di questa pagina vale l&igrave;.</p>
+<h2>In Space Ace la domanda non &egrave; solo <i>dove muovere</i></h2>
+<p>Space Ace ti mette davanti la stessa crudelt&agrave; di Dragon&rsquo;s Lair &mdash; mezzo secondo di ritardo e sei morto &mdash; e poi ne aggiunge una tutta sua. Oltre al bottone che ti salva, ce n&rsquo;&egrave; uno che ti <b>trasforma</b>: prendere l&rsquo;<b>energia</b> ti fa passare da Dexter a Space Ace, e da quel momento cambia quanto vale quello che fai.</p>
+<p>Cos&igrave; le mosse che ti salvano non sono tutte uguali. In certi punti il gioco te ne offre <b>due che ti salvano tutte e due</b>, e valgono diverso; e in certi altri quella che ti salva pi&ugrave; in fretta &egrave; proprio quella che ti fa fare meno punti. Sul film non c&rsquo;&egrave; niente che te lo dica: il richiamo ti indica <b>dove</b> muovere, mai <b>quanto vale</b>.</p>
+<p class="punta"><b>Questa pagina &egrave; l&rsquo;elenco di quei punti</b>, contati sui byte del programma. Nel mazzo dell&rsquo;abilit&agrave; Space Ace ce ne sono <b>26</b>.</p>
+<h2>La legge del rinvio</h2>
+<p>La cosa che tiene insieme quasi tutto, e che non &egrave; per niente ovvia:</p>
+<blockquote><p><b>Il rinvio non &egrave; una rinuncia: &egrave; un frammento in pi&ugrave; sulla stessa strada.</b></p></blockquote>
+<p>Ci sono momenti in cui il gioco ti offre una mossa perfettamente buona, e <b>non darla</b> ti porta comunque avanti &mdash; solo per una strada pi&ugrave; lunga, che passa per un pezzo di film in pi&ugrave;, e ogni pezzo di film in pi&ugrave; sono punti. Chi gioca bene, l&igrave;, <b>tiene la mano ferma</b>.</p>
+<p>Sono questi, e in ognuno la strada che paga di pi&ugrave; &egrave; <b>lasciar scadere</b>:</p>
+<div class="scroll"><table><thead><tr><th>la scena</th><th>nodo</th><th class="num">fr.</th><th class="num">entra al</th><th>invece di dare</th><th class="num">rimandando</th></tr></thead><tbody><tr><td>Borf - finale ingresso</td><td><span class="mono">0x99</span></td><td class="num">0</td><td class="num">31088</td><td><b>su</b> <span class="min">2&ordf; fin.</span></td><td class="num"><b>+3.032</b></td></tr><tr><td>Piattaforme</td><td><span class="mono">0x86</span></td><td class="num">4</td><td class="num">8245</td><td><b>sinistra</b></td><td class="num"><b>+3.000</b></td></tr><tr><td>Piattaforme</td><td><span class="mono">0x86</span></td><td class="num">39</td><td class="num">8252</td><td><b>sinistra</b></td><td class="num"><b>+3.000</b></td></tr><tr><td>Piattaforme</td><td><span class="mono">0x87</span></td><td class="num">4</td><td class="num">9719</td><td><b>destra</b></td><td class="num"><b>+3.000</b></td></tr><tr><td>Piattaforme</td><td><span class="mono">0x87</span></td><td class="num">39</td><td class="num">9726</td><td><b>destra</b></td><td class="num"><b>+3.000</b></td></tr><tr><td>Borf - finale ingresso</td><td><span class="mono">0x99</span></td><td class="num">3</td><td class="num">31184</td><td><b>sinistra</b></td><td class="num"><b>+1.000</b></td></tr><tr><td>Borf - finale ingresso</td><td><span class="mono">0x9A</span></td><td class="num">0</td><td class="num">31088</td><td><b>su</b> <span class="min">2&ordf; fin.</span></td><td class="num"><b>+700</b></td></tr><tr><td>Borf - finale ingresso</td><td><span class="mono">0x9A</span></td><td class="num">3</td><td class="num">31184</td><td><b>sinistra</b></td><td class="num"><b>+396</b></td></tr></tbody></table></div>
+<p>Le <b>Piattaforme</b> compaiono due volte per stesura perch&eacute; la ROM tiene due copie della scena, dritta e specchiata, e quale delle due ti tocchi lo decide un registro: la regola &egrave; la stessa, il gesto &egrave; ribaltato.</p>
+<h2>L&rsquo;energia: dove paga e dove costa</h2>
+<p>Il bottone dell&rsquo;energia &egrave; il gesto pi&ugrave; fraintendibile del gioco, perch&eacute; alza il valore del frammento in cui lo premi &mdash; e questo si vede subito &mdash; ma pu&ograve; <b>accorciare la scena</b>, e questo non si vede affatto. Su <b>16</b> bivi in cui l&rsquo;energia &egrave; una scelta, in <b>12</b> conviene e in <b>4</b> no.</p>
+<div class="scroll"><table><thead><tr><th>la scena</th><th>nodo</th><th class="num">fr.</th><th class="num">con l&rsquo;energia</th><th class="num">senza</th><th class="num">differenza</th></tr></thead><tbody><tr><td>Pattini e mare</td><td><span class="mono">0x96</span></td><td class="num">5</td><td class="num">81.366</td><td class="num">8.024</td><td class="num"><b>+73.342</b></td></tr><tr><td>Pattini e mare</td><td><span class="mono">0x97</span></td><td class="num">5</td><td class="num">81.366</td><td class="num">8.024</td><td class="num"><b>+73.342</b></td></tr><tr><td>Moto</td><td><span class="mono">0x94</span></td><td class="num">5</td><td class="num">29.684</td><td class="num">4.800</td><td class="num"><b>+24.884</b></td></tr><tr><td>Moto</td><td><span class="mono">0x95</span></td><td class="num">5</td><td class="num">29.684</td><td class="num">4.800</td><td class="num"><b>+24.884</b></td></tr><tr><td>Alter ego</td><td><span class="mono">0x92</span></td><td class="num">5</td><td class="num">17.600</td><td class="num">1.800</td><td class="num"><b>+15.800</b></td></tr><tr><td>Alter ego</td><td><span class="mono">0x93</span></td><td class="num">5</td><td class="num">17.600</td><td class="num">1.800</td><td class="num"><b>+15.800</b></td></tr><tr><td>Tunnel</td><td><span class="mono">0x8E</span></td><td class="num">5</td><td class="num">7.600</td><td class="num">2.400</td><td class="num"><b>+5.200</b></td></tr><tr><td>Tunnel</td><td><span class="mono">0x8F</span></td><td class="num">5</td><td class="num">7.600</td><td class="num">2.400</td><td class="num"><b>+5.200</b></td></tr><tr><td>Coni elettrici</td><td><span class="mono">0x84</span></td><td class="num">6</td><td class="num">4.200</td><td class="num">2.000</td><td class="num"><b>+2.200</b></td></tr><tr><td>Coni elettrici</td><td><span class="mono">0x85</span></td><td class="num">6</td><td class="num">4.200</td><td class="num">2.000</td><td class="num"><b>+2.200</b></td></tr><tr><td>Cani verdi</td><td><span class="mono">0x88</span></td><td class="num">5</td><td class="num">4.800</td><td class="num">2.600</td><td class="num"><b>+2.200</b></td></tr><tr><td>Cani verdi</td><td><span class="mono">0x89</span></td><td class="num">5</td><td class="num">4.800</td><td class="num">2.600</td><td class="num"><b>+2.200</b></td></tr><tr><td>Conigli</td><td><span class="mono">0x90</span></td><td class="num">4</td><td class="num">7.216</td><td class="num">8.000</td><td class="num"><b>&minus;784</b></td></tr><tr><td>Conigli</td><td><span class="mono">0x91</span></td><td class="num">4</td><td class="num">7.216</td><td class="num">8.000</td><td class="num"><b>&minus;784</b></td></tr><tr><td>Palude</td><td><span class="mono">0x8A</span></td><td class="num">5</td><td class="num">4.200</td><td class="num">5.400</td><td class="num"><b>&minus;1.200</b></td></tr><tr><td>Palude</td><td><span class="mono">0x8B</span></td><td class="num">5</td><td class="num">4.200</td><td class="num">5.400</td><td class="num"><b>&minus;1.200</b></td></tr></tbody></table></div>
+<p>Il bivio pi&ugrave; caro di tutto il gioco &egrave; <b>Pattini e mare</b>: prendere l&rsquo;energia l&igrave; vale <b>73.342 punti</b> &mdash; da solo, quasi un decimo del record.</p>
+<h2>I Conigli, l&rsquo;unica scena che rompe la legge</h2>
+<p>Nei <b>Conigli</b> l&rsquo;energia non fa rimandare: fa <b>saltare</b>. Il frammento in cui la prendi vale di pi&ugrave; &mdash; e a occhio sembra un affare &mdash; ma da l&igrave; la scena si accorcia, e in totale ci perdi <b>784 punti</b>.</p>
+<div class="nota"><span class="cap">Pi&ugrave; per frammento, meno frammenti</span><p>&Egrave; il rovescio esatto della legge del rinvio, ed &egrave; il motivo per cui contare <i>quanto vale la mossa</i> non basta mai: bisogna contare <b>quanto vale la strada</b>. Nei Conigli la strada con l&rsquo;energia rende 7.216, quella senza 8.000.</p></div>
+<h2>La Palude, dove il conto dice il contrario</h2>
+<p>Nella <b>Palude</b> il conto dentro la scena dice che l&rsquo;energia <b>costa 1.200 punti</b>. Eppure va presa. Perch&eacute;?</p>
+<p>Perch&eacute; il guadagno sta <b>fuori dalla scena</b>. Prendere l&rsquo;energia non ti d&agrave; solo dei punti: cambia <b>chi sei</b>, e quello te lo porti dietro nelle scene dopo. I 1.200 punti sono il prezzo della trasformazione, e si paga una volta sola.</p>
+<p class="punta">Ed &egrave; esattamente per questo che la regola &egrave; <b>&laquo;la prima s&igrave;, la seconda no&raquo;</b>. La Palude la macchina te la serve <b>in coppia</b>, una dietro l&rsquo;altra: la prima ti trasforma, la seconda ti costerebbe di nuovo 1.200 punti per una trasformazione che hai gi&agrave;.</p>
+<h2>Le coppie: perch&eacute; la prima scena si ferma prima</h2>
+<p>Molte scene arrivano <b>concatenate</b>: prima una stesura, poi l&rsquo;altra. E la prima delle due <b>si ferma sempre prima</b> del massimo che farebbe da sola, perch&eacute; a un certo punto passa la mano alla gemella. Non &egrave; un errore di chi gioca: &egrave; come sono fatte.</p>
+<div class="nota"><span class="cap">Una trappola vera</span><p>Il 5 settembre 2026, leggendo il diario di una partita, avevamo scambiato proprio questo per un errore: Sfere sembrava aver buttato via un frammento da 402 punti. Non era vero &mdash; quel frammento <b>non era raggiungibile</b> da dove eravamo, ed era la ROM che consegnava la scena alla gemella. Lo stesso succede in Palude, Astronave e Tunnel. Chi conta i punti scena per scena, senza sapere questo, si convince di aver sbagliato dove non ha sbagliato.</p></div>
+<h2>Lo scontro con Borf, e le quattro vite</h2>
+<p>Il finale &egrave; un&rsquo;altra cosa da tutto il resto. La strada buona &egrave; lunga <b>33 frammenti</b> da 3.004 punti l&rsquo;uno &mdash; <b>99.132 punti</b> a giro &mdash; e finisce su un frammento in cui alcuni gesti (<b>energia</b>, <b>sinistra</b>, <b>su</b>, <b>su+sinistra</b>) <b>chiudono la partita</b>.</p>
+<p class="punta">E qui c&rsquo;&egrave; la mossa che separa una bella partita da una partita perfetta: <b>quel colpo non va dato finch&eacute; ti restano vite</b>. Non darlo vuol dire morire; morire vuol dire <b>rigiocare tutto il finale</b>, e i punti si riaccumulano da capo.</p>
+<p>Con cinque vite si rigioca <b>quattro volte</b> e si chiude alla quinta. Il finale, contato per intero:</p>
+<div class="scroll"><table><thead><tr><th></th><th class="num">quanto</th></tr></thead><tbody><tr><td>l&rsquo;ingresso allo scontro</td><td class="num">10.968</td></tr><tr><td>un giro dello scontro</td><td class="num">99.132</td></tr><tr><td><b>cinque giri</b> (quattro vite buttate, e la quinta vince)</td><td class="num"><b>495.660</b></td></tr><tr><td><b>il finale, in tutto</b></td><td class="num"><b>506.628</b></td></tr></tbody></table></div>
+<p>&Egrave; pi&ugrave; di <b>due terzi</b> del punteggio finale. Chi chiude il gioco alla prima occasione, per quanto bene abbia giocato, lascia sul tavolo pi&ugrave; di quello che ha preso.</p>
+<h2>L&rsquo;ultima mossa della prima scena</h2>
+<p>E poi c&rsquo;&egrave; un dettaglio che vale <b>402 punti</b> e sta nella scena che apre il gioco, il rapimento di Kimberly &mdash; prima ancora che il mazzo cominci.</p>
+<p>La coda di quella scena &egrave; una fila di frammenti in cui <b>lasciar scadere &egrave; morte</b>: uno, due, tre di fila. Tranne <b>uno</b>.</p>
+<div class="scroll"><table><thead><tr><th class="num">frammento</th><th class="num">se lasci scadere vai al</th><th>e l&igrave;</th></tr></thead><tbody><tr><td class="num">17</td><td class="num">26</td><td><b>morte</b></td></tr><tr><td class="num">18</td><td class="num">26</td><td><b>morte</b></td></tr><tr><td class="num">19</td><td class="num">26</td><td><b>morte</b></td></tr><tr><td class="num">20</td><td class="num">21</td><td>&#11088; <b>vivo</b>, e vale altri 402</td></tr><tr><td class="num">21</td><td class="num">26</td><td><b>morte</b></td></tr></tbody></table></div>
+<p>Su quel frammento &mdash; e solo su quello &mdash; la mossa si pu&ograve; <b>rimandare all&rsquo;ultima occasione utile</b>: si guadagna un frammento intero, e la mossa si d&agrave; dopo, uguale.</p>
+<div class="scroll"><table><thead><tr><th></th><th class="num">quanto</th></tr></thead><tbody><tr><td>la mossa data subito</td><td class="num">804</td></tr><tr><td>la mossa rimandata</td><td class="num"><b>1.206</b></td></tr><tr><td><b>differenza</b></td><td class="num"><b>+402</b></td></tr></tbody></table></div>
+<h2>Il conto, dal principio alla fine</h2>
+<p>Il 5 settembre 2026 abbiamo fatto giocare la macchina tre volte, e ogni volta il punteggio della volta dopo era stato <b>calcolato prima</b>, sui byte, senza guardare il tabellone.</p>
+<div class="scroll"><table><thead><tr><th>la corsa</th><th class="num">previsto</th><th class="num">uscito</th></tr></thead><tbody><tr><td>tutte le scene giocate al meglio, ma il finale chiuso subito</td><td class="num"></td><td class="num"><b>373.936</b></td></tr><tr><td>+ le quattro vite buttate sul finale</td><td class="num">775.288</td><td class="num"><b>770.464</b></td></tr><tr><td>+ l&rsquo;ultima mossa della prima scena, rimandata</td><td class="num"><b>770.866</b></td><td class="num"><b>770.866</b></td></tr></tbody></table></div>
+<p class="punta"><b>770.866.</b> Il record mondiale, e il conto lo aveva previsto al punto.</p>
+<h2>Come lo sappiamo</h2>
+<p>Niente di questa pagina viene da una partita guardata: tutti i numeri sono <b>contati dentro il programma della macchina</b>, e si ricalcolano da soli ogni volta che la pagina viene scritta. Il dettaglio &mdash; la forma dei record, come si conta una strada, perch&eacute; un&rsquo;uscita entra nel conto &mdash; sta in fondo, sotto <b>&laquo;come si legge nei byte&raquo;</b>.</p>
+<p>Le due prove che contano sono queste: il conto ha previsto il punteggio <b>prima</b> che la partita venisse giocata, due volte di fila; e i punti dove intervenire li aveva indicati, a memoria, chi il gioco lo conosce da trent&rsquo;anni &mdash; poi li abbiamo verificati uno per uno sui byte, e tornavano tutti.</p>
+<h2>Guardalo succedere</h2>
+<p>Quello che c&rsquo;è scritto qui sopra viene dai byte. Questi video lo fanno vedere <b>dalla macchina che lo fa</b>, con il veggente che gioca al posto nostro e i pannelli accesi: sono la stessa cosa provata in un altro modo.</p>
+<ul class="video">
+<li><a href="https://www.youtube.com/watch?v=jtFGriGIX2M" rel="noopener">Space Ace, abilità Space Ace — 770.866, la partita perfetta</a><br><span class="dim">che il conto fatto sui byte prevede il punteggio due volte di fila, su due giochi diversi. La macchina legge la memoria viva di Space Ace e sopravvive dappertutto; le abbiamo dettato soltanto i punti in cui sopravvivere non basta — e quasi tutti obbediscono a una legge sola: «il rinvio non è una rinuncia». Rimandare una mossa, dove la ROM lo permette, regala un frammento in più sulla stessa strada: alle Piattaforme vale 3.000 punti, all'ingresso di Borf 3.032, e nell'ultima mossa della scena che apre il gioco vale 402. L'unica scena che non segue quella legge sono i Conigli, dove prendere l'energia non fa rimandare ma SALTARE: il frammento vale di più (1.554 invece di 1.000) ma la scena si accorcia da otto frammenti a cinque, e in totale si perde. Il 5 settembre 2026 la stessa macchina, senza il leech, si era fermata a 373.936: il conto diceva che rifiutare il colpo che chiude finché restano vite valeva quattro rigiocate del finale, ed è uscito 770.464; poi diceva che all'ultima mossa della prima scena mancavano 402, ed è uscito 770.866. Il record mondiale, al punto.</span></li>
+</ul>
+<section class="tecnico">
+<p><b>Tutti i bivi del mazzo</b>, per intero. Ogni riga &egrave; un frammento da cui si esce vivi in pi&ugrave; modi che valgono diverso.</p>
+<div class="scroll"><table><thead><tr><th>nodo</th><th>la scena</th><th class="num">fr.</th><th class="num">fotogramma</th><th class="num">differenza</th><th>il meglio</th><th>il peggio</th></tr></thead><tbody><tr><td><span class="mono">0x96</span></td><td>Pattini e mare</td><td class="num">5</td><td class="num">27436</td><td class="num">73.342</td><td><b>energia</b></td><td><b>destra</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>su</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su+sinistra</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su+destra</b> <span class="min">3&ordf; fin.</span></td></tr><tr><td><span class="mono">0x97</span></td><td>Pattini e mare</td><td class="num">5</td><td class="num">29343</td><td class="num">73.342</td><td><b>energia</b></td><td><b>sinistra</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>su</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su+sinistra</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su+destra</b> <span class="min">3&ordf; fin.</span></td></tr><tr><td><span class="mono">0x94</span></td><td>Moto</td><td class="num">5</td><td class="num">24037</td><td class="num">24.884</td><td><b>energia</b> <span class="min">2&ordf; fin.</span></td><td><b>lasciar scadere</b> <i>o</i> <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>gi&ugrave;+sinistra</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>gi&ugrave;+destra</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>su</b> <i>o</i> <b>su+destra</b></td></tr><tr><td><span class="mono">0x95</span></td><td>Moto</td><td class="num">5</td><td class="num">25781</td><td class="num">24.884</td><td><b>energia</b> <span class="min">2&ordf; fin.</span></td><td><b>lasciar scadere</b> <i>o</i> <b>gi&ugrave;</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>gi&ugrave;+sinistra</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>gi&ugrave;+destra</b> <span class="min">2&ordf; fin.</span> <i>o</i> <b>su</b> <i>o</i> <b>su+sinistra</b></td></tr><tr><td><span class="mono">0x92</span></td><td>Alter ego</td><td class="num">5</td><td class="num">21523</td><td class="num">15.800</td><td><b>energia</b></td><td><b>lasciar scadere</b> <i>o</i> <b>gi&ugrave;</b></td></tr><tr><td><span class="mono">0x93</span></td><td>Alter ego</td><td class="num">5</td><td class="num">22747</td><td class="num">15.800</td><td><b>energia</b></td><td><b>lasciar scadere</b> <i>o</i> <b>gi&ugrave;</b></td></tr><tr><td><span class="mono">0x8E</span></td><td>Tunnel</td><td class="num">5</td><td class="num">17700</td><td class="num">5.200</td><td><b>energia</b> <span class="min">2&ordf; fin.</span></td><td><b>destra</b> <i>o</i> <b>su+destra</b></td></tr><tr><td><span class="mono">0x8F</span></td><td>Tunnel</td><td class="num">5</td><td class="num">18596</td><td class="num">5.200</td><td><b>energia</b> <span class="min">2&ordf; fin.</span></td><td><b>sinistra</b> <i>o</i> <b>su+sinistra</b></td></tr><tr><td><span class="mono">0x99</span></td><td>Borf - finale ingresso</td><td class="num">0</td><td class="num">31088</td><td class="num">3.032</td><td><b>lasciar scadere</b></td><td><b>su</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td><span class="mono">0x86</span></td><td>Piattaforme</td><td class="num">4</td><td class="num">8245</td><td class="num">3.000</td><td><b>lasciar scadere</b></td><td><b>sinistra</b></td></tr><tr><td><span class="mono">0x86</span></td><td>Piattaforme</td><td class="num">39</td><td class="num">8252</td><td class="num">3.000</td><td><b>lasciar scadere</b></td><td><b>sinistra</b></td></tr><tr><td><span class="mono">0x87</span></td><td>Piattaforme</td><td class="num">4</td><td class="num">9719</td><td class="num">3.000</td><td><b>lasciar scadere</b></td><td><b>destra</b></td></tr><tr><td><span class="mono">0x87</span></td><td>Piattaforme</td><td class="num">39</td><td class="num">9726</td><td class="num">3.000</td><td><b>lasciar scadere</b></td><td><b>destra</b></td></tr><tr><td><span class="mono">0x84</span></td><td>Coni elettrici</td><td class="num">6</td><td class="num">5432</td><td class="num">2.200</td><td><b>energia</b></td><td><b>lasciar scadere</b> <i>o</i> <b>gi&ugrave;</b> <i>o</i> <b>gi&ugrave;+sinistra</b> <i>o</i> <b>gi&ugrave;+destra</b></td></tr><tr><td><span class="mono">0x85</span></td><td>Coni elettrici</td><td class="num">6</td><td class="num">6871</td><td class="num">2.200</td><td><b>energia</b></td><td><b>lasciar scadere</b> <i>o</i> <b>gi&ugrave;</b> <i>o</i> <b>gi&ugrave;+sinistra</b> <i>o</i> <b>gi&ugrave;+destra</b></td></tr><tr><td><span class="mono">0x88</span></td><td>Cani verdi</td><td class="num">5</td><td class="num">11160</td><td class="num">2.200</td><td><b>energia</b></td><td><b>su</b> <span class="min">3&ordf; fin.</span></td></tr><tr><td><span class="mono">0x89</span></td><td>Cani verdi</td><td class="num">5</td><td class="num">12310</td><td class="num">2.200</td><td><b>energia</b></td><td><b>su</b> <span class="min">3&ordf; fin.</span></td></tr><tr><td><span class="mono">0x9B</span></td><td>Sfere (corta)</td><td class="num">5</td><td class="num">3099</td><td class="num">1.206</td><td><b>su</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su+destra</b> <span class="min">2&ordf; fin.</span></td><td><b>gi&ugrave;</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>gi&ugrave;+destra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td><span class="mono">0x9C</span></td><td>Sfere (corta)</td><td class="num">5</td><td class="num">4351</td><td class="num">1.206</td><td><b>su</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>su+sinistra</b> <span class="min">2&ordf; fin.</span></td><td><b>gi&ugrave;</b> <span class="min">3&ordf; fin.</span> <i>o</i> <b>gi&ugrave;+sinistra</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td><span class="mono">0x8A</span></td><td>Palude</td><td class="num">5</td><td class="num">13451</td><td class="num">1.200</td><td><b>destra</b> <i>o</i> <b>su+destra</b></td><td><b>energia</b></td></tr><tr><td><span class="mono">0x8B</span></td><td>Palude</td><td class="num">5</td><td class="num">14607</td><td class="num">1.200</td><td><b>sinistra</b> <i>o</i> <b>su+sinistra</b></td><td><b>energia</b></td></tr><tr><td><span class="mono">0x99</span></td><td>Borf - finale ingresso</td><td class="num">3</td><td class="num">31184</td><td class="num">1.000</td><td><b>lasciar scadere</b></td><td><b>sinistra</b></td></tr><tr><td><span class="mono">0x90</span></td><td>Conigli</td><td class="num">4</td><td class="num">19440</td><td class="num">784</td><td><b>su</b></td><td><b>energia</b></td></tr><tr><td><span class="mono">0x91</span></td><td>Conigli</td><td class="num">4</td><td class="num">20455</td><td class="num">784</td><td><b>su</b></td><td><b>energia</b></td></tr><tr><td><span class="mono">0x9A</span></td><td>Borf - finale ingresso</td><td class="num">0</td><td class="num">31088</td><td class="num">700</td><td><b>lasciar scadere</b></td><td><b>su</b> <span class="min">2&ordf; fin.</span></td></tr><tr><td><span class="mono">0x9A</span></td><td>Borf - finale ingresso</td><td class="num">3</td><td class="num">31184</td><td class="num">396</td><td><b>lasciar scadere</b></td><td><b>sinistra</b></td></tr></tbody></table></div>
+<p>Il valore di una strada &egrave; il <b>cammino pi&ugrave; lungo</b> da l&igrave; in avanti <i>dentro il nodo</i>, senza attraversare i frammenti di morte e senza ripassare due volte dallo stesso: lo scontro con Borf ha degli anelli, e senza quel taglio il conto non finirebbe. Due indici sullo stesso record (<span class="mono">same_as</span>) sono lo stesso frammento e si contano una volta sola.</p>
+<pre>come e&#39; organizzato Space Ace (raschio della ROM A3)
+
+  scene      una SCENA e&#39; quasi sempre una COPPIA di nodi, dritto
+             e specchio; quale ti tocca lo decide il registro R.
+             Con flags &amp; 7 i due arrivano CONCATENATI, e il primo
+             si ferma prima del suo massimo perche&#39; passa la mano.
+  nodes      ogni nodo e&#39; una lista di FRAMMENTI (subnodes)
+  A00E       la cella di RAM con l&#39;id del nodo vivo
+  A00F       la cella di RAM con l&#39;indice del frammento vivo
+
+  frammento  fotogramma d&#39;ingresso, attesa, punti, e per ogni
+             gesto le finestre e le destinazioni; piu&#39; il
+             default_next, cioe&#39; dove si finisce lasciando scadere
+  punti      dalla tavola score_table_x2
+
+  IL FINALE  lo scontro (nodo 0x98) si rigioca DENTRO SE&#39; STESSO:
+             fr 28 -&gt; 43 (morte) -&gt; 50 -&gt; 0 -&gt; 3 ...
+             non passa dal nodo del rientro.  Cinque giri identici.</pre>
+<p><b>Le coppie concatenate</b>, e quanto vale ciascuna delle due stesure da sola. La prima servita non arriva mai al suo massimo: &egrave; il passaggio di mano, non una perdita.</p>
+<div class="scroll"><table><thead><tr><th>la scena</th><th>i due nodi</th><th class="num">massimo di ciascuno</th><th class="num">flags</th></tr></thead><tbody><tr><td>Sfere (corta)</td><td><span class="mono">0x9B</span> &middot; <span class="mono">0x9C</span></td><td class="num">4.020 &middot; 4.020</td><td class="num">1</td></tr><tr><td>Coni elettrici</td><td><span class="mono">0x84</span> &middot; <span class="mono">0x85</span></td><td class="num">0 &middot; 0</td><td class="num">1</td></tr><tr><td>Piattaforme</td><td><span class="mono">0x86</span> &middot; <span class="mono">0x87</span></td><td class="num">8.000 &middot; 8.000</td><td class="num">1</td></tr><tr><td>Cani verdi</td><td><span class="mono">0x88</span> &middot; <span class="mono">0x89</span></td><td class="num">6.800 &middot; 6.800</td><td class="num">1</td></tr><tr><td>Palude</td><td><span class="mono">0x8A</span> &middot; <span class="mono">0x8B</span></td><td class="num">7.800 &middot; 7.800</td><td class="num">1</td></tr><tr><td>Astronave</td><td><span class="mono">0x8C</span> &middot; <span class="mono">0x8D</span></td><td class="num">21.000 &middot; 21.000</td><td class="num">1</td></tr><tr><td>Tunnel</td><td><span class="mono">0x8E</span> &middot; <span class="mono">0x8F</span></td><td class="num">10.000 &middot; 10.000</td><td class="num">1</td></tr><tr><td>Conigli</td><td><span class="mono">0x90</span> &middot; <span class="mono">0x91</span></td><td class="num">11.000 &middot; 11.000</td><td class="num">1</td></tr><tr><td>Alter ego</td><td><span class="mono">0x92</span> &middot; <span class="mono">0x93</span></td><td class="num">20.000 &middot; 20.000</td><td class="num">1</td></tr><tr><td>Moto</td><td><span class="mono">0x94</span> &middot; <span class="mono">0x95</span></td><td class="num">36.084 &middot; 36.084</td><td class="num">1</td></tr><tr><td>Pattini e mare</td><td><span class="mono">0x96</span> &middot; <span class="mono">0x97</span></td><td class="num">89.390 &middot; 89.390</td><td class="num">1</td></tr><tr><td>Borf - finale ingresso</td><td><span class="mono">0x99</span> &middot; <span class="mono">0x9A</span></td><td class="num">10.968 &middot; 1.206</td><td class="num">9</td></tr></tbody></table></div>
+</section>
+<nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/il-campione/" class="qui"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>5 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>245 su 245</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
+<p class="stampa">phenoma.org/it/space-ace/a3/il-campione/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
