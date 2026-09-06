@@ -365,6 +365,20 @@ header{border-bottom-color:rgba(239,210,46,.34)}
 <h2>Come lo sappiamo</h2>
 <p>Niente di questa pagina viene da una partita guardata: tutti i numeri sono <b>contati dentro il programma della macchina</b>, e si ricalcolano da soli ogni volta che la pagina viene scritta. Il dettaglio &mdash; la forma dei record, come si conta una strada, perch&eacute; un&rsquo;uscita entra nel conto &mdash; sta in fondo, sotto <b>&laquo;come si legge nei byte&raquo;</b>.</p>
 <p>Le due prove che contano sono queste: il conto ha previsto il punteggio <b>prima</b> che la partita venisse giocata, due volte di fila; e i punti dove intervenire li aveva indicati, a memoria, chi il gioco lo conosce da trent&rsquo;anni &mdash; poi li abbiamo verificati uno per uno sui byte, e tornavano tutti.</p>
+<h2>E tutto questo vale anche in Europa</h2>
+<p>Questa pagina parla della revisione <b>A3</b>, americana. Il 6 settembre 2026 abbiamo preso <b>lo stesso libretto</b> &mdash; lo stesso file, senza cambiare un byte &mdash; e lo abbiamo dato al veggente sulla ROM <b>europea</b>.</p>
+<div class="nota"><span class="cap">Il conto, e il numero che &egrave; uscito</span><pre>  374.338   la partita perfetta, senza leech
++ 198.264   due giri dello scontro con Borf (2 &times; 99.132)
+  ─────────
+  <b>572.602</b>   &#9733; e questo &egrave; quello che ha fatto la macchina europea</pre><p>Due giri invece di quattro perch&eacute; l&rsquo;abbiamo lanciata con <b>tre vite</b> invece di cinque. E <b>572.602</b> non &egrave; un numero qualunque: &egrave; il <b>record che Marco Marabelli ha pubblicato</b> dal suo cabinato europeo.</p><p>&rArr; Un conto fatto sui byte <b>americani</b>, che esce dalla ROM <b>europea</b>, e coincide con la misura di un <b>cabinato vero</b>. Tre strade indipendenti sullo stesso numero.</p></div>
+<h3>Perch&eacute; lo stesso spartito si suona su tutte e due</h3>
+<p>Non &egrave; un caso fortunato: i raschi lo dicevano prima. Le <b>tre scalette</b> di Space Ace sono identiche nelle due macchine, carta per carta &mdash; l&rsquo;Europa le numera soltanto senza lo <span class="mono">0x80</span>:</p>
+<div class="scroll"><table><thead><tr><th>abilit&agrave;</th><th class="num">quante scene</th><th></th></tr></thead><tbody><tr><td>cadet <span class="dim">/ in Europa</span> EASY</td><td class="num">10</td><td class="dim">le stesse dieci</td></tr><tr><td>captain <span class="dim">/</span> MEDIUM</td><td class="num">11</td><td class="dim">le stesse undici</td></tr><tr><td class="punta"><b>Space Ace</b> <span class="dim">/</span> <b>HARD</b></td><td class="num"><b>13</b></td><td><b>le stesse tredici</b></td></tr></tbody></table></div>
+<div class="nota freddo"><span class="cap">La stessa lista, due nomi</span><p>In America quella lista si chiama <b>Space Ace</b>; in Europa, sullo schermo, si chiama <b>HARD</b>. &Egrave; la stessa cosa &mdash; le stesse tredici carte, nello stesso ordine.</p><p>&rArr; Ed &egrave; il pezzo che mancava per capire la descrizione di Marabelli. Lui scrive <i>&laquo;Gameplay in "Hard" level&raquo;</i>, noi scrivevamo <i>&laquo;abilit&agrave; Space Ace&raquo;</i>, e sembravano due tarature diverse. <b>Parlavamo della stessa partita senza saperlo.</b></p></div>
+<h3>Che cosa questo prova, e che cosa no</h3>
+<p>&#9989; <b>Prova</b> che tutto quello che sta scritto qui sopra &mdash; i bivi, la legge del rinvio, il censimento dell&rsquo;energia, il leech, il conto dei 99.132 a giro &mdash; <b>vale parola per parola anche sulla revisione europea</b>. Non perch&eacute; lo diciamo noi: perch&eacute; lo stesso identico spartito, dato a quella macchina, ci ha suonato sopra lo stesso conto.</p>
+<p>&#10060; <b>Non prova</b> che le due ROM siano identiche. Non lo sono, e non lo abbiamo misurato. Quello che abbiamo misurato &egrave; che <b>la parte di gioco che il Campione tocca</b> &mdash; scene, frammenti, finestre, punteggi &mdash; &egrave; la stessa.</p>
+<p class="min">&#9888; E per arrivarci abbiamo dovuto riparare una cecit&agrave; <b>nostra</b>, non della macchina: il veggente fotografava un nodo prima che la ROM gli avesse scritto l&rsquo;attesa, e con attesa zero scartava ogni finestra. Succedeva su una mossa sola &mdash; la sinistra del frammento 20 dello scontro finale, che apre al tick <b>80 su 101</b>, la pi&ugrave; tardiva di tutto il combattimento &mdash; e solo in Europa, dove i tempi del PAL facevano cadere l&rsquo;occhiata nel momento sbagliato.</p>
 <h2>Guardalo succedere</h2>
 <p>Quello che c&rsquo;è scritto qui sopra viene dai byte. Questi video lo fanno vedere <b>dalla macchina che lo fa</b>, con il veggente che gioca al posto nostro e i pannelli accesi: sono la stessa cosa provata in un altro modo.</p>
 <ul class="video">
@@ -406,7 +420,7 @@ header{border-bottom-color:rgba(239,210,46,.34)}
 <li><a href="/it/space-ace/a3/il-campione/" class="qui"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>5 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>269 su 269</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>5 settembre 2026</b>, aggiornata il <b>6 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>270 su 270</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
 <p class="stampa">phenoma.org/it/space-ace/a3/il-campione/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
