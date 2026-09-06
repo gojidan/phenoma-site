@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Esh's Aurunmilla — Phenoma</title>
-<meta name="description" content="Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta.">
+<title>Gli interruttori che nessuno doveva toccare</title>
+<meta name="description" content="&lt;p class="tesi"&gt;In tre di queste macchine, tenendo premuti tre comandi insieme, le vite smettono di calare. Non &amp;egrave; un difetto e non l&amp;rsquo;ha inventato un giocatore: &amp;egrave; codice scritto in fabbrica, e si trova cercando la sua forma.&lt;/p&gt;">
 <style>
 :root{
   --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
@@ -299,46 +299,82 @@ h1.marchione + .tesi{font-size:21px}
     color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
   .timbro{border-bottom-color:#BFBFBF}
 }
-body{border-top-color:#C7C7C7}
-.gioco{color:#C7C7C7}
-.gioco a:hover{border-bottom-color:#C7C7C7}
-.dettaglio{color:#8A8A8A}
-.barra{border-bottom-color:rgba(199,199,199,.42)}
-header{border-bottom-color:rgba(199,199,199,.34)}
-.timbro .colore b{color:#8A8A8A;font-weight:600}
-.timbro .colore .mono{color:inherit}
-@media print{body{border-top:0}
-  .gioco{color:#111}.dettaglio{color:#555}
-  .timbro .colore b{color:#111}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><span class="qui">Esh&rsquo;s Aurunmilla</span></nav></div>
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/sequenze/">Le sequenze di gioco</a><span class="sep">/</span><span class="qui">i trucchi lasciati dalla fabbrica</span></nav></div>
 <header>
-  <p class="gioco">Esh&rsquo;s Aurunmilla</p><p class="dettaglio">Funai, 1984</p>
-  <h1>Esh&rsquo;s Aurunmilla</h1>
-  <p class="tesi">Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta.</p>
+  <p class="gioco">Gli interruttori che nessuno doveva toccare</p><p class="dettaglio">Otto programmi del roster, setacciati uno per uno</p>
+  <h1><h1>Gli interruttori che nessuno doveva toccare</h1></h1>
+  <p class="tesi"><p class="tesi">In tre di queste macchine, tenendo premuti <b>tre comandi insieme</b>, le vite smettono di calare. Non &egrave; un difetto e non l&rsquo;ha inventato un giocatore: &egrave; <b>codice scritto in fabbrica</b>, e si trova cercando la sua forma.</p></p>
 </header>
-<p>Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta. Qui c&rsquo;è quella di fabbrica.</p>
-<div class="stanze">
-<a class="stanza" href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">I diciassette giri</span><span class="che">Nessun sorteggio: <b>una pagina sola</b> di diciassette righe, e un segnaposto che cammina senza tornare indietro. Il gioco non finisce perché <b>finire non era previsto</b>.</span></a>
-<a class="stanza" href="/it/eshs-aurunmilla/grafica/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">Tre chip sovrapposti</span><span class="che">Tre chip sovrapposti, uno per bit: ogni pixel prende un valore da zero a sette. Cinquecentododici tessere, e <b>sedici tavolozze lette dalla PROM della scheda</b> &mdash; quello che ancora manca non &egrave; come si leggono, &egrave; <b>quale tocca a quale figura</b>.</span></a>
-</div>
-<h2>Come sono fatti questi indirizzi</h2>
-<p>Qui l&rsquo;indirizzo, dopo il nome del gioco, va <b>direttamente alla pagina</b> &mdash; <span class="mono">sequenza</span>, <span class="mono">grafica</span> &mdash; senza un segmento di macchina in mezzo: di questo titolo pubblichiamo <b>una ROM sola</b>, e non c&rsquo;è ancora niente da cui distinguerla. Dove invece le macchine pubblicate sono più d&rsquo;una, come in <a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a>, in mezzo compare il nome di quella che le distingue: una revisione, un continente, un fabbricante.</p>
+<p>Dei trucchi dei giochi laserdisc si racconta molto, e quasi niente porta un indirizzo. Questa pagina non li raccoglie: li <b>cerca nei byte</b>, con un setaccio che riconosce il meccanismo. Quello che il setaccio non trova, qui non c&rsquo;&egrave;.</p>
+<h2>La forma del trucco: sette istruzioni</h2>
+<p>Il meccanismo &egrave; sempre lo stesso, e sta tutto in un pugno di istruzioni. Questa &egrave; la versione di Dragon&rsquo;s Lair, e le altre le riconoscerete:</p>
+<pre>16AD  <b>21 0A A0</b>  LD HL,A00A     la cella del flag
+16B0  <b>CB 86</b>     RES 0,(HL)     di regola spento
+16B2  <b>3A 08 C0</b>  LD A,(C008)    il byte GREZZO dei comandi
+16B5  <b>FE EA</b>     CP EA          &#9733; la combinazione, in un confronto
+16B7  <b>20 0B</b>     JR NZ,16C4     non &egrave; lei: si prosegue
+16B9  <b>CB C6</b>     SET 0,(HL)     &#9733; &egrave; lei: alza il flag</pre>
+<p>E da un&rsquo;altra parte, dove le vite calano, quel flag fa saltare il decremento. Tutto qui.</p>
+<div class="nota"><span class="cap">Non &egrave; una sequenza: &egrave; un confronto</span><p>Non c&rsquo;&egrave; niente da imparare a memoria e niente da fare a tempo. La ROM guarda il <b>byte grezzo dei comandi</b> e lo confronta con un numero: o in quell&rsquo;istante stai tenendo premuti esattamente quei tre, o non succede nulla. &Egrave; per questo che un trucco cos&igrave; si pu&ograve; <b>cercare</b>: ha una forma, e la forma si setaccia.</p></div>
+<h2>Il setaccio, passato su tutto il roster</h2>
+<p>Otto programmi, cercati uno per uno con lo stesso filtro &mdash; senza sapere in anticipo n&eacute; la cella, n&eacute; la porta, n&eacute; la combinazione: quelle si leggono da quello che si trova.</p>
+<div class="scroll"><table><thead><tr><th>gioco</th><th>macchina</th><th>il setaccio trova</th><th>che cosa tenere premuto</th></tr></thead><tbody><tr><td class="punta">Dragon's Lair</td><td class="dim">F2 &middot; Cinematronics 1983</td><td><b>&#9733; s&igrave;</b> &mdash; <span class="mono">CP EA</span> a <span class="mono">16B5</span></td><td>su + sinistra + il pulsante</td></tr><tr><td>Dragon's Lair</td><td class="dim">europea &middot; Atari</td><td>niente</td><td>&mdash;</td></tr><tr><td>Dragon's Lair</td><td class="dim">italiana &middot; Sidam</td><td>niente</td><td>&mdash;</td></tr><tr><td class="punta">Space Ace</td><td class="dim">A3 &middot; Cinematronics 1984</td><td><b>&#9733; s&igrave;</b> &mdash; <span class="mono">CP E9</span> a <span class="mono">175C</span></td><td>gi&ugrave; + sinistra + il pulsante</td></tr><tr><td class="punta">Space Ace</td><td class="dim">europea &middot; Atari</td><td><b>&#9733; s&igrave;</b> &mdash; <span class="mono">CP E9</span> a <span class="mono">25A9</span></td><td>gi&ugrave; + sinistra + il pulsante</td></tr><tr><td>Super Don Quix-ote</td><td class="dim">Universal 1984</td><td>niente</td><td>&mdash;</td></tr><tr><td>Super Don Quix-ote</td><td class="dim">a scene corte</td><td>niente</td><td>&mdash;</td></tr><tr><td>Esh's Aurunmilla</td><td class="dim">Funai 1984</td><td>niente</td><td>&mdash;</td></tr></tbody></table></div>
+<p>&rArr; <b>Tre su otto.</b> E sono tutti e tre lo stesso trucco: stessa forma, stessa cella del flag, stessa idea. Chi ha scritto Dragon&rsquo;s Lair e chi ha scritto Space Ace, in quella stanza, facevano la stessa cosa.</p>
+<h2>Che cosa tenere premuto, e perch&eacute;</h2>
+<p>Il byte dei comandi &egrave; <b>attivo-basso</b>: un comando premuto mette il suo bit a <b>zero</b>. Quindi la combinazione si legge dal numero del confronto, guardando dove sono gli zeri.</p>
+<div class="scroll"><table><thead><tr><th>bit</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td class="dim">comando</td><td>su</td><td>gi&ugrave;</td><td>sinistra</td><td>destra</td><td>il pulsante</td></tr><tr class="punta"><td class="dim mono">EA</td><td class="mono">0</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td><td class="mono">0</td></tr><tr class="punta"><td class="dim mono">E9</td><td class="mono">1</td><td class="mono">0</td><td class="mono">0</td><td class="mono">1</td><td class="mono">0</td></tr></tbody></table></div>
+<div class="fig"><p class="didascalia"><b>Dragon&rsquo;s Lair</b>: SU + SINISTRA + SPADA<br><b>Space Ace</b>: GI&Ugrave; + SINISTRA + FUOCO</p></div>
+<p>&rArr; Fra le due cambia <b>un gesto solo</b>: su invece di gi&ugrave;. Stessa sinistra, stesso pulsante. Nel byte sono <b>due</b> i bit che si muovono, perch&eacute; uno si alza e l&rsquo;altro si abbassa.</p>
+<p class="min">&#9888; Il cancello: il flag viene guardato solo se il nodo di scena corrente lo permette (<span class="mono">BIT 6,(IY+00)</span>). Non &egrave; un interruttore valido in ogni istante della partita.</p>
+<h2>E qui il trucco racconta una storia di geografia</h2>
+<p>Le due macchine europee sono state fatte in modo diverso, e il trucco lo dice meglio di qualunque confronto: <b>Space Ace se lo &egrave; portato dietro, Dragon&rsquo;s Lair l&rsquo;ha perso per strada.</b></p>
+<pre>  SPACE ACE A3 (USA)            SPACE ACE EUROPEO
+  1754  LD HL,<b>A00A</b>            25A1  LD HL,<b>A20A</b>    la RAM, traslata
+  1757  RES 0,(HL)              25A4  RES 0,(HL)
+  1759  LD A,(<b>C008</b>)            25A6  LD A,(<b>E080</b>)    altra porta
+  175C  <b>CP E9</b>                  25A9  <b>CP E9</b>          &#9733; la stessa
+  175E  JR NZ,176B              25AB  JR NZ,25B8
+  1760  SET 0,(HL)              25AD  SET 0,(HL)
+  1764  EXX                     25B1  EXX
+  1765  BIT 6,(IY+00)           25B2  BIT 6,(IY+00)
+  1769  JR NZ,1754              25B6  JR NZ,25A1</pre>
+<p>La stessa routine, istruzione per istruzione. Cambiano due cose e nessuna delle due &egrave; una scelta: l&rsquo;indirizzo in memoria e la porta da cui si leggono i comandi &mdash; cio&egrave; il <b>ferro</b>, non il gioco.</p>
+<div class="nota caldo"><span class="cap">Mentre in Dragon&rsquo;s Lair non c&rsquo;&egrave;</span><p>Nella ROM europea di Dragon&rsquo;s Lair il confronto <span class="mono">CP EA</span> <b>non compare nemmeno una volta</b>. N&eacute; in quella italiana della Sidam.</p><p>&rArr; &Egrave; la stessa cosa che si legge dappertutto, quando si confrontano le due traversate: <b>Space Ace in Europa &egrave; la macchina americana con la RAM spostata; Dragon&rsquo;s Lair &egrave; un altro programma.</b> Qui lo dice un trucco, che nessuno aveva motivo di riscrivere.</p></div>
+<h2>E poi ci sono le leve, che sono un&rsquo;altra cosa</h2>
+<p>Il trucco sta nel programma. Le <b>leve</b> stanno sulla scheda, e l&rsquo;operatore le poteva girare col cabinato aperto: sono documentate nei manuali, non sono un segreto. Ma una di quelle posizioni, nei manuali, di solito non si nomina.</p>
+<div class="scroll"><table><thead><tr><th>macchina</th><th>le vite, sulle leve</th></tr></thead><tbody><tr class="punta"><td>Dragon&rsquo;s Lair F2</td><td>tre / cinque / <b>infinite</b></td></tr><tr class="punta"><td>Space Ace A3</td><td>tre / cinque / <b>infinite</b></td></tr><tr><td>Dragon&rsquo;s Lair europeo</td><td>tre / cinque</td></tr><tr><td>Space Ace europeo</td><td>tre / cinque</td></tr><tr class="punta"><td>Super Don Quix-ote</td><td>tre / quattro / cinque / due, e una leva a parte per le <b>infinite</b></td></tr></tbody></table></div>
+<p>&rArr; Le schede americane hanno un interruttore che quelle europee non hanno. E in Super Don Quix-ote quella leva non conta le vite: <b>salta proprio l&rsquo;istruzione che le fa calare</b>.</p>
+<p class="min">&#9888; I valori di fabbrica delle leve, qui, vengono dai nostri file di configurazione &mdash; per le macchine americane da fonti di terzi, per le europee <b>ricostruiti da noi</b>. La fonte che conta sono i manuali originali, e su quelli il confronto &egrave; da fare.</p>
+<h2>E dove non c&rsquo;&egrave;, ce lo siamo fatto noi</h2>
+<p>Sulla Dragon&rsquo;s Lair europea non c&rsquo;&egrave; n&eacute; il trucco n&eacute; la leva. Per studiare il mazzo ci servivano partite lunghissime, e allora le vite infinite ce le siamo <b>fabbricate</b>: novantanove, scritte a mano nella cella che le tiene.</p>
+<div class="nota freddo"><span class="cap">E questa &egrave; roba nostra, non del 1983</span><p>Va detto forte, perch&eacute; &egrave; la differenza fra un atlante e una collezione di voci: <b>tutto quello che sta pi&ugrave; in su in questa pagina lo ha messo la fabbrica</b>; questo no. &Egrave; una nostra <b>addolcitura</b>, dichiarata, e serve a guardare la macchina &mdash; non a giocarci meglio.</p><p>&rArr; Un trucco del 1983 si <b>trova</b>. Il nostro si <b>ammette</b>.</p></div>
 <section class="tecnico">
-<h2>Le macchine di questo titolo</h2>
+<h2>Le carte in tavola</h2>
 <ul>
-<li><code>/it/eshs-aurunmilla/sequenza/</code> &mdash; Esh&rsquo;s Aurunmilla &middot; Funai 1984</li>
-<li><code>/it/eshs-aurunmilla/grafica/</code> &mdash; Esh&rsquo;s Aurunmilla &middot; Funai 1984</li>
+<li><b>Dragon's Lair</b> <span class="dim">(F2 &middot; Cinematronics 1983)</span>: confronto <span class="mono">CP EA</span> a <span class="mono">16B5</span>, flag <span class="mono">A00A</span> bit 0, comandi letti da <span class="mono">C008</span> &mdash; su + sinistra + il pulsante</li>
+<li><b>Space Ace</b> <span class="dim">(A3 &middot; Cinematronics 1984)</span>: confronto <span class="mono">CP E9</span> a <span class="mono">175C</span>, flag <span class="mono">A00A</span> bit 0, comandi letti da <span class="mono">C008</span> &mdash; gi&ugrave; + sinistra + il pulsante</li>
+<li><b>Space Ace</b> <span class="dim">(europea &middot; Atari)</span>: confronto <span class="mono">CP E9</span> a <span class="mono">25A9</span>, flag <span class="mono">A20A</span> bit 0, comandi letti da <span class="mono">E080</span> &mdash; gi&ugrave; + sinistra + il pulsante</li>
 </ul>
-<p>Il nome dell&rsquo;insieme ROM &mdash; quello con cui la macchina è catalogata &mdash; sta scritto in fondo a ogni pagina, nella sezione &laquo;come si legge nei byte&raquo;. Non lo mettiamo nell&rsquo;indirizzo perché annidato darebbe cose come <span class="mono">esh/esh</span>.</p>
+<p>Il setaccio &egrave; <span class="mono">tools/censimento_trucchi.py</span>: cerca la sequenza <span class="mono">LD HL,nn / RES 0,(HL) / LD A,(nn) / CP nn / JR NZ / SET 0,(HL)</span> e riporta le tre parti variabili leggendole dai byte. Le macchine dove non trova niente sono <b>Dragon's Lair <span class="dim">(europea &middot; Atari)</span>, Dragon's Lair <span class="dim">(italiana &middot; Sidam)</span>, Super Don Quix-ote <span class="dim">(Universal 1984)</span>, Super Don Quix-ote <span class="dim">(a scene corte)</span>, Esh's Aurunmilla <span class="dim">(Funai 1984)</span></b>.</p>
+<p>Il flag alzato fa saltare il decremento delle vite; il cancello per-nodo &egrave; <span class="mono">BIT 6,(IY+00)</span>. Lo scavo originale, che cercava anche add-vite, add-credito, bonus-life e stringhe nascoste e <b>non ne ha trovati</b>, sta in <b>SCAVO_TESORI.md</b>.</p>
 </section>
-
+<nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+</ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>11</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>6 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>269 su 269</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; <span class="mono">j1_rgb.bin</span> non ancora letta</b></span></div>
-<p class="stampa">phenoma.org/it/eshs-aurunmilla/</p>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>6 settembre 2026</b>, aggiornata il <b>6 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>269 su 269</b></span></div>
+<p class="stampa">phenoma.org/it/trucchi/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>
