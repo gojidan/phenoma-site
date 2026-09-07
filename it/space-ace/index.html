@@ -99,6 +99,32 @@ em{color:var(--tenue);font-style:italic}
 .sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
   flex:0 0 auto}
 
+/* --- la legenda dei nomi delle scene (7 set) --- */
+.nomi{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--acqua);padding:18px 22px;margin:26px 0}
+.nomi .griglia{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 24px}
+.nomi .griglia div{display:flex;gap:11px;align-items:baseline;padding:5px 0;
+  font-size:15px;line-height:1.3;border-top:1px solid var(--bordo)}
+.nomi .griglia div:first-child{border-top:0}
+.nomi .griglia b{font-family:var(--mono);font-size:11px;color:var(--acqua);
+  flex:0 0 auto;letter-spacing:.08em;min-width:2.6em}
+.nomi .forse{color:var(--tenue);font-style:normal;font-size:.85em}
+.nomi .coda{margin:15px 0 0;font-size:14px;color:var(--tenue);max-width:70ch}
+
+/* --- la STRADA di una scena: i gesti in fila (7 set) --- */
+.strada{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.strada i{font-style:normal;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.04em;padding:2px 7px;border:1px solid var(--bordo);
+  color:var(--tenue);white-space:nowrap;background:var(--piano2)}
+.strada i.paga{border-color:var(--oro-cupo);color:var(--oro)}
+.strada i.muta{border-style:dashed;color:var(--tenue2);background:none}
+.strada i b{font-weight:400;color:var(--inchiostro)}
+.strada i.paga b{color:var(--oro)}
+.strada s{text-decoration:none;color:var(--tenue2);padding:0 1px}
+.coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
+  max-width:74ch}
+
 /* --- riquadri --- */
 .nota{background:var(--piano);border:1px solid var(--bordo);
   border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
@@ -324,7 +350,7 @@ h1.marchione + .tesi{font-size:21px}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>5 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>270 su 270</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>5 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>287 su 287</b></span></div>
 <p class="stampa">phenoma.org/it/space-ace/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
