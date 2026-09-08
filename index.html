@@ -167,7 +167,18 @@ ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
 ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
   margin-left:auto;flex:0 0 auto}
 ol.mosse li.bivio{background:rgba(190,150,60,.05)}
-ol.mosse li.bivio .fr::after{content:' a0c6';color:var(--oro-cupo)}
+/* ⛔ 8 set 2026, sera — Alan, leggendo: <<un rombo con ? dentro e poi dei
+   numeri arancioni, dopo il numero di frame... non c'e' sempre, ogni tanto>>.
+   Era il segno del bivio, disegnato col carattere U+25C6: dove quel glifo
+   manca il browser mette la scatoletta col codice esadecimale dentro, e la
+   colora d'arancione perche' il colore glielo davamo noi.  E tornava <<ogni
+   tanto>> perche' sta solo sulle righe che SONO un bivio.
+   ⇒ il rombo adesso e' un quadratino ruotato: niente font, niente sorprese. */
+i.rombo{display:inline-block;width:5px;height:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle;flex:0 0 auto}
+ol.mosse li.bivio .fr::after{content:'';display:inline-block;width:5px;
+  height:5px;margin-left:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle}
 .legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
   font-size:13px;color:var(--tenue)}
 .legenda-mosse span{display:inline-flex;align-items:center;gap:6px}

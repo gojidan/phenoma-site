@@ -167,7 +167,18 @@ ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
 ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
   margin-left:auto;flex:0 0 auto}
 ol.mosse li.bivio{background:rgba(190,150,60,.05)}
-ol.mosse li.bivio .fr::after{content:' a0c6';color:var(--oro-cupo)}
+/* ⛔ 8 set 2026, sera — Alan, leggendo: <<un rombo con ? dentro e poi dei
+   numeri arancioni, dopo il numero di frame... non c'e' sempre, ogni tanto>>.
+   Era il segno del bivio, disegnato col carattere U+25C6: dove quel glifo
+   manca il browser mette la scatoletta col codice esadecimale dentro, e la
+   colora d'arancione perche' il colore glielo davamo noi.  E tornava <<ogni
+   tanto>> perche' sta solo sulle righe che SONO un bivio.
+   ⇒ il rombo adesso e' un quadratino ruotato: niente font, niente sorprese. */
+i.rombo{display:inline-block;width:5px;height:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle;flex:0 0 auto}
+ol.mosse li.bivio .fr::after{content:'';display:inline-block;width:5px;
+  height:5px;margin-left:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle}
 .legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
   font-size:13px;color:var(--tenue)}
 .legenda-mosse span{display:inline-flex;align-items:center;gap:6px}
@@ -398,7 +409,7 @@ header{border-bottom-color:rgba(239,210,46,.34)}
   <h1>La partita &mdash; Captain</h1>
   <p class="tesi">Tutte le mosse di una partita a <b>Captain</b> &mdash; quella di mezzo delle tre difficolt&agrave; &mdash; scena per scena, nell&rsquo;ordine in cui il gioco te le serve. Con il <b>fotogramma</b> del disco e la <b>finestra in tick</b> di ognuna: 281 mosse, contate sui byte del programma.</p>
 </header>
-<div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9679; FUOCO</span> il pulsante</span><span><span class="g energia">&#9889; ENERGIA</span> lo stesso pulsante, quando il film chiede l&rsquo;energia</span><span style="color:var(--oro-cupo)">&#9670; un bivio: qui si poteva fare altro</span><span><s style="text-decoration:none;color:var(--brace)">morte</s> premi giusto ma nell&rsquo;attimo sbagliato</span></div>
+<div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9679; FUOCO</span> il pulsante</span><span><span class="g energia">&#9889; ENERGIA</span> lo stesso pulsante, quando il film chiede l&rsquo;energia</span><span><i class="rombo"></i> un bivio: qui si poteva fare altro</span><span><s style="text-decoration:none;color:var(--brace)">morte</s> premi giusto ma nell&rsquo;attimo sbagliato</span></div>
 <p class="punta">Ogni scena arriva in <b>due stesure</b> &mdash; dritta e specchio &mdash; e quale delle due ti tocchi lo decide un registro che gira da solo. Qui ci sono <b>tutte e due</b>, perch&eacute; la coreografia &egrave; riflessa ma le finestre no: i fotogrammi sono diversi.</p>
 <p>Il numero sotto <b>fotogramma</b> &egrave; il punto del disco in cui atterri; i <b>tick</b> sono contati da l&igrave;, e un tick &egrave; <b>un fotogramma NTSC</b> &mdash; un cinquantanovesimo di secondo scarso. La finestra in oro &egrave; quella che ti fa proseguire.</p>
 <div class="partita"><h3>1. Rapimento Kimberly</h3>
@@ -481,7 +492,7 @@ header{border-bottom-color:rgba(239,210,46,.34)}
 <li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>3</b></span><span>Pubblicata il <b>8 settembre 2026</b>, aggiornata il <b>8 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>397 su 397</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>4</b></span><span>Pubblicata il <b>8 settembre 2026</b>, aggiornata il <b>8 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>397 su 397</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
 <p class="stampa">phenoma.org/it/space-ace/a3/la-partita-captain/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
