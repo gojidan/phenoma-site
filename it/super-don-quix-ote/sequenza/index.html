@@ -125,6 +125,55 @@ em{color:var(--tenue);font-style:italic}
 .coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
   max-width:74ch}
 
+/* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
+.partita{margin:0 0 34px}
+.partita>h3{margin:30px 0 4px;font-size:20px}
+.partita .stesura{margin:16px 0 0;border:1px solid var(--bordo);
+  border-radius:3px;background:var(--piano);overflow:hidden}
+.partita .testa{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  padding:9px 14px;background:var(--piano2);border-bottom:1px solid var(--bordo)}
+.partita .testa b{font-size:15px}
+.partita .testa .id{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  letter-spacing:.08em}
+.partita .testa .verso{font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;
+  border:1px solid var(--bordo);color:var(--tenue)}
+.partita .testa .verso.rov{border-color:var(--acqua);color:var(--acqua)}
+.partita .testa .pt{margin-left:auto;font-family:var(--mono);font-size:12px;
+  color:var(--oro)}
+ol.mosse{list-style:none;margin:0;padding:0}
+ol.mosse li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  padding:7px 14px;border-top:1px solid var(--bordo);font-size:14px}
+ol.mosse li:first-child{border-top:0}
+ol.mosse .fr{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  flex:0 0 4.4em;letter-spacing:.04em}
+ol.mosse .g{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+  min-width:8.4em;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+ol.mosse .g em{font-style:normal;font-size:19px;line-height:1;
+  color:var(--inchiostro)}
+/* ⭐ il pulsante e' UNO SOLO: a cambiare e' quello che il film ti chiede.
+   Percio' il FUOCO e l'ENERGIA hanno due colori, e la stessa forma. */
+ol.mosse .g.fuoco,ol.mosse .g.energia{padding:1px 9px;border-radius:11px;
+  border:1px solid;font-weight:700}
+ol.mosse .g.fuoco{color:var(--brace);border-color:var(--brace)}
+ol.mosse .g.energia{color:var(--acqua);border-color:var(--acqua);
+  background:rgba(90,170,190,.09)}
+ol.mosse .g.attesa{color:var(--tenue2);font-style:italic}
+ol.mosse .fin{font-family:var(--mono);font-size:11.5px;color:var(--oro);
+  flex:0 0 auto;min-width:8.6em}
+ol.mosse .altre{font-family:var(--mono);font-size:10.5px;color:var(--tenue2);
+  flex:1 1 auto}
+ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
+ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
+  margin-left:auto;flex:0 0 auto}
+ol.mosse li.bivio{background:rgba(190,150,60,.05)}
+ol.mosse li.bivio .fr::after{content:' a0c6';color:var(--oro-cupo)}
+.legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
+  font-size:13px;color:var(--tenue)}
+.legenda-mosse span{display:inline-flex;align-items:center;gap:6px}
+.catena{margin:10px 0 0;padding:7px 14px;font-size:13px;color:var(--acqua);
+  background:rgba(90,170,190,.07);border-top:1px solid var(--bordo)}
+
 /* --- riquadri --- */
 .nota{background:var(--piano);border:1px solid var(--bordo);
   border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
@@ -410,10 +459,14 @@ header{border-bottom-color:rgba(0,255,219,.34)}
 <li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
 <li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
 <li><a href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/come-e-fatta-una-scena/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>Com&rsquo;&egrave; fatta una scena</a></li>
+<li><a href="/it/space-ace/a3/la-partita-cadet/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Cadet</a></li>
+<li><a href="/it/space-ace/a3/la-partita-captain/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Captain</a></li>
+<li><a href="/it/space-ace/a3/la-partita/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Space Ace</a></li>
 <li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>17</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>7 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>365 su 365</b></span><span class="colore"><span class="et">il colore</span><b>dal vero &mdash; <span class="mono">sdq-cprm.bin</span></b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>17</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>7 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>397 su 397</b></span><span class="colore"><span class="et">il colore</span><b>dal vero &mdash; <span class="mono">sdq-cprm.bin</span></b></span></div>
 <p class="stampa">phenoma.org/it/super-don-quix-ote/sequenza/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

@@ -125,6 +125,55 @@ em{color:var(--tenue);font-style:italic}
 .coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
   max-width:74ch}
 
+/* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
+.partita{margin:0 0 34px}
+.partita>h3{margin:30px 0 4px;font-size:20px}
+.partita .stesura{margin:16px 0 0;border:1px solid var(--bordo);
+  border-radius:3px;background:var(--piano);overflow:hidden}
+.partita .testa{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  padding:9px 14px;background:var(--piano2);border-bottom:1px solid var(--bordo)}
+.partita .testa b{font-size:15px}
+.partita .testa .id{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  letter-spacing:.08em}
+.partita .testa .verso{font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;
+  border:1px solid var(--bordo);color:var(--tenue)}
+.partita .testa .verso.rov{border-color:var(--acqua);color:var(--acqua)}
+.partita .testa .pt{margin-left:auto;font-family:var(--mono);font-size:12px;
+  color:var(--oro)}
+ol.mosse{list-style:none;margin:0;padding:0}
+ol.mosse li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  padding:7px 14px;border-top:1px solid var(--bordo);font-size:14px}
+ol.mosse li:first-child{border-top:0}
+ol.mosse .fr{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  flex:0 0 4.4em;letter-spacing:.04em}
+ol.mosse .g{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+  min-width:8.4em;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+ol.mosse .g em{font-style:normal;font-size:19px;line-height:1;
+  color:var(--inchiostro)}
+/* ⭐ il pulsante e' UNO SOLO: a cambiare e' quello che il film ti chiede.
+   Percio' il FUOCO e l'ENERGIA hanno due colori, e la stessa forma. */
+ol.mosse .g.fuoco,ol.mosse .g.energia{padding:1px 9px;border-radius:11px;
+  border:1px solid;font-weight:700}
+ol.mosse .g.fuoco{color:var(--brace);border-color:var(--brace)}
+ol.mosse .g.energia{color:var(--acqua);border-color:var(--acqua);
+  background:rgba(90,170,190,.09)}
+ol.mosse .g.attesa{color:var(--tenue2);font-style:italic}
+ol.mosse .fin{font-family:var(--mono);font-size:11.5px;color:var(--oro);
+  flex:0 0 auto;min-width:8.6em}
+ol.mosse .altre{font-family:var(--mono);font-size:10.5px;color:var(--tenue2);
+  flex:1 1 auto}
+ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
+ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
+  margin-left:auto;flex:0 0 auto}
+ol.mosse li.bivio{background:rgba(190,150,60,.05)}
+ol.mosse li.bivio .fr::after{content:' a0c6';color:var(--oro-cupo)}
+.legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
+  font-size:13px;color:var(--tenue)}
+.legenda-mosse span{display:inline-flex;align-items:center;gap:6px}
+.catena{margin:10px 0 0;padding:7px 14px;font-size:13px;color:var(--acqua);
+  background:rgba(90,170,190,.07);border-top:1px solid var(--bordo)}
+
 /* --- riquadri --- */
 .nota{background:var(--piano);border:1px solid var(--bordo);
   border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
@@ -338,7 +387,7 @@ h1.marchione + .tesi{font-size:21px}
   <h1>Le sequenze di gioco</h1>
   <p class="tesi">Cinque macchine, cinque modi diversi di rispondere alla stessa domanda: <b>che cosa ti dà da giocare, e come lo decide.</b> Tutto letto dai byte delle ROM originali.</p>
 </header>
-<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>8 settembre 2026</b> &middot; 20 pagine.</p>
+<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>8 settembre 2026</b> &middot; 24 pagine.</p>
 <p>Sono cinque macchine da sala degli anni Ottanta, tutte costruite sullo stesso principio: un <b>film su laserdisc</b> e una ROM che decide quale pezzo farti vedere. Ma su una domanda si comportano in cinque modi completamente diversi, e la domanda è questa:</p>
 <div class="nota"><p style="font-size:19px"><b>Quando infili il gettone, che cosa ti dà da giocare la macchina &mdash; e come lo decide?</b></p></div>
 <p>Molte di queste risposte sono <b>pubblicate qui per la prima volta</b>, e le abbiamo lette <b>dai byte delle ROM originali</b>: dentro la memoria della macchina, dove il progettista le ha scritte.</p>
@@ -350,14 +399,18 @@ h1.marchione + .tesi{font-size:21px}
 <a class="stanza" href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">I diciassette giri</span><span class="che">Nessun sorteggio: <b>una pagina sola</b> di diciassette righe, e un segnaposto che cammina senza tornare indietro. Il gioco non finisce perché <b>finire non era previsto</b>.</span></a>
 <a class="stanza" href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span><span class="come">Le tre difficoltà</span><span class="che">Mite, dura e durissima. Fra la prima e la seconda cambiano <b>cinque scene sole</b>; fra la seconda e la terza <b>non cambia nessuna mossa</b> — cambia quando puoi darla. E una volta che la partita si indurisce, <b>indietro non si torna</b>.</span></a>
 <a class="stanza" href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span><span class="come">La costruzione del Campione</span><span class="che">Sopravvivere è già molto, e non basta. Una macchina che legge la memoria sopravvive perché è <b>informata</b>, non perché sia brava. Ma il punteggio non lo sa nessuno dei due: in nove punti del gioco due gesti che non ti ammazzano valgono diverso, e stanno in <b>due sole scene</b>. Qui sono contati tutti, dai byte, con il conto scena per scena.</span></a>
-<a class="stanza" href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span><span class="come">La costruzione del Campione</span><span class="che">In Space Ace c&rsquo;è un bottone che non ti salva: ti <b>trasforma</b>. E quasi mai è ovvio se convenga premerlo &mdash; perché alza il valore del frammento e insieme può <b>accorciare la scena</b>. Qui sono contati tutti i punti in cui una mossa che ti salva vale meno di un&rsquo;altra che ti salva uguale, e la legge che li tiene insieme: <b>il rinvio non è una rinuncia</b>.</span></a>
+<a class="stanza" href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span><span class="come">La costruzione del Campione</span><span class="che">In Space Ace il pulsante è <b>uno solo</b>, e in certi momenti non ti salva: ti <b>trasforma</b>. E quasi mai è ovvio se convenga premerlo &mdash; perché alza il valore del frammento e insieme può <b>accorciare la scena</b>. Qui sono contati tutti i punti in cui due mosse entrambe corrette non si equivalgono, e la legge che li tiene insieme: <b>il rinvio non è una rinuncia</b>.</span></a>
+<a class="stanza" href="/it/space-ace/a3/come-e-fatta-una-scena/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span><span class="come">Com&rsquo;&egrave; fatta una scena</span><span class="che">Prima delle mosse, com&rsquo;&egrave; fatta la macchina: una scena &egrave; una <b>coppia</b> di stesure e non un pezzo di film, uno stesso gesto ha <b>tre esiti</b> a seconda del tick in cui lo dai, e il pulsante &egrave; <b>uno solo</b> &mdash; la differenza fra sparare ed energizzare la sa la ROM, non il pannello.</span></a>
+<a class="stanza" href="/it/space-ace/a3/la-partita-cadet/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span><span class="come">La partita &mdash; Cadet</span><span class="che">E a <b>Cadet</b>: dieci scene, l&rsquo;apertura pi&ugrave; lunga e l&rsquo;azione pi&ugrave; corta &mdash; e <b>nessuna</b> scena concatenata, perch&eacute; a questa difficolt&agrave; la ROM chiude quella porta in due istruzioni.</span></a>
+<a class="stanza" href="/it/space-ace/a3/la-partita-captain/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span><span class="come">La partita &mdash; Captain</span><span class="che">La stessa partita a <b>Captain</b>: undici scene invece di tredici, e <b>due sole</b> scene che si concatenano invece di quattro.</span></a>
+<a class="stanza" href="/it/space-ace/a3/la-partita/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span><span class="come">La partita &mdash; Space Ace</span><span class="che">Tutte le mosse di una partita a <b>Space Ace</b>, scena per scena, nell&rsquo;ordine in cui il gioco te le serve &mdash; le due stesure, dritta e specchio, e i punti dove si pu&ograve; scegliere. Con il <b>fotogramma</b> del disco e la <b>finestra in tick</b> di ogni gesto: un tick &egrave; un fotogramma, e nessun walkthrough li scrive.</span></a>
 <a class="stanza" href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span><span class="come">La costruzione del Campione</span><span class="che">C&rsquo;&egrave; un punto solo, in tutto il gioco, dove morire rende invece di costare: vale lo <b>0,5&nbsp;%</b> del punteggio, ed &egrave; per questo che in quarant&rsquo;anni non lo ha trovato nessuno. E nell&rsquo;altra edizione, che chiede le stesse centocinquantasei mosse, non rende pi&ugrave;.</span></a>
 </div>
 <h2>Oppure parti dalla macchina</h2>
 <p>Le stanze qui sopra sono ordinate per <b>domanda</b>. Se invece arrivi per un gioco in particolare, ogni macchina ha la sua pagina, con tutto quello che ne abbiamo scritto.</p>
 <div class="stanze">
 <a class="stanza" href="/it/dragons-lair/"><span class="dove">Cinematronics, 1983</span><span class="come">Dragon&rsquo;s Lair</span><span class="che">Lo stesso film, tre macchine diverse. Non tre varianti dello stesso programma: tre ROM che allo stesso indirizzo fanno cose diverse, e che rispondono in tre modi opposti alla domanda &laquo;che cosa succede se sbagli&raquo;.</span></a>
-<a class="stanza" href="/it/space-ace/"><span class="dove">Cinematronics, 1984</span><span class="come">Space Ace</span><span class="che">Lo stesso studio, la stessa scheda, l&rsquo;anno dopo. Ma con una domanda in pi&ugrave;: oltre al gesto che ti salva c&rsquo;&egrave; un bottone che ti <b>trasforma</b>, e quasi mai &egrave; ovvio se convenga premerlo.</span></a>
+<a class="stanza" href="/it/space-ace/"><span class="dove">Cinematronics, 1984</span><span class="come">Space Ace</span><span class="che">Lo stesso studio, la stessa scheda, l&rsquo;anno dopo. Ma con una domanda in pi&ugrave;: oltre al gesto che ti salva c&rsquo;&egrave; lo stesso pulsante che, in certi momenti, ti <b>trasforma</b> &mdash; e quasi mai &egrave; ovvio se convenga premerlo.</span></a>
 <a class="stanza" href="/it/eshs-aurunmilla/"><span class="dove">Funai, 1984</span><span class="come">Esh&rsquo;s Aurunmilla</span><span class="che">Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta. Qui c&rsquo;è quella di fabbrica.</span></a>
 <a class="stanza" href="/it/super-don-quix-ote/"><span class="dove">Universal, 1984</span><span class="come">Super Don Quix-ote</span><span class="che">Due pagine, e raccontano due cose diverse: come il gioco decide l&rsquo;ordine delle scene, e che cosa accetta dentro una scena già cominciata. Di Super Don esistono anche due set di ROM usciti dalla fabbrica &mdash; uno mostra le scene per intero, l&rsquo;altro salta le introduzioni &mdash; e quale dei due sia venuto prima non lo sappiamo. Qui c&rsquo;è quello a scene intere.</span></a>
 </div>
@@ -366,7 +419,7 @@ h1.marchione + .tesi{font-size:21px}
 <div class="stanze">
 <a class="stanza" href="/it/super-don-quix-ote/mosse-disobbedienti/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span><span class="come">Le quattordici disobbedienze</span><span class="che">L&rsquo;icona a schermo ti mostra una mossa. Nella ROM, accanto a quel momento, a volte ce n&rsquo;è una seconda &mdash; e <b>quella vale diecimila punti in più</b>.</span></a>
 <a class="stanza" href="/it/dragons-lair/elevator/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Un ascensore dove si scende soltanto</span><span class="che">La scena su cui le tre macchine <b>si separano di più</b>. Stessa pellicola, tre idee diverse di quanto in basso ti lasciano scendere: <b>ventiquattro</b> piani in America, <b>sei</b> in Europa, e in Italia tre &mdash; o nessuno.</span></a>
-<a class="stanza" href="/it/dragons-lair/grafica/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Il tabellone diventato software</span><span class="che">L&rsquo;americana non disegna niente: i suoi numeri stanno su una plancia di lampade. L&rsquo;europea quel ferro non ce l&rsquo;aveva e ha dovuto <b>rifare il tabellone in caratteri</b> &mdash; novantotto, fra cui una testa di drago.</span></a>
+<a class="stanza" href="/it/dragons-lair/grafica/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Il tabellone diventato software</span><span class="che">L&rsquo;americana non disegna niente: i suoi numeri stanno su una plancia di cifre a LED. L&rsquo;europea quel ferro non ce l&rsquo;aveva e ha dovuto <b>rifare il tabellone in caratteri</b> &mdash; novantotto, fra cui una testa di drago.</span></a>
 <a class="stanza" href="/it/super-don-quix-ote/grafica/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span><span class="come">Duecentocinquantasei tessere e sedici colori</span><span class="che">Duecentocinquantasei tessere da otto per otto, e una PROM che dice quali sedici colori il ferro poteva produrre. Da lì escono le icone che ti dicono che cosa premere.</span></a>
 <a class="stanza" href="/it/eshs-aurunmilla/grafica/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">Tre chip sovrapposti</span><span class="che">Tre chip sovrapposti, uno per bit: ogni pixel prende un valore da zero a sette. Cinquecentododici tessere, e <b>sedici tavolozze lette dalla PROM della scheda</b> &mdash; quello che ancora manca non &egrave; come si leggono, &egrave; <b>quale tocca a quale figura</b>.</span></a>
 <a class="stanza" href="/it/trucchi/"><span class="dove">Otto programmi del roster, setacciati uno per uno</span><span class="come">Gli interruttori che nessuno doveva toccare</span><span class="che">In tre macchine su otto, tenendo premuti tre comandi insieme, le vite smettono di calare. Non l&rsquo;ha inventato un giocatore: &egrave; codice scritto in fabbrica, e si trova cercandone la forma.</span></a>
@@ -389,7 +442,7 @@ h1.marchione + .tesi{font-size:21px}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>28</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>8 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>365 su 365</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>31</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>8 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>397 su 397</b></span></div>
 <p class="stampa">phenoma.org/it/sequenze/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
