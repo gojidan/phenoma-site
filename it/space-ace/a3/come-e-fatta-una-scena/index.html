@@ -159,6 +159,13 @@ ol.mosse .g.fuoco{color:var(--brace);border-color:var(--brace)}
 ol.mosse .g.energia{color:var(--acqua);border-color:var(--acqua);
   background:rgba(90,170,190,.09)}
 ol.mosse .g.attesa{color:var(--tenue2);font-style:italic}
+/* Le tre attese non sono la stessa cosa (Alan, 9 set): <<non premere>> e' una
+   scelta, <<non toccare>> e' una trappola, e il film che scorre non e' un
+   gesto affatto. */
+ol.mosse .g.trappola{color:var(--brace);font-weight:700;letter-spacing:.06em}
+ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
+ol.mosse .opp{margin-left:8px;font-family:var(--corpo);font-style:italic;
+  font-size:11.5px;color:var(--tenue2);letter-spacing:0}
 ol.mosse .fin{font-family:var(--mono);font-size:11.5px;color:var(--oro);
   flex:0 0 auto;min-width:8.6em}
 ol.mosse .altre{font-family:var(--mono);font-size:10.5px;color:var(--tenue2);
@@ -420,8 +427,10 @@ header{border-bottom-color:rgba(239,210,46,.34)}
 <div class="nota"><span class="cap">Le tre cose che ti possono capitare</span><p>Una finestra non &egrave; <i>&laquo;o vai o muori&raquo;</i>. Lo stesso gesto, nello stesso frammento, fa <b>tre cose diverse</b> a seconda del tick in cui lo dai:</p><p>&#9679; nella fascia <b>buona</b> prosegui e incassi;<br>&#9679; in un&rsquo;altra fascia lo stesso identico gesto &egrave; <b>morte</b>;<br>&#9679; e in una terza viene <b>assorbito</b>: hai premuto giusto, e la macchina fa finta di niente. Non ti uccide e non ti paga.</p><p>Quest&rsquo;ultima &egrave; la pi&ugrave; crudele, perch&eacute; non ti insegna niente: hai fatto la cosa giusta e non &egrave; successo nulla.</p></div>
 <h2>Il pulsante &egrave; uno solo</h2>
 <p>Sul pannello di Space Ace c&rsquo;&egrave; <b>un pulsante</b>, e la ROM legge <b>un bit</b>. Non esiste, da nessuna parte nella macchina, un comando che si chiami <i>Energize</i>.</p>
-<p>E allora come fa a sapere quando hai energizzato invece di sparare? <b>Non lo sa dal pulsante: lo sa da dove atterri.</b> Il frammento in cui la coreografia dell&rsquo;energia comincia porta un <b>timbro</b> &mdash; un bit nel suo intestazione &mdash; e la macchina si ricorda quel timbro per il resto della scena.</p>
-<p class="punta">&rArr; Nelle pagine della partita il <span class="g fuoco">&#9679; FUOCO</span> e l&rsquo;<span class="g energia">&#9889; ENERGIA</span> hanno due colori diversi. Non &egrave; una convenzione nostra per far bella la pagina: &egrave; <b>una differenza che la macchina conosce</b>, e che il pannello non sa dire. Il gesto della tua mano &egrave; lo stesso.</p>
+<p>E allora come fa a sapere quando hai energizzato invece di sparare? La risposta onesta &egrave;: <b>in generale non lo sa, e non le serve</b>. A saperlo &egrave; il <b>filmato</b> &mdash; sul disco, in quel momento, lampeggia la scritta. La ROM manda avanti la pellicola giusta e basta.</p>
+<p>Un <b>timbro</b> nei byte per&ograve; c&rsquo;&egrave;, ed &egrave; una cosa pi&ugrave; precisa e pi&ugrave; piccola di quel che sembra: in dieci scene la pressione apre <b>due coreografie diverse</b> &mdash; una in cui ti trasformi, una in cui schivi &mdash; e la macchina deve <b>ricordarsi quale hai preso</b>, perch&eacute; se quella scena ti ricapita deve ridarti la stessa. Il timbro &egrave; quel ricordo: non dice <i>&laquo;questa &egrave; un&rsquo;energia&raquo;</i>, dice <i>&laquo;questa &egrave; la strada che hai preso&raquo;</i>.</p>
+<div class="nota"><span class="cap">Dove le due cose si separano</span><p>Nelle dieci scene col bivio le due cose coincidono, e per un po&rsquo; abbiamo creduto che il timbro <i>fosse</i> il marchio dell&rsquo;energia. Il <b>Rapimento di Kimberly</b> dimostra che non lo &egrave;: al fotogramma <b>1513</b> il film chiede l&rsquo;energia, e in tutto quel nodo <b>non c&rsquo;&egrave; un solo timbro</b>. Perch&eacute; l&igrave; l&rsquo;energia non apre nessuna seconda coreografia: non c&rsquo;&egrave; niente da ricordare.</p><p>&#11088; Quindi l&rsquo;etichetta di queste pagine ha <b>due fonti</b>, e le teniamo distinte: <b>i byte</b> per le pressioni che timbrano, e <b>l&rsquo;occhio di chi ha giocato</b> per le altre. Kimberly &egrave; della seconda specie.</p></div>
+<p class="punta">&rArr; Nelle pagine della partita il <span class="g fuoco">&#9679; FUOCO</span> e l&rsquo;<span class="g energia">&#9889; ENERGIA</span> hanno due colori diversi, e la stessa forma: perch&eacute; <b>il gesto della tua mano &egrave; lo stesso</b>. A cambiare &egrave; soltanto quello che il film ti sta chiedendo in quel momento.</p>
 <h2>Le scene concatenate, e la porta che si chiude</h2>
 <p>Certe scene non ti danno una delle due stesure: te le danno <b>tutte e due</b>, una dietro l&rsquo;altra. La prima si ferma prima del suo massimo e <b>passa la mano</b> alla gemella.</p>
 <p>Ma non a tutte le difficolt&agrave;. Il passaggio di mano &egrave; appeso a un bit, e appena dopo c&rsquo;&egrave; un <b>cancello che guarda la difficolt&agrave;</b>:</p>
@@ -458,7 +467,7 @@ header{border-bottom-color:rgba(239,210,46,.34)}
 <li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>8 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>397 su 397</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>8 settembre 2026</b>, aggiornata il <b>9 settembre 2026</b></span><span><span class="et">controlli sui byte</span><b>411 su 411</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
 <p class="stampa">phenoma.org/it/space-ace/a3/come-e-fatta-una-scena/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
