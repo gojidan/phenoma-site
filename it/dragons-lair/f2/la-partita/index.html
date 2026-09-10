@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La partita — Dragon&amp;rsquo;s Lair</title>
+<meta name="description" content="Tutte le mosse di una partita a Dragon’s Lair — la stesura dura — carta per carta, con il fotogramma del disco e la finestra in tick di ognuna: 199 mosse su 40 carte, per 326.248 punti, contate sui byte del programma e ricontrollate sulla partita del Campione.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  /* 5 set 2026, Alan: <<non riesco a vedere la differenza dei colori>>.
+     La fascia c'e' su OGNI pagina -- di casa e' oro -- e quello che cambia
+     e' il colore: si vede in che stanza sei senza dover leggere. */
+  border-top:3px solid var(--oro-cupo)}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:72ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:78ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- la legenda dei nomi delle scene (7 set) --- */
+.nomi{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--acqua);padding:18px 22px;margin:26px 0}
+.nomi .griglia{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 24px}
+.nomi .griglia div{display:flex;gap:11px;align-items:baseline;padding:5px 0;
+  font-size:15px;line-height:1.3;border-top:1px solid var(--bordo)}
+.nomi .griglia div:first-child{border-top:0}
+.nomi .griglia b{font-family:var(--mono);font-size:11px;color:var(--acqua);
+  flex:0 0 auto;letter-spacing:.08em;min-width:2.6em}
+.nomi .forse{color:var(--tenue);font-style:normal;font-size:.85em}
+.nomi .coda{margin:15px 0 0;font-size:14px;color:var(--tenue);max-width:80ch}
+
+/* --- la STRADA di una scena: i gesti in fila (7 set) --- */
+.strada{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.strada i{font-style:normal;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.04em;padding:2px 7px;border:1px solid var(--bordo);
+  color:var(--tenue);white-space:nowrap;background:var(--piano2)}
+.strada i.paga{border-color:var(--oro-cupo);color:var(--oro)}
+.strada i.muta{border-style:dashed;color:var(--tenue2);background:none}
+.strada i b{font-weight:400;color:var(--inchiostro)}
+.strada i.paga b{color:var(--oro)}
+.strada s{text-decoration:none;color:var(--tenue2);padding:0 1px}
+.coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
+  max-width:84ch}
+
+/* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
+.partita{margin:0 0 34px}
+.partita>h3{margin:30px 0 4px;font-size:20px}
+.partita .stesura{margin:16px 0 0;border:1px solid var(--bordo);
+  border-radius:3px;background:var(--piano);overflow:hidden}
+.partita .testa{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  padding:9px 14px;background:var(--piano2);border-bottom:1px solid var(--bordo)}
+.partita .testa b{font-size:15px}
+.partita .testa .id{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  letter-spacing:.08em}
+.partita .testa .verso{font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;
+  border:1px solid var(--bordo);color:var(--tenue)}
+.partita .testa .verso.rov{border-color:var(--acqua);color:var(--acqua)}
+.partita .testa .pt{margin-left:auto;font-family:var(--mono);font-size:12px;
+  color:var(--oro)}
+ol.mosse{list-style:none;margin:0;padding:0}
+ol.mosse li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  padding:7px 14px;border-top:1px solid var(--bordo);font-size:14px}
+ol.mosse li:first-child{border-top:0}
+ol.mosse .fr{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  flex:0 0 4.4em;letter-spacing:.04em}
+ol.mosse .g{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+  min-width:8.4em;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+ol.mosse .g em{font-style:normal;font-size:19px;line-height:1;
+  color:var(--inchiostro)}
+/* ⭐ il pulsante e' UNO SOLO: a cambiare e' quello che il film ti chiede.
+   Percio' il FUOCO e l'ENERGIA hanno due colori, e la stessa forma. */
+ol.mosse .g.fuoco,ol.mosse .g.energia{padding:1px 9px;border-radius:11px;
+  border:1px solid;font-weight:700}
+ol.mosse .g.fuoco{color:var(--brace);border-color:var(--brace)}
+ol.mosse .g.energia{color:var(--acqua);border-color:var(--acqua);
+  background:rgba(90,170,190,.09)}
+ol.mosse .g.attesa{color:var(--tenue2);font-style:italic}
+/* Le tre attese non sono la stessa cosa (Alan, 9 set): <<non premere>> e' una
+   scelta, <<non toccare>> e' una trappola, e il film che scorre non e' un
+   gesto affatto. */
+ol.mosse .g.trappola{color:var(--brace);font-weight:700;letter-spacing:.06em}
+ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
+ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
+ol.mosse .opp{margin-left:8px;font-family:var(--corpo);font-style:italic;
+  font-size:11.5px;color:var(--tenue2);letter-spacing:0}
+ol.mosse .fin{font-family:var(--mono);font-size:11.5px;color:var(--oro);
+  flex:0 0 auto;min-width:8.6em}
+ol.mosse .altre{font-family:var(--mono);font-size:10.5px;color:var(--tenue2);
+  flex:1 1 auto}
+ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
+ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
+  margin-left:auto;flex:0 0 auto}
+ol.mosse li.bivio{background:rgba(190,150,60,.05)}
+/* ⛔ 8 set 2026, sera — Alan, leggendo: <<un rombo con ? dentro e poi dei
+   numeri arancioni, dopo il numero di frame... non c'e' sempre, ogni tanto>>.
+   Era il segno del bivio, disegnato col carattere U+25C6: dove quel glifo
+   manca il browser mette la scatoletta col codice esadecimale dentro, e la
+   colora d'arancione perche' il colore glielo davamo noi.  E tornava <<ogni
+   tanto>> perche' sta solo sulle righe che SONO un bivio.
+   ⇒ il rombo adesso e' un quadratino ruotato: niente font, niente sorprese. */
+i.rombo{display:inline-block;width:5px;height:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle;flex:0 0 auto}
+ol.mosse li.bivio .fr::after{content:'';display:inline-block;width:5px;
+  height:5px;margin-left:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle}
+.legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
+  font-size:13px;color:var(--tenue)}
+.legenda-mosse span{display:inline-flex;align-items:center;gap:6px}
+.catena{margin:10px 0 0;padding:7px 14px;font-size:13px;color:var(--acqua);
+  background:rgba(90,170,190,.07);border-top:1px solid var(--bordo)}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:78ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+.specchio{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tenue2);border:1px solid var(--bordo);
+  padding:1px 5px;margin-left:6px;white-space:nowrap}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e SFUMATO ---
+   5 set 2026, Alan: <<nella home del sito riusciamo a scrivere Phenoma
+   grande con il colore sfumato?>>.  E' la stessa sfumatura del marchio
+   piccolo in barra -- crema, oro, oro cupo -- perche' il nome grande e il
+   nome piccolo devono essere la stessa cosa; con due fermate in piu', che a
+   92px due sole diventano una tinta piatta.
+   ⚠️ `background-clip:text` ritaglia lo sfondo sulle lettere di TUTTO
+   quello che sta dentro l'elemento: qui dentro non ci va nient'altro.
+   📌 `width:max-content` fa aderire il riquadro alla parola: senza, il
+   riquadro sarebbe largo quanto la pagina e l'inclinazione non si
+   vedrebbe. */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1;width:max-content;max-width:100%;
+  background:linear-gradient(176deg,#FFF6E7 0%,#FFDCA6 24%,var(--oro) 54%,
+    var(--oro-cupo) 80%,#C0761D 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.avviso{margin:26px 0 0;padding:16px 20px;border:1px solid var(--bordo);
+  border-left:3px solid var(--oro-cupo);background:rgba(190,150,60,.05);
+  max-width:78ch}
+.avviso p{margin:0 0 10px;font-size:14px;line-height:1.6}
+.avviso p:last-child{margin-bottom:0}
+.avviso .min{font-size:12.5px;color:var(--tenue)}
+.timbro .stato.ferma b{color:var(--verde,#3d7a4e)}
+.timbro .stato.viva b{color:var(--oro-cupo)}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  body{border-top:0}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  /* il nome sulla soglia: sfumato a schermo, inchiostro sul foglio */
+  h1.marchione{background:none;color:#111;-webkit-text-fill-color:#111;
+    width:auto;font-size:30pt}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+body{border-top-color:#FFA22B}
+.gioco{color:#FFA22B}
+.gioco a:hover{border-bottom-color:#FFA22B}
+.dettaglio{color:#B4681A}
+.barra{border-bottom-color:rgba(255,162,43,.42)}
+header{border-bottom-color:rgba(255,162,43,.34)}
+.timbro .colore b{color:#B4681A;font-weight:600}
+.timbro .colore .mono{color:inherit}
+@media print{body{border-top:0}
+  .gioco{color:#111}.dettaglio{color:#555}
+  .timbro .colore b{color:#111}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a><span class="sep">/</span><span class="qui">revisione F2</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983 &middot; revisione F2</p>
+  <h1>La partita</h1>
+  <p class="tesi">Tutte le mosse di una partita a <b>Dragon&rsquo;s Lair</b> &mdash; la stesura <b>dura</b> &mdash; carta per carta, con il <b>fotogramma</b> del disco e la <b>finestra in tick</b> di ognuna: 199 mosse su 40 carte, per 326.248 punti, contate sui byte del programma e ricontrollate sulla partita del Campione.</p>
+</header>
+<div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9876; SPADA</span> il pulsante &mdash; in Dragon&rsquo;s Lair &egrave; una spada, e non ha secondi significati</span><span><i class="rombo"></i> un bivio: qui si poteva fare altro</span><span><s style="text-decoration:none;color:var(--brace)">morte</s> premi giusto ma nell&rsquo;attimo sbagliato</span></div><div class="legenda-mosse" style="margin-top:-12px"><span><span class="g attesa" style="min-width:0">non premere</span> una mossa ci sarebbe, ma <b>rende meno</b></span><span><span class="g trappola" style="min-width:0">&#9995; NON TOCCARE</span> non c&rsquo;&egrave; niente da dare, e <b>premere ammazza</b></span><span><span class="g nulla" style="min-width:0">il film scorre</span> nessuna finestra: non succede nulla</span></div>
+<p class="punta">Dragon&rsquo;s Lair non ha un giro fisso di scene: ha un <b>mazzo</b>. Il sequencer tiene <b>13 tappe</b> da tre, e in tre giri le tre alternative escono tutte &mdash; ma <b>in che ordine non lo decidi tu</b>. Qui ci sono tutte e tre, tappa per tappa: qualunque partita ti tocchi, le sue mosse stanno in questa pagina.</p>
+<p>Il numero sotto <b>fotogramma</b> &egrave; il punto del disco in cui atterri; i <b>tick</b> sono contati da l&igrave;, e un tick &egrave; <b>un fotogramma NTSC</b> &mdash; un cinquantanovesimo di secondo scarso. La finestra in oro &egrave; quella che ti fa proseguire.</p>
+<div class="nota"><span class="cap">Quale delle tre difficolt&agrave; &egrave; questa</span><p>&Egrave; la <b>stesura dura</b>: quella che la macchina serve col dip &laquo;difficile&raquo;, e quella in cui una partita finisce comunque se sopravvivi abbastanza &mdash; l&rsquo;adattiva si accende da sola e <b>indietro non si torna</b>. Vale anche per <b>durissima</b>: l&igrave; le mosse sono <b>le stesse</b>, cambia soltanto <i>quando</i> le puoi dare. A <b>mite</b> la strada cambia in <b>cinque scene</b> sole &rarr; <a href="/it/dragons-lair/f2/le-difficolta/">le tre difficolt&agrave;</a>.</p></div>
+<div class="nota caldo"><span class="cap">Da dove viene questa pagina, e chi l&rsquo;ha controllata</span><p>Le mosse non sono trascritte da una partita: sono <b>calcolate sui byte</b>, cercando su ogni scena la strada che raccoglie il massimo. Poi le abbiamo messe accanto al tracciato del <b>Campione Prometeo</b> registrato il 9 settembre 2026: <b>198 mosse su 198 combaciano, e nessuna diverge</b>. Le sole pressioni del tracciato che non trovano posto qui sono <b>tre</b>, e sono la stessa leva tenuta gi&ugrave; mentre il frammento cambia &mdash; un fotogramma dopo, sul frammento seguente.</p></div>
+<div class="partita"><h3>Ingresso</h3>
+<div class="stesura"><div class="testa"><b>Castle Entrance</b><span class="id">0xAA</span><span class="verso">0 mosse</span><span class="pt">0 punti</span></div><ol class="mosse"><li><span class="fr">1424</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">1823</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<p class="coda-tavola">&#11088; <b>Questa carta non chiede niente</b>: non ha una sola finestra, e il film scorre. &Egrave; l&rsquo;unica del mazzo.</p>
+</div>
+<div class="partita"><h3>Tappa 1</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 3.440 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Fire Pit</b><span class="id">0xAD</span><span class="verso">4 mosse</span><span class="pt">2.089 punti</span></div><ol class="mosse"><li class="bivio"><span class="fr">3561</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 37&ndash;64</span><span class="altre"><s>0&ndash;37 morte</s> &middot; <s>64&ndash;66 morte</s></span><span class="pt">251</span></li><li><span class="fr">3693</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 39&ndash;47</span><span class="altre"><s>0&ndash;39 morte</s></span><span class="pt">379</span></li><li><span class="fr">3739</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 39&ndash;47</span><span class="altre"><s>0&ndash;39 morte</s></span><span class="pt">495</span></li><li><span class="fr">3785</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 26&ndash;45</span><span class="altre"><s>0&ndash;26 morte</s></span><span class="pt">915</span></li><li><span class="fr">3828</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Bower</b><span class="id">0xB5</span><span class="verso">1 mossa</span><span class="pt">428 punti</span></div><ol class="mosse"><li><span class="fr">9190</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 0&ndash;18</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">9215</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Fire Pit Rev</b><span class="id">0xBB</span><span class="verso">4 mosse</span><span class="pt">923 punti</span></div><ol class="mosse"><li class="bivio"><span class="fr">12725</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 37&ndash;64</span><span class="altre"><s>0&ndash;37 morte</s> &middot; <s>64&ndash;75 morte</s></span><span class="pt">379</span></li><li><span class="fr">12857</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 40&ndash;47</span><span class="altre"><s>0&ndash;40 morte</s></span><span class="pt">495</span></li><li><span class="fr">12903</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 40&ndash;47</span><span class="altre"><s>0&ndash;40 morte</s></span><span class="pt"></span></li><li><span class="fr">12949</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 26&ndash;44</span><span class="altre"><s>0&ndash;26 morte</s></span><span class="pt"></span></li><li><span class="fr">12993</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 2</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 9.581 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Flying Horse</b><span class="id">0xB7</span><span class="verso">6 mosse</span><span class="pt">3.850 punti</span></div><ol class="mosse"><li><span class="fr">10021</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 112&ndash;125</span><span class="altre"><s>103&ndash;112 morte</s> &middot; <s>103&ndash;113 morte</s></span><span class="pt">495</span></li><li><span class="fr">10131</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 21&ndash;34</span><span class="altre"><s>12&ndash;21 morte</s></span><span class="pt">495</span></li><li><span class="fr">10164</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 35&ndash;48</span><span class="altre"><s>26&ndash;35 morte</s></span><span class="pt">495</span></li><li><span class="fr">10209</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38&ndash;52</span><span class="altre"><s>29&ndash;38 morte</s></span><span class="pt">495</span></li><li><span class="fr">10257</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38&ndash;50</span><span class="altre"><s>29&ndash;38 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">10303</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 21&ndash;35</span><span class="altre"><s>12&ndash;21 morte</s></span><span class="pt">495</span></li><li><span class="fr">10337</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Alice Room</b><span class="id">0xC2</span><span class="verso">1 mossa</span><span class="pt">428 punti</span></div><ol class="mosse"><li><span class="fr">18282</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 0&ndash;61</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">18334</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Flying Horse Rev</b><span class="id">0xC0</span><span class="verso">6 mosse</span><span class="pt">5.303 punti</span></div><ol class="mosse"><li><span class="fr">16544</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 112&ndash;126</span><span class="altre"><s>102&ndash;112 morte</s></span><span class="pt">915</span></li><li><span class="fr">16653</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 22&ndash;34</span><span class="altre"><s>0&ndash;22 morte</s></span><span class="pt">915</span></li><li><span class="fr">16684</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 39&ndash;51</span><span class="altre"><s>0&ndash;39 morte</s></span><span class="pt">495</span></li><li><span class="fr">16732</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 39&ndash;52</span><span class="altre"><s>0&ndash;39 morte</s></span><span class="pt">495</span></li><li><span class="fr">16780</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 37&ndash;49</span><span class="altre"><s>0&ndash;37 morte</s></span><span class="pt">1.939</span></li><li><span class="fr">16824</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 24&ndash;40</span><span class="altre"><s>0&ndash;24 morte</s></span><span class="pt">495</span></li><li><span class="fr">16860</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 3</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 14.943 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Pirates</b><span class="id">0xC9</span><span class="verso">12 mosse</span><span class="pt">4.673 punti</span></div><ol class="mosse"><li><span class="fr">22738</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt">49</span></li><li><span class="fr">22936</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 0&ndash;30</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">22960</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 29&ndash;58</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">23007</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 31&ndash;60</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">23056</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 29&ndash;59</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">23104</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 135&ndash;154</span><span class="altre"><s>117&ndash;135 morte</s> &middot; <s>136&ndash;154 morte</s></span><span class="pt">495</span></li><li><span class="fr">23229</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 55&ndash;75</span><span class="altre"><s>36&ndash;55 morte</s> &middot; <s>57&ndash;75 morte</s></span><span class="pt">495</span></li><li><span class="fr">23290</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 54&ndash;74</span><span class="altre"><s>39&ndash;54 morte</s> &middot; <s>56&ndash;74 morte</s></span><span class="pt">495</span></li><li><span class="fr">23350</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 65&ndash;84</span><span class="altre"><s>40&ndash;65 morte</s></span><span class="pt">124</span></li><li><span class="fr">23418</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt">251</span></li><li><span class="fr">23601</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 0&ndash;18</span><span class="altre"></span><span class="pt">251</span></li><li><span class="fr">23616</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 54&ndash;74</span><span class="altre"></span><span class="pt">251</span></li><li><span class="fr">23676</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 61&ndash;81</span><span class="altre"></span><span class="pt">251</span></li><li><span class="fr">23742</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 115&ndash;153</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">23866</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Crypt Creeps</b><span class="id">0xB9</span><span class="verso">6 mosse</span><span class="pt">3.859 punti</span></div><ol class="mosse"><li><span class="fr">11489</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 69&ndash;96</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">11568</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 21&ndash;39</span><span class="altre"><s>0&ndash;21 morte</s></span><span class="pt">915</span></li><li><span class="fr">11601</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 35&ndash;65</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">11654</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18&ndash;36</span><span class="altre"><s>0&ndash;18 morte</s></span><span class="pt">915</span></li><li><span class="fr">11684</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 23&ndash;55</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">11729</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 24&ndash;55</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">11773</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Crypt Creeps Rev</b><span class="id">0xC3</span><span class="verso">6 mosse</span><span class="pt">6.411 punti</span></div><ol class="mosse"><li><span class="fr">18662</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 73&ndash;103</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">18746</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 15&ndash;28</span><span class="altre"><s>0&ndash;15 morte</s></span><span class="pt">2.191</span></li><li><span class="fr">18770</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 34&ndash;66</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">18825</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 21&ndash;34</span><span class="altre"><s>0&ndash;21 morte</s></span><span class="pt">2.191</span></li><li><span class="fr">18854</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 15&ndash;55</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">18900</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 23&ndash;55</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">18946</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 4</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 7.159 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Elevator</b><span class="id">0xD0</span><span class="verso">1 mossa</span><span class="pt">3.304 punti</span></div><ol class="mosse"><li><span class="fr">14847</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 149&ndash;159</span><span class="altre"><s>84&ndash;149 morte</s> &middot; <s>159&ndash;169 morte</s> &middot; <s>179&ndash;189 morte</s></span><span class="pt">3.255</span></li><li><span class="fr">15366</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Vestibule</b><span class="id">0xD1</span><span class="verso">2 mosse</span><span class="pt">551 punti</span></div><ol class="mosse"><li><span class="fr">1887</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="opp">&middot; anche gi&ugrave;+destra</span><span class="fin">tick 59&ndash;119</span><span class="altre"></span><span class="pt">251</span></li><li><span class="fr">1964</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 0&ndash;21</span><span class="altre"></span><span class="pt">251</span></li><li><span class="fr">2008</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Elevator</b><span class="id">0xD0</span><span class="verso">1 mossa</span><span class="pt">3.304 punti</span></div><ol class="mosse"><li><span class="fr">14847</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 149&ndash;159</span><span class="altre"><s>84&ndash;149 morte</s> &middot; <s>159&ndash;169 morte</s> &middot; <s>179&ndash;189 morte</s></span><span class="pt">3.255</span></li><li><span class="fr">15366</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 5</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 14.036 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Boulder Trench</b><span class="id">0xCC</span><span class="verso">7 mosse</span><span class="pt">2.574 punti</span></div><ol class="mosse"><li><span class="fr">26098</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 153&ndash;169</span><span class="altre"><s>145&ndash;153 morte</s></span><span class="pt">251</span></li><li><span class="fr">26243</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 33&ndash;50</span><span class="altre"><s>26&ndash;33 morte</s></span><span class="pt">379</span></li><li><span class="fr">26289</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 37&ndash;50</span><span class="altre"><s>27&ndash;37 morte</s></span><span class="pt">379</span></li><li><span class="fr">26337</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 35&ndash;52</span><span class="altre"><s>27&ndash;35 morte</s></span><span class="pt">379</span></li><li><span class="fr">26385</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 35&ndash;52</span><span class="altre"><s>27&ndash;35 morte</s></span><span class="pt">379</span></li><li><span class="fr">26433</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 36&ndash;52</span><span class="altre"><s>27&ndash;36 morte</s></span><span class="pt">379</span></li><li><span class="fr">26481</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 26&ndash;43</span><span class="altre"><s>0&ndash;26 morte</s></span><span class="pt">379</span></li><li><span class="fr">26516</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Three Caves</b><span class="id">0xCD</span><span class="verso">3 mosse</span><span class="pt">4.481 punti</span></div><ol class="mosse"><li><span class="fr">26830</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 0&ndash;25</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">26850</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 0&ndash;12</span><span class="altre"><s>12&ndash;19 morte</s> &middot; <s>32&ndash;39 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">26893</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 92&ndash;104</span><span class="altre"><s>104&ndash;119 morte</s> &middot; <s>131&ndash;146 morte</s></span><span class="pt">2.191</span></li><li><span class="fr">27025</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Black Knight</b><span class="id">0xCB</span><span class="verso">4 mosse</span><span class="pt">6.981 punti</span></div><ol class="mosse"><li><span class="fr">25536</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 0&ndash;17</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">25558</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 53&ndash;78</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">25624</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 92&ndash;115</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">25718</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 73&ndash;96</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">25797</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 6</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 30.476 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Grim Reaper</b><span class="id">0xB3</span><span class="verso">4 mosse</span><span class="pt">8.507 punti</span></div><ol class="mosse"><li><span class="fr">8004</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 48&ndash;58</span><span class="altre"><s>0&ndash;48 morte</s> &middot; <s>58&ndash;92 morte</s> &middot; <s>102&ndash;136 morte</s></span><span class="pt">4.026</span></li><li><span class="fr">8151</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 89&ndash;102</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">8234</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 52&ndash;92</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">8311</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 44&ndash;89</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">8383</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Pot of Gold</b><span class="id">0xC1</span><span class="verso">12 mosse</span><span class="pt">12.738 punti</span></div><ol class="mosse"><li><span class="fr">17264</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 47&ndash;61</span><span class="altre"><s>0&ndash;47 morte</s></span><span class="pt">1.939</span></li><li><span class="fr">17316</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 106&ndash;130</span><span class="altre"><s>31&ndash;101 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">17422</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 80&ndash;103</span><span class="altre"><s>20&ndash;79 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">17506</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 47&ndash;67</span><span class="altre"><s>15&ndash;46 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">17560</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 118&ndash;138</span><span class="altre"><s>54&ndash;117 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">17672</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 47&ndash;67</span><span class="altre"><s>15&ndash;47 morte</s></span><span class="pt">2.191</span></li><li><span class="fr">17726</span><span class="g"><em>&uarr;</em>SU</span><span class="opp oppure">o</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 12&ndash;66</span><span class="altre"></span><span class="pt">3.255</span></li><li><span class="fr">17780</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 25&ndash;47</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17818</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6&ndash;32</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17844</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 0&ndash;17</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17858</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="opp oppure">o</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; anche gi&ugrave;+sinistra</span><span class="fin">tick 0&ndash;38</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17889</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 0&ndash;31</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17914</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Grim Reaper Rev</b><span class="id">0xC4</span><span class="verso">4 mosse</span><span class="pt">9.231 punti</span></div><ol class="mosse"><li><span class="fr">19520</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 22&ndash;31</span><span class="altre"><s>0&ndash;22 morte</s> &middot; <s>31&ndash;66 morte</s> &middot; <s>75&ndash;110 morte</s></span><span class="pt">4.750</span></li><li><span class="fr">19628</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 90&ndash;105</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">19712</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 66&ndash;91</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">19786</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 48&ndash;77</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">19850</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 7</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 14.031 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Forge</b><span class="id">0xB2</span><span class="verso">5 mosse</span><span class="pt">6.470 punti</span></div><ol class="mosse"><li><span class="fr">6994</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 79&ndash;92</span><span class="altre"><s>44&ndash;79 morte</s></span><span class="pt">915</span></li><li><span class="fr">7071</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 61&ndash;74</span><span class="altre"><s>26&ndash;61 morte</s></span><span class="pt">1.939</span></li><li><span class="fr">7131</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 29&ndash;81</span><span class="altre"><s>0&ndash;29 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">7197</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42&ndash;55</span><span class="altre"><s>6&ndash;42 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">7243</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 154&ndash;185</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">7393</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Wind Room</b><span class="id">0xB4</span><span class="verso">1 mossa</span><span class="pt">428 punti</span></div><ol class="mosse"><li><span class="fr">8781</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 129&ndash;151</span><span class="altre"><s>104&ndash;129 morte</s></span><span class="pt">379</span></li><li><span class="fr">8906</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Forge Rev</b><span class="id">0xBF</span><span class="verso">5 mosse</span><span class="pt">7.133 punti</span></div><ol class="mosse"><li><span class="fr">15653</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 79&ndash;94</span><span class="altre"><s>44&ndash;79 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">15730</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 59&ndash;74</span><span class="altre"><s>26&ndash;59 morte</s></span><span class="pt">2.191</span></li><li><span class="fr">15790</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 29&ndash;82</span><span class="altre"><s>0&ndash;29 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">15856</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 40&ndash;54</span><span class="altre"><s>7&ndash;40 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">15902</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 153&ndash;184</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">16051</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 8</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 22.626 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Tentacles</b><span class="id">0xAB</span><span class="verso">6 mosse</span><span class="pt">5.152 punti</span></div><ol class="mosse"><li><span class="fr">2406</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 28&ndash;41</span><span class="altre"></span><span class="pt">49</span></li><li><span class="fr">2449</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 48&ndash;63</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">2501</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 44&ndash;71</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">2559</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="opp">&middot; anche gi&ugrave;+destra</span><span class="fin">tick 22&ndash;37</span><span class="altre"><s>0&ndash;22 morte</s></span><span class="pt">915</span></li><li><span class="fr">2590</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 68&ndash;87</span><span class="altre"><s>0&ndash;68 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">2661</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 7&ndash;22</span><span class="altre"><s>0&ndash;7 morte</s> &middot; <s>22&ndash;29 morte</s> &middot; <s>44&ndash;54 morte</s></span><span class="pt">1.939</span></li><li><span class="fr">2705</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Snake Room</b><span class="id">0xAC</span><span class="verso">4 mosse</span><span class="pt">5.207 punti</span></div><ol class="mosse"><li><span class="fr">3144</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3&ndash;25</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">3164</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 28&ndash;50</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">3206</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32&ndash;44</span><span class="altre"></span><span class="pt">49</span></li><li><span class="fr">3242</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 12&ndash;34</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">3272</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Bubbling Cauldron</b><span class="id">0xAF</span><span class="verso">5 mosse</span><span class="pt">12.267 punti</span></div><ol class="mosse"><li><span class="fr">5155</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 20&ndash;34</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">5191</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 49&ndash;63</span><span class="altre"></span><span class="pt">3.255</span></li><li><span class="fr">5253</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="opp">&middot; anche gi&ugrave;+destra</span><span class="fin">tick 17&ndash;42</span><span class="altre"></span><span class="pt">3.255</span></li><li><span class="fr">5287</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 20&ndash;52</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">5330</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 54&ndash;87</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">5402</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 9</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 14.264 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Giddy Goons</b><span class="id">0xB0</span><span class="verso">4 mosse</span><span class="pt">5.009 punti</span></div><ol class="mosse"><li><span class="fr">5683</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 71&ndash;93</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">5758</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 33&ndash;55</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">5803</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 44&ndash;64</span><span class="altre"><s>0&ndash;44 morte</s></span><span class="pt">3.255</span></li><li><span class="fr">5856</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 26&ndash;47</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">5895</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Flattening Staircase</b><span class="id">0xB1</span><span class="verso">4 mosse</span><span class="pt">4.724 punti</span></div><ol class="mosse"><li><span class="fr">6417</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 5&ndash;17</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">6439</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 52&ndash;69</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">6495</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 27&ndash;44</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">6535</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 59&ndash;74</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">6599</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Fire Room</b><span class="id">0xB6</span><span class="verso">4 mosse</span><span class="pt">4.531 punti</span></div><ol class="mosse"><li><span class="fr">9552</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 58&ndash;77</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">9615</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 35&ndash;64</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">9667</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="opp">&middot; anche gi&ugrave;+sinistra</span><span class="fin">tick 20&ndash;59</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">9716</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 6&ndash;49</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">9765</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 10</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 69.244 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Yellow Brick Road</b><span class="id">0xAE</span><span class="verso">9 mosse</span><span class="pt">28.762 punti</span></div><ol class="mosse"><li><span class="fr">4174</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 0&ndash;18</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">4189</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 41&ndash;49</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">4235</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 32&ndash;57</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">4295</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 15&ndash;53</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">4339</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 39&ndash;56</span><span class="altre"></span><span class="pt">3.255</span></li><li><span class="fr">4391</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 37&ndash;50</span><span class="altre"></span><span class="pt">3.551</span></li><li><span class="fr">4439</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 74&ndash;88</span><span class="altre"></span><span class="pt">4.026</span></li><li><span class="fr">4518</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 22&ndash;39</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">4546</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 48&ndash;68</span><span class="altre"></span><span class="pt">4.750</span></li><li><span class="fr">4603</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Catwalk Bats</b><span class="id">0xBA</span><span class="verso">5 mosse</span><span class="pt">9.020 punti</span></div><ol class="mosse"><li><span class="fr">12238</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 0&ndash;21</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">12256</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 0&ndash;34</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">12285</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 52&ndash;74</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">12346</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 11&ndash;43</span><span class="altre"></span><span class="pt">915</span></li><li><span class="fr">12381</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 27&ndash;36</span><span class="altre"></span><span class="pt">3.551</span></li><li><span class="fr">12417</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Yellow Brick Road Rev</b><span class="id">0xBC</span><span class="verso">9 mosse</span><span class="pt">31.462 punti</span></div><ol class="mosse"><li><span class="fr">13336</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 0&ndash;26</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">13357</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 27&ndash;61</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">13399</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 32&ndash;64</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">13459</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 15&ndash;52</span><span class="altre"></span><span class="pt">3.255</span></li><li><span class="fr">13503</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 20&ndash;62</span><span class="altre"></span><span class="pt">3.551</span></li><li><span class="fr">13555</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 36&ndash;58</span><span class="altre"></span><span class="pt">4.026</span></li><li><span class="fr">13603</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 74&ndash;96</span><span class="altre"></span><span class="pt">4.026</span></li><li><span class="fr">13685</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 22&ndash;46</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">13715</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 23&ndash;62</span><span class="altre"></span><span class="pt">4.750</span></li><li><span class="fr">13767</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 11</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 47.748 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Robot Knight</b><span class="id">0xB8</span><span class="verso">8 mosse</span><span class="pt">18.152 punti</span></div><ol class="mosse"><li><span class="fr">10741</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 86&ndash;127</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">10846</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 13&ndash;39</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">10878</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 29&ndash;46</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">10917</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 34&ndash;64</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">10968</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 36&ndash;63</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">11019</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 12&ndash;31</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">11045</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 6&ndash;23</span><span class="altre"><s>0&ndash;23 morte</s></span><span class="pt">4.026</span></li><li><span class="fr">11065</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 48&ndash;80</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">11131</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Giant Bat</b><span class="id">0xBD</span><span class="verso">5 mosse</span><span class="pt">8.492 punti</span></div><ol class="mosse"><li><span class="fr">14327</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 0&ndash;20</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">14351</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 25&ndash;47</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">14389</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 50&ndash;58</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">14451</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 47&ndash;59</span><span class="altre"></span><span class="pt">3.551</span></li><li><span class="fr">14503</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 0&ndash;40</span><span class="altre"></span><span class="pt">49</span></li><li><span class="fr">14542</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Robot Knight Rev</b><span class="id">0xC7</span><span class="verso">8 mosse</span><span class="pt">21.104 punti</span></div><ol class="mosse"><li><span class="fr">21212</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 103&ndash;130</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">21318</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 17&ndash;39</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">21349</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 29&ndash;48</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">21386</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 37&ndash;64</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">21439</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 36&ndash;63</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">21491</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 12&ndash;31</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">21516</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 8&ndash;23</span><span class="altre"></span><span class="pt">4.750</span></li><li><span class="fr">21535</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 55&ndash;81</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">21602</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 12</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 30.538 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Throne Room</b><span class="id">0xC6</span><span class="verso">4 mosse</span><span class="pt">9.244 punti</span></div><ol class="mosse"><li><span class="fr">20674</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 59&ndash;82</span><span class="altre"><s>0&ndash;59 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">20742</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 10&ndash;21</span><span class="altre"></span><span class="pt">3.255</span></li><li><span class="fr">20759</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 5&ndash;27</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">20782</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 101&ndash;119</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">20888</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Mudmen</b><span class="id">0xCA</span><span class="verso">10 mosse</span><span class="pt">14.692 punti</span></div><ol class="mosse"><li><span class="fr">24378</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 118&ndash;177</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">24522</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 81&ndash;110</span><span class="altre"><s>0&ndash;81 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">24612</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 9&ndash;48</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">24650</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 30&ndash;46</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">24687</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 26&ndash;58</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">24734</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 20&ndash;49</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">24774</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 58&ndash;79</span><span class="altre"><s>44&ndash;58 morte</s></span><span class="pt">1.326</span></li><li><span class="fr">24839</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 33&ndash;81</span><span class="altre"></span><span class="pt">1.326</span></li><li class="bivio"><span class="fr">24906</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 84&ndash;130</span><span class="altre"></span><span class="pt">495</span></li><li><span class="fr">25025</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 0&ndash;19</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">25040</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Tilting Room</b><span class="id">0xC5</span><span class="verso">3 mosse</span><span class="pt">6.602 punti</span></div><ol class="mosse"><li><span class="fr">20187</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 112&ndash;132</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">20296</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 27&ndash;47</span><span class="altre"><s>10&ndash;27 morte</s></span><span class="pt">2.675</span></li><li><span class="fr">20335</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 15&ndash;24</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">20360</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Tappa 13</h3>
+<p class="coda-tavola">Te ne tocca <b>una delle tre</b>, e non lo decidi tu &mdash; ma nei tre giri della partita <b>le vedi tutte</b>. <span style="color:var(--tenue2)">&middot; 48.162 punti in tutto</span></p>
+<div class="stesura"><div class="testa"><b>Dragon's Lair Final</b><span class="id">0xCE</span><span class="verso">14 mosse</span><span class="pt">37.251 punti</span></div><ol class="mosse"><li><span class="fr">28938</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 117&ndash;145</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">29057</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 314&ndash;328</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">29330</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 207&ndash;255</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">29538</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="opp">&middot; anche gi&ugrave;+sinistra</span><span class="fin">tick 652&ndash;676</span><span class="altre"></span><span class="pt">1.326</span></li><li><span class="fr">30085</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 97&ndash;110</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">30182</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="opp">&middot; anche gi&ugrave;+sinistra</span><span class="fin">tick 75&ndash;97</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">30262</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 108&ndash;128</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">30374</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 0&ndash;19</span><span class="altre"></span><span class="pt">3.255</span></li><li><span class="fr">30389</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+destra</span><span class="fin">tick 79&ndash;109</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">30476</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp oppure">o</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 12&ndash;44</span><span class="altre"></span><span class="pt">3.551</span></li><li><span class="fr">30512</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 80&ndash;112</span><span class="altre"></span><span class="pt">4.026</span></li><li><span class="fr">30602</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp oppure">o</span><span class="g"><em>&uarr;</em>SU</span><span class="opp">&middot; anche su+sinistra</span><span class="fin">tick 72&ndash;113</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">30694</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 15&ndash;22</span><span class="altre"></span><span class="pt">4.750</span></li><li><span class="fr">30720</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 0&ndash;20</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">30744</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Elevator Rev 9-piani</b><span class="id">0xC8</span><span class="verso">1 mossa</span><span class="pt">5.619 punti</span></div><ol class="mosse"><li class="bivio"><span class="fr">21959</span><span class="g attesa">non premere</span><span class="fin">lasci scadere</span><span class="altre"></span><span class="pt">124</span></li><li class="bivio"><span class="fr">22181</span><span class="g attesa">non premere</span><span class="fin">lasci scadere</span><span class="altre"></span><span class="pt">2.191</span></li><li><span class="fr">22225</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 76&ndash;85</span><span class="altre"><s>0&ndash;76 morte</s> &middot; <s>140&ndash;169 morte</s></span><span class="pt">3.255</span></li><li><span class="fr">22478</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+<div class="stesura"><div class="testa"><b>Elevator</b><span class="id">0xBE</span><span class="verso">1 mossa</span><span class="pt">5.292 punti</span></div><ol class="mosse"><li class="bivio"><span class="fr">14847</span><span class="g attesa">non premere</span><span class="fin">lasci scadere</span><span class="altre"></span><span class="pt">49</span></li><li class="bivio"><span class="fr">15011</span><span class="g attesa">non premere</span><span class="fin">lasci scadere</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">15115</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 74&ndash;83</span><span class="altre"><s>0&ndash;74 morte</s> &middot; <s>83&ndash;94 morte</s> &middot; <s>103&ndash;114 morte</s></span><span class="pt">3.255</span></li><li><span class="fr">15366</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<section class="tecnico">
+
+</section>
+<nav class="altrove"><span class="cap">Di Dragon&rsquo;s Lair c&rsquo;è anche</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/dragons-lair/elevator/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Un ascensore dove si scende soltanto</a></li>
+<li><a href="/it/dragons-lair/grafica/"><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span>Il tabellone diventato software</a></li>
+</ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/come-e-fatta-una-scena/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>Com&rsquo;&egrave; fatta una scena</a></li>
+<li><a href="/it/space-ace/a3/la-partita-cadet/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Cadet</a></li>
+<li><a href="/it/space-ace/a3/la-partita-captain/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Captain</a></li>
+<li><a href="/it/space-ace/a3/la-partita/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Space Ace</a></li>
+<li><a href="/it/dragons-lair/f2/la-partita/" class="qui"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>10 settembre 2026</b>, aggiornata il <b>10 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>471 su 471</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
+<p class="stampa">phenoma.org/it/dragons-lair/f2/la-partita/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
