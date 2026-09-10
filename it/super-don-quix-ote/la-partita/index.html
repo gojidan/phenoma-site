@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La partita — Super Don Quix-ote</title>
+<meta name="description" content="Tutte le mosse di Super Don Quix-ote, scena per scena, con il fotogramma del disco in cui la finestra si apre. Qui la macchina la mossa te la mostra — e allora questa pagina risponde all’altra domanda, quando: 156 mosse, e una finestra di 10 fotogrammi, un sesto di secondo, uguale in tutto il gioco tranne una volta.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  /* 5 set 2026, Alan: <<non riesco a vedere la differenza dei colori>>.
+     La fascia c'e' su OGNI pagina -- di casa e' oro -- e quello che cambia
+     e' il colore: si vede in che stanza sei senza dover leggere. */
+  border-top:3px solid var(--oro-cupo)}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:72ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:78ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- la legenda dei nomi delle scene (7 set) --- */
+.nomi{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--acqua);padding:18px 22px;margin:26px 0}
+.nomi .griglia{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 24px}
+.nomi .griglia div{display:flex;gap:11px;align-items:baseline;padding:5px 0;
+  font-size:15px;line-height:1.3;border-top:1px solid var(--bordo)}
+.nomi .griglia div:first-child{border-top:0}
+.nomi .griglia b{font-family:var(--mono);font-size:11px;color:var(--acqua);
+  flex:0 0 auto;letter-spacing:.08em;min-width:2.6em}
+.nomi .forse{color:var(--tenue);font-style:normal;font-size:.85em}
+.nomi .coda{margin:15px 0 0;font-size:14px;color:var(--tenue);max-width:80ch}
+
+/* --- la STRADA di una scena: i gesti in fila (7 set) --- */
+.strada{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.strada i{font-style:normal;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.04em;padding:2px 7px;border:1px solid var(--bordo);
+  color:var(--tenue);white-space:nowrap;background:var(--piano2)}
+.strada i.paga{border-color:var(--oro-cupo);color:var(--oro)}
+.strada i.muta{border-style:dashed;color:var(--tenue2);background:none}
+.strada i b{font-weight:400;color:var(--inchiostro)}
+.strada i.paga b{color:var(--oro)}
+.strada s{text-decoration:none;color:var(--tenue2);padding:0 1px}
+.coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
+  max-width:84ch}
+
+/* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
+.partita{margin:0 0 34px}
+.partita>h3{margin:30px 0 4px;font-size:20px}
+.partita .stesura{margin:16px 0 0;border:1px solid var(--bordo);
+  border-radius:3px;background:var(--piano);overflow:hidden}
+.partita .testa{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  padding:9px 14px;background:var(--piano2);border-bottom:1px solid var(--bordo)}
+.partita .testa b{font-size:15px}
+.partita .testa .id{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  letter-spacing:.08em}
+.partita .testa .verso{font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;
+  border:1px solid var(--bordo);color:var(--tenue)}
+.partita .testa .verso.rov{border-color:var(--acqua);color:var(--acqua)}
+.partita .testa .pt{margin-left:auto;font-family:var(--mono);font-size:12px;
+  color:var(--oro)}
+ol.mosse{list-style:none;margin:0;padding:0}
+ol.mosse li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  padding:7px 14px;border-top:1px solid var(--bordo);font-size:14px}
+ol.mosse li:first-child{border-top:0}
+ol.mosse .fr{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  flex:0 0 4.4em;letter-spacing:.04em}
+ol.mosse .g{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+  min-width:8.4em;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+ol.mosse .g em{font-style:normal;font-size:19px;line-height:1;
+  color:var(--inchiostro)}
+/* ⭐ il pulsante e' UNO SOLO: a cambiare e' quello che il film ti chiede.
+   Percio' il FUOCO e l'ENERGIA hanno due colori, e la stessa forma. */
+ol.mosse .g.fuoco,ol.mosse .g.energia{padding:1px 9px;border-radius:11px;
+  border:1px solid;font-weight:700}
+ol.mosse .g.fuoco{color:var(--brace);border-color:var(--brace)}
+ol.mosse .g.energia{color:var(--acqua);border-color:var(--acqua);
+  background:rgba(90,170,190,.09)}
+ol.mosse .g.attesa{color:var(--tenue2);font-style:italic}
+/* Le tre attese non sono la stessa cosa (Alan, 9 set): <<non premere>> e' una
+   scelta, <<non toccare>> e' una trappola, e il film che scorre non e' un
+   gesto affatto. */
+ol.mosse .g.trappola{color:var(--brace);font-weight:700;letter-spacing:.06em}
+ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
+ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
+ol.mosse .opp{margin-left:8px;font-family:var(--corpo);font-style:italic;
+  font-size:11.5px;color:var(--tenue2);letter-spacing:0}
+ol.mosse .fin{font-family:var(--mono);font-size:11.5px;color:var(--oro);
+  flex:0 0 auto;min-width:8.6em}
+ol.mosse .altre{font-family:var(--mono);font-size:10.5px;color:var(--tenue2);
+  flex:1 1 auto}
+ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
+ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
+  margin-left:auto;flex:0 0 auto}
+ol.mosse li.bivio{background:rgba(190,150,60,.05)}
+/* ⛔ 8 set 2026, sera — Alan, leggendo: <<un rombo con ? dentro e poi dei
+   numeri arancioni, dopo il numero di frame... non c'e' sempre, ogni tanto>>.
+   Era il segno del bivio, disegnato col carattere U+25C6: dove quel glifo
+   manca il browser mette la scatoletta col codice esadecimale dentro, e la
+   colora d'arancione perche' il colore glielo davamo noi.  E tornava <<ogni
+   tanto>> perche' sta solo sulle righe che SONO un bivio.
+   ⇒ il rombo adesso e' un quadratino ruotato: niente font, niente sorprese. */
+i.rombo{display:inline-block;width:5px;height:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle;flex:0 0 auto}
+ol.mosse li.bivio .fr::after{content:'';display:inline-block;width:5px;
+  height:5px;margin-left:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle}
+.legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
+  font-size:13px;color:var(--tenue)}
+.legenda-mosse span{display:inline-flex;align-items:center;gap:6px}
+.catena{margin:10px 0 0;padding:7px 14px;font-size:13px;color:var(--acqua);
+  background:rgba(90,170,190,.07);border-top:1px solid var(--bordo)}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:78ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+.specchio{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tenue2);border:1px solid var(--bordo);
+  padding:1px 5px;margin-left:6px;white-space:nowrap}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e SFUMATO ---
+   5 set 2026, Alan: <<nella home del sito riusciamo a scrivere Phenoma
+   grande con il colore sfumato?>>.  E' la stessa sfumatura del marchio
+   piccolo in barra -- crema, oro, oro cupo -- perche' il nome grande e il
+   nome piccolo devono essere la stessa cosa; con due fermate in piu', che a
+   92px due sole diventano una tinta piatta.
+   ⚠️ `background-clip:text` ritaglia lo sfondo sulle lettere di TUTTO
+   quello che sta dentro l'elemento: qui dentro non ci va nient'altro.
+   📌 `width:max-content` fa aderire il riquadro alla parola: senza, il
+   riquadro sarebbe largo quanto la pagina e l'inclinazione non si
+   vedrebbe. */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1;width:max-content;max-width:100%;
+  background:linear-gradient(176deg,#FFF6E7 0%,#FFDCA6 24%,var(--oro) 54%,
+    var(--oro-cupo) 80%,#C0761D 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.avviso{margin:26px 0 0;padding:16px 20px;border:1px solid var(--bordo);
+  border-left:3px solid var(--oro-cupo);background:rgba(190,150,60,.05);
+  max-width:78ch}
+.avviso p{margin:0 0 10px;font-size:14px;line-height:1.6}
+.avviso p:last-child{margin-bottom:0}
+.avviso .min{font-size:12.5px;color:var(--tenue)}
+.timbro .stato.ferma b{color:var(--verde,#3d7a4e)}
+.timbro .stato.viva b{color:var(--oro-cupo)}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  body{border-top:0}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  /* il nome sulla soglia: sfumato a schermo, inchiostro sul foglio */
+  h1.marchione{background:none;color:#111;-webkit-text-fill-color:#111;
+    width:auto;font-size:30pt}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+body{border-top-color:#00FFDB}
+.gioco{color:#00FFDB}
+.gioco a:hover{border-bottom-color:#00FFDB}
+.dettaglio{color:#00A896}
+.barra{border-bottom-color:rgba(0,255,219,.42)}
+header{border-bottom-color:rgba(0,255,219,.34)}
+.timbro .colore b{color:#00A896;font-weight:600}
+.timbro .colore .mono{color:inherit}
+@media print{body{border-top:0}
+  .gioco{color:#111}.dettaglio{color:#555}
+  .timbro .colore b{color:#111}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/super-don-quix-ote/">Super Don Quix-ote</a><span class="sep">/</span><span class="qui">tutte le mosse della partita</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/super-don-quix-ote/">Super Don Quix-ote</a></p><p class="dettaglio">Universal, 1984</p>
+  <h1>La partita</h1>
+  <p class="tesi">Tutte le mosse di <b>Super Don Quix-ote</b>, scena per scena, con il <b>fotogramma del disco</b> in cui la finestra si apre. Qui la macchina la mossa te la mostra &mdash; e allora questa pagina risponde all&rsquo;altra domanda, <b>quando</b>: 156 mosse, e una finestra di <b>10 fotogrammi</b>, un sesto di secondo, uguale in tutto il gioco tranne una volta.</p>
+</header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ic-DX" viewBox="0 0 40 32"><rect width="40" height="32" fill="#000"/><rect x="24" y="1" width="1" height="1" fill="#00FFDB"/><rect x="22" y="2" width="2" height="1" fill="#FF0000"/><rect x="24" y="2" width="2" height="1" fill="#00FFDB"/><rect x="22" y="3" width="2" height="1" fill="#FF0000"/><rect x="24" y="3" width="3" height="1" fill="#00FFDB"/><rect x="22" y="4" width="2" height="1" fill="#FF0000"/><rect x="24" y="4" width="4" height="1" fill="#00FFDB"/><rect x="22" y="5" width="2" height="1" fill="#FF0000"/><rect x="24" y="5" width="5" height="1" fill="#00FFDB"/><rect x="22" y="6" width="2" height="1" fill="#FF0000"/><rect x="24" y="6" width="6" height="1" fill="#00FFDB"/><rect x="22" y="7" width="2" height="1" fill="#FF0000"/><rect x="24" y="7" width="7" height="1" fill="#00FFDB"/><rect x="22" y="8" width="2" height="1" fill="#FF0000"/><rect x="24" y="8" width="8" height="1" fill="#00FFDB"/><rect x="3" y="9" width="30" height="1" fill="#00FFDB"/><rect x="1" y="10" width="2" height="1" fill="#FF0000"/><rect x="3" y="10" width="31" height="1" fill="#00FFDB"/><rect x="1" y="11" width="2" height="1" fill="#FF0000"/><rect x="3" y="11" width="32" height="1" fill="#00FFDB"/><rect x="1" y="12" width="2" height="1" fill="#FF0000"/><rect x="3" y="12" width="33" height="1" fill="#00FFDB"/><rect x="1" y="13" width="2" height="1" fill="#FF0000"/><rect x="3" y="13" width="34" height="1" fill="#00FFDB"/><rect x="1" y="14" width="2" height="1" fill="#FF0000"/><rect x="3" y="14" width="35" height="1" fill="#00FFDB"/><rect x="1" y="15" width="2" height="1" fill="#FF0000"/><rect x="3" y="15" width="36" height="1" fill="#00FFDB"/><rect x="1" y="16" width="2" height="1" fill="#FF0000"/><rect x="3" y="16" width="35" height="1" fill="#00FFDB"/><rect x="1" y="17" width="2" height="1" fill="#FF0000"/><rect x="3" y="17" width="34" height="1" fill="#00FFDB"/><rect x="1" y="18" width="2" height="1" fill="#FF0000"/><rect x="3" y="18" width="33" height="1" fill="#00FFDB"/><rect x="1" y="19" width="2" height="1" fill="#FF0000"/><rect x="3" y="19" width="32" height="1" fill="#00FFDB"/><rect x="1" y="20" width="2" height="1" fill="#FF0000"/><rect x="3" y="20" width="31" height="1" fill="#00FFDB"/><rect x="1" y="21" width="2" height="1" fill="#FF0000"/><rect x="3" y="21" width="30" height="1" fill="#00FFDB"/><rect x="1" y="22" width="23" height="1" fill="#FF0000"/><rect x="24" y="22" width="8" height="1" fill="#00FFDB"/><rect x="22" y="23" width="2" height="1" fill="#FF0000"/><rect x="24" y="23" width="7" height="1" fill="#00FFDB"/><rect x="22" y="24" width="2" height="1" fill="#FF0000"/><rect x="24" y="24" width="6" height="1" fill="#00FFDB"/><rect x="22" y="25" width="2" height="1" fill="#FF0000"/><rect x="24" y="25" width="5" height="1" fill="#00FFDB"/><rect x="22" y="26" width="2" height="1" fill="#FF0000"/><rect x="24" y="26" width="4" height="1" fill="#00FFDB"/><rect x="22" y="27" width="2" height="1" fill="#FF0000"/><rect x="24" y="27" width="3" height="1" fill="#00FFDB"/><rect x="22" y="28" width="2" height="1" fill="#FF0000"/><rect x="24" y="28" width="2" height="1" fill="#00FFDB"/><rect x="22" y="29" width="2" height="1" fill="#FF0000"/><rect x="24" y="29" width="1" height="1" fill="#00FFDB"/><rect x="22" y="30" width="2" height="1" fill="#FF0000"/></symbol><symbol id="ic-FIRE" viewBox="0 0 40 32"><rect width="40" height="32" fill="#000"/><rect x="15" y="0" width="1" height="1" fill="#00B500"/><rect x="16" y="0" width="8" height="1" fill="#00FF00"/><rect x="24" y="0" width="2" height="1" fill="#FFFFDB"/><rect x="12" y="1" width="1" height="1" fill="#00B500"/><rect x="13" y="1" width="14" height="1" fill="#00FF00"/><rect x="27" y="1" width="1" height="1" fill="#FFFFDB"/><rect x="10" y="2" width="1" height="1" fill="#00B500"/><rect x="11" y="2" width="16" height="1" fill="#00FF00"/><rect x="27" y="2" width="2" height="1" fill="#FFFFDB"/><rect x="8" y="3" width="1" height="1" fill="#00B500"/><rect x="9" y="3" width="20" height="1" fill="#00FF00"/><rect x="29" y="3" width="2" height="1" fill="#FFFFDB"/><rect x="7" y="4" width="1" height="1" fill="#00B500"/><rect x="8" y="4" width="19" height="1" fill="#00FF00"/><rect x="27" y="4" width="1" height="1" fill="#FFFFDB"/><rect x="28" y="4" width="3" height="1" fill="#00FF00"/><rect x="31" y="4" width="1" height="1" fill="#FFFFDB"/><rect x="7" y="5" width="18" height="1" fill="#00FF00"/><rect x="25" y="5" width="4" height="1" fill="#FFFFDB"/><rect x="29" y="5" width="3" height="1" fill="#00FF00"/><rect x="32" y="5" width="1" height="1" fill="#FFFFDB"/><rect x="7" y="6" width="16" height="1" fill="#00FF00"/><rect x="23" y="6" width="6" height="1" fill="#FFFFDB"/><rect x="29" y="6" width="3" height="1" fill="#00FF00"/><rect x="32" y="6" width="1" height="1" fill="#FFFFDB"/><rect x="7" y="7" width="1" height="1" fill="#00B500"/><rect x="8" y="7" width="16" height="1" fill="#00FF00"/><rect x="24" y="7" width="2" height="1" fill="#FFFFDB"/><rect x="26" y="7" width="5" height="1" fill="#00FF00"/><rect x="31" y="7" width="1" height="1" fill="#FFFFDB"/><rect x="32" y="7" width="1" height="1" fill="#FFDB91"/><rect x="7" y="8" width="2" height="1" fill="#00B500"/><rect x="9" y="8" width="14" height="1" fill="#00FF00"/><rect x="23" y="8" width="1" height="1" fill="#FFFFDB"/><rect x="24" y="8" width="5" height="1" fill="#00FF00"/><rect x="29" y="8" width="2" height="1" fill="#FFFFDB"/><rect x="31" y="8" width="2" height="1" fill="#00FF00"/><rect x="7" y="9" width="4" height="1" fill="#00B500"/><rect x="11" y="9" width="16" height="1" fill="#00FF00"/><rect x="27" y="9" width="2" height="1" fill="#FFFFDB"/><rect x="29" y="9" width="4" height="1" fill="#00FF00"/><rect x="7" y="10" width="6" height="1" fill="#00B500"/><rect x="13" y="10" width="11" height="1" fill="#00FF00"/><rect x="24" y="10" width="3" height="1" fill="#FFFFDB"/><rect x="27" y="10" width="6" height="1" fill="#00FF00"/><rect x="6" y="11" width="10" height="1" fill="#00B500"/><rect x="16" y="11" width="8" height="1" fill="#FFFFDB"/><rect x="24" y="11" width="9" height="1" fill="#00FF00"/><rect x="33" y="11" width="1" height="1" fill="#FFFFDB"/><rect x="5" y="12" width="1" height="1" fill="#00B500"/><rect x="6" y="12" width="1" height="1" fill="#000000"/><rect x="7" y="12" width="9" height="1" fill="#00B500"/><rect x="16" y="12" width="17" height="1" fill="#00FF00"/><rect x="33" y="12" width="1" height="1" fill="#000000"/><rect x="34" y="12" width="1" height="1" fill="#FFFFDB"/><rect x="4" y="13" width="3" height="1" fill="#00B500"/><rect x="7" y="13" width="1" height="1" fill="#000000"/><rect x="8" y="13" width="8" height="1" fill="#00B500"/><rect x="16" y="13" width="16" height="1" fill="#00FF00"/><rect x="32" y="13" width="1" height="1" fill="#000000"/><rect x="33" y="13" width="1" height="1" fill="#FFFFDB"/><rect x="34" y="13" width="2" height="1" fill="#00FF00"/><rect x="4" y="14" width="4" height="1" fill="#00B500"/><rect x="8" y="14" width="1" height="1" fill="#000000"/><rect x="9" y="14" width="8" height="1" fill="#00B500"/><rect x="17" y="14" width="14" height="1" fill="#00FF00"/><rect x="31" y="14" width="1" height="1" fill="#000000"/><rect x="32" y="14" width="1" height="1" fill="#FFFFDB"/><rect x="33" y="14" width="3" height="1" fill="#00FF00"/><rect x="4" y="15" width="1" height="1" fill="#000000"/><rect x="5" y="15" width="4" height="1" fill="#00B500"/><rect x="9" y="15" width="2" height="1" fill="#000000"/><rect x="11" y="15" width="6" height="1" fill="#00B500"/><rect x="17" y="15" width="12" height="1" fill="#00FF00"/><rect x="29" y="15" width="2" height="1" fill="#000000"/><rect x="31" y="15" width="1" height="1" fill="#FFFFDB"/><rect x="32" y="15" width="3" height="1" fill="#00FF00"/><rect x="35" y="15" width="1" height="1" fill="#000000"/><rect x="5" y="16" width="1" height="1" fill="#000000"/><rect x="6" y="16" width="5" height="1" fill="#00B500"/><rect x="11" y="16" width="2" height="1" fill="#000000"/><rect x="13" y="16" width="5" height="1" fill="#00B500"/><rect x="18" y="16" width="9" height="1" fill="#00FF00"/><rect x="27" y="16" width="2" height="1" fill="#000000"/><rect x="29" y="16" width="2" height="1" fill="#FFFFDB"/><rect x="31" y="16" width="3" height="1" fill="#00FF00"/><rect x="34" y="16" width="1" height="1" fill="#000000"/><rect x="6" y="17" width="1" height="1" fill="#000000"/><rect x="7" y="17" width="5" height="1" fill="#00B500"/><rect x="12" y="17" width="1" height="1" fill="#00FF00"/><rect x="13" y="17" width="1" height="1" fill="#00B500"/><rect x="14" y="17" width="2" height="1" fill="#000000"/><rect x="16" y="17" width="2" height="1" fill="#00B500"/><rect x="18" y="17" width="6" height="1" fill="#00FF00"/><rect x="24" y="17" width="3" height="1" fill="#000000"/><rect x="27" y="17" width="2" height="1" fill="#FFFFDB"/><rect x="29" y="17" width="4" height="1" fill="#00FF00"/><rect x="33" y="17" width="1" height="1" fill="#000000"/><rect x="7" y="18" width="1" height="1" fill="#000000"/><rect x="8" y="18" width="8" height="1" fill="#00B500"/><rect x="16" y="18" width="8" height="1" fill="#000000"/><rect x="24" y="18" width="3" height="1" fill="#FFFFDB"/><rect x="27" y="18" width="5" height="1" fill="#00FF00"/><rect x="32" y="18" width="1" height="1" fill="#000000"/><rect x="9" y="19" width="1" height="1" fill="#000000"/><rect x="10" y="19" width="10" height="1" fill="#00B500"/><rect x="20" y="19" width="10" height="1" fill="#00FF00"/><rect x="30" y="19" width="1" height="1" fill="#000000"/><rect x="11" y="20" width="1" height="1" fill="#000000"/><rect x="12" y="20" width="11" height="1" fill="#00B500"/><rect x="23" y="20" width="5" height="1" fill="#00FF00"/><rect x="28" y="20" width="1" height="1" fill="#000000"/><rect x="14" y="21" width="1" height="1" fill="#000000"/><rect x="15" y="21" width="10" height="1" fill="#00B500"/><rect x="25" y="21" width="1" height="1" fill="#000000"/></symbol><symbol id="ic-GIU" viewBox="0 0 32 40"><rect width="32" height="40" fill="#000"/><rect x="9" y="1" width="13" height="1" fill="#FF0000"/><rect x="9" y="2" width="13" height="1" fill="#FF0000"/><rect x="9" y="3" width="1" height="1" fill="#FF0000"/><rect x="10" y="3" width="13" height="1" fill="#00FFDB"/><rect x="9" y="4" width="1" height="1" fill="#FF0000"/><rect x="10" y="4" width="13" height="1" fill="#00FFDB"/><rect x="9" y="5" width="1" height="1" fill="#FF0000"/><rect x="10" y="5" width="13" height="1" fill="#00FFDB"/><rect x="9" y="6" width="1" height="1" fill="#FF0000"/><rect x="10" y="6" width="13" height="1" fill="#00FFDB"/><rect x="9" y="7" width="1" height="1" fill="#FF0000"/><rect x="10" y="7" width="13" height="1" fill="#00FFDB"/><rect x="9" y="8" width="1" height="1" fill="#FF0000"/><rect x="10" y="8" width="13" height="1" fill="#00FFDB"/><rect x="9" y="9" width="1" height="1" fill="#FF0000"/><rect x="10" y="9" width="13" height="1" fill="#00FFDB"/><rect x="9" y="10" width="1" height="1" fill="#FF0000"/><rect x="10" y="10" width="13" height="1" fill="#00FFDB"/><rect x="9" y="11" width="1" height="1" fill="#FF0000"/><rect x="10" y="11" width="13" height="1" fill="#00FFDB"/><rect x="9" y="12" width="1" height="1" fill="#FF0000"/><rect x="10" y="12" width="13" height="1" fill="#00FFDB"/><rect x="9" y="13" width="1" height="1" fill="#FF0000"/><rect x="10" y="13" width="13" height="1" fill="#00FFDB"/><rect x="9" y="14" width="1" height="1" fill="#FF0000"/><rect x="10" y="14" width="13" height="1" fill="#00FFDB"/><rect x="9" y="15" width="1" height="1" fill="#FF0000"/><rect x="10" y="15" width="13" height="1" fill="#00FFDB"/><rect x="9" y="16" width="1" height="1" fill="#FF0000"/><rect x="10" y="16" width="13" height="1" fill="#00FFDB"/><rect x="9" y="17" width="1" height="1" fill="#FF0000"/><rect x="10" y="17" width="13" height="1" fill="#00FFDB"/><rect x="9" y="18" width="1" height="1" fill="#FF0000"/><rect x="10" y="18" width="13" height="1" fill="#00FFDB"/><rect x="9" y="19" width="1" height="1" fill="#FF0000"/><rect x="10" y="19" width="13" height="1" fill="#00FFDB"/><rect x="9" y="20" width="1" height="1" fill="#FF0000"/><rect x="10" y="20" width="13" height="1" fill="#00FFDB"/><rect x="9" y="21" width="1" height="1" fill="#FF0000"/><rect x="10" y="21" width="13" height="1" fill="#00FFDB"/><rect x="1" y="22" width="9" height="1" fill="#FF0000"/><rect x="10" y="22" width="13" height="1" fill="#00FFDB"/><rect x="23" y="22" width="7" height="1" fill="#FF0000"/><rect x="1" y="23" width="9" height="1" fill="#FF0000"/><rect x="10" y="23" width="13" height="1" fill="#00FFDB"/><rect x="23" y="23" width="7" height="1" fill="#FF0000"/><rect x="2" y="24" width="29" height="1" fill="#00FFDB"/><rect x="3" y="25" width="27" height="1" fill="#00FFDB"/><rect x="4" y="26" width="25" height="1" fill="#00FFDB"/><rect x="5" y="27" width="23" height="1" fill="#00FFDB"/><rect x="6" y="28" width="21" height="1" fill="#00FFDB"/><rect x="7" y="29" width="19" height="1" fill="#00FFDB"/><rect x="8" y="30" width="17" height="1" fill="#00FFDB"/><rect x="9" y="31" width="15" height="1" fill="#00FFDB"/><rect x="10" y="32" width="13" height="1" fill="#00FFDB"/><rect x="11" y="33" width="11" height="1" fill="#00FFDB"/><rect x="12" y="34" width="9" height="1" fill="#00FFDB"/><rect x="13" y="35" width="7" height="1" fill="#00FFDB"/><rect x="14" y="36" width="5" height="1" fill="#00FFDB"/><rect x="15" y="37" width="3" height="1" fill="#00FFDB"/><rect x="16" y="38" width="1" height="1" fill="#00FFDB"/></symbol><symbol id="ic-SU" viewBox="0 0 32 40"><rect width="32" height="40" fill="#000"/><rect x="16" y="1" width="1" height="1" fill="#00FFDB"/><rect x="15" y="2" width="3" height="1" fill="#00FFDB"/><rect x="14" y="3" width="5" height="1" fill="#00FFDB"/><rect x="13" y="4" width="7" height="1" fill="#00FFDB"/><rect x="12" y="5" width="9" height="1" fill="#00FFDB"/><rect x="11" y="6" width="11" height="1" fill="#00FFDB"/><rect x="10" y="7" width="13" height="1" fill="#00FFDB"/><rect x="9" y="8" width="15" height="1" fill="#00FFDB"/><rect x="8" y="9" width="17" height="1" fill="#00FFDB"/><rect x="7" y="10" width="19" height="1" fill="#00FFDB"/><rect x="6" y="11" width="21" height="1" fill="#00FFDB"/><rect x="5" y="12" width="23" height="1" fill="#00FFDB"/><rect x="4" y="13" width="25" height="1" fill="#00FFDB"/><rect x="3" y="14" width="27" height="1" fill="#00FFDB"/><rect x="2" y="15" width="29" height="1" fill="#00FFDB"/><rect x="1" y="16" width="9" height="1" fill="#FF0000"/><rect x="10" y="16" width="13" height="1" fill="#00FFDB"/><rect x="23" y="16" width="7" height="1" fill="#FF0000"/><rect x="1" y="17" width="9" height="1" fill="#FF0000"/><rect x="10" y="17" width="13" height="1" fill="#00FFDB"/><rect x="23" y="17" width="7" height="1" fill="#FF0000"/><rect x="9" y="18" width="1" height="1" fill="#FF0000"/><rect x="10" y="18" width="13" height="1" fill="#00FFDB"/><rect x="9" y="19" width="1" height="1" fill="#FF0000"/><rect x="10" y="19" width="13" height="1" fill="#00FFDB"/><rect x="9" y="20" width="1" height="1" fill="#FF0000"/><rect x="10" y="20" width="13" height="1" fill="#00FFDB"/><rect x="9" y="21" width="1" height="1" fill="#FF0000"/><rect x="10" y="21" width="13" height="1" fill="#00FFDB"/><rect x="9" y="22" width="1" height="1" fill="#FF0000"/><rect x="10" y="22" width="13" height="1" fill="#00FFDB"/><rect x="9" y="23" width="1" height="1" fill="#FF0000"/><rect x="10" y="23" width="13" height="1" fill="#00FFDB"/><rect x="9" y="24" width="1" height="1" fill="#FF0000"/><rect x="10" y="24" width="13" height="1" fill="#00FFDB"/><rect x="9" y="25" width="1" height="1" fill="#FF0000"/><rect x="10" y="25" width="13" height="1" fill="#00FFDB"/><rect x="9" y="26" width="1" height="1" fill="#FF0000"/><rect x="10" y="26" width="13" height="1" fill="#00FFDB"/><rect x="9" y="27" width="1" height="1" fill="#FF0000"/><rect x="10" y="27" width="13" height="1" fill="#00FFDB"/><rect x="9" y="28" width="1" height="1" fill="#FF0000"/><rect x="10" y="28" width="13" height="1" fill="#00FFDB"/><rect x="9" y="29" width="1" height="1" fill="#FF0000"/><rect x="10" y="29" width="13" height="1" fill="#00FFDB"/><rect x="9" y="30" width="1" height="1" fill="#FF0000"/><rect x="10" y="30" width="13" height="1" fill="#00FFDB"/><rect x="9" y="31" width="1" height="1" fill="#FF0000"/><rect x="10" y="31" width="13" height="1" fill="#00FFDB"/><rect x="9" y="32" width="1" height="1" fill="#FF0000"/><rect x="10" y="32" width="13" height="1" fill="#00FFDB"/><rect x="9" y="33" width="1" height="1" fill="#FF0000"/><rect x="10" y="33" width="13" height="1" fill="#00FFDB"/><rect x="9" y="34" width="1" height="1" fill="#FF0000"/><rect x="10" y="34" width="13" height="1" fill="#00FFDB"/><rect x="9" y="35" width="1" height="1" fill="#FF0000"/><rect x="10" y="35" width="13" height="1" fill="#00FFDB"/><rect x="9" y="36" width="1" height="1" fill="#FF0000"/><rect x="10" y="36" width="13" height="1" fill="#00FFDB"/><rect x="9" y="37" width="13" height="1" fill="#FF0000"/><rect x="9" y="38" width="13" height="1" fill="#FF0000"/></symbol><symbol id="ic-SX" viewBox="0 0 40 32"><rect width="40" height="32" fill="#000"/><rect x="15" y="1" width="1" height="1" fill="#00FFDB"/><rect x="14" y="2" width="2" height="1" fill="#00FFDB"/><rect x="16" y="2" width="2" height="1" fill="#FF0000"/><rect x="13" y="3" width="3" height="1" fill="#00FFDB"/><rect x="16" y="3" width="2" height="1" fill="#FF0000"/><rect x="12" y="4" width="4" height="1" fill="#00FFDB"/><rect x="16" y="4" width="2" height="1" fill="#FF0000"/><rect x="11" y="5" width="5" height="1" fill="#00FFDB"/><rect x="16" y="5" width="2" height="1" fill="#FF0000"/><rect x="10" y="6" width="6" height="1" fill="#00FFDB"/><rect x="16" y="6" width="2" height="1" fill="#FF0000"/><rect x="9" y="7" width="7" height="1" fill="#00FFDB"/><rect x="16" y="7" width="2" height="1" fill="#FF0000"/><rect x="8" y="8" width="8" height="1" fill="#00FFDB"/><rect x="16" y="8" width="2" height="1" fill="#FF0000"/><rect x="7" y="9" width="30" height="1" fill="#00FFDB"/><rect x="6" y="10" width="31" height="1" fill="#00FFDB"/><rect x="37" y="10" width="2" height="1" fill="#FF0000"/><rect x="5" y="11" width="32" height="1" fill="#00FFDB"/><rect x="37" y="11" width="2" height="1" fill="#FF0000"/><rect x="4" y="12" width="33" height="1" fill="#00FFDB"/><rect x="37" y="12" width="2" height="1" fill="#FF0000"/><rect x="3" y="13" width="34" height="1" fill="#00FFDB"/><rect x="37" y="13" width="2" height="1" fill="#FF0000"/><rect x="2" y="14" width="35" height="1" fill="#00FFDB"/><rect x="37" y="14" width="2" height="1" fill="#FF0000"/><rect x="1" y="15" width="36" height="1" fill="#00FFDB"/><rect x="37" y="15" width="2" height="1" fill="#FF0000"/><rect x="2" y="16" width="35" height="1" fill="#00FFDB"/><rect x="37" y="16" width="2" height="1" fill="#FF0000"/><rect x="3" y="17" width="34" height="1" fill="#00FFDB"/><rect x="37" y="17" width="2" height="1" fill="#FF0000"/><rect x="4" y="18" width="33" height="1" fill="#00FFDB"/><rect x="37" y="18" width="2" height="1" fill="#FF0000"/><rect x="5" y="19" width="32" height="1" fill="#00FFDB"/><rect x="37" y="19" width="2" height="1" fill="#FF0000"/><rect x="6" y="20" width="31" height="1" fill="#00FFDB"/><rect x="37" y="20" width="2" height="1" fill="#FF0000"/><rect x="7" y="21" width="30" height="1" fill="#00FFDB"/><rect x="37" y="21" width="2" height="1" fill="#FF0000"/><rect x="8" y="22" width="8" height="1" fill="#00FFDB"/><rect x="16" y="22" width="23" height="1" fill="#FF0000"/><rect x="9" y="23" width="7" height="1" fill="#00FFDB"/><rect x="16" y="23" width="2" height="1" fill="#FF0000"/><rect x="10" y="24" width="6" height="1" fill="#00FFDB"/><rect x="16" y="24" width="2" height="1" fill="#FF0000"/><rect x="11" y="25" width="5" height="1" fill="#00FFDB"/><rect x="16" y="25" width="2" height="1" fill="#FF0000"/><rect x="12" y="26" width="4" height="1" fill="#00FFDB"/><rect x="16" y="26" width="2" height="1" fill="#FF0000"/><rect x="13" y="27" width="3" height="1" fill="#00FFDB"/><rect x="16" y="27" width="2" height="1" fill="#FF0000"/><rect x="14" y="28" width="2" height="1" fill="#00FFDB"/><rect x="16" y="28" width="2" height="1" fill="#FF0000"/><rect x="15" y="29" width="1" height="1" fill="#00FFDB"/><rect x="16" y="29" width="2" height="1" fill="#FF0000"/><rect x="16" y="30" width="2" height="1" fill="#FF0000"/></symbol></defs></svg>
+<h2>Qui la macchina te la dice, la mossa</h2>
+<p class="punta">&Egrave; la differenza con Dragon&rsquo;s Lair e con Space Ace, e cambia tutto. L&igrave; la domanda &egrave; <i>che cosa devo fare</i>, e nessuno risponde. Qui lo schermo ti mostra <b>un&rsquo;icona</b>: la mossa &egrave; scritta. Quello che resta da sapere &egrave; <b>quando</b> &mdash; e in quattordici punti, che l&rsquo;icona <b>non dice tutta la verit&agrave;</b>.</p>
+<div class="fig" style="display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center"><div style="text-align:center"><div style="font-family:var(--mono);font-size:clamp(26px,5vw,40px);font-weight:700;color:var(--oro)">10</div><div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);margin-top:6px">fotogrammi di finestra</div></div><div style="font-family:var(--mono);font-size:24px;color:var(--tenue2)">=</div><div style="text-align:center"><div style="font-family:var(--mono);font-size:clamp(26px,5vw,40px);font-weight:700;color:var(--oro)">1/6</div><div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);margin-top:6px">di secondo</div></div></div>
+<div class="nota"><span class="cap">Dieci fotogrammi, sempre &mdash; tranne una volta</span><p>Su <b>156</b> mosse del gioco, <b>155</b> hanno una finestra larga esattamente <b>10 fotogrammi</b>. Una sola ne ha <b>9</b>: la mossa 5 di <b>Dea del male</b>, che apre al fotogramma 17946 e chiude al 17955. Non sappiamo se sia una scelta o una svista del 1984 &mdash; sappiamo che &egrave; l&rsquo;unica, e che sta scritta nei byte come tutte le altre.</p></div>
+<p>Il numero sotto <b>fotogramma</b> non &egrave; un tick contato da un inizio: &egrave; il <b>punto del disco</b>, quello che leggi sul contatore. Da l&igrave; a dieci pi&ugrave; in l&agrave; la macchina accetta; prima e dopo, no.</p>
+<div class="nota caldo"><span class="cap">Da dove viene questa pagina, e chi l&rsquo;ha controllata</span><p>Tutto quello che c&rsquo;&egrave; qui &egrave; letto dai <b>record del copione</b>: ventiquattro byte per mossa, a partire dai puntatori di <span class="mono">0x2900</span>. Poi lo abbiamo messo accanto al tracciato del <b>Campione Prometeo</b> registrato il 9 settembre 2026: <b>186 pressioni su 186 combaciano</b>, e in tutte le scene che ha attraversato <b>non ha saltato una sola mossa</b>.</p></div>
+<p class="min">&#9888; Di Super Don esistono <b>due set di ROM</b> usciti dalla fabbrica, e le mosse sono <b>le stesse in tutti e due</b>: cambia il numero della mossa, non il gesto. Qui c&rsquo;&egrave; il set a scene intere.</p>
+<h2>Le ventitr&eacute; scene</h2>
+<p>Il gioco distribuisce le scene in <b>sei blocchi</b> incatenati, e la catena non cambia mai. Il caso entra soltanto nei primi due, e non sposta scene singole: sposta <b>mazzetti interi</b>. &rarr; <a href="/it/super-don-quix-ote/sequenza/">come il gioco sceglie l&rsquo;ordine</a>.</p>
+<div class="partita"><h3>Blocco 1</h3>
+<p class="coda-tavola">l&rsquo;ordine di questo blocco pu&ograve; uscire in <b>6 modi</b>, e qui la morte <b>ti manda avanti</b>.</p>
+<div class="stesura"><div class="testa"><b>Partenza dal cimitero</b><span class="id">scena 00</span><span class="verso">7 mosse</span><span class="pt">2.100 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">5974</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">150</td><td class="num"></td></tr><tr><td><span class="mono">6166</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">200</td><td class="num"></td></tr><tr><td><span class="mono">6228</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">250</td><td class="num"></td></tr><tr><td><span class="mono">6290</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">300</td><td class="num"></td></tr><tr><td><span class="mono">6424</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">350</td><td class="num"></td></tr><tr><td><span class="mono">6497</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">400</td><td class="num"></td></tr><tr><td><span class="mono">6671</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">450</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Crolli di rocce</b><span class="id">scena 03</span><span class="verso">6 mosse</span><span class="pt">1.950 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">10424</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div></td><td class="num">200</td><td class="num"></td></tr><tr><td><span class="mono">10541</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">250</td><td class="num"></td></tr><tr><td><span class="mono">10695</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">300</td><td class="num"></td></tr><tr><td><span class="mono">10814</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">350</td><td class="num"></td></tr><tr><td><span class="mono">10940</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">400</td><td class="num"></td></tr><tr><td><span class="mono">11066</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">450</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Totem volanti</b><span class="id">scena 08</span><span class="verso">6 mosse</span><span class="pt">3.000 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">16152</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">250</td><td class="num"></td></tr><tr><td><span class="mono">16258</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">350</td><td class="num"></td></tr><tr><td><span class="mono">16355</span></td><td><span class="dim">il film si ricuce &mdash; qui non ti &egrave; chiesto niente</span></td><td class="num"></td><td class="num"></td></tr><tr><td><span class="mono">16523</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">350</td><td class="num"></td></tr><tr><td><span class="mono">16648</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span><b>la spada</b></span></div></td><td class="num">450</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">16928</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div></td><td class="num">550</td><td class="num"></td></tr><tr><td><span class="mono">17016</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">650</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Dea del male</b><span class="id">scena 09</span><span class="verso">6 mosse</span><span class="pt">3.300 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">17508</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">300</td><td class="num"></td></tr><tr><td><span class="mono">17557</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">400</td><td class="num"></td></tr><tr><td><span class="mono">17655</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">500</td><td class="num"></td></tr><tr><td><span class="mono">17780</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">600</td><td class="num"></td></tr><tr><td><span class="mono">17879</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span><b>a sinistra</b></span></div></td><td class="num">700</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">17946</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">800</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Egitto alieno</b><span class="id">scena 04</span><span class="verso">8 mosse</span><span class="pt">5.150 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">11620</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">350</td><td class="num"></td></tr><tr><td><span class="mono">11743</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">450</td><td class="num"></td></tr><tr><td><span class="mono">11908</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">550</td><td class="num"></td></tr><tr><td><span class="mono">12032</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">650</td><td class="num"></td></tr><tr><td><span class="mono">12150</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">750</td><td class="num"></td></tr><tr><td><span class="mono">12230</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">800</td><td class="num"></td></tr><tr><td><span class="mono">12279</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span><b>la spada</b></span></div></td><td class="num">800</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">12374</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">800</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Getto d'acqua</b><span class="id">scena 05</span><span class="verso">1 mossa</span><span class="pt">400 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">12971</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">400</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Serpi acquatiche</b><span class="id">scena 06</span><span class="verso">8 mosse</span><span class="pt">6.700 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">13474</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">450</td><td class="num"></td></tr><tr><td><span class="mono">13583</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">600</td><td class="num"></td></tr><tr><td><span class="mono">13632</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">750</td><td class="num"></td></tr><tr><td><span class="mono">13839</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">900</td><td class="num"></td></tr><tr><td><span class="mono">13963</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.000</td><td class="num"></td></tr><tr><td><span class="mono">14114</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.000</td><td class="num"></td></tr><tr><td><span class="mono">14245</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.000</td><td class="num"></td></tr><tr><td><span class="mono">14420</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span><b>a sinistra</b></span></div></td><td class="num">1.000</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Mummia</b><span class="id">scena 07</span><span class="verso">5 mosse</span><span class="pt">3.900 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">14977</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">500</td><td class="num"></td></tr><tr><td><span class="mono">15126</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span><b>a sinistra</b></span></div></td><td class="num">650</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">15337</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">800</td><td class="num"></td></tr><tr><td><span class="mono">15530</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span><b>la spada</b></span></div></td><td class="num">950</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">15643</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.000</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Scheletri guerrieri</b><span class="id">scena 01</span><span class="verso">16 mosse</span><span class="pt">17.600 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">7049</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">500</td><td class="num"></td></tr><tr><td><span class="mono">7145</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">700</td><td class="num"></td></tr><tr><td><span class="mono">7184</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">900</td><td class="num"></td></tr><tr><td><span class="mono">7342</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.100</td><td class="num"></td></tr><tr><td><span class="mono">7381</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">7563</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">7651</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">7894</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">7996</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">8072</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">8262</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">8339</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">8388</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">8498</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">8597</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr><tr><td><span class="mono">8671</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.200</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Braccia dal sottosuolo</b><span class="id">scena 02</span><span class="verso">11 mosse</span><span class="pt">14.000 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">8963</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">500</td><td class="num"></td></tr><tr><td><span class="mono">9112</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">750</td><td class="num"></td></tr><tr><td><span class="mono">9251</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.000</td><td class="num"></td></tr><tr><td><span class="mono">9352</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.250</td><td class="num"></td></tr><tr><td><span class="mono">9443</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.500</td><td class="num"></td></tr><tr><td><span class="mono">9571</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.500</td><td class="num"></td></tr><tr><td><span class="mono">9600</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.500</td><td class="num"></td></tr><tr><td><span class="mono">9720</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.500</td><td class="num"></td></tr><tr><td><span class="mono">9759</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.500</td><td class="num"></td></tr><tr><td><span class="mono">9910</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.500</td><td class="num"></td></tr><tr><td><span class="mono">10041</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.500</td><td class="num"></td></tr></tbody></table></div>
+</div>
+<div class="partita"><h3>Blocco 2</h3>
+<p class="coda-tavola">l&rsquo;ordine di questo blocco pu&ograve; uscire in <b>2 modi</b>, e qui la morte <b>ti manda avanti</b>.</p>
+<div class="stesura"><div class="testa"><b>Serpente gigante</b><span class="id">scena 15</span><span class="verso">7 mosse</span><span class="pt">11.750 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">26674</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">650</td><td class="num"></td></tr><tr><td><span class="mono">26843</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span><b>a sinistra</b></span></div></td><td class="num">1.050</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">26877</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span><b>a destra</b></span></div></td><td class="num">1.450</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">27060</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.850</td><td class="num"></td></tr><tr><td><span class="mono">27112</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.250</td><td class="num"></td></tr><tr><td><span class="mono">27281</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">2.250</td><td class="num"></td></tr><tr><td><span class="mono">27408</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">2.250</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Drago vortice</b><span class="id">scena 13</span><span class="verso">11 mosse</span><span class="pt">15.200 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">23146</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">550</td><td class="num"></td></tr><tr><td><span class="mono">23349</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">850</td><td class="num"></td></tr><tr><td><span class="mono">23574</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div></td><td class="num">1.150</td><td class="num"></td></tr><tr><td><span class="mono">23653</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span><b>in basso</b></span></div></td><td class="num">1.450</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">23748</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">1.600</td><td class="num"></td></tr><tr><td><span class="mono">23881</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.600</td><td class="num"></td></tr><tr><td><span class="mono">23950</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.600</td><td class="num"></td></tr><tr><td><span class="mono">24076</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.600</td><td class="num"></td></tr><tr><td><span class="mono">24115</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span><b>a sinistra</b></span></div></td><td class="num">1.600</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">24372</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.600</td><td class="num"></td></tr><tr><td><span class="mono">24473</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.600</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Lago elettrico</b><span class="id">scena 14</span><span class="verso">10 mosse</span><span class="pt">16.500 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">25130</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">600</td><td class="num"></td></tr><tr><td><span class="mono">25179</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">950</td><td class="num"></td></tr><tr><td><span class="mono">25262</span></td><td><span class="dim">il film si ricuce &mdash; qui non ti &egrave; chiesto niente</span></td><td class="num"></td><td class="num"></td></tr><tr><td><span class="mono">25390</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">950</td><td class="num"></td></tr><tr><td><span class="mono">25419</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.300</td><td class="num"></td></tr><tr><td><span class="mono">25583</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.650</td><td class="num"></td></tr><tr><td><span class="mono">25697</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">2.000</td><td class="num"></td></tr><tr><td><span class="mono">25869</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">2.000</td><td class="num"></td></tr><tr><td><span class="mono">25908</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">2.000</td><td class="num"></td></tr><tr><td><span class="mono">26132</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.000</td><td class="num"></td></tr><tr><td><span class="mono">26233</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">2.000</td><td class="num"></td></tr></tbody></table></div>
+</div>
+<div class="partita"><h3>Blocco 3</h3>
+<p class="coda-tavola">l&rsquo;ordine &egrave; <b>sempre questo</b>, e qui la morte <b>ti rimette sulla stessa scena</b>.</p>
+<div class="stesura"><div class="testa"><b>Inondazione</b><span class="id">scena 10</span><span class="verso">6 mosse</span><span class="pt">10.500 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">18305</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div></td><td class="num">700</td><td class="num"></td></tr><tr><td><span class="mono">18474</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">1.150</td><td class="num"></td></tr><tr><td><span class="mono">18655</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.600</td><td class="num"></td></tr><tr><td><span class="mono">18694</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span><b>a sinistra</b></span></div></td><td class="num">2.050</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">18903</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">2.500</td><td class="num"></td></tr><tr><td><span class="mono">19032</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.500</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Acque pericolose</b><span class="id">scena 11</span><span class="verso">10 mosse</span><span class="pt">21.750 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">19422</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">750</td><td class="num"></td></tr><tr><td><span class="mono">19634</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.250</td><td class="num"></td></tr><tr><td><span class="mono">19683</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.750</td><td class="num"></td></tr><tr><td><span class="mono">19791</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">2.250</td><td class="num"></td></tr><tr><td><span class="mono">19998</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">2.750</td><td class="num"></td></tr><tr><td><span class="mono">20104</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.750</td><td class="num"></td></tr><tr><td><span class="mono">20351</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div></td><td class="num">2.750</td><td class="num"></td></tr><tr><td><span class="mono">20481</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">2.750</td><td class="num"></td></tr><tr><td><span class="mono">20703</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">2.750</td><td class="num"></td></tr><tr><td><span class="mono">20975</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.750</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Slalom torrenziale</b><span class="id">scena 12</span><span class="verso">8 mosse</span><span class="pt">19.250 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">21380</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">800</td><td class="num"></td></tr><tr><td><span class="mono">21430</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.350</td><td class="num"></td></tr><tr><td><span class="mono">21529</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">1.900</td><td class="num"></td></tr><tr><td><span class="mono">21667</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">2.450</td><td class="num"></td></tr><tr><td><span class="mono">21737</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">3.000</td><td class="num"></td></tr><tr><td><span class="mono">21913</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">3.000</td><td class="num"></td></tr><tr><td><span class="mono">22119</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="GIU"><use href="#ic-GIU"/></svg></span><span>in basso</span></div></td><td class="num">3.000</td><td class="num"></td></tr><tr><td><span class="mono">22624</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">3.000</td><td class="num"></td></tr></tbody></table></div>
+</div>
+<div class="partita"><h3>Blocco 4</h3>
+<p class="coda-tavola">l&rsquo;ordine &egrave; <b>sempre questo</b>, e qui la morte <b>ti rimette sulla stessa scena</b>.</p>
+<div class="stesura"><div class="testa"><b>Salita al mulino</b><span class="id">scena 16</span><span class="verso">5 mosse</span><span class="pt">10.500 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">27897</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">850</td><td class="num"></td></tr><tr><td><span class="mono">28000</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">1.450</td><td class="num"></td></tr><tr><td><span class="mono">28117</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">2.050</td><td class="num"></td></tr><tr><td><span class="mono">28204</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span><b>la spada</b></span></div></td><td class="num">2.650</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">28375</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span><b>a sinistra</b></span></div></td><td class="num">3.250</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr></tbody></table></div>
+</div>
+<div class="partita"><h3>Blocco 5</h3>
+<p class="coda-tavola">l&rsquo;ordine &egrave; <b>sempre questo</b>, e qui la morte <b>ti manda avanti</b>.</p>
+<div class="stesura"><div class="testa"><b>Trabocchetti mortali</b><span class="id">scena 17</span><span class="verso">6 mosse</span><span class="pt">14.500 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">28961</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">900</td><td class="num"></td></tr><tr><td><span class="mono">29003</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">1.550</td><td class="num"></td></tr><tr><td><span class="mono">29045</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.200</td><td class="num"></td></tr><tr><td><span class="mono">29152</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.850</td><td class="num"></td></tr><tr><td><span class="mono">29192</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">3.500</td><td class="num"></td></tr><tr><td><span class="mono">29236</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">3.500</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Scala appiattita</b><span class="id">scena 18</span><span class="verso">1 mossa</span><span class="pt">1.000 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">29560</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.000</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Muri stringenti</b><span class="id">scena 19</span><span class="verso">1 mossa</span><span class="pt">1.000 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">30108</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">1.000</td><td class="num"></td></tr></tbody></table></div>
+</div>
+<div class="partita"><h3>Blocco 6</h3>
+<p class="coda-tavola">l&rsquo;ordine &egrave; <b>sempre questo</b>, e qui la morte <b>ti rimette sulla stessa scena</b>.</p>
+<div class="stesura"><div class="testa"><b>Ultime sentinelle</b><span class="id">scena 20</span><span class="verso">2 mosse</span><span class="pt">2.750 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">30735</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.000</td><td class="num"></td></tr><tr><td><span class="mono">30873</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">1.750</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Salone rituale</b><span class="id">scena 21</span><span class="verso">4 mosse</span><span class="pt">8.800 di bonus</span></div></div>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">31261</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">1.000</td><td class="num"></td></tr><tr><td><span class="mono">31400</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.800</td><td class="num"></td></tr><tr><td><span class="mono">31439</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">2.600</td><td class="num"></td></tr><tr><td><span class="mono">31759</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">3.400</td><td class="num"></td></tr></tbody></table></div>
+<div class="stesura"><div class="testa"><b>Scontro finale</b><span class="id">scena 22</span><span class="verso">11 mosse</span><span class="pt">&mdash;</span></div></div>
+<p class="coda-tavola">&#11088; <b>L&rsquo;ultima scena non ha un bonus suo</b>: quella voce della tabella la ROM la riusa per la <b>cerimonia</b> di fine partita, 51.000 punti per ogni vita che ti resta.</p>
+<div class="scroll"><table><thead><tr><th>fotogramma</th><th>la mossa</th><th class="num">vale</th><th class="num">e in pi&ugrave;</th></tr></thead><tbody><tr><td><span class="mono">32190</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">1.000</td><td class="num"></td></tr><tr><td><span class="mono">32225</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">2.000</td><td class="num"></td></tr><tr><td><span class="mono">32596</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">3.000</td><td class="num"></td></tr><tr><td><span class="mono">32617</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 32 40" role="img" aria-label="SU"><use href="#ic-SU"/></svg></span><span>in alto</span></div></td><td class="num">4.000</td><td class="num"></td></tr><tr><td><span class="mono">32806</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">5.000</td><td class="num"></td></tr><tr><td><span class="mono">32938</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div></td><td class="num">6.000</td><td class="num"></td></tr><tr><td><span class="mono">33105</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">6.000</td><td class="num"></td></tr><tr><td><span class="mono">33134</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">6.000</td><td class="num"></td></tr><tr><td><span class="mono">33232</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="DX"><use href="#ic-DX"/></svg></span><span>a destra</span></div></td><td class="num">6.000</td><td class="num"></td></tr><tr><td><span class="mono">33316</span></td><td><div class="coppia"><div class="coppia spenta"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="SX"><use href="#ic-SX"/></svg></span><span>a sinistra</span></div><span class="via">&rarr;</span><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span><b>la spada</b></span></div></td><td class="num">6.000</td><td class="num"><b style="color:var(--oro)">+10.000</b></td></tr><tr><td><span class="mono">33421</span></td><td><div class="coppia"><span class="telaio"><svg class="ic" viewBox="0 0 40 32" role="img" aria-label="FIRE"><use href="#ic-FIRE"/></svg></span><span>la spada</span></div></td><td class="num">6.000</td><td class="num"></td></tr></tbody></table></div>
+</div>
+<h2>E i conti</h2>
+<div class="scroll"><table><thead><tr><th>che cosa</th><th class="num">quante</th><th class="num">quanto</th></tr></thead><tbody><tr><td>le mosse del copione</td><td class="num">156</td><td class="num">240.900</td></tr><tr><td>di cui <b>disobbedienze</b> &mdash; <a href="/it/super-don-quix-ote/mosse-disobbedienti/">la loro pagina</a></td><td class="num">14</td><td class="num">140.000</td></tr><tr><td>le <b>giunzioni</b>: record che non chiedono niente</td><td class="num">2</td><td class="num"></td></tr><tr><td>i bonus di scena</td><td class="num">22</td><td class="num">191.600</td></tr><tr><td>la <b>cerimonia</b>, per ogni vita che ti resta</td><td class="num"></td><td class="num">51.000</td></tr></tbody></table></div>
+<p>&rArr; Sommati con quattro vite fanno <b>776.500</b>, che &egrave; il Max Score dichiarato dal giocatore del 1984 &mdash; e si ricostruisce dal copione <b>senza scrivere una cifra a mano</b>. Come lo si batte sta &rarr; <a href="/it/super-don-quix-ote/il-campione/">nella pagina del Campione</a>.</p>
+<section class="tecnico">
+
+</section>
+<nav class="altrove"><span class="cap">Di Super Don Quix-ote c&rsquo;è anche</span><ul>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/mosse-disobbedienti/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Le quattordici disobbedienze</a></li>
+<li><a href="/it/super-don-quix-ote/grafica/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Duecentocinquantasei tessere e sedici colori</a></li>
+<li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
+</ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/la-partita/" class="qui"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La partita</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/come-e-fatta-una-scena/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>Com&rsquo;&egrave; fatta una scena</a></li>
+<li><a href="/it/space-ace/a3/la-partita-cadet/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Cadet</a></li>
+<li><a href="/it/space-ace/a3/la-partita-captain/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Captain</a></li>
+<li><a href="/it/space-ace/a3/la-partita/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Space Ace</a></li>
+<li><a href="/it/dragons-lair/f2/la-partita/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>10 settembre 2026</b>, aggiornata il <b>10 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>475 su 475</b></span><span class="colore"><span class="et">il colore</span><b>dal vero &mdash; <span class="mono">sdq-cprm.bin</span></b></span></div>
+<p class="stampa">phenoma.org/it/super-don-quix-ote/la-partita/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
