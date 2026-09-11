@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La partita — Dragon&amp;rsquo;s Lair II</title>
+<meta name="description" content="Tutte le mosse di una partita a Dragon’s Lair II: 10 livelli giocati sui sedici che la ROM contiene, 302 mosse e 11 tesori. E i tesori non sono un dettaglio: valgono il 68% del punteggio — uno solo paga quanto 59 mosse.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  /* 5 set 2026, Alan: <<non riesco a vedere la differenza dei colori>>.
+     La fascia c'e' su OGNI pagina -- di casa e' oro -- e quello che cambia
+     e' il colore: si vede in che stanza sei senza dover leggere. */
+  border-top:3px solid var(--oro-cupo)}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:72ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:78ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+/* 10 set: i gruppi per macchina nell'indice di un gioco. */
+h2.macchina{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  margin:34px 0 14px;padding-bottom:8px;
+  border-bottom:1px solid var(--bordo)}
+h2.macchina .chi{font-family:var(--corpo);font-style:italic;
+  font-size:14px;color:var(--tenue);font-weight:400}
+h2.macchina .quante{font-family:var(--mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue2);
+  font-weight:400}
+/* 10 set: l'immaginetta della scena, accanto al suo nome.  Piccola
+   apposta: indica la scena, non racconta il film. */
+.stesura .testa .mini{display:block;width:52px;height:39px;
+  object-fit:cover;border:1px solid var(--bordo);flex:0 0 auto;
+  margin-right:2px;background:#000}
+@media(min-width:700px){.stesura .testa .mini{width:80px;height:60px}}
+/* 10 set 2026: il rimando che e' il gesto principale di una pagina.
+   Nasce per la Sidam, la cui prima riga dice <<le mosse sono quelle
+   dell'europea>>: da li' si deve poter andare via subito. */
+.bottone{display:inline-block;padding:11px 20px;border:1px solid var(--oro-cupo);
+  color:var(--oro);text-decoration:none;font-family:var(--mono);
+  font-size:12.5px;letter-spacing:.06em;background:rgba(190,150,60,.06)}
+.bottone:hover{background:rgba(190,150,60,.14);border-color:var(--oro)}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- la legenda dei nomi delle scene (7 set) --- */
+.nomi{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--acqua);padding:18px 22px;margin:26px 0}
+.nomi .griglia{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 24px}
+.nomi .griglia div{display:flex;gap:11px;align-items:baseline;padding:5px 0;
+  font-size:15px;line-height:1.3;border-top:1px solid var(--bordo)}
+.nomi .griglia div:first-child{border-top:0}
+.nomi .griglia b{font-family:var(--mono);font-size:11px;color:var(--acqua);
+  flex:0 0 auto;letter-spacing:.08em;min-width:2.6em}
+.nomi .forse{color:var(--tenue);font-style:normal;font-size:.85em}
+.nomi .coda{margin:15px 0 0;font-size:14px;color:var(--tenue);max-width:80ch}
+
+/* --- la STRADA di una scena: i gesti in fila (7 set) --- */
+.strada{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.strada i{font-style:normal;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.04em;padding:2px 7px;border:1px solid var(--bordo);
+  color:var(--tenue);white-space:nowrap;background:var(--piano2)}
+.strada i.paga{border-color:var(--oro-cupo);color:var(--oro)}
+.strada i.muta{border-style:dashed;color:var(--tenue2);background:none}
+.strada i b{font-weight:400;color:var(--inchiostro)}
+.strada i.paga b{color:var(--oro)}
+.strada s{text-decoration:none;color:var(--tenue2);padding:0 1px}
+.coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
+  max-width:84ch}
+
+/* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
+.partita{margin:0 0 34px}
+.partita>h3{margin:30px 0 4px;font-size:20px}
+.partita .stesura{margin:16px 0 0;border:1px solid var(--bordo);
+  border-radius:3px;background:var(--piano);overflow:hidden}
+.partita .testa{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  padding:9px 14px;background:var(--piano2);border-bottom:1px solid var(--bordo)}
+.partita .testa b{font-size:15px}
+.partita .testa .id{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  letter-spacing:.08em}
+.partita .testa .verso{font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;
+  border:1px solid var(--bordo);color:var(--tenue)}
+.partita .testa .verso.rov{border-color:var(--acqua);color:var(--acqua)}
+.partita .testa .pt{margin-left:auto;font-family:var(--mono);font-size:12px;
+  color:var(--oro)}
+ol.mosse{list-style:none;margin:0;padding:0}
+ol.mosse li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  padding:7px 14px;border-top:1px solid var(--bordo);font-size:14px}
+ol.mosse li:first-child{border-top:0}
+ol.mosse .fr{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  flex:0 0 4.4em;letter-spacing:.04em}
+ol.mosse .g{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+  min-width:8.4em;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+ol.mosse .g em{font-style:normal;font-size:19px;line-height:1;
+  color:var(--inchiostro)}
+/* ⭐ il pulsante e' UNO SOLO: a cambiare e' quello che il film ti chiede.
+   Percio' il FUOCO e l'ENERGIA hanno due colori, e la stessa forma. */
+ol.mosse .g.fuoco,ol.mosse .g.energia{padding:1px 9px;border-radius:11px;
+  border:1px solid;font-weight:700}
+ol.mosse .g.fuoco{color:var(--brace);border-color:var(--brace)}
+ol.mosse .g.energia{color:var(--acqua);border-color:var(--acqua);
+  background:rgba(90,170,190,.09)}
+ol.mosse .g.attesa{color:var(--tenue2);font-style:italic}
+/* Le tre attese non sono la stessa cosa (Alan, 9 set): <<non premere>> e' una
+   scelta, <<non toccare>> e' una trappola, e il film che scorre non e' un
+   gesto affatto. */
+ol.mosse .g.trappola{color:var(--brace);font-weight:700;letter-spacing:.06em}
+ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
+ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
+ol.mosse .opp{margin-left:8px;font-family:var(--corpo);font-style:italic;
+  font-size:11.5px;color:var(--tenue2);letter-spacing:0}
+ol.mosse .fin{font-family:var(--mono);font-size:11.5px;color:var(--oro);
+  flex:0 0 auto;min-width:8.6em}
+ol.mosse .altre{font-family:var(--mono);font-size:10.5px;color:var(--tenue2);
+  flex:1 1 auto}
+ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
+ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
+  margin-left:auto;flex:0 0 auto}
+ol.mosse li.bivio{background:rgba(190,150,60,.05)}
+/* ⛔ 8 set 2026, sera — Alan, leggendo: <<un rombo con ? dentro e poi dei
+   numeri arancioni, dopo il numero di frame... non c'e' sempre, ogni tanto>>.
+   Era il segno del bivio, disegnato col carattere U+25C6: dove quel glifo
+   manca il browser mette la scatoletta col codice esadecimale dentro, e la
+   colora d'arancione perche' il colore glielo davamo noi.  E tornava <<ogni
+   tanto>> perche' sta solo sulle righe che SONO un bivio.
+   ⇒ il rombo adesso e' un quadratino ruotato: niente font, niente sorprese. */
+i.rombo{display:inline-block;width:5px;height:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle;flex:0 0 auto}
+ol.mosse li.bivio .fr::after{content:'';display:inline-block;width:5px;
+  height:5px;margin-left:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle}
+.legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
+  font-size:13px;color:var(--tenue)}
+.legenda-mosse span{display:inline-flex;align-items:center;gap:6px}
+.catena{margin:10px 0 0;padding:7px 14px;font-size:13px;color:var(--acqua);
+  background:rgba(90,170,190,.07);border-top:1px solid var(--bordo)}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:78ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+.specchio{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tenue2);border:1px solid var(--bordo);
+  padding:1px 5px;margin-left:6px;white-space:nowrap}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e SFUMATO ---
+   5 set 2026, Alan: <<nella home del sito riusciamo a scrivere Phenoma
+   grande con il colore sfumato?>>.  E' la stessa sfumatura del marchio
+   piccolo in barra -- crema, oro, oro cupo -- perche' il nome grande e il
+   nome piccolo devono essere la stessa cosa; con due fermate in piu', che a
+   92px due sole diventano una tinta piatta.
+   ⚠️ `background-clip:text` ritaglia lo sfondo sulle lettere di TUTTO
+   quello che sta dentro l'elemento: qui dentro non ci va nient'altro.
+   📌 `width:max-content` fa aderire il riquadro alla parola: senza, il
+   riquadro sarebbe largo quanto la pagina e l'inclinazione non si
+   vedrebbe. */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1;width:max-content;max-width:100%;
+  background:linear-gradient(176deg,#FFF6E7 0%,#FFDCA6 24%,var(--oro) 54%,
+    var(--oro-cupo) 80%,#C0761D 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.avviso{margin:26px 0 0;padding:16px 20px;border:1px solid var(--bordo);
+  border-left:3px solid var(--oro-cupo);background:rgba(190,150,60,.05);
+  max-width:78ch}
+.avviso p{margin:0 0 10px;font-size:14px;line-height:1.6}
+.avviso p:last-child{margin-bottom:0}
+.avviso .min{font-size:12.5px;color:var(--tenue)}
+.timbro .stato.ferma b{color:var(--verde,#3d7a4e)}
+.timbro .stato.viva b{color:var(--oro-cupo)}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  body{border-top:0}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  /* il nome sulla soglia: sfumato a schermo, inchiostro sul foglio */
+  h1.marchione{background:none;color:#111;-webkit-text-fill-color:#111;
+    width:auto;font-size:30pt}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+body{border-top-color:#B98CE8}
+.gioco{color:#B98CE8}
+.gioco a:hover{border-bottom-color:#B98CE8}
+.dettaglio{color:#7C5BA0}
+.barra{border-bottom-color:rgba(185,140,232,.42)}
+header{border-bottom-color:rgba(185,140,232,.34)}
+.timbro .colore b{color:#7C5BA0;font-weight:600}
+.timbro .colore .mono{color:inherit}
+@media print{body{border-top:0}
+  .gioco{color:#111}.dettaglio{color:#555}
+  .timbro .colore b{color:#111}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/dragons-lair-ii/">Dragon&rsquo;s Lair II: Time Warp</a><span class="sep">/</span><span class="qui">tutte le mosse della partita</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/dragons-lair-ii/">Dragon&rsquo;s Lair II: Time Warp</a></p><p class="dettaglio">Leland, 1991</p>
+  <h1>La partita</h1>
+  <p class="tesi">Tutte le mosse di una partita a <b>Dragon&rsquo;s Lair II</b>: <b>10 livelli</b> giocati sui sedici che la ROM contiene, 302 mosse e <b>11 tesori</b>. E i tesori non sono un dettaglio: valgono il <b>68%</b> del punteggio &mdash; uno solo paga quanto 59 mosse.</p>
+</header>
+<div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9876; SPADA</span> il pulsante</span><span><span class="g energia"><em>&rarr;</em>DESTRA</span> un <b>tesoro</b>: una direzione in pi&ugrave;, facoltativa, che paga novantanove punti e nove</span></div>
+<h2>Sedici livelli, e una partita ne gioca dieci</h2>
+<p class="punta">Nella ROM di Dragon&rsquo;s Lair II ci sono <b>16 livelli</b>. Ma sei di quei sedici sono <b>coppie</b>: la stessa scena girata due volte, una dritta e una a specchio. Ogni partita ne prende <b>una per coppia</b>, e cos&igrave; i livelli che giochi sono <b>10</b>: i tre d&rsquo;apertura, uno per ognuna delle sei coppie, e il finale.</p>
+<div class="nota caldo"><span class="cap">E lo specchio non lo stampiamo, perch&eacute; &egrave; una regola</span><p>Fra i due livelli di una coppia <b>sinistra e destra si scambiano, e tutto il resto resta dove sta</b> &mdash; su, gi&ugrave; e spada non si toccano. Vale in <b>tutte e sei</b> le coppie: <b>248 mosse per parte</b>, e non una sola eccezione. L&rsquo;abbiamo contato, non supposto.</p><p>&rArr; Percio&rsquo; qui sotto c&rsquo;&egrave; <b>un livello per coppia</b>. Se ti tocca il gemello, le mosse sono quelle, con sinistra e destra al contrario. Stampare anche l&rsquo;altra met&agrave; raddoppierebbe la pagina senza aggiungere un dato.</p><p class="min">&#9888; Ma <b>il filmato &egrave; un altro pezzo di disco</b>, non lo stesso rovesciato: il livello 4 sta ai fotogrammi 5477&ndash;8256 e il suo specchio ai 8257&ndash;11035. Non condividono un fotogramma. (La stessa cosa fa Space Ace.)</p></div>
+<h2>Il punteggio non lo fanno le mosse</h2>
+<div class="fig" style="display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center"><div style="text-align:center"><div style="font-family:var(--mono);font-size:clamp(24px,5vw,38px);font-weight:700;color:var(--oro)">99,9</div><div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);margin-top:6px">un tesoro</div></div><div style="font-family:var(--mono);font-size:24px;color:var(--tenue2)">contro</div><div style="text-align:center"><div style="font-family:var(--mono);font-size:clamp(24px,5vw,38px);font-weight:700;color:var(--tenue)">1,7</div><div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);margin-top:6px">una mossa</div></div></div>
+<div class="scroll"><table><thead><tr><th>che cosa</th><th class="num">quanti</th><th class="num">quanto</th><th class="num">sul totale</th></tr></thead><tbody><tr><td>gli <b>11 tesori</b></td><td class="num">11</td><td class="num"><b>1.098,9</b></td><td class="num"><b>68%</b></td></tr><tr><td>le <b>301 mosse</b></td><td class="num">301</td><td class="num">510,5</td><td class="num">32%</td></tr><tr><td><b>la partita</b></td><td class="num">313</td><td class="num"><b>1.609,4</b></td><td class="num"></td></tr></tbody></table></div>
+<p>&rArr; <b>Un tesoro vale quanto 59 mosse.</b> In Dragon&rsquo;s Lair II sopravvivere non basta e nemmeno conta molto: il punteggio lo fanno <b>gli undici tesori</b>, e tutto il resto &egrave; il viaggio per arrivarci.</p>
+<div class="nota"><span class="cap">Da dove viene questo numero, e perch&eacute; non viene dai byte</span><p>Di tutta questa pagina, la tariffa &egrave; <b>l&rsquo;unica cosa che non abbiamo letto nella ROM</b> &mdash; e non per pigrizia: <b>nella ROM di Dragon&rsquo;s Lair II non c&rsquo;&egrave; nessuna scritta <span class="mono">SCORE</span></b>, i numeri a schermo sono <b>grafica</b>, e il premio si accumula in una cella che i byte non spiegano. Per mesi abbiamo potuto dire <i>dove</i> e <i>quando</i>, non <i>quanto</i>.</p><p>Lo dice la <b>partita del Campione</b> registrata il 10 settembre 2026, dove ogni pressione porta il totale accanto: <span class="mono">punti=2.1</span>. Da l&igrave; la tariffa si <b>misura</b> invece che dedurla.</p><p class="min">&#9888; E la stessa misura ha <b>smentito una nostra ipotesi</b>. Avevamo scritto che il premio fosse la distanza dal fondo della finestra &mdash; <i>pi&ugrave; presto premi, pi&ugrave; vale</i>. Messe alla prova su 312 mosse, nessuna geometria della finestra spiega il valore. <b>Il valore sta nella mossa, non in quando la dai.</b> ❓ E non sappiamo ancora se <span class="mono">99,9</span> sia il valore scelto per il tesoro o il <b>tetto</b> di tre cifre.</p></div>
+<h2>I dieci livelli di una partita</h2>
+<div class="partita"><h3>Livello 1</h3>
+<p class="coda-tavola"><b>non ha specchio</b>: arriva sempre cos&igrave;.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 2107&ndash;4776</span><span class="verso">7 mosse</span><span class="pt">0 tesori</span></div><ol class="mosse"><li><span class="fr">2336</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 2336&ndash;2357</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">2396</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 2396&ndash;2426</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">2486</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 2486&ndash;2506</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">2546</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 2546&ndash;2565</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">2613</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 2613&ndash;2627</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">2656</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 2656&ndash;2677</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">2696</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 2696&ndash;2723</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 2</h3>
+<p class="coda-tavola"><b>non ha specchio</b>: arriva sempre cos&igrave;, e porta <b>2 tesori</b>.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 2107&ndash;5076</span><span class="verso">12 mosse</span><span class="pt">2 tesori</span></div><ol class="mosse"><li><span class="fr">2796</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 2796&ndash;2818</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">2846</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&uarr;</em>SU</span></span><span class="fin">tick 2846&ndash;2868</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">2906</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&rarr;</em>DESTRA</span></span><span class="fin">tick 2906&ndash;2931</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">2956</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 2956&ndash;2986</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3016</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 3016&ndash;3041</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3106</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3106&ndash;3126</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3150</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 3150&ndash;3168</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3203</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 3203&ndash;3228</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3246</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 3246&ndash;3266</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3286</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3286&ndash;3311</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3346</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 3346&ndash;3366</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3426</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 3426&ndash;3447</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 3</h3>
+<p class="coda-tavola"><b>non ha specchio</b>: arriva sempre cos&igrave;, e porta <b>1 tesoro</b>.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 2107&ndash;5476</span><span class="verso">16 mosse</span><span class="pt">1 tesoro</span></div><ol class="mosse"><li><span class="fr">3506</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3506&ndash;3533</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3566</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 3566&ndash;3593</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3626</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3626&ndash;3656</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3676</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 3676&ndash;3703</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3726</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3726&ndash;3745</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3786</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 3786&ndash;3806</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3846</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3846&ndash;3873</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">3896</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&rarr;</em>DESTRA</span></span><span class="fin">tick 3896&ndash;3923</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">3956</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 3956&ndash;3977</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">4016</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 4016&ndash;4041</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">4056</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 4056&ndash;4071</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">4096</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 4096&ndash;4118</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">4156</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 4156&ndash;4176</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">4216</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 4216&ndash;4238</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">4256</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 4256&ndash;4278</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">4306</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 4306&ndash;4328</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 4</h3>
+<p class="coda-tavola">ha uno <b>specchio</b>, il livello <b>5</b> (fotogrammi 8257&ndash;11035): stesse mosse con sinistra e destra scambiate, e porta <b>1 tesoro</b>.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 5477&ndash;8256</span><span class="verso">37 mosse</span><span class="pt">1 tesoro</span></div><ol class="mosse"><li><span class="fr">5606</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 5606&ndash;5656</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">5706</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 5706&ndash;5728</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">5756</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 5756&ndash;5783</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">5798</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 5798&ndash;5818</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">5846</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&larr;</em>SINISTRA</span></span><span class="fin">tick 5846&ndash;5873</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">5896</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 5896&ndash;5916</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">5946</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 5946&ndash;5970</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6006</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6006&ndash;6028</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6066</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6066&ndash;6088</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6116</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 6116&ndash;6138</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6176</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6176&ndash;6198</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6216</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6216&ndash;6238</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6266</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 6266&ndash;6288</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6306</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 6306&ndash;6328</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6396</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6396&ndash;6421</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6436</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 6436&ndash;6462</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6528</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6528&ndash;6548</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6576</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6576&ndash;6598</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6626</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 6626&ndash;6650</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6696</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6696&ndash;6716</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6746</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6746&ndash;6759</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6806</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 6806&ndash;6828</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6866</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6866&ndash;6891</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6926</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6926&ndash;6946</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">6996</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 6996&ndash;7020</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7056</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 7056&ndash;7083</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7116</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 7116&ndash;7143</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7163</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 7163&ndash;7182</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7196</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 7196&ndash;7217</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7246</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 7246&ndash;7272</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7306</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 7306&ndash;7330</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7366</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 7366&ndash;7391</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7406</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 7406&ndash;7431</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7466</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 7466&ndash;7487</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7526</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 7526&ndash;7546</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7576</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 7576&ndash;7593</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">7626</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 7626&ndash;7647</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 6</h3>
+<p class="coda-tavola">ha uno <b>specchio</b>, il livello <b>7</b> (fotogrammi 14233&ndash;17429): stesse mosse con sinistra e destra scambiate, e porta <b>1 tesoro</b>.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 11036&ndash;14232</span><span class="verso">40 mosse</span><span class="pt">1 tesoro</span></div><ol class="mosse"><li><span class="fr">11145</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11145&ndash;11172</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11200</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11200&ndash;11215</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11250</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11250&ndash;11275</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11305</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 11305&ndash;11327</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11385</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 11385&ndash;11412</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11440</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11440&ndash;11457</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11480</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 11480&ndash;11497</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11535</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11535&ndash;11555</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11587</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 11587&ndash;11609</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11640</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11640&ndash;11656</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11685</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 11685&ndash;11710</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11800</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11800&ndash;11819</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11845</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 11845&ndash;11866</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11915</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 11915&ndash;11936</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">11975</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 11975&ndash;11995</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12035</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 12035&ndash;12056</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12085</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 12085&ndash;12107</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">12185</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&uarr;</em>SU</span></span><span class="fin">tick 12185&ndash;12206</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12240</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 12240&ndash;12260</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12285</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 12285&ndash;12305</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12320</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 12320&ndash;12342</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12370</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 12370&ndash;12386</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12425</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 12425&ndash;12450</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12465</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 12465&ndash;12485</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12505</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 12505&ndash;12527</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12557</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 12557&ndash;12580</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12607</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 12607&ndash;12632</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12662</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 12662&ndash;12684</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12715</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 12715&ndash;12735</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12762</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 12762&ndash;12786</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12812</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 12812&ndash;12836</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12882</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 12882&ndash;12902</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12932</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 12932&ndash;12954</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">12992</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 12992&ndash;13015</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">13052</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 13052&ndash;13076</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">13112</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 13112&ndash;13137</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">13152</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 13152&ndash;13175</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">13247</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 13247&ndash;13270</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">13302</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 13302&ndash;13325</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">13394</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 13394&ndash;13432</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 8</h3>
+<p class="coda-tavola">ha uno <b>specchio</b>, il livello <b>9</b> (fotogrammi 20740&ndash;24049): stesse mosse con sinistra e destra scambiate, e porta <b>2 tesori</b>.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 17430&ndash;20739</span><span class="verso">45 mosse</span><span class="pt">2 tesori</span></div><ol class="mosse"><li><span class="fr">17519</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 17519&ndash;17540</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17589</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 17589&ndash;17611</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17659</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 17659&ndash;17680</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17719</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 17719&ndash;17741</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17779</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 17779&ndash;17801</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17834</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 17834&ndash;17856</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17884</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 17884&ndash;17899</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17924</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 17924&ndash;17941</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17944</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 17944&ndash;17954</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">17979</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 17979&ndash;18009</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18059</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 18059&ndash;18079</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18119</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 18119&ndash;18147</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18164</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 18164&ndash;18181</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18194</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 18194&ndash;18209</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">18229</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&larr;</em>SINISTRA</span></span><span class="fin">tick 18229&ndash;18263</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18284</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18284&ndash;18300</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18334</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18334&ndash;18356</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18394</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18394&ndash;18409</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18464</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 18464&ndash;18490</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18524</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18524&ndash;18543</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18574</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18574&ndash;18596</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18634</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 18634&ndash;18661</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18684</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18684&ndash;18701</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18726</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18726&ndash;18738</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">18741</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&rarr;</em>DESTRA</span></span><span class="fin">tick 18741&ndash;18786</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18804</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 18804&ndash;18820</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18864</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 18864&ndash;18886</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18909</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 18909&ndash;18936</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">18953</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 18953&ndash;18979</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19014</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 19014&ndash;19031</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19149</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 19149&ndash;19169</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19219</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 19219&ndash;19246</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19284</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 19284&ndash;19304</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19329</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 19329&ndash;19350</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19359</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 19359&ndash;19383</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19394</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 19394&ndash;19414</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19434</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 19434&ndash;19464</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19474</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 19474&ndash;19494</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19519</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 19519&ndash;19544</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19579</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 19579&ndash;19609</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19614</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 19614&ndash;19636</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19674</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 19674&ndash;19694</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19719</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 19719&ndash;19746</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19759</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 19759&ndash;19781</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">19804</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 19804&ndash;19829</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 10</h3>
+<p class="coda-tavola">ha uno <b>specchio</b>, il livello <b>11</b> (fotogrammi 27450&ndash;30849): stesse mosse con sinistra e destra scambiate, e porta <b>2 tesori</b>.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 24050&ndash;27449</span><span class="verso">47 mosse</span><span class="pt">2 tesori</span></div><ol class="mosse"><li><span class="fr">24199</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 24199&ndash;24223</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24259</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 24259&ndash;24284</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24319</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 24319&ndash;24346</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24379</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 24379&ndash;24401</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24429</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 24429&ndash;24451</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24469</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 24469&ndash;24489</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24539</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 24539&ndash;24561</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24579</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 24579&ndash;24601</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24689</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 24689&ndash;24710</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24729</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 24729&ndash;24754</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24799</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 24799&ndash;24831</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24869</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 24869&ndash;24896</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24929</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 24929&ndash;24949</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">24979</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 24979&ndash;25001</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25019</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 25019&ndash;25041</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25059</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 25059&ndash;25079</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25099</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 25099&ndash;25119</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">25149</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&darr;</em>GI&Ugrave;</span></span><span class="fin">tick 25149&ndash;25179</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25229</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 25229&ndash;25254</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25269</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 25269&ndash;25294</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25309</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 25309&ndash;25331</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25349</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 25349&ndash;25369</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25419</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 25419&ndash;25441</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25459</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 25459&ndash;25481</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25509</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 25509&ndash;25530</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25569</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 25569&ndash;25596</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25629</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 25629&ndash;25651</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25669</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 25669&ndash;25691</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25709</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 25709&ndash;25731</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25749</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 25749&ndash;25771</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25789</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 25789&ndash;25813</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25829</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 25829&ndash;25850</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25869</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 25869&ndash;25894</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">25919</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 25919&ndash;25941</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">25979</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&larr;</em>SINISTRA</span></span><span class="fin">tick 25979&ndash;26001</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26029</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 26029&ndash;26054</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26089</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 26089&ndash;26110</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26139</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 26139&ndash;26169</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26189</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 26189&ndash;26209</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26259</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 26259&ndash;26286</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26299</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 26299&ndash;26321</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26339</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 26339&ndash;26360</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26389</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 26389&ndash;26414</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26439</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 26439&ndash;26469</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26499</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 26499&ndash;26526</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26549</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 26549&ndash;26573</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">26609</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 26609&ndash;26629</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 12</h3>
+<p class="coda-tavola">ha uno <b>specchio</b>, il livello <b>13</b> (fotogrammi 34309&ndash;37768): stesse mosse con sinistra e destra scambiate, e porta <b>2 tesori</b>.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 30850&ndash;34308</span><span class="verso">50 mosse</span><span class="pt">2 tesori</span></div><ol class="mosse"><li><span class="fr">30938</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 30938&ndash;30962</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">30998</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 30998&ndash;31019</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31048</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 31048&ndash;31068</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31128</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 31128&ndash;31152</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31168</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31168&ndash;31189</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31208</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31208&ndash;31229</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31268</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31268&ndash;31288</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31308</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 31308&ndash;31332</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31348</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31348&ndash;31359</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31388</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 31388&ndash;31409</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31433</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31433&ndash;31457</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31468</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31468&ndash;31493</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31528</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31528&ndash;31550</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31568</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 31568&ndash;31593</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31628</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31628&ndash;31647</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">31688</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&uarr;</em>SU</span></span><span class="fin">tick 31688&ndash;31708</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31738</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 31738&ndash;31759</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31778</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 31778&ndash;31800</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31858</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 31858&ndash;31885</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31898</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 31898&ndash;31925</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">31958</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 31958&ndash;31980</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32008</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32008&ndash;32030</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32058</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 32058&ndash;32083</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32118</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 32118&ndash;32141</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32158</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 32158&ndash;32183</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32218</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 32218&ndash;32238</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32268</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32268&ndash;32297</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32328</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 32328&ndash;32355</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32368</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 32368&ndash;32388</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32423</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32423&ndash;32444</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32468</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32468&ndash;32498</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32523</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 32523&ndash;32540</span><span class="altre"></span><span class="pt"></span></li><li class="bivio"><span class="fr">32578</span><span class="g fuoco">&#9876; SPADA</span><span class="opp">&middot; e qui c&rsquo;&egrave; un <b>tesoro</b>: <span class="g energia"><em>&rarr;</em>DESTRA</span></span><span class="fin">tick 32578&ndash;32607</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32633</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 32633&ndash;32655</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32688</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32688&ndash;32715</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32738</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32738&ndash;32764</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32788</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 32788&ndash;32810</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32848</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 32848&ndash;32863</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32903</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 32903&ndash;32923</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32943</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 32943&ndash;32958</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">32988</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 32988&ndash;33010</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33033</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 33033&ndash;33050</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33118</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 33118&ndash;33143</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33168</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 33168&ndash;33191</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33228</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 33228&ndash;33252</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33278</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 33278&ndash;33300</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33328</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 33328&ndash;33350</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33388</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 33388&ndash;33408</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33438</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 33438&ndash;33473</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">33488</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 33488&ndash;33510</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 14</h3>
+<p class="coda-tavola">ha uno <b>specchio</b>, il livello <b>15</b> (fotogrammi 39793&ndash;41802): stesse mosse con sinistra e destra scambiate.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 37784&ndash;39792</span><span class="verso">29 mosse</span><span class="pt">0 tesori</span></div><ol class="mosse"><li><span class="fr">37932</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 37932&ndash;37954</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38012</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38012&ndash;38034</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38052</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 38052&ndash;38077</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38092</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 38092&ndash;38117</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38162</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 38162&ndash;38186</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38202</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38202&ndash;38222</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38252</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 38252&ndash;38277</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38292</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 38292&ndash;38319</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38332</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 38332&ndash;38357</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38392</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 38392&ndash;38414</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38452</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38452&ndash;38476</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38492</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 38492&ndash;38516</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38532</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 38532&ndash;38558</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38572</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 38572&ndash;38592</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38632</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38632&ndash;38658</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38692</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 38692&ndash;38717</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38752</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 38752&ndash;38773</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38852</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 38852&ndash;38874</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38892</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38892&ndash;38914</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38932</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 38932&ndash;38957</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">38972</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 38972&ndash;38999</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39032</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 39032&ndash;39053</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39074</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 39074&ndash;39094</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39112</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 39112&ndash;39134</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39164</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 39164&ndash;39173</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39212</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 39212&ndash;39241</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39282</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 39282&ndash;39304</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39336</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 39336&ndash;39359</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">39392</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 39392&ndash;39421</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<div class="partita"><h3>Livello 16</h3>
+<p class="coda-tavola"><b>non ha specchio</b>: arriva sempre cos&igrave;.</p>
+<div class="stesura"><div class="testa"><span class="id">fotogrammi 41803&ndash;44356</span><span class="verso">19 mosse</span><span class="pt">0 tesori</span></div><ol class="mosse"><li><span class="fr">41931</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 41931&ndash;41972</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42021</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42021&ndash;42043</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42101</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42101&ndash;42115</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42216</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42216&ndash;42241</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42291</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 42291&ndash;42321</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42351</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 42351&ndash;42376</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42431</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42431&ndash;42451</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42481</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42481&ndash;42503</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42541</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 42541&ndash;42558</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42601</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42601&ndash;42630</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42660</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 42660&ndash;42682</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42711</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">tick 42711&ndash;42739</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42821</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">tick 42821&ndash;42841</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">42911</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 42911&ndash;42933</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">43091</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 43091&ndash;43111</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">43131</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 43131&ndash;43158</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">43171</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 43171&ndash;43195</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">43211</span><span class="g fuoco">&#9876; SPADA</span><span class="fin">tick 43211&ndash;43237</span><span class="altre"></span><span class="pt"></span></li><li><span class="fr">43301</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 43301&ndash;43323</span><span class="altre"></span><span class="pt"></span></li></ol></div>
+</div>
+<section class="tecnico">
+<p>Raschio: <span class="mono">dl2_319.bin</span>, tavola dei copioni a <span class="mono">0x5A22</span>, record da <b>quattordici byte</b>. Milleduecento record in tutto: 550 mosse, 550 esiti di morte, 19 tesori e 16 testate di livello. La direzione di un tesoro sta nel campo <span class="mono">x</span> del suo record, col suo codice (<span class="mono">01</span>=su, <span class="mono">03</span>=destra, <span class="mono">05</span>=gi&ugrave;, <span class="mono">07</span>=sinistra, <span class="mono">0A</span>=spada).</p><p>Il riscontro: il tracciato del Campione del 10 settembre 2026 ha <b>313 pressioni</b>, e sono <b>302 mosse pi&ugrave; 11 tesori</b> &mdash; esattamente quello che questa pagina conta. Ogni pressione combacia col record che la ROM chiede: <b>zero divergenze</b>.</p>
+</section>
+<nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/europa/la-partita/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>La partita</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/dragons-lair/sidam/quello-che-cambia/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Quello che cambia</a></li>
+<li><a href="/it/dragons-lair-ii/la-partita/" class="qui"><span class="dove">Dragon&rsquo;s Lair II: Time Warp &middot; Leland 1991</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/la-partita/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La partita</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/come-e-fatta-una-scena/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>Com&rsquo;&egrave; fatta una scena</a></li>
+<li><a href="/it/space-ace/a3/la-partita-cadet/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Cadet</a></li>
+<li><a href="/it/space-ace/a3/la-partita-captain/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Captain</a></li>
+<li><a href="/it/space-ace/a3/la-partita/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Space Ace</a></li>
+<li><a href="/it/dragons-lair/f2/la-partita/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>11 settembre 2026</b>, aggiornata il <b>11 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>495 su 495</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; nel dump c&rsquo;&egrave; il solo programma</b></span></div>
+<p class="stampa">phenoma.org/it/dragons-lair-ii/la-partita/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
