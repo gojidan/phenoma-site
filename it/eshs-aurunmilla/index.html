@@ -199,6 +199,15 @@ ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
   border:1.5px solid var(--brace);border-radius:999px;color:var(--brace);
   font-family:var(--mono);font-size:10.5px;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco */
+.fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
+  border-radius:2px;overflow:hidden;vertical-align:middle;
+  background:var(--piano2);box-shadow:inset 0 0 0 1px var(--bordo)}
+.fin i{display:block;height:100%}
+.fin .f1{width:60%;background:var(--tenue2);opacity:.35}
+.fin .f2{width:30%;background:var(--tenue2);opacity:.7}
+.fin .f3{width:10%;background:var(--oro)}
+.fin.muta{opacity:.3}
 tr.riga-secca td{background:rgba(226,104,92,.10)}
 tr.riga-secca td:first-child{box-shadow:inset 3px 0 0 var(--brace)}
 ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
@@ -496,7 +505,7 @@ header{border-bottom-color:rgba(199,199,199,.34)}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>13</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>11 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>508 su 508</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; <span class="mono">j1_rgb.bin</span> non ancora letta</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>13</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>11 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>510 su 510</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; <span class="mono">j1_rgb.bin</span> non ancora letta</b></span></div>
 <p class="stampa">phenoma.org/it/eshs-aurunmilla/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
