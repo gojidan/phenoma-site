@@ -286,6 +286,21 @@ ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
 .stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
   display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
 .stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+/* ⭐ 11 set — LA SIGLA, chiesta da Alan: <<un piccolo riquadro evidente con
+   lo sfondo il colore del gioco con scritto DL, CH, EA, SDQ>>.  La lettera
+   dice il GIOCO, la tinta dice QUALE MACCHINA (le tre di DL hanno tre
+   colori, e sono gia' i colori delle loro pagine). */
+.sigla{display:inline-flex;align-items:center;justify-content:center;
+  min-width:32px;height:20px;padding:0 6px;margin-right:9px;border-radius:5px;
+  background:var(--tinta);color:#0F1218;font-family:var(--mono);
+  font-size:11px;font-weight:700;letter-spacing:.05em;font-style:normal;
+  vertical-align:-4px;flex:0 0 auto;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+/* negli elenchi in fondo la riga ha due piani (la provenienza sopra, il
+   titolo sotto): la sigla si mette di fianco a tutti e due, non in mezzo. */
+.altrove a{position:relative;padding-left:52px}
+.altrove .sigla{position:absolute;left:14px;top:12px;margin:0;
+  min-width:28px;height:18px;font-size:10px}
 .stanza .che b{color:var(--inchiostro)}
 
 /* --- il fondo tecnico --- */
@@ -454,11 +469,11 @@ h1.marchione + .tesi{font-size:21px}
 <h2>Le macchine</h2>
 <p>Ogni gioco ha la sua pagina, con tutto quello che ne abbiamo scritto.</p>
 <div class="stanze" style="grid-template-columns:1fr">
-<a class="stanza" href="/it/dragons-lair/"><span class="dove">Cinematronics, 1983</span><span class="come">Dragon&rsquo;s Lair</span><span class="che">Lo stesso film, tre macchine diverse. Non tre varianti dello stesso programma: tre ROM che allo stesso indirizzo fanno cose diverse, e che rispondono in tre modi opposti alla domanda &laquo;che cosa succede se sbagli&raquo;.</span></a>
-<a class="stanza" href="/it/space-ace/"><span class="dove">Cinematronics, 1984</span><span class="come">Space Ace</span><span class="che">Lo stesso studio, la stessa scheda, l&rsquo;anno dopo. Ma con una domanda in pi&ugrave;: oltre al gesto che ti salva c&rsquo;&egrave; lo stesso pulsante che, in certi momenti, ti <b>trasforma</b> &mdash; e quasi mai &egrave; ovvio se convenga premerlo.</span></a>
-<a class="stanza" href="/it/dragons-lair-2/"><span class="dove">Leland, 1991</span><span class="come">Dragon&rsquo;s Lair II: Time Warp</span><span class="che">Otto anni dopo il primo, e un&rsquo;altra macchina: altra scheda, altro processore, altro modo di pagare. Qui il punteggio non lo fanno le mosse &mdash; lo fanno <b>undici tesori</b> nascosti nelle scene, che valgono pi&ugrave; di due terzi di tutto.</span></a>
-<a class="stanza" href="/it/eshs-aurunmilla/"><span class="dove">Funai, 1984</span><span class="come">Esh&rsquo;s Aurunmilla</span><span class="che">Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta. Qui c&rsquo;è quella di fabbrica.</span></a>
-<a class="stanza" href="/it/super-don-quix-ote/"><span class="dove">Universal, 1984</span><span class="come">Super Don Quix-ote</span><span class="che">Due pagine, e raccontano due cose diverse: come il gioco decide l&rsquo;ordine delle scene, e che cosa accetta dentro una scena già cominciata. Di Super Don esistono anche due set di ROM usciti dalla fabbrica &mdash; uno mostra le scene per intero, l&rsquo;altro salta le introduzioni &mdash; e quale dei due sia venuto prima non lo sappiamo. Qui c&rsquo;è quello a scene intere.</span></a>
+<a class="stanza" href="/it/dragons-lair/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Cinematronics, 1983</span><span class="come">Dragon&rsquo;s Lair</span><span class="che">Lo stesso film, tre macchine diverse. Non tre varianti dello stesso programma: tre ROM che allo stesso indirizzo fanno cose diverse, e che rispondono in tre modi opposti alla domanda &laquo;che cosa succede se sbagli&raquo;.</span></a>
+<a class="stanza" href="/it/space-ace/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Cinematronics, 1984</span><span class="come">Space Ace</span><span class="che">Lo stesso studio, la stessa scheda, l&rsquo;anno dopo. Ma con una domanda in pi&ugrave;: oltre al gesto che ti salva c&rsquo;&egrave; lo stesso pulsante che, in certi momenti, ti <b>trasforma</b> &mdash; e quasi mai &egrave; ovvio se convenga premerlo.</span></a>
+<a class="stanza" href="/it/dragons-lair-2/"><i class="sigla" style="--tinta:#F2542D" title="DL2">DL2</i><span class="dove">Leland, 1991</span><span class="come">Dragon&rsquo;s Lair II: Time Warp</span><span class="che">Otto anni dopo il primo, e un&rsquo;altra macchina: altra scheda, altro processore, altro modo di pagare. Qui il punteggio non lo fanno le mosse &mdash; lo fanno <b>undici tesori</b> nascosti nelle scene, che valgono pi&ugrave; di due terzi di tutto.</span></a>
+<a class="stanza" href="/it/eshs-aurunmilla/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Funai, 1984</span><span class="come">Esh&rsquo;s Aurunmilla</span><span class="che">Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta. Qui c&rsquo;è quella di fabbrica.</span></a>
+<a class="stanza" href="/it/super-don-quix-ote/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Universal, 1984</span><span class="come">Super Don Quix-ote</span><span class="che">Due pagine, e raccontano due cose diverse: come il gioco decide l&rsquo;ordine delle scene, e che cosa accetta dentro una scena già cominciata. Di Super Don esistono anche due set di ROM usciti dalla fabbrica &mdash; uno mostra le scene per intero, l&rsquo;altro salta le introduzioni &mdash; e quale dei due sia venuto prima non lo sappiamo. Qui c&rsquo;è quello a scene intere.</span></a>
 </div>
 
 <h2>Oppure per domanda</h2>

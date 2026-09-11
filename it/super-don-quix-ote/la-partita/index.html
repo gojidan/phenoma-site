@@ -286,6 +286,21 @@ ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
 .stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
   display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
 .stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+/* ⭐ 11 set — LA SIGLA, chiesta da Alan: <<un piccolo riquadro evidente con
+   lo sfondo il colore del gioco con scritto DL, CH, EA, SDQ>>.  La lettera
+   dice il GIOCO, la tinta dice QUALE MACCHINA (le tre di DL hanno tre
+   colori, e sono gia' i colori delle loro pagine). */
+.sigla{display:inline-flex;align-items:center;justify-content:center;
+  min-width:32px;height:20px;padding:0 6px;margin-right:9px;border-radius:5px;
+  background:var(--tinta);color:#0F1218;font-family:var(--mono);
+  font-size:11px;font-weight:700;letter-spacing:.05em;font-style:normal;
+  vertical-align:-4px;flex:0 0 auto;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+/* negli elenchi in fondo la riga ha due piani (la provenienza sopra, il
+   titolo sotto): la sigla si mette di fianco a tutti e due, non in mezzo. */
+.altrove a{position:relative;padding-left:52px}
+.altrove .sigla{position:absolute;left:14px;top:12px;margin:0;
+  min-width:28px;height:18px;font-size:10px}
 .stanza .che b{color:var(--inchiostro)}
 
 /* --- il fondo tecnico --- */
@@ -545,30 +560,30 @@ header{border-bottom-color:rgba(0,255,219,.34)}
 
 </section>
 <nav class="altrove"><span class="cap">Di Super Don Quix-ote c&rsquo;è anche</span><ul>
-<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
-<li><a href="/it/super-don-quix-ote/mosse-disobbedienti/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Le quattordici disobbedienze</a></li>
-<li><a href="/it/super-don-quix-ote/grafica/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Duecentocinquantasei tessere e sedici colori</a></li>
-<li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/mosse-disobbedienti/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Le quattordici disobbedienze</a></li>
+<li><a href="/it/super-don-quix-ote/grafica/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Duecentocinquantasei tessere e sedici colori</a></li>
+<li><a href="/it/super-don-quix-ote/il-campione/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
 </ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
-<li><a href="/it/dragons-lair/f2/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
-<li><a href="/it/dragons-lair/europa/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
-<li><a href="/it/dragons-lair/europa/la-partita/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>La partita</a></li>
-<li><a href="/it/dragons-lair/sidam/sequenza/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
-<li><a href="/it/dragons-lair/sidam/quello-che-cambia/"><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Quello che cambia</a></li>
-<li><a href="/it/dragons-lair-2/la-partita/"><span class="dove">Dragon&rsquo;s Lair II: Time Warp &middot; Leland 1991</span>La partita</a></li>
-<li><a href="/it/super-don-quix-ote/sequenza/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
-<li><a href="/it/super-don-quix-ote/la-partita/" class="qui"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La partita</a></li>
-<li><a href="/it/eshs-aurunmilla/la-partita/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>La partita</a></li>
-<li><a href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
-<li><a href="/it/dragons-lair/f2/le-difficolta/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
-<li><a href="/it/dragons-lair/f2/il-campione/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
-<li><a href="/it/space-ace/a3/il-campione/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
-<li><a href="/it/space-ace/a3/come-e-fatta-una-scena/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>Com&rsquo;&egrave; fatta una scena</a></li>
-<li><a href="/it/space-ace/a3/la-partita-cadet/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Cadet</a></li>
-<li><a href="/it/space-ace/a3/la-partita-captain/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Captain</a></li>
-<li><a href="/it/space-ace/a3/la-partita/"><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Space Ace</a></li>
-<li><a href="/it/dragons-lair/f2/la-partita/"><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La partita</a></li>
-<li><a href="/it/super-don-quix-ote/il-campione/"><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
+<li><a href="/it/dragons-lair/f2/sequenza/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><i class="sigla" style="--tinta:#7FB2EE" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/europa/la-partita/"><i class="sigla" style="--tinta:#7FB2EE" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>La partita</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><i class="sigla" style="--tinta:#93CE71" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/dragons-lair/sidam/quello-che-cambia/"><i class="sigla" style="--tinta:#93CE71" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Quello che cambia</a></li>
+<li><a href="/it/dragons-lair-2/la-partita/"><i class="sigla" style="--tinta:#F2542D" title="DL2">DL2</i><span class="dove">Dragon&rsquo;s Lair II: Time Warp &middot; Leland 1991</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/la-partita/" class="qui"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La partita</a></li>
+<li><a href="/it/eshs-aurunmilla/la-partita/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>La partita</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/il-campione/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/come-e-fatta-una-scena/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>Com&rsquo;&egrave; fatta una scena</a></li>
+<li><a href="/it/space-ace/a3/la-partita-cadet/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Cadet</a></li>
+<li><a href="/it/space-ace/a3/la-partita-captain/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Captain</a></li>
+<li><a href="/it/space-ace/a3/la-partita/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Space Ace</a></li>
+<li><a href="/it/dragons-lair/f2/la-partita/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/il-campione/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
 </ul></nav>
 <footer>
 <div class="timbro"><span><span class="et">revisione</span><b>5</b></span><span>Pubblicata il <b>10 settembre 2026</b>, aggiornata il <b>10 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; ultima modifica 1 giorno fa</span><span><span class="et">controlli sui byte</span><b>503 su 503</b></span><span class="colore"><span class="et">il colore</span><b>dal vero &mdash; <span class="mono">sdq-cprm.bin</span></b></span></div>

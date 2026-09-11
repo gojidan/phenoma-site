@@ -286,6 +286,21 @@ ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
 .stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
   display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
 .stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+/* ⭐ 11 set — LA SIGLA, chiesta da Alan: <<un piccolo riquadro evidente con
+   lo sfondo il colore del gioco con scritto DL, CH, EA, SDQ>>.  La lettera
+   dice il GIOCO, la tinta dice QUALE MACCHINA (le tre di DL hanno tre
+   colori, e sono gia' i colori delle loro pagine). */
+.sigla{display:inline-flex;align-items:center;justify-content:center;
+  min-width:32px;height:20px;padding:0 6px;margin-right:9px;border-radius:5px;
+  background:var(--tinta);color:#0F1218;font-family:var(--mono);
+  font-size:11px;font-weight:700;letter-spacing:.05em;font-style:normal;
+  vertical-align:-4px;flex:0 0 auto;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+/* negli elenchi in fondo la riga ha due piani (la provenienza sopra, il
+   titolo sotto): la sigla si mette di fianco a tutti e due, non in mezzo. */
+.altrove a{position:relative;padding-left:52px}
+.altrove .sigla{position:absolute;left:14px;top:12px;margin:0;
+  min-width:28px;height:18px;font-size:10px}
 .stanza .che b{color:var(--inchiostro)}
 
 /* --- il fondo tecnico --- */
@@ -458,7 +473,7 @@ header{border-bottom-color:rgba(242,84,45,.34)}
 </header>
 <p>Otto anni dopo il primo, e un&rsquo;altra macchina: altra scheda, altro processore, altro modo di pagare. Qui il punteggio non lo fanno le mosse &mdash; lo fanno <b>undici tesori</b> nascosti nelle scene, che valgono pi&ugrave; di due terzi di tutto.</p>
 <div class="stanze">
-<a class="stanza" href="/it/dragons-lair-2/la-partita/"><span class="dove">Dragon&rsquo;s Lair II: Time Warp &middot; Leland 1991</span><span class="come">La partita</span><span class="che">Tutte le mosse di una partita a <b>Dragon&rsquo;s Lair II</b>: dieci livelli giocati sui sedici che la ROM contiene, perch&eacute; sei sono <b>coppie specchiate</b> e ne prendi una per coppia. E i tesori non sono un dettaglio: <b>valgono il 68% del punteggio</b> &mdash; uno solo paga quanto cinquantanove mosse.</span></a>
+<a class="stanza" href="/it/dragons-lair-2/la-partita/"><i class="sigla" style="--tinta:#F2542D" title="DL2">DL2</i><span class="dove">Dragon&rsquo;s Lair II: Time Warp &middot; Leland 1991</span><span class="come">La partita</span><span class="che">Tutte le mosse di una partita a <b>Dragon&rsquo;s Lair II</b>: dieci livelli giocati sui sedici che la ROM contiene, perch&eacute; sei sono <b>coppie specchiate</b> e ne prendi una per coppia. E i tesori non sono un dettaglio: <b>valgono il 68% del punteggio</b> &mdash; uno solo paga quanto cinquantanove mosse.</span></a>
 </div>
 <h2>Come sono fatti questi indirizzi</h2>
 <p>Qui l&rsquo;indirizzo, dopo il nome del gioco, va <b>direttamente alla pagina</b> &mdash; <span class="mono">la-partita</span> &mdash; senza un segmento di macchina in mezzo: di questo titolo pubblichiamo <b>una ROM sola</b>, e non c&rsquo;è ancora niente da cui distinguerla. Dove invece le macchine pubblicate sono più d&rsquo;una, come in <a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a>, in mezzo compare il nome di quella che le distingue: una revisione, un continente, un fabbricante.</p>
@@ -471,7 +486,7 @@ header{border-bottom-color:rgba(242,84,45,.34)}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>11 settembre 2026</b>, aggiornata il <b>11 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>503 su 503</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; nel dump c&rsquo;&egrave; il solo programma</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>3</b></span><span>Pubblicata il <b>11 settembre 2026</b>, aggiornata il <b>11 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>503 su 503</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; nel dump c&rsquo;&egrave; il solo programma</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair-2/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>

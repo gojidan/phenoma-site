@@ -286,6 +286,21 @@ ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
 .stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
   display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
 .stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+/* ⭐ 11 set — LA SIGLA, chiesta da Alan: <<un piccolo riquadro evidente con
+   lo sfondo il colore del gioco con scritto DL, CH, EA, SDQ>>.  La lettera
+   dice il GIOCO, la tinta dice QUALE MACCHINA (le tre di DL hanno tre
+   colori, e sono gia' i colori delle loro pagine). */
+.sigla{display:inline-flex;align-items:center;justify-content:center;
+  min-width:32px;height:20px;padding:0 6px;margin-right:9px;border-radius:5px;
+  background:var(--tinta);color:#0F1218;font-family:var(--mono);
+  font-size:11px;font-weight:700;letter-spacing:.05em;font-style:normal;
+  vertical-align:-4px;flex:0 0 auto;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+/* negli elenchi in fondo la riga ha due piani (la provenienza sopra, il
+   titolo sotto): la sigla si mette di fianco a tutti e due, non in mezzo. */
+.altrove a{position:relative;padding-left:52px}
+.altrove .sigla{position:absolute;left:14px;top:12px;margin:0;
+  min-width:28px;height:18px;font-size:10px}
 .stanza .che b{color:var(--inchiostro)}
 
 /* --- il fondo tecnico --- */
@@ -458,9 +473,9 @@ header{border-bottom-color:rgba(199,199,199,.34)}
 </header>
 <p>Del programma di Esh circolano due stesure: quella uscita di fabbrica e una con la ROM IS2 corretta. Qui c&rsquo;è quella di fabbrica.</p>
 <div class="stanze">
-<a class="stanza" href="/it/eshs-aurunmilla/la-partita/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">La partita</span><span class="che">Tutte le mosse di un giro a <b>Esh&rsquo;s Aurunmilla</b> &mdash; quindici stage, perch&eacute; poi il gioco <b>ricomincia per sempre</b>. Qui la finestra della mossa &egrave; <b>divisa in tre</b>, e il terzo pezzo paga di pi&ugrave;: le stesse mosse valgono <b>182.000</b> date in fondo e <b>33.900</b> date all&rsquo;apertura. E aspettare ti alza la difficolt&agrave; da solo.</span></a>
-<a class="stanza" href="/it/eshs-aurunmilla/sequenza/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">I diciassette giri</span><span class="che">Nessun sorteggio: <b>una pagina sola</b> di diciassette righe, e un segnaposto che cammina senza tornare indietro. Il gioco non finisce perché <b>finire non era previsto</b>.</span></a>
-<a class="stanza" href="/it/eshs-aurunmilla/grafica/"><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">Tre chip sovrapposti</span><span class="che">Tre chip sovrapposti, uno per bit: ogni pixel prende un valore da zero a sette. Cinquecentododici tessere, e <b>sedici tavolozze lette dalla PROM della scheda</b> &mdash; quello che ancora manca non &egrave; come si leggono, &egrave; <b>quale tocca a quale figura</b>.</span></a>
+<a class="stanza" href="/it/eshs-aurunmilla/la-partita/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">La partita</span><span class="che">Tutte le mosse di un giro a <b>Esh&rsquo;s Aurunmilla</b> &mdash; quindici stage, perch&eacute; poi il gioco <b>ricomincia per sempre</b>. Qui la finestra della mossa &egrave; <b>divisa in tre</b>, e il terzo pezzo paga di pi&ugrave;: le stesse mosse valgono <b>182.000</b> date in fondo e <b>33.900</b> date all&rsquo;apertura. E aspettare ti alza la difficolt&agrave; da solo.</span></a>
+<a class="stanza" href="/it/eshs-aurunmilla/sequenza/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">I diciassette giri</span><span class="che">Nessun sorteggio: <b>una pagina sola</b> di diciassette righe, e un segnaposto che cammina senza tornare indietro. Il gioco non finisce perché <b>finire non era previsto</b>.</span></a>
+<a class="stanza" href="/it/eshs-aurunmilla/grafica/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span><span class="come">Tre chip sovrapposti</span><span class="che">Tre chip sovrapposti, uno per bit: ogni pixel prende un valore da zero a sette. Cinquecentododici tessere, e <b>sedici tavolozze lette dalla PROM della scheda</b> &mdash; quello che ancora manca non &egrave; come si leggono, &egrave; <b>quale tocca a quale figura</b>.</span></a>
 </div>
 <h2>Come sono fatti questi indirizzi</h2>
 <p>Qui l&rsquo;indirizzo, dopo il nome del gioco, va <b>direttamente alla pagina</b> &mdash; <span class="mono">la-partita</span>, <span class="mono">sequenza</span>, <span class="mono">grafica</span> &mdash; senza un segmento di macchina in mezzo: di questo titolo pubblichiamo <b>una ROM sola</b>, e non c&rsquo;è ancora niente da cui distinguerla. Dove invece le macchine pubblicate sono più d&rsquo;una, come in <a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a>, in mezzo compare il nome di quella che le distingue: una revisione, un continente, un fabbricante.</p>
@@ -475,7 +490,7 @@ header{border-bottom-color:rgba(199,199,199,.34)}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>12</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>11 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>503 su 503</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; <span class="mono">j1_rgb.bin</span> non ancora letta</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>13</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>11 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>503 su 503</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; <span class="mono">j1_rgb.bin</span> non ancora letta</b></span></div>
 <p class="stampa">phenoma.org/it/eshs-aurunmilla/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
