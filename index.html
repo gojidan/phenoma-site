@@ -408,6 +408,16 @@ h1.marchione + .tesi{font-size:21px}
 .avviso .min{font-size:12.5px;color:var(--tenue)}
 .timbro .stato.ferma b{color:var(--verde,#3d7a4e)}
 .timbro .stato.viva b{color:var(--oro-cupo)}
+/* 12 set 2026: il timbro dell'approvazione. Verde quando vale, e spento
+   quando la pagina e' cambiata dopo -- perche' allora non vale piu'. */
+.timbro .approvata b{color:var(--verde,#3d7a4e);letter-spacing:.02em}
+.timbro .approvata.scaduta b{color:var(--tenue);font-weight:500}
+/* 12 set 2026: il rimando fra italiano e inglese, in cima. C'e' solo dove
+   l'altra lingua esiste davvero. */
+.barra .lingua{margin-left:auto;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--tenue);text-decoration:none;
+  border:1px solid var(--bordo);border-radius:3px;padding:2px 8px}
+.barra .lingua:hover{color:var(--inchiostro);border-color:var(--tenue)}
 .timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--tenue2)}
 
@@ -478,7 +488,7 @@ h1.marchione + .tesi{font-size:21px}
   I videogiochi su <b>laserdisc</b> dal 1983 al 1991, letti dentro le loro
   <b>ROM</b> &mdash; non come li ricordiamo, ma come sono scritti nella
   memoria della macchina.</p>
-<div class="avviso"><p><b>Questo sito &egrave; in lavorazione, e si corregge da s&eacute;.</b> Ogni pagina nasce da un programma che rilegge le ROM e rifiuta di scrivere se una sola delle sue <b>557 verifiche</b> non torna. Ma le verifiche prendono quello che si pu&ograve; contare: il resto lo trova chi legge &mdash; e in questo periodo lo stiamo ancora trovando, quasi ogni giorno.</p><p>&#11088; Perci&ograve; in fondo a ogni pagina c&rsquo;&egrave; un <b>timbro</b> che dice da quanti giorni quella pagina non cambia. Le pagine <b>assestate</b> &mdash; ferme da almeno <b>due settimane</b> &mdash; sono 3 su 39: quelle prendetele per buone. Le altre dicono <b>in revisione</b>, e vanno lette sapendo che domani potrebbero dire meglio.</p><p class="min">Non vuol dire che le une siano vere e le altre no: vuol dire che le prime hanno gi&agrave; retto a una rilettura. Quando una cifra cambia, cambia perch&eacute; abbiamo trovato un errore <b>nostro</b> &mdash; e lo scriviamo nel registro delle revisioni, non lo copriamo.</p></div>
+<div class="avviso"><p><b>Questo sito &egrave; in lavorazione, e si corregge da s&eacute;.</b> Ogni pagina nasce da un programma che rilegge le ROM e rifiuta di scrivere se una sola delle sue <b>558 verifiche</b> non torna. Ma le verifiche prendono quello che si pu&ograve; contare: il resto lo trova chi legge &mdash; e in questo periodo lo stiamo ancora trovando, quasi ogni giorno.</p><p>&#11088; Perci&ograve; in fondo a ogni pagina c&rsquo;&egrave; un <b>timbro</b>, e dice <b>in revisione</b> finch&eacute; quella pagina non &egrave; stata riletta e <b>approvata</b> una per una. Al momento non ce n&rsquo;&egrave; ancora nessuna: leggetele tutte come lavoro in corso.</p><p class="min">Il timbro non conta i giorni: una pagina non diventa definitiva stando ferma. Diventa definitiva quando l&rsquo;abbiamo <b>riletta</b> e detto di s&igrave;. E quando una cifra cambia, cambia perch&eacute; abbiamo trovato un errore <b>nostro</b> &mdash; lo scriviamo nel registro delle revisioni, non lo copriamo.</p></div>
 </header>
 <p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>12 settembre 2026</b>.</p>
 <h2>Le macchine</h2>

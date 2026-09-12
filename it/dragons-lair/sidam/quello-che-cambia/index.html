@@ -408,6 +408,16 @@ h1.marchione + .tesi{font-size:21px}
 .avviso .min{font-size:12.5px;color:var(--tenue)}
 .timbro .stato.ferma b{color:var(--verde,#3d7a4e)}
 .timbro .stato.viva b{color:var(--oro-cupo)}
+/* 12 set 2026: il timbro dell'approvazione. Verde quando vale, e spento
+   quando la pagina e' cambiata dopo -- perche' allora non vale piu'. */
+.timbro .approvata b{color:var(--verde,#3d7a4e);letter-spacing:.02em}
+.timbro .approvata.scaduta b{color:var(--tenue);font-weight:500}
+/* 12 set 2026: il rimando fra italiano e inglese, in cima. C'e' solo dove
+   l'altra lingua esiste davvero. */
+.barra .lingua{margin-left:auto;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--tenue);text-decoration:none;
+  border:1px solid var(--bordo);border-radius:3px;padding:2px 8px}
+.barra .lingua:hover{color:var(--inchiostro);border-color:var(--tenue)}
 .timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--tenue2)}
 
@@ -546,7 +556,7 @@ header{border-bottom-color:rgba(147,206,113,.34)}
 <li><a href="/it/super-don-quix-ote/il-campione/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>10 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; ultima modifica 2 giorni fa</span><span><span class="et">controlli sui byte</span><b>557 su 557</b></span><span class="colore"><span class="et">il colore</span><b>nostro</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>10 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>558 su 558</b></span><span class="colore"><span class="et">il colore</span><b>nostro</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/sidam/quello-che-cambia/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
