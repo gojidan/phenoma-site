@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://phenoma.org/</loc><lastmod>2026-09-11</lastmod></url>
-  <url><loc>https://phenoma.org/it/sequenze/</loc><lastmod>2026-09-11</lastmod></url>
-  <url><loc>https://phenoma.org/it/partite/</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://phenoma.org/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://phenoma.org/it/sequenze/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://phenoma.org/it/partite/</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://phenoma.org/it/dragons-lair/f2/sequenza/</loc><lastmod>2026-08-23</lastmod></url>
   <url><loc>https://phenoma.org/it/dragons-lair/europa/sequenza/</loc><lastmod>2026-09-07</lastmod></url>
   <url><loc>https://phenoma.org/it/dragons-lair/europa/la-partita/</loc><lastmod>2026-09-11</lastmod></url>
@@ -16,6 +16,8 @@
   <url><loc>https://phenoma.org/it/road-blaster/sequenza/</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://phenoma.org/it/road-blaster/la-partita/</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://phenoma.org/it/road-blaster/grafica/</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://phenoma.org/it/cliff-hanger/sequenza/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://phenoma.org/it/cliff-hanger/la-partita/</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://phenoma.org/it/eshs-aurunmilla/sequenza/</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://phenoma.org/it/dragons-lair/f2/le-difficolta/</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://phenoma.org/it/dragons-lair/f2/il-campione/</loc><lastmod>2026-09-10</lastmod></url>
@@ -35,6 +37,7 @@
   <url><loc>https://phenoma.org/it/space-ace/</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://phenoma.org/it/dragons-lair-2/</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://phenoma.org/it/eshs-aurunmilla/</loc><lastmod>2026-09-11</lastmod></url>
+  <url><loc>https://phenoma.org/it/cliff-hanger/</loc><lastmod>2026-09-12</lastmod></url>
   <url><loc>https://phenoma.org/it/super-don-quix-ote/</loc><lastmod>2026-09-11</lastmod></url>
   <url><loc>https://phenoma.org/it/road-blaster/</loc><lastmod>2026-09-11</lastmod></url>
 </urlset>

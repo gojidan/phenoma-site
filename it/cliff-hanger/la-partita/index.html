@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La partita — Cliff Hanger</title>
+<meta name="description" content="Tutte le mosse di una partita a Cliff Hanger: 194 mosse in otto scene, e ognuna vale esattamente quanto le altre. Una partita perfetta fa 1.050.000 — e il resto, fino al record del mondo, lo fanno le morti volute.">
+<style>
+:root{
+  --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
+  --inchiostro:#EDE8DC; --tenue:#8A93A1; --tenue2:#666E7A;
+  --oro:#FFB347; --oro-cupo:#E08E2A;
+  --acqua:#63C9BC; --brace:#E2685C; --verde:#8FCB6B;
+  --disp:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fondo);color:var(--inchiostro);
+  font-family:var(--disp);font-size:17.5px;line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  /* 5 set 2026, Alan: <<non riesco a vedere la differenza dei colori>>.
+     La fascia c'e' su OGNI pagina -- di casa e' oro -- e quello che cambia
+     e' il colore: si vede in che stanza sei senza dover leggere. */
+  border-top:3px solid var(--oro-cupo)}
+a{color:var(--oro);text-decoration:none;border-bottom:1px solid rgba(255,179,71,.3)}
+a:hover{border-bottom-color:var(--oro)}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 110px}
+
+/* --- la testata di casa: il marchio, e dove sei --- */
+.barra{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  padding:24px 0 16px;border-bottom:1px solid var(--bordo)}
+.marchio{font-family:var(--disp);font-size:23px;font-weight:600;
+  letter-spacing:.005em;border:0;line-height:1;
+  background:linear-gradient(180deg,#FFF2DD 0%,var(--oro) 58%,var(--oro-cupo) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.marchio:hover{filter:brightness(1.15)}
+/* fuori dall'elemento sfumato: dentro, il ritaglio del testo se lo mangerebbe */
+.coda{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--tenue2);align-self:flex-end;
+  padding-bottom:1px}
+.briciole{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;margin-left:auto}
+.briciole a{border:0;color:var(--oro-cupo)}
+.briciole a:hover{color:var(--oro)}
+.briciole .sep{color:var(--tenue2)}
+.briciole .qui{color:var(--tenue)}
+
+/* --- le altre stanze, in fondo --- */
+.altrove{margin-top:60px;padding-top:24px;border-top:1px solid var(--bordo)}
+.altrove .cap{margin-bottom:14px}
+.altrove ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+.altrove li{margin:0}
+.altrove a{display:block;border:0;padding:11px 14px;background:var(--piano);
+  border-left:2px solid var(--bordo);color:var(--inchiostro);font-size:15.5px}
+.altrove a:hover{background:var(--piano2);border-left-color:var(--oro-cupo)}
+.altrove a .dove{display:block;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue);
+  margin-bottom:3px}
+.altrove a.qui{opacity:.45;pointer-events:none;border-left-color:var(--oro-cupo)}
+
+/* --- testata --- */
+header{padding:46px 0 26px;margin-bottom:14px;border-bottom:1px solid var(--bordo)}
+.occhiello{font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:0 0 16px}
+/* 21 ago - il nome del gioco era un sussurro di 11px sopra un titolo di 50.
+   Adesso e' la prima cosa che si legge, e il titolo bello viene dopo. */
+.gioco{font-family:var(--mono);font-size:clamp(14px,2.6vw,17px);
+  font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--oro);margin:0 0 7px;line-height:1.3}
+.gioco a{color:inherit;border-bottom:1px solid transparent}
+.gioco a:hover{border-bottom-color:var(--oro)}
+.dettaglio{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--tenue);margin:0 0 20px}
+h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
+  font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+.tesi{font-size:20px;color:var(--tenue);margin:0;max-width:72ch;
+  text-wrap:balance;line-height:1.5}
+.tesi b{color:var(--inchiostro);font-weight:600}
+
+/* --- sezioni --- */
+h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--oro);font-weight:700;
+  margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+p{margin:0 0 17px;max-width:78ch}
+b,strong{color:#FFF6E6;font-weight:600}
+em{color:var(--tenue);font-style:italic}
+
+/* --- figure --- */
+.fig{background:var(--piano);border:1px solid var(--bordo);
+  padding:20px 18px;margin:26px 0;overflow-x:auto}
+.fig svg{display:block}
+/* 10 set: i gruppi per macchina nell'indice di un gioco. */
+h2.macchina{display:flex;align-items:baseline;gap:.7em;flex-wrap:wrap;
+  margin:34px 0 14px;padding-bottom:8px;
+  border-bottom:1px solid var(--bordo)}
+h2.macchina .chi{font-family:var(--corpo);font-style:italic;
+  font-size:14px;color:var(--tenue);font-weight:400}
+h2.macchina .quante{font-family:var(--mono);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tenue2);
+  font-weight:400}
+/* 10 set: l'immaginetta della scena, accanto al suo nome.  Piccola
+   apposta: indica la scena, non racconta il film. */
+.stesura .testa .mini{display:block;width:52px;height:39px;
+  object-fit:cover;border:1px solid var(--bordo);flex:0 0 auto;
+  margin-right:2px;background:#000}
+@media(min-width:700px){.stesura .testa .mini{width:80px;height:60px}}
+/* dove la scena e' un titoletto e non una scheda (Esh), l'immaginetta sta
+   di fianco al titolo */
+.partita>h3 .mini{width:62px;height:47px;object-fit:cover;border-radius:3px;
+  border:1px solid var(--bordo);vertical-align:-13px;margin-right:11px}
+@media(min-width:700px){.partita>h3 .mini{width:84px;height:63px;
+  vertical-align:-22px}}
+/* 10 set 2026: il rimando che e' il gesto principale di una pagina.
+   Nasce per la Sidam, la cui prima riga dice <<le mosse sono quelle
+   dell'europea>>: da li' si deve poter andare via subito. */
+.bottone{display:inline-block;padding:11px 20px;border:1px solid var(--oro-cupo);
+  color:var(--oro);text-decoration:none;font-family:var(--mono);
+  font-size:12.5px;letter-spacing:.06em;background:rgba(190,150,60,.06)}
+.bottone:hover{background:rgba(190,150,60,.14);border-color:var(--oro)}
+.legenda{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);
+  font-size:11.5px;color:var(--tenue);margin-top:16px;letter-spacing:.02em}
+.legenda span{display:flex;align-items:center;gap:8px}
+.sw{width:14px;height:14px;border:1px solid var(--bordo);display:inline-block;
+  flex:0 0 auto}
+
+/* --- la legenda dei nomi delle scene (7 set) --- */
+.nomi{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--acqua);padding:18px 22px;margin:26px 0}
+.nomi .griglia{display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0 24px}
+.nomi .griglia div{display:flex;gap:11px;align-items:baseline;padding:5px 0;
+  font-size:15px;line-height:1.3;border-top:1px solid var(--bordo)}
+.nomi .griglia div:first-child{border-top:0}
+.nomi .griglia b{font-family:var(--mono);font-size:11px;color:var(--acqua);
+  flex:0 0 auto;letter-spacing:.08em;min-width:2.6em}
+.nomi .forse{color:var(--tenue);font-style:normal;font-size:.85em}
+.nomi .coda{margin:15px 0 0;font-size:14px;color:var(--tenue);max-width:80ch}
+
+/* --- la STRADA di una scena: i gesti in fila (7 set) --- */
+.strada{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.strada i{font-style:normal;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.04em;padding:2px 7px;border:1px solid var(--bordo);
+  color:var(--tenue);white-space:nowrap;background:var(--piano2)}
+.strada i.paga{border-color:var(--oro-cupo);color:var(--oro)}
+.strada i.muta{border-style:dashed;color:var(--tenue2);background:none}
+.strada i b{font-weight:400;color:var(--inchiostro)}
+.strada i.paga b{color:var(--oro)}
+.strada s{text-decoration:none;color:var(--tenue2);padding:0 1px}
+.coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
+  max-width:84ch}
+
+/* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
+.partita{margin:0 0 34px}
+.partita>h3{margin:30px 0 4px;font-size:20px}
+.partita .stesura{margin:16px 0 0;border:1px solid var(--bordo);
+  border-radius:3px;background:var(--piano);overflow:hidden}
+.partita .testa{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;
+  padding:9px 14px;background:var(--piano2);border-bottom:1px solid var(--bordo)}
+.partita .testa b{font-size:15px}
+.partita .testa .id{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  letter-spacing:.08em}
+.partita .testa .verso{font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;
+  border:1px solid var(--bordo);color:var(--tenue)}
+.partita .testa .verso.rov{border-color:var(--acqua);color:var(--acqua)}
+.partita .testa .pt{margin-left:auto;font-family:var(--mono);font-size:12px;
+  color:var(--oro)}
+ol.mosse{list-style:none;margin:0;padding:0}
+ol.mosse li{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  padding:7px 14px;border-top:1px solid var(--bordo);font-size:14px}
+ol.mosse li:first-child{border-top:0}
+ol.mosse .fr{font-family:var(--mono);font-size:11px;color:var(--tenue2);
+  flex:0 0 4.4em;letter-spacing:.04em}
+ol.mosse .g{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+  min-width:8.4em;font-family:var(--mono);font-size:12px;letter-spacing:.08em}
+ol.mosse .g em{font-style:normal;font-size:19px;line-height:1;
+  color:var(--inchiostro)}
+/* ⭐ il pulsante e' UNO SOLO: a cambiare e' quello che il film ti chiede.
+   Percio' il FUOCO e l'ENERGIA hanno due colori, e la stessa forma. */
+ol.mosse .g.fuoco,ol.mosse .g.energia{padding:1px 9px;border-radius:11px;
+  border:1px solid;font-weight:700}
+ol.mosse .g.fuoco{color:var(--brace);border-color:var(--brace)}
+ol.mosse .g.energia{color:var(--acqua);border-color:var(--acqua);
+  background:rgba(90,170,190,.09)}
+ol.mosse .g.attesa{color:var(--tenue2);font-style:italic}
+/* Le tre attese non sono la stessa cosa (Alan, 9 set): <<non premere>> e' una
+   scelta, <<non toccare>> e' una trappola, e il film che scorre non e' un
+   gesto affatto. */
+ol.mosse .g.trappola{color:var(--brace);font-weight:700;letter-spacing:.06em}
+ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
+/* ⭐ 11 set — LA MOSSA SECCA: la spia delle quattro mosse di Esh dove
+   premere due volte uccide.  Alan: <<quelle mosse devono avere un risalto
+   particolare>>. */
+.secca{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;
+  border:1.5px solid var(--brace);border-radius:999px;color:var(--brace);
+  font-family:var(--mono);font-size:10.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco */
+.fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
+  border-radius:2px;overflow:hidden;vertical-align:middle;
+  background:var(--piano2);box-shadow:inset 0 0 0 1px var(--bordo)}
+.fin i{display:block;height:100%}
+.fin .f1{width:60%;background:var(--tenue2);opacity:.35}
+.fin .f2{width:30%;background:var(--tenue2);opacity:.7}
+.fin .f3{width:10%;background:var(--oro)}
+.fin.muta{opacity:.3}
+tr.riga-secca td{background:rgba(226,104,92,.10)}
+tr.riga-secca td:first-child{box-shadow:inset 3px 0 0 var(--brace)}
+ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
+ol.mosse .opp{margin-left:8px;font-family:var(--corpo);font-style:italic;
+  font-size:11.5px;color:var(--tenue2);letter-spacing:0}
+ol.mosse .fin{font-family:var(--mono);font-size:11.5px;color:var(--oro);
+  flex:0 0 auto;min-width:8.6em}
+ol.mosse .altre{font-family:var(--mono);font-size:10.5px;color:var(--tenue2);
+  flex:1 1 auto}
+ol.mosse .altre s{text-decoration:none;color:var(--brace);opacity:.8}
+ol.mosse .pt{font-family:var(--mono);font-size:11px;color:var(--tenue);
+  margin-left:auto;flex:0 0 auto}
+ol.mosse li.bivio{background:rgba(190,150,60,.05)}
+/* ⛔ 8 set 2026, sera — Alan, leggendo: <<un rombo con ? dentro e poi dei
+   numeri arancioni, dopo il numero di frame... non c'e' sempre, ogni tanto>>.
+   Era il segno del bivio, disegnato col carattere U+25C6: dove quel glifo
+   manca il browser mette la scatoletta col codice esadecimale dentro, e la
+   colora d'arancione perche' il colore glielo davamo noi.  E tornava <<ogni
+   tanto>> perche' sta solo sulle righe che SONO un bivio.
+   ⇒ il rombo adesso e' un quadratino ruotato: niente font, niente sorprese. */
+i.rombo{display:inline-block;width:5px;height:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle;flex:0 0 auto}
+ol.mosse li.bivio .fr::after{content:'';display:inline-block;width:5px;
+  height:5px;margin-left:5px;background:var(--oro-cupo);
+  transform:rotate(45deg);vertical-align:middle}
+.legenda-mosse{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 22px;
+  font-size:13px;color:var(--tenue)}
+.legenda-mosse span{display:inline-flex;align-items:center;gap:6px}
+.catena{margin:10px 0 0;padding:7px 14px;font-size:13px;color:var(--acqua);
+  background:rgba(90,170,190,.07);border-top:1px solid var(--bordo)}
+
+/* --- riquadri --- */
+.nota{background:var(--piano);border:1px solid var(--bordo);
+  border-left:2px solid var(--oro-cupo);padding:18px 22px;margin:26px 0;
+  font-size:16.5px}
+.nota.freddo{border-left-color:var(--acqua)}
+.nota.caldo{border-left-color:var(--brace)}
+.nota p{margin:0;max-width:none}
+.nota p+p{margin-top:13px}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--oro-cupo);font-weight:700;
+  display:block;margin-bottom:9px}
+.nota.freddo .cap{color:var(--acqua)}
+.nota.caldo .cap{color:var(--brace)}
+
+blockquote{margin:26px 0;padding:16px 24px;background:var(--piano);
+  border-left:2px solid var(--bordo)}
+blockquote p{margin:0;font-style:italic}
+blockquote cite{display:block;margin-top:11px;font-family:var(--mono);
+  font-size:11px;font-style:normal;color:var(--tenue);letter-spacing:.06em}
+
+ul.inv{list-style:none;padding:0;margin:20px 0}
+ul.inv li{padding:14px 0;border-top:1px solid var(--bordo);max-width:78ch}
+ul.inv li:last-child{border-bottom:1px solid var(--bordo)}
+
+.mono{font-family:var(--mono);font-size:.9em;color:var(--acqua)}
+.specchio{font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tenue2);border:1px solid var(--bordo);
+  padding:1px 5px;margin-left:6px;white-space:nowrap}
+
+/* --- tabelle --- */
+.scroll{overflow-x:auto;margin:26px 0;border:1px solid var(--bordo);
+  background:var(--piano)}
+table{border-collapse:collapse;width:100%;font-family:var(--mono);
+  font-size:13px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tenue);padding:13px 15px;
+  border-bottom:1px solid var(--bordo);white-space:nowrap}
+td{padding:10px 15px;border-bottom:1px solid var(--bordo);color:var(--inchiostro)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.dim{color:var(--tenue)}
+tr.punta td{color:var(--oro)}
+
+/* --- i video del canale: la seconda prova --- */
+ul.video{list-style:none;padding:0;margin:22px 0}
+ul.video li{padding:14px 0;border-top:1px solid var(--bordo)}
+ul.video li:last-child{border-bottom:1px solid var(--bordo)}
+ul.video a{font-weight:600}
+ul.video .dim{color:var(--tenue);font-size:15px;line-height:1.55}
+
+/* --- l'indice --- */
+.stanze{display:grid;gap:14px;margin:34px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.stanza{display:block;background:var(--piano);border:1px solid var(--bordo);
+  border-top:2px solid var(--oro-cupo);padding:22px 22px 20px;color:inherit}
+.stanza:hover{background:var(--piano2);border-color:#3A414D;
+  border-top-color:var(--oro)}
+.stanza .dove{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--tenue);display:block;margin-bottom:10px}
+.stanza .come{font-size:25px;font-weight:600;letter-spacing:-.01em;
+  display:block;margin-bottom:9px;line-height:1.15;color:var(--inchiostro)}
+.stanza .che{color:var(--tenue);font-size:16px;line-height:1.5;display:block}
+/* ⭐ 11 set — LA SIGLA, chiesta da Alan: <<un piccolo riquadro evidente con
+   lo sfondo il colore del gioco con scritto DL, CH, EA, SDQ>>.  La lettera
+   dice il GIOCO, la tinta dice QUALE MACCHINA (le tre di DL hanno tre
+   colori, e sono gia' i colori delle loro pagine). */
+.sigla{display:inline-flex;align-items:center;justify-content:center;
+  min-width:32px;height:20px;padding:0 6px;margin-right:9px;border-radius:5px;
+  background:var(--tinta);color:#0F1218;font-family:var(--mono);
+  font-size:11px;font-weight:700;letter-spacing:.05em;font-style:normal;
+  vertical-align:-4px;flex:0 0 auto;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+/* negli elenchi in fondo la riga ha due piani (la provenienza sopra, il
+   titolo sotto): la sigla si mette di fianco a tutti e due, non in mezzo. */
+.altrove a{position:relative;padding-left:52px}
+.altrove .sigla{position:absolute;left:14px;top:12px;margin:0;
+  min-width:28px;height:18px;font-size:10px}
+.stanza .che b{color:var(--inchiostro)}
+
+/* --- il fondo tecnico --- */
+.tecnico{margin-top:64px;padding-top:26px;border-top:1px solid var(--bordo)}
+.tecnico h2{margin-top:0;color:var(--acqua);border-bottom-color:var(--bordo)}
+.tecnico p,.tecnico li{font-family:var(--mono);font-size:12.5px;line-height:1.85;
+  color:var(--tenue);max-width:none}
+.tecnico b{color:var(--inchiostro);font-weight:600}
+.tecnico code{color:var(--acqua)}
+.tecnico ul{padding-left:1.2em;margin:0 0 14px}
+.tecnico li{margin-bottom:7px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.7;color:var(--tenue);
+  background:var(--piano);border:1px solid var(--bordo);padding:15px 18px;
+  overflow-x:auto;margin:0 0 16px}
+pre b{color:var(--oro)}
+
+/* la grafica delle schede: tessere e caratteri, su fondo nero anche in stampa */
+.schermo{background:#000;border:1px solid var(--bordo);padding:14px;
+  display:inline-block;line-height:0;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.tavola{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.cas{background:#000;border:1px solid var(--bordo);padding:4px;text-align:center;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cas .cod{font-family:var(--mono);font-size:8px;color:var(--tenue2);
+  margin-top:3px;line-height:1}
+.cas.spicca{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro-cupo)}
+.famiglia{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--oro-cupo);margin:26px 0 2px}
+.famiglia .che{font-family:var(--disp);font-size:14.5px;letter-spacing:0;
+  text-transform:none;color:var(--tenue);display:block;margin-top:5px}
+.pal{display:flex;flex-wrap:wrap;margin:16px 0;border:1px solid var(--bordo);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pal div{width:58px;height:48px;display:flex;align-items:flex-end;
+  justify-content:center;font-family:var(--mono);font-size:8.5px;color:#fff;
+  text-shadow:0 0 3px #000,0 0 3px #000;padding-bottom:4px}
+.car{display:block}
+.didascalia{font-size:14.5px;color:var(--tenue);margin:16px auto 0;
+  max-width:60ch;line-height:1.55}
+
+/* le icone vere della scheda: stanno su uno SCHERMO, e lo schermo resta
+   nero anche sulla carta -- se no il giallo su bianco sparisce */
+.telaio{display:inline-block;background:#000;padding:3px;border:1px solid var(--bordo);
+  line-height:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.ic{display:block;height:26px;width:auto}
+.ic.grande{height:52px}
+td .telaio{vertical-align:middle}
+.coppia{display:flex;align-items:center;gap:10px}
+.coppia .via{color:var(--tenue);font-family:var(--mono)}
+.spenta{opacity:.4}
+
+/* la riga con l'indirizzo: solo su carta, dove un collegamento non si clicca */
+.stampa{display:none}
+
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--bordo);
+  font-family:var(--mono);font-size:11.5px;color:var(--tenue2);
+  letter-spacing:.04em;line-height:1.9}
+footer a{color:var(--tenue);border-bottom-color:rgba(138,147,161,.3)}
+footer a:hover{color:var(--oro);border-bottom-color:var(--oro)}
+/* --- il nome sulla soglia: piu' grande dell'h1 normale, e SFUMATO ---
+   5 set 2026, Alan: <<nella home del sito riusciamo a scrivere Phenoma
+   grande con il colore sfumato?>>.  E' la stessa sfumatura del marchio
+   piccolo in barra -- crema, oro, oro cupo -- perche' il nome grande e il
+   nome piccolo devono essere la stessa cosa; con due fermate in piu', che a
+   92px due sole diventano una tinta piatta.
+   ⚠️ `background-clip:text` ritaglia lo sfondo sulle lettere di TUTTO
+   quello che sta dentro l'elemento: qui dentro non ci va nient'altro.
+   📌 `width:max-content` fa aderire il riquadro alla parola: senza, il
+   riquadro sarebbe largo quanto la pagina e l'inclinazione non si
+   vedrebbe. */
+h1.marchione{font-size:clamp(46px,11vw,92px);letter-spacing:-.02em;
+  margin:6px 0 20px;line-height:1;width:max-content;max-width:100%;
+  background:linear-gradient(176deg,#FFF6E7 0%,#FFDCA6 24%,var(--oro) 54%,
+    var(--oro-cupo) 80%,#C0761D 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+h1.marchione + .tesi{font-size:21px}
+
+/* --- la data dell'ultimo aggiornamento, in cima alla home --- */
+.aggiornato{font-size:14.5px;color:var(--tenue);margin:0 0 26px}
+.aggiornato b{color:var(--inchiostro);font-weight:600}
+.timbro{display:flex;gap:10px 26px;flex-wrap:wrap;margin-bottom:12px;
+  padding-bottom:12px;border-bottom:1px solid var(--bordo)}
+.timbro span{display:flex;gap:.6em;align-items:baseline}
+.timbro b{color:var(--inchiostro);font-weight:600;
+  font-variant-numeric:tabular-nums}
+.avviso{margin:26px 0 0;padding:16px 20px;border:1px solid var(--bordo);
+  border-left:3px solid var(--oro-cupo);background:rgba(190,150,60,.05);
+  max-width:78ch}
+.avviso p{margin:0 0 10px;font-size:14px;line-height:1.6}
+.avviso p:last-child{margin-bottom:0}
+.avviso .min{font-size:12.5px;color:var(--tenue)}
+.timbro .stato.ferma b{color:var(--verde,#3d7a4e)}
+.timbro .stato.viva b{color:var(--oro-cupo)}
+.timbro .et{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--tenue2)}
+
+/* =====================================================================
+   SU CARTA.  Alan, 21 ago: "quasi quasi stampo le pagine e le leggo su un
+   foglio".  Il fondo scuro su carta e' una cartuccia buttata e un testo
+   illeggibile: qui la stessa pagina si rovescia.  Le figure non vanno
+   ridisegnate -- sono in SVG e prendono i colori dalle stesse variabili,
+   percio' basta cambiare quelle e si rovesciano da sole.
+   ===================================================================== */
+@media print{
+  :root{
+    --fondo:#fff; --piano:#fff; --piano2:#fff; --bordo:#BFBFBF;
+    --inchiostro:#111; --tenue:#4A4A4A; --tenue2:#6E6E6E;
+    --oro:#8A5A00; --oro-cupo:#8A5A00;
+    --acqua:#0E5B54; --brace:#9E2A20; --verde:#2E6B1E;
+  }
+  @page{margin:18mm 15mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.5}
+  .wrap{max-width:none;padding:0}
+  a{color:inherit;border-bottom:0}
+  b,strong{color:#000}
+
+  /* la navigazione su carta non si clicca: e' inchiostro sprecato */
+  .briciole,.altrove{display:none}
+  footer a{color:inherit}
+  .barra{padding:0 0 10px;margin-bottom:14px}
+  body{border-top:0}
+  .marchio{font-size:15pt;color:#111;background:none;-webkit-text-fill-color:#111}
+  /* il nome sulla soglia: sfumato a schermo, inchiostro sul foglio */
+  h1.marchione{background:none;color:#111;-webkit-text-fill-color:#111;
+    width:auto;font-size:30pt}
+  .coda{color:#6E6E6E}
+
+  header{padding:12px 0 14px}
+  h1{font-size:24pt;line-height:1.1}
+  .gioco{font-size:11pt}
+  .tesi{font-size:12pt}
+  h2{font-size:9.5pt;margin:20px 0 8px}
+
+  /* niente deve spezzarsi a meta' fra due fogli */
+  .fig,.nota,blockquote,.scroll,ul.inv li,pre{
+    page-break-inside:avoid;break-inside:avoid}
+  h1,h2,.gioco{page-break-after:avoid;break-after:avoid}
+  .fig{overflow:visible}
+  .fig svg{width:100%;height:auto}
+  .scroll{overflow:visible}
+  table{font-size:8.5pt}
+  th,td{padding:5px 8px}
+  pre{font-size:8.5pt;white-space:pre-wrap}
+  .tecnico p,.tecnico li{font-size:9pt;line-height:1.55}
+
+  /* e chi legge il foglio deve sapere da dove viene */
+  .stampa{display:block;font-family:var(--mono);font-size:8.5pt;
+    color:#4A4A4A;letter-spacing:.04em;margin:0 0 8px}
+  .timbro{border-bottom-color:#BFBFBF}
+}
+body{border-top-color:#F58FB8}
+.gioco{color:#F58FB8}
+.gioco a:hover{border-bottom-color:#F58FB8}
+.dettaglio{color:#A85C7E}
+.barra{border-bottom-color:rgba(245,143,184,.42)}
+header{border-bottom-color:rgba(245,143,184,.34)}
+.timbro .colore b{color:#A85C7E;font-weight:600}
+.timbro .colore .mono{color:inherit}
+@media print{body{border-top:0}
+  .gioco{color:#111}.dettaglio{color:#555}
+  .timbro .colore b{color:#111}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="barra"><a class="marchio" href="/">Phenoma</a><span class="coda">Laserdisc Rom Atlas</span><nav class="briciole"><a href="/it/cliff-hanger/">Cliff Hanger</a><span class="sep">/</span><span class="qui">tutte le mosse della partita</span></nav></div>
+<header>
+  <p class="gioco"><a href="/it/cliff-hanger/">Cliff Hanger</a></p><p class="dettaglio">Stern, 1983</p>
+  <h1>La partita</h1>
+  <p class="tesi">Tutte le mosse di una partita a <b>Cliff Hanger</b>: <b>194 mosse</b> in otto scene, e ognuna vale <b>esattamente quanto le altre</b>. Una partita perfetta fa <b>1.050.000</b> &mdash; e il resto, fino al record del mondo, lo fanno <b>le morti volute</b>.</p>
+</header>
+<div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9995; MANO</span> il primo pulsante</span><span><span class="g energia">&#128099; PIEDE</span> il secondo</span></div>
+<h2>Otto blocchi, 194 mosse, e ogni mossa vale uguale</h2>
+<p class="punta">Cliff Hanger paga <b>5.000 punti a mossa</b>, sempre, e <b>10.000</b> ogni volta che un blocco finisce. Non c&rsquo;&egrave; una mossa che vale pi&ugrave; di un&rsquo;altra, e <b>non conta quando la dai</b> dentro la finestra: conta solo che tu la dia. &Egrave; l&rsquo;esatto contrario di Esh, dove le stesse mosse valgono cinque volte tanto se le dai tardi.</p>
+<p>&rArr; Una partita perfetta, senza morire mai, fa <b>1.050.000</b>: 194 mosse per 5.000, pi&ugrave; otto blocchi per 10.000. In tutta la ROM il punteggio lo tocca<b>no due sole istruzioni</b> &mdash; ed &egrave; per questo che questo numero &egrave; un fatto e non una stima.</p>
+<h2>Il gioco ti dice che cosa vuole</h2>
+<p>Cliff &egrave; l&rsquo;unica macchina di casa che <b>nomina i suoi errori</b>: quando la finestra si apre scrive a schermo <span class="mono">STICK</span> se aspetta la leva e <span class="mono">ACTION</span> se aspetta un pulsante. Non dice <i>quale</i> direzione, e non distingue la mano dal piede &mdash; quelli li devi sapere tu.</p>
+<p class="min">&#9888; Nel registro della partita del Campione dell&rsquo;11 settembre 2026 questo torna <b>153 volte su 153</b>: dove la ROM scrive <span class="mono">STICK</span> si preme una direzione, dove scrive <span class="mono">ACTION</span> un pulsante. Mai una volta al contrario.</p>
+<div class="nota"><span class="cap">Mano e piede: i nomi non sono nostri</span><p>I due pulsanti di Cliff sono <b>la mano</b> e <b>il piede</b>, e lo dice il costruttore: nel manuale della Data East la mano sono <i>le braccia</i> e il piede sono <i>le gambe</i> del protagonista. In questa partita la mano serve <b>82 volte</b> e il piede <b>27</b>.</p><p class="min">&#9888; E c&rsquo;&egrave; una stranezza vera: i due &laquo;piedi&raquo; non hanno un filo loro sul pannello. La ROM li legge come <b>bit 2 <i>oppure</i> bit 3</b> &mdash; cio&egrave; le due linee che fuori partita fanno <b>Start 1</b> e <b>Start 2</b>, e in partita cambiano mestiere.</p></div>
+<h2>I checkpoint, e perch&eacute; morire pu&ograve; convenire</h2>
+<p>Ogni record porta in coda tre byte che dicono <b>dove si rinasce</b>: il puntatore al checkpoint e quanti record restano da l&igrave;. Morendo, non riprendi dalla mossa dopo &mdash; riprendi <b>dal checkpoint</b>, e <b>tutto il tratto si rigioca</b>.</p>
+<p>E qui viene il punto: <b>il premio non ha nessuna bandiera &laquo;gi&agrave; pagato&raquo;</b>. Le mosse rigiocate <b>ripagano</b>. Il tratto pi&ugrave; lungo senza checkpoint di tutta la ROM &egrave; di <b>31 mosse</b> e sta nell&rsquo;Ending: morire sull&rsquo;ultima vale <b>155.000 punti</b> per ogni vita che spendi.</p>
+<p class="min">&#9888; Ed &egrave; cos&igrave; che si spiega il record dichiarato del Galloping Ghost, <b>1.800.000</b>: &egrave; la base pi&ugrave; cinque morti utili su quel tratto, con la macchina regolata a sei vite. Non una partita con margine &mdash; <b>&egrave; il tetto della macchina</b>, a un credito solo. &rarr; <a href="/it/cliff-hanger/sequenza/">e col dado non ci si arriva</a>.</p>
+<h2>Le otto scene, con tutte le mosse</h2>
+<p>Questa &egrave; la <b>lista A</b>, la prima stesura: quella che si gioca col dado spento. Il numero a sinistra &egrave; il fotogramma in cui la finestra si apre; a destra, quanto dura.</p>
+<div class="partita"><h3>1. Casino Heist</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_01806.webp" width="160" height="120" loading="lazy" decoding="async" alt="Casino Heist, come appare sul disco"><b>Casino Heist</b><span class="id">fotogrammi 1547&ndash;3160</span><span class="verso">10 mosse</span><span class="pt">2 checkpoint</span></div><ol class="mosse"><li><span class="fr">1928</span><span class="g energia">&#128099; PIEDE</span><span class="fin">59 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">1990</span><span class="g energia">&#128099; PIEDE</span><span class="fin">50 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2120</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2186</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2419</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2447</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2464</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2513</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2549</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">2640</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>4, 6</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="partita"><h3>2. The Getaway</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_05192.webp" width="160" height="120" loading="lazy" decoding="async" alt="The Getaway, come appare sul disco"><b>The Getaway</b><span class="id">fotogrammi 4776&ndash;8074</span><span class="verso">24 mosse</span><span class="pt">4 checkpoint</span></div><ol class="mosse"><li><span class="fr">5388</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5418</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5516</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5600</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5680</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5710</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5752</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5802</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">5874</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">6000</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">6108</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">6278</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">6342</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">6496</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">6694</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">6904</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7015</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7114</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7202</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7239</span><span class="g energia">&#128099; PIEDE</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7284</span><span class="g energia">&#128099; PIEDE</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7403</span><span class="g energia">&#128099; PIEDE</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7470</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">7958</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>3, 6, 7, 8</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="partita"><h3>3. Rooftops</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_12466.webp" width="160" height="120" loading="lazy" decoding="async" alt="Rooftops, come appare sul disco"><b>Rooftops</b><span class="id">fotogrammi 12397&ndash;17248</span><span class="verso">30 mosse</span><span class="pt">5 checkpoint</span></div><ol class="mosse"><li><span class="fr">12702</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">12725</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">13888</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">13898</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">13944</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">14044</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">14256</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">14343</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">14668</span><span class="g fuoco">&#9995; MANO</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">14694</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">14788</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">14818</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">15143</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">15221</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">15232</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">15253</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">15270</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">15296</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">15884</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16054</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16094</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16137</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16170</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16222</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16254</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16307</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16339</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16392</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16424</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">16998</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">40 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>2, 6, 4, 6, 12</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="partita"><h3>4. Highway</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_21246.webp" width="160" height="120" loading="lazy" decoding="async" alt="Highway, come appare sul disco"><b>Highway</b><span class="id">fotogrammi 20891&ndash;23321</span><span class="verso">40 mosse</span><span class="pt">6 checkpoint</span></div><ol class="mosse"><li><span class="fr">21553</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">21594</span><span class="g fuoco">&#9995; MANO</span><span class="fin">20 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">21640</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">21669</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">21698</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">21727</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">21826</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22004</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22050</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22097</span><span class="g fuoco">&#9995; MANO</span><span class="fin">20 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22102</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22146</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22160</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22237</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22264</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22326</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22345</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22384</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">20 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22403</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22424</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22494</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22500</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22538</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22580</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22592</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22610</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22702</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22730</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22750</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22784</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22794</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22845</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22941</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22955</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">22995</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">23010</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">23035</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">23046</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">23058</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">23148</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>7, 6, 7, 6, 6, 8</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="partita"><h3>5. The Castle Battle</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_25735.webp" width="160" height="120" loading="lazy" decoding="async" alt="The Castle Battle, come appare sul disco"><b>The Castle Battle</b><span class="id">fotogrammi 25728&ndash;26387</span><span class="verso">9 mosse</span><span class="pt">2 checkpoint</span></div><ol class="mosse"><li class="bivio"><span class="fr">25715</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">25765</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">25795</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">25800</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">25808</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">25824</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">25944</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">25996</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">26146</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>6, 3</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="partita"><h3>6. Finale</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_28862.webp" width="160" height="120" loading="lazy" decoding="async" alt="Finale, come appare sul disco"><b>Finale</b><span class="id">fotogrammi 28514&ndash;31212</span><span class="verso">9 mosse</span><span class="pt">3 checkpoint</span></div><ol class="mosse"><li><span class="fr">28900</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">29422</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">29622</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">30098</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">30794</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">20 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">30804</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">30834</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">30890</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">31063</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>4, 4, 1</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="partita"><h3>7. Finale II</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_33531.webp" width="160" height="120" loading="lazy" decoding="async" alt="Finale II, come appare sul disco"><b>Finale II</b><span class="id">fotogrammi 33255&ndash;37138</span><span class="verso">26 mosse</span><span class="pt">5 checkpoint</span></div><ol class="mosse"><li><span class="fr">33668</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33704</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33720</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33733</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33760</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33824</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33830</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33840</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33922</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">33938</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">34030</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">34100</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">34130</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">34286</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">34402</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">35012</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">35170</span><span class="g"><em>&darr;</em>GI&Ugrave;</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">35374</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">35785</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">35873</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">35889</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">35955</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">36164</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">36327</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">36477</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">36593</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>2, 8, 5, 7, 4</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="partita"><h3>8. Ending</h3>
+<div class="stesura"><div class="testa"><img class="mini" src="/img/cliff/cliff_41593.webp" width="160" height="120" loading="lazy" decoding="async" alt="Ending, come appare sul disco"><b>Ending</b><span class="id">fotogrammi 41587&ndash;46880</span><span class="verso">46 mosse</span><span class="pt">4 checkpoint</span></div><ol class="mosse"><li class="bivio"><span class="fr">41574</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">41662</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">41713</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">42676</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">42827</span><span class="g"><em>&uarr;</em>SU</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">42860</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">42902</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43068</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43092</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">10 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43261</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43286</span><span class="g fuoco">&#9995; MANO</span><span class="fin">20 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43295</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43307</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43320</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43345</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43367</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43434</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43449</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43476</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43515</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43531</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43541</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43556</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43580</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43603</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43670</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43685</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43712</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43756</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43771</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43789</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43816</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43863</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43888</span><span class="g fuoco">&#9995; MANO</span><span class="fin">20 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43899</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">43926</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">44151</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">44304</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">44437</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">44530</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">45298</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">45394</span><span class="g energia">&#128099; PIEDE</span><span class="fin">20 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">45525</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">45591</span><span class="g energia">&#128099; PIEDE</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">45618</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li><li><span class="fr">45685</span><span class="g fuoco">&#9995; MANO</span><span class="fin">30 fotogrammi</span><span class="altre"></span><span class="pt">5.000</span></li></ol></div>
+<p class="coda-tavola">I checkpoint spezzano la scena in tratti di <b>3, 6, 31, 6</b> mosse: &egrave; quello che si rigioca se muori.</p>
+</div>
+<div class="nota caldo"><span class="cap">Le due mosse che si aprono prima che la scena arrivi</span><p>Sono segnate qui sopra, e sono <b>due sole in tutta la ROM</b> &mdash; su quattrocentotrentasette. In tutte le altre la finestra si apre <i>dopo</i> che il disco si &egrave; posato sulla scena. In queste due &egrave; <b>gi&agrave; aperta quando la scena atterra</b>:</p><ul class="inv"><li><b>The Castle Battle</b> &mdash; la finestra apre al <span class="mono">25715</span>, la scena atterra al <span class="mono">25728</span>: <b>13 fotogrammi</b> in anticipo</li><li><b>Ending</b> &mdash; la finestra apre al <span class="mono">41574</span>, la scena atterra al <span class="mono">41587</span>: <b>13 fotogrammi</b> in anticipo</li></ul><p>Sono tutt&rsquo;e due <b>il piede</b>, tutt&rsquo;e due la <b>prima mossa</b> del loro blocco, e tutt&rsquo;e due lasciano <b>gli stessi diciassette fotogrammi</b>. Chi gioca non se ne accorge &mdash; se ne &egrave; accorta una macchina che premeva troppo presto, sul <i>medesimo battito</i> in cui il disco si posa, quando il giudice non &egrave; ancora in ascolto.</p></div>
+<section class="tecnico">
+<p>Raschio: <span class="mono">cliff.zip</span>, record da <b>diciotto byte</b> sulla griglia dichiarata dalla ROM (<span class="mono">testa+13+18k</span>). Nella ROM ci sono <b>526 record</b> in diciotto teste: 437 mosse, 20 muti e 69 checkpoint. Una partita ne vede 232, di cui <b>194 mosse</b>.</p><p>I due premi: <span class="mono">0x0C1A</span> aggiunge 5.000 quando la mossa riesce, <span class="mono">0x08AF</span> 10.000 quando il blocco finisce. Sono <b>le uniche due chiamate</b> al sommatore del punteggio (<span class="mono">0x0F8F</span>) in quarantamila byte &mdash; ed &egrave; per questo che la tariffa si pu&ograve; affermare invece che stimare. Ogni Start azzera il punteggio (<span class="mono">0x1F40</span>): non esiste modo di portarsi dietro i punti.</p><p>La coda del record (<span class="mono">+15</span> quanti record restano, <span class="mono">+16..17</span> il puntatore) &egrave; il punto di rinascita: verificata su <b>461 record</b>, zero smentite. E dei <b>67</b> record che la ROM nomina come punto di rinascita, tutti e 67 sono checkpoint.</p>
+</section>
+<nav class="altrove"><span class="cap">Di Cliff Hanger c&rsquo;è anche</span><ul>
+<li><a href="/it/cliff-hanger/sequenza/"><i class="sigla" style="--tinta:#F58FB8" title="CH">CH</i><span class="dove">Cliff Hanger &middot; Stern 1983</span>Diciotto scene per otto</a></li>
+</ul></nav><nav class="altrove"><span class="cap">Le sequenze delle altre macchine</span><ul>
+<li><a href="/it/dragons-lair/f2/sequenza/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
+<li><a href="/it/dragons-lair/europa/sequenza/"><i class="sigla" style="--tinta:#7FB2EE" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
+<li><a href="/it/dragons-lair/europa/la-partita/"><i class="sigla" style="--tinta:#7FB2EE" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>La partita</a></li>
+<li><a href="/it/dragons-lair/sidam/sequenza/"><i class="sigla" style="--tinta:#93CE71" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
+<li><a href="/it/dragons-lair/sidam/quello-che-cambia/"><i class="sigla" style="--tinta:#93CE71" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Quello che cambia</a></li>
+<li><a href="/it/dragons-lair-2/la-partita/"><i class="sigla" style="--tinta:#F2542D" title="DL2">DL2</i><span class="dove">Dragon&rsquo;s Lair II: Time Warp &middot; Leland 1991</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/sequenza/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>Sei blocchi, e dodici partite</a></li>
+<li><a href="/it/super-don-quix-ote/la-partita/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La partita</a></li>
+<li><a href="/it/eshs-aurunmilla/la-partita/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>La partita</a></li>
+<li><a href="/it/road-blaster/sequenza/"><i class="sigla" style="--tinta:#B9C2CB" title="RB">RB</i><span class="dove">Road Blaster &middot; Data East 1985</span>Sedici partite gi&agrave; scritte</a></li>
+<li><a href="/it/road-blaster/la-partita/"><i class="sigla" style="--tinta:#B9C2CB" title="RB">RB</i><span class="dove">Road Blaster &middot; Data East 1985</span>La partita</a></li>
+<li><a href="/it/cliff-hanger/sequenza/"><i class="sigla" style="--tinta:#F58FB8" title="CH">CH</i><span class="dove">Cliff Hanger &middot; Stern 1983</span>Diciotto scene per otto</a></li>
+<li><a href="/it/cliff-hanger/la-partita/" class="qui"><i class="sigla" style="--tinta:#F58FB8" title="CH">CH</i><span class="dove">Cliff Hanger &middot; Stern 1983</span>La partita</a></li>
+<li><a href="/it/eshs-aurunmilla/sequenza/"><i class="sigla" style="--tinta:#C7C7C7" title="EA">EA</i><span class="dove">Esh&rsquo;s Aurunmilla &middot; Funai 1984</span>I diciassette giri</a></li>
+<li><a href="/it/dragons-lair/f2/le-difficolta/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le tre difficoltà</a></li>
+<li><a href="/it/dragons-lair/f2/il-campione/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/il-campione/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La costruzione del Campione</a></li>
+<li><a href="/it/space-ace/a3/come-e-fatta-una-scena/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>Com&rsquo;&egrave; fatta una scena</a></li>
+<li><a href="/it/space-ace/a3/la-partita-cadet/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Cadet</a></li>
+<li><a href="/it/space-ace/a3/la-partita-captain/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Captain</a></li>
+<li><a href="/it/space-ace/a3/la-partita/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span>La partita &mdash; Space Ace</a></li>
+<li><a href="/it/dragons-lair/f2/la-partita/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La partita</a></li>
+<li><a href="/it/super-don-quix-ote/il-campione/"><i class="sigla" style="--tinta:#00FFDB" title="SDQ">SDQ</i><span class="dove">Super Don Quix-ote &middot; Universal 1984</span>La costruzione del Campione</a></li>
+</ul></nav>
+<footer>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>12 settembre 2026</b>, aggiornata il <b>12 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b> &mdash; cambiata oggi</span><span><span class="et">controlli sui byte</span><b>535 su 535</b></span><span class="colore"><span class="et">il colore</span><b>dal mobile della macchina &mdash; rosa il mobile, azzurro il pannello</b></span></div>
+<p class="stampa">phenoma.org/it/cliff-hanger/la-partita/</p>
+  <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
+  <a href="/it/sequenze/">Le sequenze di gioco</a>
+</footer>
+</div>
+</body>
+</html>
