@@ -520,7 +520,7 @@ h1.marchione + .tesi{font-size:21px}
 <h2>Dove stanno, nei byte</h2>
 <ul>
 <li><b>Cliff Hanger &mdash; la manopola:</b> il nibble basso di <span class="mono">E18F</span>; ritardo in apertura dalla tabella <span class="mono">0x0B67</span>, taglio in chiusura da <span class="mono">0x0CE8</span>, sedici byte BCD ciascuna. Il nibble alto non viene mai letto.</li>
-<li><b>Cliff Hanger &mdash; l&rsquo;atterraggio:</b> record <span class="mono">2F7C</span> (blocco&nbsp;5) e <span class="mono">336F</span> (blocco&nbsp;8), le uniche due delle 437 la cui apertura cade prima del fotogramma di atterraggio. Entrambe sono la prima mossa del loro blocco, entrambe a piede, entrambe a diciassette fotogrammi dalla chiusura.</li>
+<li><b>Cliff Hanger &mdash; l&rsquo;atterraggio:</b> record <span class="mono">2F7C</span> (blocco&nbsp;5) e <span class="mono">336F</span> (blocco&nbsp;8), le uniche due delle 437 la cui apertura cade prima del fotogramma di atterraggio. Entrambe sono la prima mossa del loro blocco, entrambe a piede, entrambe a diciassette fotogrammi dalla chiusura &mdash; sui byte. Misurati in partita, dopo la ricerca la ROM tiene il disco fermo, poi arma il giudice dodici fotogrammi dopo la ripartenza: ne restano <b>due</b>.</li>
 <li><b>Esh &mdash; le tre fasce:</b> calcolate a <span class="mono">0x3CC9</span> e usate a <span class="mono">0x3D04</span>, 60/30/10&nbsp;% della finestra; l&rsquo;accorciamento per livello &egrave; un delta per nodo.</li>
 <li><b>Esh &mdash; il cricchetto:</b> soglia a <span class="mono">0x3EE0</span>, applicata alla somma degli ultimi due stage. Livello massimo&nbsp;3.</li>
 <li><b>Esh &mdash; la pagina dei giri:</b> <span class="mono">0x2000</span>, diciassette righe da quindici byte; le righe 7&ndash;17 sono identiche alla prima.</li>
@@ -554,7 +554,7 @@ h1.marchione + .tesi{font-size:21px}
 <li><a href="/it/come-si-difendono/" class="qui"><span class="dove">Quattro meccanismi, in tre macchine, con lo stesso bersaglio</span>Come le macchine si difendono</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>3</b></span><span>Pubblicata il <b>12 settembre 2026</b>, aggiornata il <b>13 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>596 su 596</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>4</b></span><span>Pubblicata il <b>12 settembre 2026</b>, aggiornata il <b>13 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>596 su 596</b></span></div>
 <p class="stampa">phenoma.org/it/come-si-difendono/</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
