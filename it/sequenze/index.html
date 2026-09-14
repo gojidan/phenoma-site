@@ -153,6 +153,19 @@ h2.macchina .quante{font-family:var(--mono);font-size:11px;
 .coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
   max-width:84ch}
 
+/* --- LE SCENE, UNA PER UNA (14 set): un blocco per frammento --- */
+.frammento .meta{margin:0;padding:8px 14px;font-size:13px;color:var(--tenue);
+  border-bottom:1px solid var(--bordo)}
+.frammento .prosa{margin:0;padding:12px 14px;font-size:15.5px;
+  border-bottom:1px solid var(--bordo)}
+.frammento .prosa.dim{color:var(--tenue);font-style:italic}
+.frammento .scroll{margin:0}
+.frammento table{font-size:12.5px}
+.frammento td .pt{font-family:var(--mono);font-size:11px;color:var(--oro)}
+.frammento td .dura{font-family:var(--mono);font-size:11px;color:var(--brace)}
+.frammento .catena{border-top:0;border-bottom:1px solid var(--bordo)}
+.dim{color:var(--tenue)}
+
 /* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
 .partita{margin:0 0 34px}
 .partita>h3{margin:30px 0 4px;font-size:20px}
@@ -199,15 +212,18 @@ ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
   border:1.5px solid var(--brace);border-radius:999px;color:var(--brace);
   font-family:var(--mono);font-size:10.5px;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
-/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco */
-.fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
+/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco.
+   ⛔ 14 set 2026: si chiamava `.fin` e dall'11 set schiacciava a dieci
+   pixel il <<tick 37-64>> di OGNI pagina della partita (ol.mosse .fin):
+   stesso nome, due cose diverse.  Adesso la barra ha il suo. */
+.barra-fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
   border-radius:2px;overflow:hidden;vertical-align:middle;
   background:var(--piano2);box-shadow:inset 0 0 0 1px var(--bordo)}
-.fin i{display:block;height:100%}
-.fin .f1{width:60%;background:var(--tenue2);opacity:.35}
-.fin .f2{width:30%;background:var(--tenue2);opacity:.7}
-.fin .f3{width:10%;background:var(--oro)}
-.fin.muta{opacity:.3}
+.barra-fin i{display:block;height:100%}
+.barra-fin .f1{width:60%;background:var(--tenue2);opacity:.35}
+.barra-fin .f2{width:30%;background:var(--tenue2);opacity:.7}
+.barra-fin .f3{width:10%;background:var(--oro)}
+.barra-fin.muta{opacity:.3}
 tr.riga-secca td{background:rgba(226,104,92,.10)}
 tr.riga-secca td:first-child{box-shadow:inset 3px 0 0 var(--brace)}
 ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
@@ -486,7 +502,7 @@ h1.marchione + .tesi{font-size:21px}
   <h1>Le sequenze di gioco</h1>
   <p class="tesi">Cinque macchine, cinque modi diversi di rispondere alla stessa domanda: <b>che cosa ti dà da giocare, e come lo decide.</b> Tutto letto dai byte delle ROM originali.</p>
 </header>
-<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>13 settembre 2026</b> &middot; 42 pagine.</p>
+<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>14 settembre 2026</b> &middot; 44 pagine.</p>
 <p>Sono cinque macchine da sala degli anni Ottanta, tutte costruite sullo stesso principio: un <b>film su laserdisc</b> e una ROM che decide quale pezzo farti vedere. Ma su una domanda si comportano in cinque modi completamente diversi, e la domanda è questa:</p>
 <div class="nota"><p style="font-size:19px"><b>Quando infili il gettone, che cosa ti dà da giocare la macchina &mdash; e come lo decide?</b></p></div>
 <p>Molte di queste risposte sono <b>pubblicate qui per la prima volta</b>, e le abbiamo lette <b>dai byte delle ROM originali</b>: dentro la memoria della macchina, dove il progettista le ha scritte.</p>
@@ -522,6 +538,7 @@ h1.marchione + .tesi{font-size:21px}
 <h2>Le altre stanze</h2>
 <p>Queste non rispondono a quella domanda, e per questo stanno qui e non là sopra. Ne fanno altre: <b>che cosa disegna la scheda</b> mentre il film scorre, <b>come è fatta una scena sola</b> quando le tre macchine la montano in tre modi, e <b>che cosa il gioco accetta</b> oltre a quello che ti mostra.</p>
 <div class="stanze">
+<a class="stanza" href="/it/dragons-lair/f2/le-scene/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span><span class="come">Le scene, una per una</span><span class="che">Ogni scena aperta da sola: i pezzi di film, <b>tutte le finestre</b> che la ROM ascolta e quelle che ignora, le morti col loro nome, e che cosa cambia a dura. Si aggiungono una alla volta.</span></a>
 <a class="stanza" href="/it/dragons-lair/elevator/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Un ascensore dove si scende soltanto</span><span class="che">La scena su cui le tre macchine <b>si separano di più</b>. Stessa pellicola, tre idee diverse di quanto in basso ti lasciano scendere: <b>ventiquattro</b> piani in America, <b>sei</b> in Europa, e in Italia tre &mdash; o nessuno.</span></a>
 <a class="stanza" href="/it/dragons-lair/grafica/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Il tabellone diventato software</span><span class="che">L&rsquo;americana non disegna niente: i suoi numeri stanno su una plancia di cifre a LED. L&rsquo;europea quel ferro non ce l&rsquo;aveva e ha dovuto <b>rifare il tabellone in caratteri</b> &mdash; novantotto, fra cui una testa di drago.</span></a>
 <a class="stanza" href="/it/space-ace/a3/come-e-fatta-una-scena/"><i class="sigla" style="--tinta:#EFD22E" title="SA">SA</i><span class="dove">Space Ace &middot; Cinematronics 1984 &middot; revisione A3</span><span class="come">Com&rsquo;&egrave; fatta una scena</span><span class="che">Prima delle mosse, com&rsquo;&egrave; fatta la macchina: una scena &egrave; una <b>coppia</b> di stesure e non un pezzo di film, uno stesso gesto ha <b>tre esiti</b> a seconda del tick in cui lo dai, e il pulsante &egrave; <b>uno solo</b> &mdash; la differenza fra sparare ed energizzare la sa la ROM, non il pannello.</span></a>
@@ -549,9 +566,9 @@ h1.marchione + .tesi{font-size:21px}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>56</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>13 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>604 su 604</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>57</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>14 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>621 su 621</b></span></div>
 <p class="stampa">phenoma.org/it/sequenze/</p>
-<p class="conto">42 pagine &middot; Dragon&rsquo;s Lair 10 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>0 approvate</b> su 33 &mdash; approvata vuol dire letta e firmata da Alan, non ancora nessuna: le altre sono pubblicate per essere corrette.</p>
+<p class="conto">44 pagine &middot; Dragon&rsquo;s Lair 12 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>0 approvate</b> su 35 &mdash; approvata vuol dire letta e firmata da Alan, non ancora nessuna: le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>

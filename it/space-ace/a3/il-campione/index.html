@@ -153,6 +153,19 @@ h2.macchina .quante{font-family:var(--mono);font-size:11px;
 .coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
   max-width:84ch}
 
+/* --- LE SCENE, UNA PER UNA (14 set): un blocco per frammento --- */
+.frammento .meta{margin:0;padding:8px 14px;font-size:13px;color:var(--tenue);
+  border-bottom:1px solid var(--bordo)}
+.frammento .prosa{margin:0;padding:12px 14px;font-size:15.5px;
+  border-bottom:1px solid var(--bordo)}
+.frammento .prosa.dim{color:var(--tenue);font-style:italic}
+.frammento .scroll{margin:0}
+.frammento table{font-size:12.5px}
+.frammento td .pt{font-family:var(--mono);font-size:11px;color:var(--oro)}
+.frammento td .dura{font-family:var(--mono);font-size:11px;color:var(--brace)}
+.frammento .catena{border-top:0;border-bottom:1px solid var(--bordo)}
+.dim{color:var(--tenue)}
+
 /* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
 .partita{margin:0 0 34px}
 .partita>h3{margin:30px 0 4px;font-size:20px}
@@ -199,15 +212,18 @@ ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
   border:1.5px solid var(--brace);border-radius:999px;color:var(--brace);
   font-family:var(--mono);font-size:10.5px;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
-/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco */
-.fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
+/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco.
+   ⛔ 14 set 2026: si chiamava `.fin` e dall'11 set schiacciava a dieci
+   pixel il <<tick 37-64>> di OGNI pagina della partita (ol.mosse .fin):
+   stesso nome, due cose diverse.  Adesso la barra ha il suo. */
+.barra-fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
   border-radius:2px;overflow:hidden;vertical-align:middle;
   background:var(--piano2);box-shadow:inset 0 0 0 1px var(--bordo)}
-.fin i{display:block;height:100%}
-.fin .f1{width:60%;background:var(--tenue2);opacity:.35}
-.fin .f2{width:30%;background:var(--tenue2);opacity:.7}
-.fin .f3{width:10%;background:var(--oro)}
-.fin.muta{opacity:.3}
+.barra-fin i{display:block;height:100%}
+.barra-fin .f1{width:60%;background:var(--tenue2);opacity:.35}
+.barra-fin .f2{width:30%;background:var(--tenue2);opacity:.7}
+.barra-fin .f3{width:10%;background:var(--oro)}
+.barra-fin.muta{opacity:.3}
 tr.riga-secca td{background:rgba(226,104,92,.10)}
 tr.riga-secca td:first-child{box-shadow:inset 3px 0 0 var(--brace)}
 ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
@@ -631,9 +647,9 @@ header{border-bottom-color:rgba(239,210,46,.34)}
 <li><a href="/it/come-si-difendono/"><span class="dove">Quattro meccanismi, in tre macchine, con lo stesso bersaglio</span>Come le macchine si difendono</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>14</b></span><span>Pubblicata il <b>5 settembre 2026</b>, aggiornata il <b>8 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>604 su 604</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>14</b></span><span>Pubblicata il <b>5 settembre 2026</b>, aggiornata il <b>8 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>621 su 621</b></span><span class="colore"><span class="et">il colore</span><b>dal logo della macchina</b></span></div>
 <p class="stampa">phenoma.org/it/space-ace/a3/il-campione/</p>
-<p class="conto">42 pagine &middot; Dragon&rsquo;s Lair 10 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>0 approvate</b> su 33 &mdash; approvata vuol dire letta e firmata da Alan, non ancora nessuna: le altre sono pubblicate per essere corrette.</p>
+<p class="conto">44 pagine &middot; Dragon&rsquo;s Lair 12 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>0 approvate</b> su 35 &mdash; approvata vuol dire letta e firmata da Alan, non ancora nessuna: le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>

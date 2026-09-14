@@ -153,6 +153,19 @@ h2.macchina .quante{font-family:var(--mono);font-size:11px;
 .coda-tavola{margin:-14px 0 26px;font-size:14px;color:var(--tenue);
   max-width:84ch}
 
+/* --- LE SCENE, UNA PER UNA (14 set): un blocco per frammento --- */
+.frammento .meta{margin:0;padding:8px 14px;font-size:13px;color:var(--tenue);
+  border-bottom:1px solid var(--bordo)}
+.frammento .prosa{margin:0;padding:12px 14px;font-size:15.5px;
+  border-bottom:1px solid var(--bordo)}
+.frammento .prosa.dim{color:var(--tenue);font-style:italic}
+.frammento .scroll{margin:0}
+.frammento table{font-size:12.5px}
+.frammento td .pt{font-family:var(--mono);font-size:11px;color:var(--oro)}
+.frammento td .dura{font-family:var(--mono);font-size:11px;color:var(--brace)}
+.frammento .catena{border-top:0;border-bottom:1px solid var(--bordo)}
+.dim{color:var(--tenue)}
+
 /* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
 .partita{margin:0 0 34px}
 .partita>h3{margin:30px 0 4px;font-size:20px}
@@ -199,15 +212,18 @@ ol.mosse .g.nulla{color:var(--tenue2);font-style:italic;opacity:.55}
   border:1.5px solid var(--brace);border-radius:999px;color:var(--brace);
   font-family:var(--mono);font-size:10.5px;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
-/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco */
-.fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
+/* la finestra di Esh, vista: i tre pezzi in scala su tutto il gioco.
+   ⛔ 14 set 2026: si chiamava `.fin` e dall'11 set schiacciava a dieci
+   pixel il <<tick 37-64>> di OGNI pagina della partita (ol.mosse .fin):
+   stesso nome, due cose diverse.  Adesso la barra ha il suo. */
+.barra-fin{display:inline-flex;width:var(--w);min-width:22px;height:10px;
   border-radius:2px;overflow:hidden;vertical-align:middle;
   background:var(--piano2);box-shadow:inset 0 0 0 1px var(--bordo)}
-.fin i{display:block;height:100%}
-.fin .f1{width:60%;background:var(--tenue2);opacity:.35}
-.fin .f2{width:30%;background:var(--tenue2);opacity:.7}
-.fin .f3{width:10%;background:var(--oro)}
-.fin.muta{opacity:.3}
+.barra-fin i{display:block;height:100%}
+.barra-fin .f1{width:60%;background:var(--tenue2);opacity:.35}
+.barra-fin .f2{width:30%;background:var(--tenue2);opacity:.7}
+.barra-fin .f3{width:10%;background:var(--oro)}
+.barra-fin.muta{opacity:.3}
 tr.riga-secca td{background:rgba(226,104,92,.10)}
 tr.riga-secca td:first-child{box-shadow:inset 3px 0 0 var(--brace)}
 ol.mosse .opp.oppure{margin:0 7px;font-size:11px}
@@ -489,9 +505,9 @@ h1.marchione + .tesi{font-size:21px}
   I videogiochi su <b>laserdisc</b> dal 1983 al 1991, letti dentro le loro
   <b>ROM</b> &mdash; non come li ricordiamo, ma come sono scritti nella
   memoria della macchina.</p>
-<div class="avviso"><p><b>Questo sito &egrave; in lavorazione, e si corregge da s&eacute;.</b> Ogni pagina nasce da un programma che rilegge le ROM e rifiuta di scrivere se una sola delle sue <b>604 verifiche</b> non torna. Ma le verifiche riguardano ci&ograve; che si pu&ograve; contare: il resto lo si trova leggendo &mdash; ed &egrave; quello che stiamo facendo in questi giorni.</p><p>&#11088; Per questo in fondo a ogni pagina c&rsquo;&egrave; un <b>timbro</b>, che dice se &egrave; <b>in revisione</b> o &egrave; gi&agrave; stata <b>approvata</b>.</p></div>
+<div class="avviso"><p><b>Questo sito &egrave; in lavorazione, e si corregge da s&eacute;.</b> Ogni pagina nasce da un programma che rilegge le ROM e rifiuta di scrivere se una sola delle sue <b>621 verifiche</b> non torna. Ma le verifiche riguardano ci&ograve; che si pu&ograve; contare: il resto lo si trova leggendo &mdash; ed &egrave; quello che stiamo facendo in questi giorni.</p><p>&#11088; Per questo in fondo a ogni pagina c&rsquo;&egrave; un <b>timbro</b>, che dice se &egrave; <b>in revisione</b> o &egrave; gi&agrave; stata <b>approvata</b>.</p></div>
 </header>
-<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>13 settembre 2026</b>.</p>
+<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>14 settembre 2026</b>.</p>
 <h2>Le macchine</h2>
 <p>Ogni gioco ha la sua pagina, con tutto quello che ne abbiamo scritto.</p>
 <div class="stanze" style="grid-template-columns:1fr">
