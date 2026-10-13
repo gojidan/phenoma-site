@@ -85,6 +85,9 @@ h1{font-size:clamp(34px,6.4vw,56px);line-height:1.04;margin:0 0 16px;
 h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--oro);font-weight:700;
   margin:56px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bordo)}
+/* 13 ott: il sotto-titolo dentro una sezione (la coda del copione) */
+article>h3,main>h3{font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--tenue);font-weight:700;margin:40px 0 8px}
 p{margin:0 0 17px;max-width:78ch}
 b,strong{color:#FFF6E6;font-weight:600}
 em{color:var(--tenue);font-style:italic}
@@ -532,19 +535,15 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <div class="scroll"><table><thead><tr><th class="num">atterri &rarr; ascolta fino a</th><th>frammento</th><th>nome</th><th class="num">dura</th><th>che cos&rsquo;&egrave;</th></tr></thead><tbody><tr><td class="num"><b>3505</b> <span class="dim">&rarr; 3558</span></td><td><span class="nfr">1</span></td><td><b>La Calata</b></td><td class="num">66 tick</td><td class="dim">la porta dei morti: lo vede solo chi rientra</td></tr><tr><td class="num"><b>3561</b> <span class="dim">&rarr; 3614</span></td><td><span class="nfr">0</span> <span class="dim">= 2</span></td><td><b>Fune 1</b></td><td class="num">66 tick</td><td class="dim">la porta di chi vince</td></tr><tr><td class="num"><b>3622</b> <span class="dim">&rarr; 3684</span></td><td><span class="nfr">10</span></td><td><b>La Grazia</b></td><td class="num">78 tick</td><td class="dim">un frammento giocato</td></tr><tr><td class="num"><b>3693</b> <span class="dim">&rarr; 3731</span></td><td><span class="nfr">3</span></td><td><b>Fune 2</b></td><td class="num">47 tick</td><td class="dim">un frammento giocato</td></tr><tr><td class="num"><b>3739</b> <span class="dim">&rarr; 3777</span></td><td><span class="nfr">4</span></td><td><b>Fune 3</b></td><td class="num">47 tick</td><td class="dim">un frammento giocato</td></tr><tr><td class="num"><b>3785</b> <span class="dim">&rarr; 3821</span></td><td><span class="nfr">5</span></td><td><b>Il balzo</b></td><td class="num">45 tick</td><td class="dim">un frammento giocato</td></tr><tr><td class="num"><b>3828</b> <span class="dim">&rarr; 3853</span></td><td><span class="nfr">6</span></td><td><b>L'uscita</b></td><td class="num">31 tick</td><td class="dim">l&rsquo;uscita: la scena &egrave; vinta</td></tr><tr><td class="num"><b>3879</b> <span class="dim">&rarr; 3916</span></td><td><span class="nfr">9</span></td><td><b>L'atterraggio mancato</b></td><td class="num">46 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>3925</b> <span class="dim">&rarr; 3960</span></td><td><span class="nfr">7</span></td><td><b>Le mani bruciate</b></td><td class="num">44 tick</td><td class="dim">il preambolo di una morte</td></tr><tr><td class="num"><b>3963</b> <span class="dim">&rarr; 3991</span></td><td><span class="nfr">8</span></td><td><b>Il fuoco</b></td><td class="num">35 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>3999</b> <span class="dim">&rarr; 4074</span></td><td><span class="nfr">11</span></td><td><b>L'epilogo</b></td><td class="num">94 tick</td><td class="dim">la coda: qui la catena finisce</td></tr></tbody></table></div>
 <p class="coda-tavola">&#9888; <b>Il secondo numero non &egrave; la fine del pezzo di film</b>: &egrave; dove la ROM smette di ascoltare. Dove finisca davvero una clip il programma non lo dice &mdash; sa due cose sole, dove atterrare e quanto aspettare. Perci&ograve; fra un frammento e il seguente restano dei fotogrammi &mdash; da 2 a 25, in questa scena, e <b>non sono un buco</b>: il film continua a scorrere. Lo abbiamo guardato sul disco, nei fotogrammi che secondo questa tavola non appartengono a nessuno, e c&rsquo;era la scena che andava avanti. Quel margine &egrave; <b>quanto film la macchina si lascia alle spalle</b> prima di saltare al pezzo seguente.</p>
 <h2>Il copione, frammento per frammento</h2>
-<p>Qui non c&rsquo;&egrave; solo la strada giusta: c&rsquo;&egrave; <b>tutto quello che la ROM sa</b> di ogni frammento. Ogni gesto che la macchina prevede, <b>quando</b> lo accetta &mdash; in tick dal momento in cui atterri sul frammento, e in fotogrammi del disco &mdash; e dove ti porta.</p>
+<p>Qui non c&rsquo;&egrave; solo la strada giusta: c&rsquo;&egrave; <b>tutto quello che la ROM sa</b> di ogni frammento. Ogni gesto che la macchina prevede, <b>quando</b> lo accetta &mdash; in tick dal momento in cui atterri sul frammento, e in fotogrammi del disco &mdash; e dove ti porta. I frammenti sono <b>nell&rsquo;ordine in cui li giochi</b>, dall&rsquo;ingresso all&rsquo;uscita; quelli dove si finisce sbagliando stanno in coda.</p>
 <p class="min">&#9201; <b>Tick e fotogrammi non sono la stessa unit&agrave;.</b> Un tick &egrave; un fotogramma <b>video</b>, NTSC: trenta al secondo. Il film invece ne ha ventiquattro, e per stare sul video viene steso col <b>telecine 3:2</b>. Da qui il fattore <b>0,80</b>: quattro fotogrammi di pellicola per ogni cinque tick, ed &egrave; con quel conto che i numeri di questa pagina sono scritti.</p>
 <p class="min">&#9888; <b>La finestra vera &egrave; quella che il frammento lascia vivere.</b> Nei byte molte finestre sono scritte pi&ugrave; lunghe del frammento: quando la sua durata si esaurisce la macchina passa oltre e smette di ascoltare. Qui trovi la finestra viva, e accanto quanto era scritta.</p>
+<p class="punta">&#128279; <b>La catena, in ordine di gioco:</b> Fune 1 &rarr; Fune 2 &rarr; Fune 3 &rarr; Il balzo &rarr; L'uscita.</p>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Fune 1</b><span class="id">frammento 0, e di nuovo 2: stesso record</span><span class="verso">66 tick</span><span class="pt">+49 punti</span></div>
 <p class="meta">pellicola <b>3561&ndash;3614</b> &middot; allo scadere: &rarr; <b>La Grazia</b></p>
 <p class="prosa">La fune infuocata oscillando si avvicina...<br><b>Il gesto:</b> Fare la mossa quando la fune si piega verso Dirk.</p>
 <div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">0&ndash;66 <span class="dim">(scritta fino al 74)</span></td><td class="num">3561&ndash;3614</td><td>&#128128; Il fuoco</td></tr><tr><td>&darr; GI&Ugrave;</td><td class="num">0&ndash;66 <span class="dim">(scritta fino al 74)</span></td><td class="num">3561&ndash;3614</td><td>&#128128; Il fuoco</td></tr><tr><td class="dim">&larr; SINISTRA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr><tr><td>&rarr; DESTRA <span class="dim">1&ordf; fase</span></td><td class="num">0&ndash;37</td><td class="num">3561&ndash;3591</td><td>&#128128; Il fuoco</td></tr><tr><td><b>&rarr; DESTRA</b> <span class="dim">2&ordf; fase</span></td><td class="num"><b>37&ndash;64</b></td><td class="num"><b>3591&ndash;3612</b></td><td>&rarr; <b>Fune 2</b> <span class="pt">+251</span></td></tr><tr><td>&rarr; DESTRA <span class="dim">3&ordf; fase</span></td><td class="num">64&ndash;66 <span class="dim">(scritta fino al 127)</span></td><td class="num">3612&ndash;3614</td><td>&#128128; Il fuoco</td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
-</div></div>
-<div class="partita frammento"><div class="stesura">
-<div class="testa"><b>La Calata</b><span class="id">frammento 1</span><span class="verso">66 tick</span></div>
-<p class="meta">pellicola <b>3505&ndash;3558</b> &middot; allo scadere: &rarr; <b>Fune 1</b> <span class="pt">+49</span></p>
-<p class="prosa dim">Nessuna mossa: il film scorre. Porta a: &rarr; <b>Fune 1</b> <span class="pt">+49</span>.</p>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Fune 2</b><span class="id">frammento 3</span><span class="verso">47 tick</span><span class="pt">+251 punti</span></div>
@@ -571,6 +570,13 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <div class="testa"><b>L'uscita</b><span class="id">frammento 6</span><span class="verso">31 tick</span><span class="pt">+915 punti</span></div>
 <p class="meta">pellicola <b>3828&ndash;3853</b> &middot; allo scadere: <b>fine scena, vinta</b></p>
 <p class="prosa dim">Nessuna mossa: la scena &egrave; vinta e scorre fino alla fine.</p>
+</div></div>
+<h3>Dove si finisce sbagliando</h3>
+<p>Questi frammenti sulla catena non ci stanno mai: ci si arriva solo sbagliando. Sono elencati nell&rsquo;ordine del programma.</p>
+<div class="partita frammento"><div class="stesura">
+<div class="testa"><b>La Calata</b><span class="id">frammento 1</span><span class="verso">66 tick</span></div>
+<p class="meta">pellicola <b>3505&ndash;3558</b> &middot; allo scadere: &rarr; <b>Fune 1</b> <span class="pt">+49</span></p>
+<p class="prosa dim">Nessuna mossa: il film scorre. Porta a: &rarr; <b>Fune 1</b> <span class="pt">+49</span>.</p>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Le mani bruciate</b><span class="id">frammento 7</span><span class="verso">44 tick</span></div>
@@ -664,7 +670,7 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <li><a href="/it/come-si-difendono/"><span class="dove">Quattro meccanismi, in tre macchine, con lo stesso bersaglio</span>Come le macchine si difendono</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>9</b></span><span>Pubblicata il <b>14 settembre 2026</b>, aggiornata il <b>13 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>628 su 628</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>11</b></span><span>Pubblicata il <b>14 settembre 2026</b>, aggiornata il <b>13 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>628 su 628</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/f2/le-scene/fire-pit/</p>
 <p class="conto">45 pagine &middot; Dragon&rsquo;s Lair 13 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>1 approvata</b> su 36 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
