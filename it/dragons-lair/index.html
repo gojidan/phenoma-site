@@ -169,6 +169,10 @@ h2.macchina .quante{font-family:var(--mono);font-size:11px;
 .frammento .catena{border-top:0;border-bottom:1px solid var(--bordo)}
 .dim{color:var(--tenue)}
 /* 13 ott, Alan: <<il numero di frammento potrebbe essere un po' piu' evidente>> */
+/* 14 ott: le figure del libro, che sono carta, dentro il sito che e' scuro. */
+figure.carta{margin:18px 0 22px;padding:0;background:#FDF9F2;border-radius:8px;overflow:hidden}
+figure.carta img{display:block;width:100%;height:auto}
+figure.carta figcaption{padding:8px 14px 10px;font-size:13px;color:#6b5a45;background:#F4EEE3}
 .nfr{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--oro);background:rgba(255,179,71,.10);border:1px solid rgba(255,179,71,.28);border-radius:4px;padding:1px 7px}
 
 /* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
@@ -509,11 +513,12 @@ h1.marchione + .tesi{font-size:21px}
   <p class="tesi">Il capostipite, l&rsquo;origine di tutto.</p>
 </header>
 <p>Da lui &egrave; nato un nuovo genere di giochi, e un nuovo modo di interagire con la macchina. Un film che si &egrave; incarnato in mobili e programmi diversi &mdash; e non in tre varianti dello stesso programma: tre ROM che allo stesso indirizzo fanno cose diverse. Su queste pagine si analizzano quelle ROM, e le soluzioni tecniche che ne hanno decretato il successo e che lo hanno reso una leggenda.</p>
-<h2 class="macchina">Cinematronics<span class="chi">l&rsquo;americana &middot; revisione F2</span><span class="quante">5 pagine</span></h2>
+<h2 class="macchina">Cinematronics<span class="chi">l&rsquo;americana &middot; revisione F2</span><span class="quante">6 pagine</span></h2>
 <div class="stanze">
 <a class="stanza" href="/it/dragons-lair/f2/sequenza/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="come">Come il castello sceglie</span><span class="che">Tredici tappe, tre alternative ciascuna, e <b>tre giri</b> per consumarle tutte. Più la coda dove finiscono le tue morti, e cinque jolly che non regalano niente.</span></a>
 <a class="stanza" href="/it/dragons-lair/f2/la-partita/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="come">La partita</span><span class="che">Tutte le mosse di una partita a <b>Dragon&rsquo;s Lair</b>, carta per carta: tredici tappe, tre alternative ciascuna, e <b>tutte e tre</b> scritte qui, perch&eacute; quale ti tocchi non lo decidi tu. Con il <b>fotogramma</b> del disco e la <b>finestra in tick</b> di ogni gesto &mdash; e il riscontro sulla partita del Campione, mossa per mossa.</span></a>
 <a class="stanza" href="/it/dragons-lair/f2/le-scene/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="come">Le scene, una per una</span><span class="che">Ogni scena aperta da sola: i pezzi di film, <b>tutte le finestre</b> che la ROM ascolta e quelle che ignora, le morti col loro nome, e che cosa cambia a dura. Si aggiungono una alla volta.</span></a>
+<a class="stanza" href="/it/dragons-lair/f2/come-si-legge/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="come">Come si legge una scheda</span><span class="che">Le parole che trovi in ogni scheda &mdash; etichetta, stesura, frammento, finestra, tick, scadere, porta dei morti &mdash; e le regole che valgono per tutte le scene, dette una volta sola, coi numeri presi dai byte.</span></a>
 <a class="stanza" href="/it/dragons-lair/f2/le-difficolta/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="come">Le tre difficoltà</span><span class="che">Mite, dura e durissima. Fra la prima e la seconda cambiano <b>cinque scene sole</b>; fra la seconda e la terza <b>non cambia nessuna mossa</b> — cambia quando puoi darla. E una volta che la partita si indurisce, <b>indietro non si torna</b>.</span></a>
 <a class="stanza" href="/it/dragons-lair/f2/il-campione/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="come">La costruzione del Campione</span><span class="che">Sopravvivere è già molto, e non basta. Una macchina che legge la memoria sopravvive perché è <b>informata</b>, non perché sia brava. Ma il punteggio non lo sa nessuno dei due: in nove punti del gioco due gesti che non ti ammazzano valgono diverso, e stanno in <b>due sole scene</b>. Qui sono contati tutti, dai byte, con il conto scena per scena.</span></a>
 </div>
@@ -541,6 +546,7 @@ h1.marchione + .tesi{font-size:21px}
 <li><code>/it/dragons-lair/f2/sequenza/</code> &mdash; Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</li>
 <li><code>/it/dragons-lair/f2/la-partita/</code> &mdash; Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</li>
 <li><code>/it/dragons-lair/f2/le-scene/</code> &mdash; Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</li>
+<li><code>/it/dragons-lair/f2/come-si-legge/</code> &mdash; Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</li>
 <li><code>/it/dragons-lair/europa/sequenza/</code> &mdash; Dragon&rsquo;s Lair &middot; la ROM europea di Atari</li>
 <li><code>/it/dragons-lair/europa/la-partita/</code> &mdash; Dragon&rsquo;s Lair &middot; la ROM europea di Atari</li>
 <li><code>/it/dragons-lair/sidam/sequenza/</code> &mdash; Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</li>
@@ -555,9 +561,9 @@ h1.marchione + .tesi{font-size:21px}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>31</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>24 settembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>628 su 628</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>32</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>14 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>640 su 640</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/</p>
-<p class="conto">45 pagine &middot; Dragon&rsquo;s Lair 13 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>2 approvate</b> su 36 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
+<p class="conto">46 pagine &middot; Dragon&rsquo;s Lair 14 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>1 approvata</b> su 37 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>

@@ -169,6 +169,10 @@ h2.macchina .quante{font-family:var(--mono);font-size:11px;
 .frammento .catena{border-top:0;border-bottom:1px solid var(--bordo)}
 .dim{color:var(--tenue)}
 /* 13 ott, Alan: <<il numero di frammento potrebbe essere un po' piu' evidente>> */
+/* 14 ott: le figure del libro, che sono carta, dentro il sito che e' scuro. */
+figure.carta{margin:18px 0 22px;padding:0;background:#FDF9F2;border-radius:8px;overflow:hidden}
+figure.carta img{display:block;width:100%;height:auto}
+figure.carta figcaption{padding:8px 14px 10px;font-size:13px;color:#6b5a45;background:#F4EEE3}
 .nfr{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--oro);background:rgba(255,179,71,.10);border:1px solid rgba(255,179,71,.28);border-radius:4px;padding:1px 7px}
 
 /* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
@@ -519,10 +523,11 @@ header{border-bottom-color:rgba(255,162,43,.34)}
   <h1>Fire Pit</h1>
   <p class="tesi">La fossa di fuoco — tre funi, e due occasioni per scappare. <b>Fire Pit</b>: 11 frammenti, due morti, pellicola 3505&ndash;4074, e <b>2.089 punti</b> a giocarla alla perfezione. Ogni numero viene dai byte della ROM.</p>
 </header>
+<p class="min">&#128214; Le parole di questa scheda &mdash; etichetta, stesura, frammento, finestra, tick, scadere, porta dei morti &mdash; sono spiegate una volta per tutte in <a href="/it/dragons-lair/f2/come-si-legge/">Come si legge una scheda</a>.</p>
 <h2>Come la chiama la ROM, e da dove si entra</h2>
 <p>Una scena &egrave; <b>un pezzo di film</b>, ma la macchina non la chiama con un nome: la chiama con <b>un&rsquo;etichetta</b>, e la stessa pellicola ne pu&ograve; portare pi&ugrave; d&rsquo;una &mdash; una per ogni <b>stesura</b>, cio&egrave; per ogni modo in cui la ROM la serve. E si entra da <b>due porte</b>: quella di chi arriva vincendo, e quella &mdash; qualche fotogramma prima &mdash; di chi rientra dopo una morte.</p>
 <div class="scroll"><table><thead><tr><th>etichetta</th><th>che cos&rsquo;&egrave;</th><th>quando la usa</th><th>da dove entri (fotogramma)</th></tr></thead><tbody><tr><td><span class="mono">0x83</span></td><td>la stesura mite</td><td>di fabbrica, finch&eacute; l&rsquo;adattiva non scatta</td><td><b>3561</b> vincendo &middot; <b>3505</b> dopo una morte</td></tr><tr><td><span class="mono">0xAD</span></td><td>la stesura dura</td><td>col dip &laquo;dura sempre&raquo;, oppure quando scatta l&rsquo;adattiva</td><td><b>3561</b> vincendo &middot; <b>3505</b> dopo una morte</td></tr></tbody></table></div>
-<p class="coda-tavola">La porta dei morti sta <b>56 fotogrammi prima</b>: &egrave; il pezzo di film che vede solo chi rientra, e non paga niente. Le etichette e la logica delle stesure sono spiegate nelle <a href="/it/dragons-lair/f2/le-difficolta/">tre difficolt&agrave;</a>.</p>
+<p class="coda-tavola">La porta dei morti sta <b>56 fotogrammi prima</b>: &egrave; il pezzo di film che vede solo chi rientra, e non paga niente. La macchina ne mostra <b>53 fotogrammi</b> (66 tick) e poi passa al frammento 0. Le etichette e la logica delle stesure sono spiegate nelle <a href="/it/dragons-lair/f2/le-difficolta/">tre difficolt&agrave;</a>.</p>
 <div class="nota caldo"><span class="cap">Che cosa si vede</span><p>Dirk entra da una porta e si ferma su una lastra di pietra larga quanto i suoi piedi: sotto, un pozzo di fiamme; davanti, tre funi calate dalla volta. Ma le funi bruciano, e il capo di fuoco gli oscilla incontro — quello a cui devi aggrapparti è la cosa che ti può uccidere. Le occasioni per prendere la prima sono due: all'istante, o per Grazia, in un secondo momento mentre il trampolino si ritira.</p><p>Sulla pellicola Fune 1, La Grazia e Fune 2 stanno in fila, in quest'ordine: se lasci scadere Fune 1 — o la sua ripresa — scivoli nella Grazia, e se sopravvivi alla Grazia arrivi a Fune 2.</p></div>
 <p class="min">&#9888; <b>I nomi dei frammenti sono nostri.</b> La ROM non ne ha: conosce soltanto i numeri che vedi accanto. Li abbiamo messi noi per poterne parlare, guardando il film scorrere pezzo per pezzo.</p>
 <h2>La via della gloria</h2>
@@ -635,6 +640,7 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <li><a href="/it/dragons-lair/f2/sequenza/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come il castello sceglie</a></li>
 <li><a href="/it/dragons-lair/f2/la-partita/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>La partita</a></li>
 <li><a href="/it/dragons-lair/f2/le-scene/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Le scene, una per una</a></li>
+<li><a href="/it/dragons-lair/f2/come-si-legge/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span>Come si legge una scheda</a></li>
 <li><a href="/it/dragons-lair/europa/sequenza/"><i class="sigla" style="--tinta:#7FB2EE" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>Il mazzo che cammina</a></li>
 <li><a href="/it/dragons-lair/europa/la-partita/"><i class="sigla" style="--tinta:#7FB2EE" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM europea di Atari</span>La partita</a></li>
 <li><a href="/it/dragons-lair/sidam/sequenza/"><i class="sigla" style="--tinta:#93CE71" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; la ROM italiana della Sidam</span>Il mazzo stratificato</a></li>
@@ -672,9 +678,9 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <li><a href="/it/come-si-difendono/"><span class="dove">Quattro meccanismi, in tre macchine, con lo stesso bersaglio</span>Come le macchine si difendono</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>12</b></span><span>Pubblicata il <b>14 settembre 2026</b>, aggiornata il <b>13 ottobre 2026</b></span><span class="stato ferma"><span class="et">stato</span><b>approvata</b></span><span class="approvata"><span class="et">approvata</span><b>&#10003; il 13 ottobre 2026</b></span><span><span class="et">controlli sui byte</span><b>628 su 628</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>13</b></span><span>Pubblicata il <b>14 settembre 2026</b>, aggiornata il <b>14 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span class="approvata scaduta"><span class="et">approvata</span><b>il 13 ottobre 2026, poi cambiata</b></span><span><span class="et">controlli sui byte</span><b>640 su 640</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/f2/le-scene/fire-pit/</p>
-<p class="conto">45 pagine &middot; Dragon&rsquo;s Lair 13 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>2 approvate</b> su 36 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
+<p class="conto">46 pagine &middot; Dragon&rsquo;s Lair 14 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>1 approvata</b> su 37 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>

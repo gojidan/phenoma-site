@@ -169,6 +169,10 @@ h2.macchina .quante{font-family:var(--mono);font-size:11px;
 .frammento .catena{border-top:0;border-bottom:1px solid var(--bordo)}
 .dim{color:var(--tenue)}
 /* 13 ott, Alan: <<il numero di frammento potrebbe essere un po' piu' evidente>> */
+/* 14 ott: le figure del libro, che sono carta, dentro il sito che e' scuro. */
+figure.carta{margin:18px 0 22px;padding:0;background:#FDF9F2;border-radius:8px;overflow:hidden}
+figure.carta img{display:block;width:100%;height:auto}
+figure.carta figcaption{padding:8px 14px 10px;font-size:13px;color:#6b5a45;background:#F4EEE3}
 .nfr{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--oro);background:rgba(255,179,71,.10);border:1px solid rgba(255,179,71,.28);border-radius:4px;padding:1px 7px}
 
 /* --- LA PARTITA: le mosse in fila, con la finestra (8 set) --- */
@@ -508,7 +512,7 @@ h1.marchione + .tesi{font-size:21px}
   <h1>Le sequenze di gioco</h1>
   <p class="tesi">Cinque macchine, cinque modi diversi di rispondere alla stessa domanda: <b>che cosa ti dà da giocare, e come lo decide.</b> Tutto letto dai byte delle ROM originali.</p>
 </header>
-<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>13 ottobre 2026</b> &middot; 45 pagine.</p>
+<p class="aggiornato">Sito aggiornato l&rsquo;ultima volta il <b>14 ottobre 2026</b> &middot; 46 pagine.</p>
 <p>Sono cinque macchine da sala degli anni Ottanta, tutte costruite sullo stesso principio: un <b>film su laserdisc</b> e una ROM che decide quale pezzo farti vedere. Ma su una domanda si comportano in cinque modi completamente diversi, e la domanda è questa:</p>
 <div class="nota"><p style="font-size:19px"><b>Quando infili il gettone, che cosa ti dà da giocare la macchina &mdash; e come lo decide?</b></p></div>
 <p>Molte di queste risposte sono <b>pubblicate qui per la prima volta</b>, e le abbiamo lette <b>dai byte delle ROM originali</b>: dentro la memoria della macchina, dove il progettista le ha scritte.</p>
@@ -545,6 +549,7 @@ h1.marchione + .tesi{font-size:21px}
 <p>Queste non rispondono a quella domanda, e per questo stanno qui e non là sopra. Ne fanno altre: <b>che cosa disegna la scheda</b> mentre il film scorre, <b>come è fatta una scena sola</b> quando le tre macchine la montano in tre modi, e <b>che cosa il gioco accetta</b> oltre a quello che ti mostra.</p>
 <div class="stanze">
 <a class="stanza" href="/it/dragons-lair/f2/le-scene/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span><span class="come">Le scene, una per una</span><span class="che">Ogni scena aperta da sola: i pezzi di film, <b>tutte le finestre</b> che la ROM ascolta e quelle che ignora, le morti col loro nome, e che cosa cambia a dura. Si aggiungono una alla volta.</span></a>
+<a class="stanza" href="/it/dragons-lair/f2/come-si-legge/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; Cinematronics 1983 &middot; revisione F2</span><span class="come">Come si legge una scheda</span><span class="che">Le parole che trovi in ogni scheda &mdash; etichetta, stesura, frammento, finestra, tick, scadere, porta dei morti &mdash; e le regole che valgono per tutte le scene, dette una volta sola, coi numeri presi dai byte.</span></a>
 <a class="stanza" href="/it/dragons-lair/elevator/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Un ascensore dove si scende soltanto</span><span class="che">La scena su cui le tre macchine <b>si separano di più</b>. Stessa pellicola, tre idee diverse di quanto in basso ti lasciano scendere: <b>ventiquattro</b> piani in America, <b>sei</b> in Europa, e in Italia tre &mdash; o nessuno.</span></a>
 <a class="stanza" href="/it/dragons-lair/grafica/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Il tabellone diventato software</span><span class="che">L&rsquo;americana non disegna niente: i suoi numeri stanno su una plancia di cifre a LED. L&rsquo;europea quel ferro non ce l&rsquo;aveva e ha dovuto <b>rifare il tabellone in caratteri</b> &mdash; novantotto, fra cui una testa di drago.</span></a>
 <a class="stanza" href="/it/dragons-lair/il-cabinato/"><i class="sigla" style="--tinta:#FFA22B" title="DL">DL</i><span class="dove">Dragon&rsquo;s Lair &middot; le tre macchine a confronto</span><span class="come">Un cabinato speciale</span><span class="che">Non una galleria di foto: il mobile letto dai byte. I tre suoni dell&rsquo;accensione durano <b>sedici secondi</b> l&rsquo;uno dall&rsquo;altro, il chip antipirateria che dava il battito al gioco <b>durò un&rsquo;estate</b>, e la macchina europea guarda il joystick <b>duecento volte al secondo</b> &mdash; quattro volte più spesso dell&rsquo;americana.</span></a>
@@ -573,9 +578,9 @@ h1.marchione + .tesi{font-size:21px}
 </section>
 
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>63</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>13 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>628 su 628</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>64</b></span><span>Pubblicata il <b>21 agosto 2026</b>, aggiornata il <b>14 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>640 su 640</b></span></div>
 <p class="stampa">phenoma.org/it/sequenze/</p>
-<p class="conto">45 pagine &middot; Dragon&rsquo;s Lair 13 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>2 approvate</b> su 36 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
+<p class="conto">46 pagine &middot; Dragon&rsquo;s Lair 14 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>1 approvata</b> su 37 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>
