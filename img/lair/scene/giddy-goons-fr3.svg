@@ -23,7 +23,7 @@
 <text x="122" y="145" fill="#241C14" font-size="12" text-anchor="end">SINISTRA</text>
 <rect x="132" y="130" width="620" height="20" fill="#EDE4D6" rx="2"/>
 <rect x="132" y="130" width="372" height="20" fill="#C9BCA8" rx="2"/><rect x="132" y="130" width="372" height="20" fill="url(#tAttesa)" rx="2"/>
-<rect x="504" y="130" width="248" height="20" fill="#5FB07A" rx="2"/>
+<rect x="504" y="130" width="248" height="20" fill="#A83232" rx="2"/><rect x="504" y="130" width="248" height="20" fill="url(#tMorte)" rx="2"/>
 <text x="122" y="175" fill="#241C14" font-size="12" text-anchor="end">DESTRA</text>
 <rect x="132" y="160" width="620" height="20" fill="#EDE4D6" rx="2"/>
 <rect x="132" y="160" width="372" height="20" fill="#C9BCA8" rx="2"/><rect x="132" y="160" width="372" height="20" fill="url(#tAttesa)" rx="2"/>
@@ -35,7 +35,7 @@
 <text x="122" y="235" fill="#241C14" font-size="12" text-anchor="end">SPADA</text>
 <rect x="132" y="220" width="620" height="20" fill="#EDE4D6" rx="2"/>
 <rect x="132" y="220" width="372" height="20" fill="#C9BCA8" rx="2"/><rect x="132" y="220" width="372" height="20" fill="url(#tAttesa)" rx="2"/>
-<rect x="504" y="220" width="248" height="20" fill="#5FB07A" rx="2"/>
+<rect x="504" y="220" width="248" height="20" fill="#A83232" rx="2"/><rect x="504" y="220" width="248" height="20" fill="url(#tMorte)" rx="2"/>
 <line x1="18" y1="254" x2="752" y2="254" stroke="#6B5D4B" stroke-width="1" opacity=".25"/>
 <text x="122" y="277" fill="#241C14" font-size="12" text-anchor="end" font-style="italic">se non fai nulla</text>
 <rect x="132" y="262" width="620" height="20" fill="#A83232" rx="2"/><rect x="132" y="262" width="620" height="20" fill="url(#tMorte)" rx="2"/>
