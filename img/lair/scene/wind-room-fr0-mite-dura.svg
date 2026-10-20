@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="790" height="230" viewBox="0 0 790 230" font-family="Inter,DejaVu Sans,sans-serif">
+<defs><pattern id="tMorte" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#FFFFFF" stroke-width="2" opacity=".55"/></pattern><pattern id="tAttesa" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#8C8072" opacity=".55"/></pattern><pattern id="tSorda" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0 L6 6 M6 0 L0 6" stroke="#FFFFFF" stroke-width="1" opacity=".5"/></pattern></defs>
+<rect x="1" y="1" width="788" height="228" fill="#FDF9F2" stroke="#D8CBB8" stroke-width="1" rx="8"/>
+<text x="18" y="28" fill="#B44A1E" font-size="15" font-weight="600">Wind Room · Il turbine · mite e dura</text>
+<text x="18" y="48" fill="#6B5D4B" font-size="12">frammento 0 · sulla pellicola · mite 8709–8902 · dura 8781–8903</text>
+<line x1="170" y1="86" x2="760" y2="86" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<line x1="203" y1="82" x2="203" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="203" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8720</text>
+<line x1="264" y1="82" x2="264" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="264" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8740</text>
+<line x1="325" y1="82" x2="325" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="325" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8760</text>
+<line x1="385" y1="82" x2="385" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="385" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8780</text>
+<line x1="446" y1="82" x2="446" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="446" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8800</text>
+<line x1="507" y1="82" x2="507" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="507" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8820</text>
+<line x1="568" y1="82" x2="568" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="568" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8840</text>
+<line x1="629" y1="82" x2="629" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="629" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8860</text>
+<line x1="690" y1="82" x2="690" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="690" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8880</text>
+<line x1="750" y1="82" x2="750" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="750" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">8900</text>
+<text x="118" y="114" fill="#241C14" font-size="12" text-anchor="end">SU</text>
+<text x="162" y="106" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
+<text x="162" y="123" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
+<rect x="170" y="96" width="586" height="13" fill="#EDE4D6" rx="2"/>
+<rect x="170" y="96" width="431" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="96" width="431" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="601" y="96" width="155" height="13" fill="#A83232" rx="2"/><rect x="601" y="96" width="155" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="388" y="113" width="372" height="13" fill="#EDE4D6" rx="2"/>
+<rect x="388" y="113" width="213" height="13" fill="#C9BCA8" rx="2"/><rect x="388" y="113" width="213" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="601" y="113" width="159" height="13" fill="#A83232" rx="2"/><rect x="601" y="113" width="159" height="13" fill="url(#tMorte)" rx="2"/>
+<text x="118" y="156" fill="#241C14" font-size="12" text-anchor="end">DESTRA</text>
+<text x="162" y="148" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
+<text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
+<rect x="170" y="138" width="586" height="13" fill="#EDE4D6" rx="2"/>
+<rect x="170" y="138" width="532" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="138" width="532" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="702" y="138" width="54" height="13" fill="#5FB07A" rx="2"/>
+<rect x="388" y="155" width="372" height="13" fill="#EDE4D6" rx="2"/>
+<rect x="388" y="155" width="253" height="13" fill="#C9BCA8" rx="2"/><rect x="388" y="155" width="253" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="641" y="155" width="61" height="13" fill="#A83232" rx="2"/><rect x="641" y="155" width="61" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="702" y="155" width="54" height="13" fill="#5FB07A" rx="2"/>
+<rect x="18" y="188" width="14" height="12" fill="#C9BCA8" rx="2"/><rect x="18" y="188" width="14" height="12" fill="url(#tAttesa)" rx="2"/>
+<text x="38" y="198" fill="#6B5D4B" font-size="11">non ascolta ancora</text>
+<rect x="228" y="188" width="14" height="12" fill="#A83232" rx="2"/><rect x="228" y="188" width="14" height="12" fill="url(#tMorte)" rx="2"/>
+<text x="248" y="198" fill="#6B5D4B" font-size="11">qui uccide</text>
+<rect x="438" y="188" width="14" height="12" fill="#5FB07A" rx="2"/>
+<text x="458" y="198" fill="#6B5D4B" font-size="11">qui porta avanti</text>
+</svg>

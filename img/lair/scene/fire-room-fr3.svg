@@ -21,7 +21,7 @@
 <text x="122" y="115" fill="#241C14" font-size="12" text-anchor="end">SU</text>
 <rect x="132" y="100" width="620" height="20" fill="#EDE4D6" rx="2"/>
 <rect x="132" y="100" width="96" height="20" fill="#A83232" rx="2"/><rect x="132" y="100" width="96" height="20" fill="url(#tMorte)" rx="2"/>
-<rect x="228" y="100" width="243" height="20" fill="#5FB07A" rx="2"/>
+<rect x="228" y="100" width="243" height="20" fill="#9A93A0" rx="2"/><rect x="228" y="100" width="243" height="20" fill="url(#tSorda)" rx="2"/>
 <rect x="471" y="100" width="281" height="20" fill="#5FB07A" rx="2"/>
 <text x="122" y="145" fill="#241C14" font-size="12" text-anchor="end">GIÙ</text>
 <rect x="132" y="130" width="620" height="20" fill="#EDE4D6" rx="2"/>
@@ -30,7 +30,7 @@
 <text x="122" y="175" fill="#241C14" font-size="12" text-anchor="end">SINISTRA</text>
 <rect x="132" y="160" width="620" height="20" fill="#EDE4D6" rx="2"/>
 <rect x="132" y="160" width="96" height="20" fill="#A83232" rx="2"/><rect x="132" y="160" width="96" height="20" fill="url(#tMorte)" rx="2"/>
-<rect x="228" y="160" width="243" height="20" fill="#5FB07A" rx="2"/>
+<rect x="228" y="160" width="243" height="20" fill="#9A93A0" rx="2"/><rect x="228" y="160" width="243" height="20" fill="url(#tSorda)" rx="2"/>
 <rect x="471" y="160" width="281" height="20" fill="#5FB07A" rx="2"/>
 <text x="122" y="205" fill="#241C14" font-size="12" text-anchor="end">DESTRA</text>
 <rect x="132" y="190" width="620" height="20" fill="#EDE4D6" rx="2"/>
