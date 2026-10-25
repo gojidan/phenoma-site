@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Alice Room — Dragon’s Lair — Phenoma</title>
-<meta name="description" content="La stanza di Alice — una boccetta che dice «bevimi», e il fuoco che arriva da sinistra. Alice Room: 6 frammenti, due morti, pellicola 18226–18597, e 428 punti a giocarla alla perfezione. Ogni numero viene dai byte della ROM.">
+<meta name="description" content="La stanza di Alice — una boccetta che dice «bevimi», e il fuoco che arriva da sinistra. Alice Room: 6 frammenti, due morti, pellicola 18226–18598, e 428 punti a giocarla alla perfezione. Ogni numero viene dai byte della ROM.">
 <style>
 :root{
   --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
@@ -521,44 +521,44 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <header>
   <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983 &middot; revisione F2</p>
   <h1>Alice Room</h1>
-  <p class="tesi">La stanza di Alice — una boccetta che dice «bevimi», e il fuoco che arriva da sinistra. <b>Alice Room</b>: 6 frammenti, due morti, pellicola 18226&ndash;18597, e <b>428 punti</b> a giocarla alla perfezione. Ogni numero viene dai byte della ROM.</p>
+  <p class="tesi">La stanza di Alice — una boccetta che dice «bevimi», e il fuoco che arriva da sinistra. <b>Alice Room</b>: 6 frammenti, due morti, pellicola 18226&ndash;18598, e <b>428 punti</b> a giocarla alla perfezione. Ogni numero viene dai byte della ROM.</p>
 </header>
 <p class="min">&#128214; Come si leggono le tabelle, che cosa vogliono dire etichetta, stesura, frammento, finestra, tick, scadere, porta dei morti, e da dove vengono i numeri: <a href="/it/dragons-lair/f2/come-si-legge/">Come si legge una scheda</a>. I nomi dei frammenti sono nostri: la ROM conosce soltanto i numeri.</p>
 <h2>Come la chiama la ROM, e da dove si entra</h2>
 <p>Si entra da <b>due porte</b>: quella di chi arriva vincendo, e quella &mdash; qualche fotogramma prima &mdash; di chi rientra dopo una morte.</p>
 <div class="scroll"><table><thead><tr><th>etichetta</th><th>che cos&rsquo;&egrave;</th><th>quando la usa</th><th>da dove entri (fotogramma)</th></tr></thead><tbody><tr><td><span class="mono">0x98</span></td><td>la stesura mite</td><td>di fabbrica, finch&eacute; l&rsquo;adattiva non scatta</td><td><b>18282</b> vincendo &middot; <b>18226</b> dopo una morte</td></tr><tr><td><span class="mono">0xC2</span></td><td>la stesura dura</td><td>col dip &laquo;dura sempre&raquo;, oppure quando scatta l&rsquo;adattiva</td><td><b>18282</b> vincendo &middot; <b>18226</b> dopo una morte</td></tr></tbody></table></div>
-<p class="coda-tavola">La porta dei morti sta <b>56 fotogrammi prima</b>: la macchina ne mostra <b>48</b> (60 tick) e poi passa al frammento 0.</p>
+<p class="coda-tavola">La porta dei morti sta <b>56 fotogrammi prima</b>: la macchina ne mostra <b>49</b> (60 tick) e poi passa al frammento 0.</p>
 <div class="nota caldo"><span class="cap">Che cosa si vede</span><p>Una stanza da mago, quasi una cucina: travi di legno, scaffali pieni di vasi, e su un tavolo una boccetta blu con un cartello, «DRINK ME», bevimi, come nel libro di Alice. Dirk entra e va verso il tavolo; a metà strada, dal fondo a sinistra, un getto di fiamme gialle corre lungo il pavimento verso di lui. Un salto a destra, verso la porta, e Dirk se ne va lasciandosi il fuoco alle spalle.</p><p>Una mossa sola, a destra, e la si può dare dal primo istante: la finestra resta aperta per tutto il frammento. Chi va verso il tavolo beve la pozione; chi resta, o si volta, finisce nel fuoco, che arriva a metà del frammento.</p></div>
 <h2>La via della gloria</h2>
 <div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9876; SPADA</span> il pulsante &mdash; in Dragon&rsquo;s Lair &egrave; una spada, e non ha secondi significati</span><span><i class="rombo"></i> un bivio: qui si poteva fare altro</span><span><s style="text-decoration:none;color:var(--brace)">morte</s> premi giusto ma nell&rsquo;attimo sbagliato</span></div><div class="legenda-mosse" style="margin-top:-12px"><span><span class="g attesa" style="min-width:0">non premere</span> una mossa ci sarebbe, ma <b>rende meno</b></span><span><span class="g trappola" style="min-width:0">&#9995; NON TOCCARE</span> non c&rsquo;&egrave; niente da dare, e <b>premere ammazza</b></span><span><span class="g nulla" style="min-width:0">il film scorre</span> nessuna finestra: non succede nulla</span></div>
 <div class="partita"><div class="stesura"><div class="testa"><b>Alice Room</b><span class="id">0x98</span><span class="verso">1 mossa</span><span class="pt">428 punti</span></div><ol class="mosse"><li><span class="fr">18282</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 0&ndash;61</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">18334</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div></div>
 <p class="coda-tavola">Il totale, giocata alla perfezione, &egrave; <b>428</b>: la somma dei frammenti che attraversi (49 + 379). A dura il massimo &egrave; lo stesso.</p>
 <h2>L&rsquo;ordine sulla pellicola</h2>
-<div class="scroll"><table><thead><tr><th class="num">atterri &rarr; ascolta fino a</th><th>frammento</th><th>nome</th><th class="num">dura</th><th>che cos&rsquo;&egrave;</th></tr></thead><tbody><tr><td class="num"><b>18226</b> <span class="dim">&rarr; 18274</span></td><td><span class="nfr">1</span></td><td><b>Il ritorno</b></td><td class="num">60 tick</td><td class="dim">la porta dei morti: lo vede solo chi rientra</td></tr><tr><td class="num"><b>18282</b> <span class="dim">&rarr; 18331</span></td><td><span class="nfr">0</span> <span class="dim">= 2</span></td><td><b>Bevimi</b></td><td class="num">61 tick</td><td class="dim">la porta di chi vince</td></tr><tr><td class="num"><b>18334</b> <span class="dim">&rarr; 18368</span></td><td><span class="nfr">3</span></td><td><b>La porta</b></td><td class="num">43 tick</td><td class="dim">l&rsquo;uscita: la scena &egrave; vinta</td></tr><tr><td class="num"><b>18378</b> <span class="dim">&rarr; 18477</span></td><td><span class="nfr">4</span></td><td><b>La pozione</b></td><td class="num">124 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>18486</b> <span class="dim">&rarr; 18514</span></td><td><span class="nfr">5</span></td><td><b>Nel fuoco</b></td><td class="num">35 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>18522</b> <span class="dim">&rarr; 18597</span></td><td><span class="nfr">6</span></td><td><b>L'epilogo</b></td><td class="num">94 tick</td><td class="dim">la coda: qui la catena finisce</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th class="num">atterri &rarr; ascolta fino a</th><th>frammento</th><th>nome</th><th class="num">dura</th><th>che cos&rsquo;&egrave;</th></tr></thead><tbody><tr><td class="num"><b>18226</b> <span class="dim">&rarr; 18275</span></td><td><span class="nfr">1</span></td><td><b>Il ritorno</b></td><td class="num">60 tick</td><td class="dim">la porta dei morti: lo vede solo chi rientra</td></tr><tr><td class="num"><b>18282</b> <span class="dim">&rarr; 18332</span></td><td><span class="nfr">0</span> <span class="dim">= 2</span></td><td><b>Bevimi</b></td><td class="num">61 tick</td><td class="dim">la porta di chi vince</td></tr><tr><td class="num"><b>18334</b> <span class="dim">&rarr; 18369</span></td><td><span class="nfr">3</span></td><td><b>La porta</b></td><td class="num">43 tick</td><td class="dim">l&rsquo;uscita: la scena &egrave; vinta</td></tr><tr><td class="num"><b>18378</b> <span class="dim">&rarr; 18479</span></td><td><span class="nfr">4</span></td><td><b>La pozione</b></td><td class="num">124 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>18486</b> <span class="dim">&rarr; 18514</span></td><td><span class="nfr">5</span></td><td><b>Nel fuoco</b></td><td class="num">35 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>18522</b> <span class="dim">&rarr; 18598</span></td><td><span class="nfr">6</span></td><td><b>L'epilogo</b></td><td class="num">94 tick</td><td class="dim">la coda: qui la catena finisce</td></tr></tbody></table></div>
 <h2>Il copione, frammento per frammento</h2>
 <p class="punta">&#128279; <b>La catena, in ordine di gioco:</b> <span class="dim">se rientri dopo una morte, prima Il ritorno; poi</span> Bevimi &rarr; La porta.</p>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Il ritorno</b><span class="id">frammento 1</span><span class="verso">60 tick</span></div>
-<p class="meta">pellicola <b>18226&ndash;18274</b> &middot; allo scadere: &rarr; <b>Bevimi</b> <span class="pt">+49</span></p>
+<p class="meta">pellicola <b>18226&ndash;18275</b> &middot; allo scadere: &rarr; <b>Bevimi</b> <span class="pt">+49</span></p>
 <p class="prosa dim">Nessuna mossa: il film scorre. Porta a: &rarr; <b>Bevimi</b> <span class="pt">+49</span>.</p>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Bevimi</b><span class="id">frammento 0, e di nuovo 2: stesso record</span><span class="verso">61 tick</span><span class="pt">+49 punti</span></div>
-<p class="meta">pellicola <b>18282&ndash;18331</b> &middot; allo scadere: &#128128; Nel fuoco</p>
+<p class="meta">pellicola <b>18282&ndash;18332</b> &middot; allo scadere: &#128128; Nel fuoco</p>
 <p class="prosa">Dirk, visto di spalle, entra nella stanza e cammina verso il tavolo con la boccetta e il cartello «DRINK ME». A metà del frammento un getto di fiamme gialle arriva da sinistra e dilaga sul pavimento.<br><b>Il gesto:</b> Saltare a destra, verso la porta: va bene in qualunque momento.</p>
-<div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">0&ndash;61</td><td class="num">18282&ndash;18331</td><td>&#128128; La pozione</td></tr><tr><td>&darr; GI&Ugrave;</td><td class="num">39&ndash;61</td><td class="num">18313&ndash;18331</td><td>&#128128; Nel fuoco</td></tr><tr><td>&larr; SINISTRA</td><td class="num">39&ndash;61</td><td class="num">18313&ndash;18331</td><td>&#128128; Nel fuoco</td></tr><tr><td><b>&rarr; DESTRA</b></td><td class="num"><b>0&ndash;61</b></td><td class="num"><b>18282&ndash;18331</b></td><td>&rarr; <b>La porta</b> <span class="pt">+379</span></td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">0&ndash;61</td><td class="num">18282&ndash;18332</td><td>&#128128; La pozione</td></tr><tr><td>&darr; GI&Ugrave;</td><td class="num">39&ndash;61</td><td class="num">18314&ndash;18332</td><td>&#128128; Nel fuoco</td></tr><tr><td>&larr; SINISTRA</td><td class="num">39&ndash;61</td><td class="num">18314&ndash;18332</td><td>&#128128; Nel fuoco</td></tr><tr><td><b>&rarr; DESTRA</b></td><td class="num"><b>0&ndash;61</b></td><td class="num"><b>18282&ndash;18332</b></td><td>&rarr; <b>La porta</b> <span class="pt">+379</span></td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
 <figure class="carta"><img src="/img/lair/scene/alice-room-fr0.svg" width="782" height="312" alt="Alice Room · Bevimi" loading="lazy" decoding="async"></figure>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>La porta</b><span class="id">frammento 3</span><span class="verso">43 tick</span><span class="pt">+379 punti</span></div>
-<p class="meta">pellicola <b>18334&ndash;18368</b> &middot; allo scadere: <b>fine scena, vinta</b></p>
+<p class="meta">pellicola <b>18334&ndash;18369</b> &middot; allo scadere: <b>fine scena, vinta</b></p>
 <p class="prosa">Dirk passa sotto l'arco ed esce dalla porta, mentre le fiamme coprono il pavimento: la scena è vinta.</p>
 <p class="prosa dim">Nessuna mossa: la scena &egrave; vinta e scorre fino alla fine.</p>
 </div></div>
 <h3>Dove si finisce sbagliando</h3>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>La pozione</b><span class="id">frammento 4</span><span class="verso">124 tick</span></div>
-<p class="meta">pellicola <b>18378&ndash;18477</b> &middot; &#128128; <b>&egrave; una morte</b>: qui la vita &egrave; persa &middot; allo scadere: &rarr; <b>L'epilogo</b></p>
+<p class="meta">pellicola <b>18378&ndash;18479</b> &middot; &#128128; <b>&egrave; una morte</b>: qui la vita &egrave; persa &middot; allo scadere: &rarr; <b>L'epilogo</b></p>
 <p class="prosa dim">Nessuna mossa: &egrave; il filmato della morte. Porta a: &rarr; <b>L'epilogo</b>.</p>
 </div></div>
 <div class="partita frammento"><div class="stesura">
@@ -568,7 +568,7 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>L'epilogo</b><span class="id">frammento 6</span><span class="verso">94 tick</span></div>
-<p class="meta">pellicola <b>18522&ndash;18597</b> &middot; allo scadere: fine della catena</p>
+<p class="meta">pellicola <b>18522&ndash;18598</b> &middot; allo scadere: fine della catena</p>
 <p class="prosa">La scena che vedi se muori qui e le vite sono finite. Nella stanza Dirk sta a braccia conserte e si consuma fino allo scheletro, che poi va in pezzi.</p>
 <p class="prosa dim">Nessuna mossa: la coda dopo la morte. Qui la catena finisce.</p>
 </div></div>
@@ -625,9 +625,9 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <li><a href="/it/come-si-difendono/"><span class="dove">Quattro meccanismi, in tre macchine, con lo stesso bersaglio</span>Come le macchine si difendono</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>1</b></span><span>Pubblicata il <b>20 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>673 su 673</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>2</b></span><span>Pubblicata il <b>20 ottobre 2026</b>, aggiornata il <b>25 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>680 su 680</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/f2/le-scene/alice-room/</p>
-<p class="conto">83 pagine &middot; Dragon&rsquo;s Lair 51 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>4 approvate</b> su 74 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
+<p class="conto">83 pagine &middot; Dragon&rsquo;s Lair 51 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>0 approvate</b> su 74 &mdash; approvata vuol dire letta e firmata da Alan, non ancora nessuna: le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>

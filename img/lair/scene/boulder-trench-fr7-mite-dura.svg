@@ -34,8 +34,8 @@
 <text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="138" width="590" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="170" y="138" width="282" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="138" width="282" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="452" y="138" width="64" height="13" fill="#A83232" rx="2"/><rect x="452" y="138" width="64" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="516" y="138" width="244" height="13" fill="#5FB07A" rx="2"/>
+<rect x="452" y="138" width="77" height="13" fill="#A83232" rx="2"/><rect x="452" y="138" width="77" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="529" y="138" width="231" height="13" fill="#5FB07A" rx="2"/>
 <rect x="170" y="155" width="538" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="170" y="155" width="282" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="155" width="282" height="13" fill="url(#tAttesa)" rx="2"/>
 <rect x="452" y="155" width="89" height="13" fill="#A83232" rx="2"/><rect x="452" y="155" width="89" height="13" fill="url(#tMorte)" rx="2"/>

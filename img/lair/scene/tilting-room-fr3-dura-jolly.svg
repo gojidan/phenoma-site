@@ -27,8 +27,8 @@
 <rect x="511" y="96" width="249" height="13" fill="#5FB07A" rx="2"/>
 <rect x="170" y="113" width="574" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="170" y="113" width="201" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="113" width="201" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="371" y="113" width="326" height="13" fill="#A83232" rx="2"/><rect x="371" y="113" width="326" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="697" y="113" width="47" height="13" fill="#5FB07A" rx="2"/>
+<rect x="371" y="113" width="342" height="13" fill="#A83232" rx="2"/><rect x="371" y="113" width="342" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="713" y="113" width="31" height="13" fill="#5FB07A" rx="2"/>
 <text x="118" y="156" fill="#241C14" font-size="12" text-anchor="end">GIÙ</text>
 <text x="162" y="148" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">jolly</text>

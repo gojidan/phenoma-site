@@ -36,8 +36,8 @@
 <text x="162" y="190" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="207" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="180" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="180" width="403" height="13" fill="#A83232" rx="2"/><rect x="170" y="180" width="403" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="573" y="180" width="187" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="180" width="419" height="13" fill="#A83232" rx="2"/><rect x="170" y="180" width="419" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="589" y="180" width="171" height="13" fill="#5FB07A" rx="2"/>
 <rect x="170" y="197" width="590" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="170" y="197" width="496" height="13" fill="#A83232" rx="2"/><rect x="170" y="197" width="496" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="666" y="197" width="94" height="13" fill="#5FB07A" rx="2"/>

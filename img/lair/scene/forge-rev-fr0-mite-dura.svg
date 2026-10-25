@@ -2,38 +2,38 @@
 <defs><pattern id="tMorte" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#FFFFFF" stroke-width="2" opacity=".55"/></pattern><pattern id="tAttesa" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#8C8072" opacity=".55"/></pattern><pattern id="tSorda" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0 L6 6 M6 0 L0 6" stroke="#FFFFFF" stroke-width="1" opacity=".5"/></pattern></defs>
 <rect x="1" y="1" width="788" height="354" fill="#FDF9F2" stroke="#D8CBB8" stroke-width="1" rx="8"/>
 <text x="18" y="28" fill="#B44A1E" font-size="15" font-weight="600">Forge Rev · La spada volante · mite e dura</text>
-<text x="18" y="48" fill="#6B5D4B" font-size="12">frammento 0 · sulla pellicola · mite 15653–15728 · dura 15653–15728</text>
+<text x="18" y="48" fill="#6B5D4B" font-size="12">frammento 0 · sulla pellicola · mite 15653–15729 · dura 15653–15729</text>
 <line x1="170" y1="86" x2="760" y2="86" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<line x1="225" y1="82" x2="225" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="225" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15660</text>
-<line x1="303" y1="82" x2="303" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="303" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15670</text>
-<line x1="382" y1="82" x2="382" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="382" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15680</text>
-<line x1="461" y1="82" x2="461" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="461" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15690</text>
-<line x1="539" y1="82" x2="539" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="539" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15700</text>
-<line x1="618" y1="82" x2="618" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="618" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15710</text>
-<line x1="697" y1="82" x2="697" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="697" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15720</text>
+<line x1="224" y1="82" x2="224" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="224" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15660</text>
+<line x1="301" y1="82" x2="301" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="301" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15670</text>
+<line x1="379" y1="82" x2="379" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="379" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15680</text>
+<line x1="457" y1="82" x2="457" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="457" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15690</text>
+<line x1="534" y1="82" x2="534" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="534" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15700</text>
+<line x1="612" y1="82" x2="612" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="612" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15710</text>
+<line x1="690" y1="82" x2="690" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="690" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">15720</text>
 <text x="118" y="114" fill="#241C14" font-size="12" text-anchor="end">SU</text>
 <text x="162" y="106" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="123" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="96" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="96" width="283" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="96" width="283" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="453" y="96" width="307" height="13" fill="#A83232" rx="2"/><rect x="453" y="96" width="307" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="96" width="287" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="96" width="287" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="457" y="96" width="303" height="13" fill="#A83232" rx="2"/><rect x="457" y="96" width="303" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="170" y="113" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="113" width="283" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="113" width="283" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="453" y="113" width="307" height="13" fill="#A83232" rx="2"/><rect x="453" y="113" width="307" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="113" width="287" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="113" width="287" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="457" y="113" width="303" height="13" fill="#A83232" rx="2"/><rect x="457" y="113" width="303" height="13" fill="url(#tMorte)" rx="2"/>
 <text x="118" y="156" fill="#241C14" font-size="12" text-anchor="end">GIÙ</text>
 <text x="162" y="148" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="138" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="138" width="495" height="13" fill="#A83232" rx="2"/><rect x="170" y="138" width="495" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="138" width="496" height="13" fill="#A83232" rx="2"/><rect x="170" y="138" width="496" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="170" y="155" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="155" width="495" height="13" fill="#A83232" rx="2"/><rect x="170" y="155" width="495" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="155" width="496" height="13" fill="#A83232" rx="2"/><rect x="170" y="155" width="496" height="13" fill="url(#tMorte)" rx="2"/>
 <text x="118" y="198" fill="#241C14" font-size="12" text-anchor="end">SINISTRA</text>
 <text x="162" y="190" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="207" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
@@ -52,13 +52,13 @@
 <text x="162" y="274" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="291" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="264" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="264" width="275" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="264" width="275" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="445" y="264" width="141" height="13" fill="#A83232" rx="2"/><rect x="445" y="264" width="141" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="586" y="264" width="174" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="264" width="279" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="264" width="279" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="449" y="264" width="140" height="13" fill="#A83232" rx="2"/><rect x="449" y="264" width="140" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="589" y="264" width="171" height="13" fill="#5FB07A" rx="2"/>
 <rect x="170" y="281" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="281" width="275" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="281" width="275" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="445" y="281" width="220" height="13" fill="#A83232" rx="2"/><rect x="445" y="281" width="220" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="665" y="281" width="95" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="281" width="279" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="281" width="279" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="449" y="281" width="217" height="13" fill="#A83232" rx="2"/><rect x="449" y="281" width="217" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="666" y="281" width="94" height="13" fill="#5FB07A" rx="2"/>
 <rect x="18" y="314" width="14" height="12" fill="#C9BCA8" rx="2"/><rect x="18" y="314" width="14" height="12" fill="url(#tAttesa)" rx="2"/>
 <text x="38" y="324" fill="#6B5D4B" font-size="11">non ascolta ancora</text>
 <rect x="228" y="314" width="14" height="12" fill="#A83232" rx="2"/><rect x="228" y="314" width="14" height="12" fill="url(#tMorte)" rx="2"/>

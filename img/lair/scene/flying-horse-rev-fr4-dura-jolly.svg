@@ -33,8 +33,8 @@
 <text x="162" y="148" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">jolly</text>
 <rect x="170" y="138" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="138" width="446" height="13" fill="#A83232" rx="2"/><rect x="170" y="138" width="446" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="616" y="138" width="144" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="138" width="460" height="13" fill="#A83232" rx="2"/><rect x="170" y="138" width="460" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="630" y="138" width="130" height="13" fill="#5FB07A" rx="2"/>
 <rect x="170" y="155" width="546" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="170" y="155" width="474" height="13" fill="#A83232" rx="2"/><rect x="170" y="155" width="474" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="644" y="155" width="72" height="13" fill="#5FB07A" rx="2"/>
@@ -42,11 +42,11 @@
 <text x="162" y="190" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <text x="162" y="207" fill="#6B5D4B" font-size="10" text-anchor="end">jolly</text>
 <rect x="170" y="180" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="180" width="446" height="13" fill="#A83232" rx="2"/><rect x="170" y="180" width="446" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="616" y="180" width="144" height="13" fill="#A83232" rx="2"/><rect x="616" y="180" width="144" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="180" width="460" height="13" fill="#A83232" rx="2"/><rect x="170" y="180" width="460" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="630" y="180" width="130" height="13" fill="#A83232" rx="2"/><rect x="630" y="180" width="130" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="170" y="197" width="546" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="197" width="446" height="13" fill="#A83232" rx="2"/><rect x="170" y="197" width="446" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="616" y="197" width="100" height="13" fill="#A83232" rx="2"/><rect x="616" y="197" width="100" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="197" width="460" height="13" fill="#A83232" rx="2"/><rect x="170" y="197" width="460" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="630" y="197" width="86" height="13" fill="#A83232" rx="2"/><rect x="630" y="197" width="86" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="18" y="230" width="14" height="12" fill="#C9BCA8" rx="2"/><rect x="18" y="230" width="14" height="12" fill="url(#tAttesa)" rx="2"/>
 <text x="38" y="240" fill="#6B5D4B" font-size="11">non ascolta ancora</text>
 <rect x="228" y="230" width="14" height="12" fill="#A83232" rx="2"/><rect x="228" y="230" width="14" height="12" fill="url(#tMorte)" rx="2"/>

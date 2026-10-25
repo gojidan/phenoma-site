@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Wind Room — Dragon’s Lair — Phenoma</title>
-<meta name="description" content="La stanza del vento — un turbine di mobili, e una mossa sola, alla fine. Wind Room: 5 frammenti, una morte, pellicola 8653–9084, e 428 punti a giocarla alla perfezione. Ogni numero viene dai byte della ROM.">
+<meta name="description" content="La stanza del vento — un turbine di mobili, e una mossa sola, alla fine. Wind Room: 5 frammenti, una morte, pellicola 8653–9085, e 428 punti a giocarla alla perfezione. Ogni numero viene dai byte della ROM.">
 <style>
 :root{
   --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
@@ -521,32 +521,32 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <header>
   <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983 &middot; revisione F2</p>
   <h1>Wind Room</h1>
-  <p class="tesi">La stanza del vento — un turbine di mobili, e una mossa sola, alla fine. <b>Wind Room</b>: 5 frammenti, una morte, pellicola 8653&ndash;9084, e <b>428 punti</b> a giocarla alla perfezione. Ogni numero viene dai byte della ROM.</p>
+  <p class="tesi">La stanza del vento — un turbine di mobili, e una mossa sola, alla fine. <b>Wind Room</b>: 5 frammenti, una morte, pellicola 8653&ndash;9085, e <b>428 punti</b> a giocarla alla perfezione. Ogni numero viene dai byte della ROM.</p>
 </header>
 <p class="min">&#128214; Come si leggono le tabelle, che cosa vogliono dire etichetta, stesura, frammento, finestra, tick, scadere, porta dei morti, e da dove vengono i numeri: <a href="/it/dragons-lair/f2/come-si-legge/">Come si legge una scheda</a>. I nomi dei frammenti sono nostri: la ROM conosce soltanto i numeri.</p>
 <h2>Come la chiama la ROM, e da dove si entra</h2>
 <p>Si entra da <b>due porte</b>: quella di chi arriva vincendo, e quella &mdash; qualche fotogramma prima &mdash; di chi rientra dopo una morte.</p>
 <div class="scroll"><table><thead><tr><th>etichetta</th><th>che cos&rsquo;&egrave;</th><th>quando la usa</th><th>da dove entri (fotogramma)</th></tr></thead><tbody><tr><td><span class="mono">0x8A</span></td><td>la stesura mite</td><td>di fabbrica, finch&eacute; l&rsquo;adattiva non scatta</td><td><b>8709</b> vincendo &middot; <b>8653</b> dopo una morte</td></tr><tr><td><span class="mono">0xB4</span></td><td>la stesura dura</td><td>col dip &laquo;dura sempre&raquo;, oppure quando scatta l&rsquo;adattiva</td><td><b>8781</b> vincendo &middot; <b>8653</b> dopo una morte</td></tr></tbody></table></div>
-<p class="coda-tavola">La porta dei morti sta <b>56 fotogrammi prima</b>: la macchina ne mostra <b>48</b> (60 tick) e poi passa al frammento 0.</p>
+<p class="coda-tavola">La porta dei morti sta <b>56 fotogrammi prima</b>: la macchina ne mostra <b>49</b> (60 tick) e poi passa al frammento 0.</p>
 <div class="nota caldo"><span class="cap">Che cosa si vede</span><p>Un corridoio di pietra viola con le catene appese, e in fondo una grande porta di legno. Dietro c'è una stanza tonda dove un turbine fa girare sedie, vasi, mobili e un divano rosso, e nel muro di fondo si apre un buco nero. Dirk resiste al vento, e all'ultimo momento scappa a destra.</p><p>Una mossa sola, in fondo a un frammento lungo otto secondi: la DESTRA, nell'ultimo istante. Il SU, dato dal sesto secondo in poi, uccide; lasciar scadere anche.</p></div>
 <h2>La via della gloria</h2>
 <div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9876; SPADA</span> il pulsante &mdash; in Dragon&rsquo;s Lair &egrave; una spada, e non ha secondi significati</span><span><i class="rombo"></i> un bivio: qui si poteva fare altro</span><span><s style="text-decoration:none;color:var(--brace)">morte</s> premi giusto ma nell&rsquo;attimo sbagliato</span></div><div class="legenda-mosse" style="margin-top:-12px"><span><span class="g attesa" style="min-width:0">non premere</span> una mossa ci sarebbe, ma <b>rende meno</b></span><span><span class="g trappola" style="min-width:0">&#9995; NON TOCCARE</span> non c&rsquo;&egrave; niente da dare, e <b>premere ammazza</b></span><span><span class="g nulla" style="min-width:0">il film scorre</span> nessuna finestra: non succede nulla</span></div>
 <div class="partita"><div class="stesura"><div class="testa"><b>Wind Room</b><span class="id">0x8A</span><span class="verso">1 mossa</span><span class="pt">428 punti</span></div><ol class="mosse"><li><span class="fr">8709</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 219&ndash;241</span><span class="altre"></span><span class="pt">379</span></li><li><span class="fr">8906</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div></div>
 <p class="coda-tavola">Il totale, giocata alla perfezione, &egrave; <b>428</b>: la somma dei frammenti che attraversi (49 + 379). A dura il massimo &egrave; lo stesso.</p>
 <h2>L&rsquo;ordine sulla pellicola</h2>
-<div class="scroll"><table><thead><tr><th class="num">atterri &rarr; ascolta fino a</th><th>frammento</th><th>nome</th><th class="num">dura</th><th>che cos&rsquo;&egrave;</th></tr></thead><tbody><tr><td class="num"><b>8653</b> <span class="dim">&rarr; 8701</span></td><td><span class="nfr">1</span></td><td><b>Il ritorno</b></td><td class="num">60 tick</td><td class="dim">la porta dei morti: lo vede solo chi rientra</td></tr><tr><td class="num"><b>8709</b> <span class="dim">&rarr; 8902</span></td><td><span class="nfr">0</span> <span class="dim">= 2</span></td><td><b>Il turbine</b></td><td class="num">241 tick</td><td class="dim">la porta di chi vince</td></tr><tr><td class="num"><b>8906</b> <span class="dim">&rarr; 8917</span></td><td><span class="nfr">3</span></td><td><b>L'uscita a destra</b></td><td class="num">14 tick</td><td class="dim">l&rsquo;uscita: la scena &egrave; vinta</td></tr><tr><td class="num"><b>8938</b> <span class="dim">&rarr; 9000</span></td><td><span class="nfr">4</span></td><td><b>Nel pozzo</b></td><td class="num">78 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>9009</b> <span class="dim">&rarr; 9084</span></td><td><span class="nfr">5</span></td><td><b>L'epilogo</b></td><td class="num">94 tick</td><td class="dim">la coda: qui la catena finisce</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th class="num">atterri &rarr; ascolta fino a</th><th>frammento</th><th>nome</th><th class="num">dura</th><th>che cos&rsquo;&egrave;</th></tr></thead><tbody><tr><td class="num"><b>8653</b> <span class="dim">&rarr; 8702</span></td><td><span class="nfr">1</span></td><td><b>Il ritorno</b></td><td class="num">60 tick</td><td class="dim">la porta dei morti: lo vede solo chi rientra</td></tr><tr><td class="num"><b>8709</b> <span class="dim">&rarr; 8905</span></td><td><span class="nfr">0</span> <span class="dim">= 2</span></td><td><b>Il turbine</b></td><td class="num">241 tick</td><td class="dim">la porta di chi vince</td></tr><tr><td class="num"><b>8906</b> <span class="dim">&rarr; 8917</span></td><td><span class="nfr">3</span></td><td><b>L'uscita a destra</b></td><td class="num">14 tick</td><td class="dim">l&rsquo;uscita: la scena &egrave; vinta</td></tr><tr><td class="num"><b>8938</b> <span class="dim">&rarr; 9001</span></td><td><span class="nfr">4</span></td><td><b>Nel pozzo</b></td><td class="num">78 tick</td><td class="dim">una morte</td></tr><tr><td class="num"><b>9009</b> <span class="dim">&rarr; 9085</span></td><td><span class="nfr">5</span></td><td><b>L'epilogo</b></td><td class="num">94 tick</td><td class="dim">la coda: qui la catena finisce</td></tr></tbody></table></div>
 <h2>Il copione, frammento per frammento</h2>
 <p class="punta">&#128279; <b>La catena, in ordine di gioco:</b> <span class="dim">se rientri dopo una morte, prima Il ritorno; poi</span> Il turbine &rarr; L'uscita a destra.</p>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Il ritorno</b><span class="id">frammento 1</span><span class="verso">60 tick</span></div>
-<p class="meta">pellicola <b>8653&ndash;8701</b> &middot; allo scadere: &rarr; <b>Il turbine</b> <span class="pt">+49</span></p>
+<p class="meta">pellicola <b>8653&ndash;8702</b> &middot; allo scadere: &rarr; <b>Il turbine</b> <span class="pt">+49</span></p>
 <p class="prosa dim">Nessuna mossa: il film scorre. Porta a: &rarr; <b>Il turbine</b> <span class="pt">+49</span>.</p>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Il turbine</b><span class="id">frammento 0, e di nuovo 2: stesso record</span><span class="verso">241 tick</span><span class="pt">+49 punti</span></div>
-<p class="meta">pellicola <b>8709&ndash;8902</b> &middot; allo scadere: &#128128; Nel pozzo</p>
+<p class="meta">pellicola <b>8709&ndash;8905</b> &middot; allo scadere: &#128128; Nel pozzo</p>
 <p class="prosa">Dirk percorre un corridoio con le catene appese e apre una grande porta di legno: dentro, un turbine fa girare sedie, vasi, mobili e un divano rosso, e nel muro di fondo si apre un buco nero.<br><b>Il gesto:</b> Scappare a destra all'ultimo momento: la finestra si apre dopo sette secondi di film e dura meno di un secondo.<br><b>La voce di Daphne:</b> &laquo;Save me!&raquo; <span class="dim">(Salvami!)</span></p>
-<div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">177&ndash;241</td><td class="num">8851&ndash;8902</td><td>&#128128; Nel pozzo</td></tr><tr><td class="dim">&darr; GI&Ugrave;</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr><tr><td class="dim">&larr; SINISTRA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr><tr><td><b>&rarr; DESTRA</b></td><td class="num"><b>219&ndash;241</b></td><td class="num"><b>8884&ndash;8902</b></td><td>&rarr; <b>L'uscita a destra</b> <span class="pt">+379</span></td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">177&ndash;241</td><td class="num">8853&ndash;8905</td><td>&#128128; Nel pozzo</td></tr><tr><td class="dim">&darr; GI&Ugrave;</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr><tr><td class="dim">&larr; SINISTRA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr><tr><td><b>&rarr; DESTRA</b></td><td class="num"><b>219&ndash;241</b></td><td class="num"><b>8887&ndash;8905</b></td><td>&rarr; <b>L'uscita a destra</b> <span class="pt">+379</span></td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
 <figure class="carta"><img src="/img/lair/scene/wind-room-fr0.svg" width="782" height="252" alt="Wind Room · Il turbine" loading="lazy" decoding="async"></figure>
 </div></div>
 <div class="partita frammento"><div class="stesura">
@@ -558,20 +558,20 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <h3>Dove si finisce sbagliando</h3>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Nel pozzo</b><span class="id">frammento 4</span><span class="verso">78 tick</span></div>
-<p class="meta">pellicola <b>8938&ndash;9000</b> &middot; &#128128; <b>&egrave; una morte</b>: qui la vita &egrave; persa &middot; allo scadere: &rarr; <b>L'epilogo</b></p>
+<p class="meta">pellicola <b>8938&ndash;9001</b> &middot; &#128128; <b>&egrave; una morte</b>: qui la vita &egrave; persa &middot; allo scadere: &rarr; <b>L'epilogo</b></p>
 <p class="prosa">Il vento lo trascina via insieme ai mobili, e Dirk precipita in un pozzo.</p>
 <p class="prosa dim">Nessuna mossa: &egrave; il filmato della morte. Porta a: &rarr; <b>L'epilogo</b>.</p>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>L'epilogo</b><span class="id">frammento 5</span><span class="verso">94 tick</span></div>
-<p class="meta">pellicola <b>9009&ndash;9084</b> &middot; allo scadere: fine della catena</p>
+<p class="meta">pellicola <b>9009&ndash;9085</b> &middot; allo scadere: fine della catena</p>
 <p class="prosa">La scena che vedi se muori qui e le vite sono finite. Nel corridoio Dirk sta a braccia conserte e si consuma fino allo scheletro, che poi va in pezzi.</p>
 <p class="prosa dim">Nessuna mossa: la coda dopo la morte. Qui la catena finisce.</p>
 </div></div>
 <h2>Le morti di questa scena</h2>
 <div class="scroll"><table><thead><tr><th>la morte</th><th class="num">fotogramma</th><th class="num">ci si arriva da</th><th>preambolo</th></tr></thead><tbody><tr><td>&#128128; <b>Nel pozzo</b></td><td class="num"><b>8938</b></td><td class="num">2</td><td>&mdash;</td></tr></tbody></table></div>
 <h2>A dura, che cosa cambia</h2>
-<div class="scroll"><table><thead><tr><th>frammento</th><th>la mossa</th><th class="num">a mite (pellicola)</th><th class="num">a dura (pellicola)</th></tr></thead><tbody><tr><td><b>Il turbine</b></td><td>&rarr; DESTRA <span class="dim">&middot; quando uccide</span></td><td class="num"><span class="dim">&mdash;</span></td><td class="num">&#128128; 8864&ndash;8884</td></tr></tbody></table></div>
+<div class="scroll"><table><thead><tr><th>frammento</th><th>la mossa</th><th class="num">a mite (pellicola)</th><th class="num">a dura (pellicola)</th></tr></thead><tbody><tr><td><b>Il turbine</b></td><td>&rarr; DESTRA</td><td class="num"><b>8887&ndash;8905</b></td><td class="num"><b>8886&ndash;8904</b></td></tr></tbody></table></div>
 <figure class="carta"><img src="/img/lair/scene/wind-room-fr0-mite-dura.svg" width="790" height="230" alt="Wind Room · Il turbine · mite e dura" loading="lazy" decoding="async"></figure>
 <p class="coda-tavola">A dura la scena comincia più avanti, davanti alla porta, e il momento buono è lo stesso; ma la DESTRA data poco prima, quando a mite la macchina non la ascolta ancora, uccide.</p>
 <section class="tecnico">
@@ -623,9 +623,9 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <li><a href="/it/come-si-difendono/"><span class="dove">Quattro meccanismi, in tre macchine, con lo stesso bersaglio</span>Come le macchine si difendono</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>4</b></span><span>Pubblicata il <b>20 ottobre 2026</b>, aggiornata il <b>23 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>673 su 673</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>5</b></span><span>Pubblicata il <b>20 ottobre 2026</b>, aggiornata il <b>25 ottobre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>680 su 680</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/f2/le-scene/wind-room/</p>
-<p class="conto">83 pagine &middot; Dragon&rsquo;s Lair 51 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>4 approvate</b> su 74 &mdash; approvata vuol dire letta e firmata da Alan, le altre sono pubblicate per essere corrette.</p>
+<p class="conto">83 pagine &middot; Dragon&rsquo;s Lair 51 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>0 approvate</b> su 74 &mdash; approvata vuol dire letta e firmata da Alan, non ancora nessuna: le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
   <a href="/it/sequenze/">Le sequenze di gioco</a>
 </footer>

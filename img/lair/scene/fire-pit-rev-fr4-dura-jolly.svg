@@ -41,8 +41,8 @@
 <rect x="170" y="180" width="496" height="13" fill="#A83232" rx="2"/><rect x="170" y="180" width="496" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="666" y="180" width="94" height="13" fill="#5FB07A" rx="2"/>
 <rect x="170" y="197" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="197" width="543" height="13" fill="#A83232" rx="2"/><rect x="170" y="197" width="543" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="713" y="197" width="47" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="197" width="558" height="13" fill="#A83232" rx="2"/><rect x="170" y="197" width="558" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="728" y="197" width="32" height="13" fill="#5FB07A" rx="2"/>
 <text x="118" y="240" fill="#241C14" font-size="12" text-anchor="end">DESTRA</text>
 <text x="162" y="232" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <text x="162" y="249" fill="#6B5D4B" font-size="10" text-anchor="end">jolly</text>

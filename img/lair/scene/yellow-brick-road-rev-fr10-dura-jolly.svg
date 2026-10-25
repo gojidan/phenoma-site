@@ -26,12 +26,12 @@
 <text x="162" y="106" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <text x="162" y="123" fill="#6B5D4B" font-size="10" text-anchor="end">jolly</text>
 <rect x="170" y="96" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="96" width="212" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="96" width="212" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="382" y="96" width="378" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="96" width="224" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="96" width="224" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="394" y="96" width="366" height="13" fill="#5FB07A" rx="2"/>
 <rect x="170" y="113" width="590" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="170" y="113" width="106" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="113" width="106" height="13" fill="url(#tSorda)" rx="2"/>
 <rect x="276" y="113" width="283" height="13" fill="#A83232" rx="2"/><rect x="276" y="113" width="283" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="559" y="113" width="189" height="13" fill="#5FB07A" rx="2"/>
+<rect x="559" y="113" width="201" height="13" fill="#5FB07A" rx="2"/>
 <text x="118" y="156" fill="#241C14" font-size="12" text-anchor="end">GIÙ</text>
 <text x="162" y="148" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">jolly</text>

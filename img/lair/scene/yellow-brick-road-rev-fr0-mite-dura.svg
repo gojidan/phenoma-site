@@ -30,8 +30,8 @@
 <text x="162" y="106" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="123" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="96" width="491" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="96" width="415" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="96" width="415" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="585" y="96" width="76" height="13" fill="#A83232" rx="2"/><rect x="585" y="96" width="76" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="96" width="426" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="96" width="426" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="596" y="96" width="65" height="13" fill="#A83232" rx="2"/><rect x="596" y="96" width="65" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="530" y="113" width="230" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="530" y="113" width="120" height="13" fill="#C9BCA8" rx="2"/><rect x="530" y="113" width="120" height="13" fill="url(#tAttesa)" rx="2"/>
 <rect x="650" y="113" width="110" height="13" fill="#A83232" rx="2"/><rect x="650" y="113" width="110" height="13" fill="url(#tMorte)" rx="2"/>
@@ -39,8 +39,8 @@
 <text x="162" y="148" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="138" width="491" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="138" width="415" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="138" width="415" height="13" fill="url(#tAttesa)" rx="2"/>
-<rect x="585" y="138" width="76" height="13" fill="#A83232" rx="2"/><rect x="585" y="138" width="76" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="138" width="426" height="13" fill="#C9BCA8" rx="2"/><rect x="170" y="138" width="426" height="13" fill="url(#tAttesa)" rx="2"/>
+<rect x="596" y="138" width="65" height="13" fill="#A83232" rx="2"/><rect x="596" y="138" width="65" height="13" fill="url(#tMorte)" rx="2"/>
 <rect x="530" y="155" width="230" height="13" fill="#EDE4D6" rx="2"/>
 <rect x="530" y="155" width="120" height="13" fill="#C9BCA8" rx="2"/><rect x="530" y="155" width="120" height="13" fill="url(#tAttesa)" rx="2"/>
 <rect x="650" y="155" width="110" height="13" fill="#A83232" rx="2"/><rect x="650" y="155" width="110" height="13" fill="url(#tMorte)" rx="2"/>

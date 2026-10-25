@@ -2,61 +2,61 @@
 <defs><pattern id="tMorte" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#FFFFFF" stroke-width="2" opacity=".55"/></pattern><pattern id="tAttesa" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#8C8072" opacity=".55"/></pattern><pattern id="tSorda" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0 L6 6 M6 0 L0 6" stroke="#FFFFFF" stroke-width="1" opacity=".5"/></pattern></defs>
 <rect x="1" y="1" width="788" height="270" fill="#FDF9F2" stroke="#D8CBB8" stroke-width="1" rx="8"/>
 <text x="18" y="28" fill="#B44A1E" font-size="15" font-weight="600">Throne Room · Il trono che gira · mite e dura</text>
-<text x="18" y="48" fill="#6B5D4B" font-size="12">frammento 5 · sulla pellicola · mite 20782–20884 · dura 20782–20877</text>
+<text x="18" y="48" fill="#6B5D4B" font-size="12">frammento 5 · sulla pellicola · mite 20782–20885 · dura 20782–20879</text>
 <line x1="170" y1="86" x2="760" y2="86" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<line x1="216" y1="82" x2="216" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="216" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20790</text>
-<line x1="274" y1="82" x2="274" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="274" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20800</text>
-<line x1="331" y1="82" x2="331" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="331" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20810</text>
-<line x1="389" y1="82" x2="389" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="389" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20820</text>
-<line x1="447" y1="82" x2="447" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="447" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20830</text>
-<line x1="505" y1="82" x2="505" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="505" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20840</text>
-<line x1="563" y1="82" x2="563" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="563" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20850</text>
-<line x1="621" y1="82" x2="621" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="621" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20860</text>
-<line x1="679" y1="82" x2="679" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="679" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20870</text>
-<line x1="736" y1="82" x2="736" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
-<text x="736" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20880</text>
+<line x1="215" y1="82" x2="215" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="215" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20790</text>
+<line x1="273" y1="82" x2="273" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="273" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20800</text>
+<line x1="330" y1="82" x2="330" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="330" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20810</text>
+<line x1="387" y1="82" x2="387" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="387" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20820</text>
+<line x1="444" y1="82" x2="444" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="444" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20830</text>
+<line x1="502" y1="82" x2="502" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="502" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20840</text>
+<line x1="559" y1="82" x2="559" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="559" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20850</text>
+<line x1="616" y1="82" x2="616" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="616" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20860</text>
+<line x1="674" y1="82" x2="674" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="674" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20870</text>
+<line x1="731" y1="82" x2="731" y2="90" stroke="#6B5D4B" stroke-width="1" opacity=".5"/>
+<text x="731" y="76" fill="#6B5D4B" font-size="10" text-anchor="middle">20880</text>
 <text x="118" y="114" fill="#241C14" font-size="12" text-anchor="end">GIÙ</text>
 <text x="162" y="106" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="123" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="96" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="96" width="167" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="96" width="167" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="337" y="96" width="301" height="13" fill="#9A93A0" rx="2"/><rect x="337" y="96" width="301" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="638" y="96" width="98" height="13" fill="#A83232" rx="2"/><rect x="638" y="96" width="98" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="170" y="113" width="549" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="113" width="167" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="113" width="167" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="337" y="113" width="301" height="13" fill="#9A93A0" rx="2"/><rect x="337" y="113" width="301" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="638" y="113" width="81" height="13" fill="#A83232" rx="2"/><rect x="638" y="113" width="81" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="96" width="166" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="96" width="166" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="336" y="96" width="303" height="13" fill="#9A93A0" rx="2"/><rect x="336" y="96" width="303" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="639" y="96" width="98" height="13" fill="#A83232" rx="2"/><rect x="639" y="96" width="98" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="113" width="555" height="13" fill="#EDE4D6" rx="2"/>
+<rect x="170" y="113" width="166" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="113" width="166" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="336" y="113" width="303" height="13" fill="#9A93A0" rx="2"/><rect x="336" y="113" width="303" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="639" y="113" width="86" height="13" fill="#A83232" rx="2"/><rect x="639" y="113" width="86" height="13" fill="url(#tMorte)" rx="2"/>
 <text x="118" y="156" fill="#241C14" font-size="12" text-anchor="end">SINISTRA</text>
 <text x="162" y="148" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="165" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="138" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="138" width="167" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="138" width="167" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="337" y="138" width="301" height="13" fill="#9A93A0" rx="2"/><rect x="337" y="138" width="301" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="638" y="138" width="122" height="13" fill="#A83232" rx="2"/><rect x="638" y="138" width="122" height="13" fill="url(#tMorte)" rx="2"/>
-<rect x="170" y="155" width="549" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="155" width="167" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="155" width="167" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="337" y="155" width="301" height="13" fill="#9A93A0" rx="2"/><rect x="337" y="155" width="301" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="638" y="155" width="81" height="13" fill="#A83232" rx="2"/><rect x="638" y="155" width="81" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="138" width="166" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="138" width="166" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="336" y="138" width="303" height="13" fill="#9A93A0" rx="2"/><rect x="336" y="138" width="303" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="639" y="138" width="121" height="13" fill="#A83232" rx="2"/><rect x="639" y="138" width="121" height="13" fill="url(#tMorte)" rx="2"/>
+<rect x="170" y="155" width="555" height="13" fill="#EDE4D6" rx="2"/>
+<rect x="170" y="155" width="166" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="155" width="166" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="336" y="155" width="303" height="13" fill="#9A93A0" rx="2"/><rect x="336" y="155" width="303" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="639" y="155" width="86" height="13" fill="#A83232" rx="2"/><rect x="639" y="155" width="86" height="13" fill="url(#tMorte)" rx="2"/>
 <text x="118" y="198" fill="#241C14" font-size="12" text-anchor="end">DESTRA</text>
 <text x="162" y="190" fill="#6B5D4B" font-size="10" text-anchor="end">mite</text>
 <text x="162" y="207" fill="#6B5D4B" font-size="10" text-anchor="end">dura</text>
 <rect x="170" y="180" width="590" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="180" width="167" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="180" width="167" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="337" y="180" width="301" height="13" fill="#9A93A0" rx="2"/><rect x="337" y="180" width="301" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="638" y="180" width="122" height="13" fill="#5FB07A" rx="2"/>
-<rect x="170" y="197" width="549" height="13" fill="#EDE4D6" rx="2"/>
-<rect x="170" y="197" width="167" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="197" width="167" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="337" y="197" width="301" height="13" fill="#9A93A0" rx="2"/><rect x="337" y="197" width="301" height="13" fill="url(#tSorda)" rx="2"/>
-<rect x="638" y="197" width="81" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="180" width="166" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="180" width="166" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="336" y="180" width="303" height="13" fill="#9A93A0" rx="2"/><rect x="336" y="180" width="303" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="639" y="180" width="121" height="13" fill="#5FB07A" rx="2"/>
+<rect x="170" y="197" width="555" height="13" fill="#EDE4D6" rx="2"/>
+<rect x="170" y="197" width="166" height="13" fill="#9A93A0" rx="2"/><rect x="170" y="197" width="166" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="336" y="197" width="303" height="13" fill="#9A93A0" rx="2"/><rect x="336" y="197" width="303" height="13" fill="url(#tSorda)" rx="2"/>
+<rect x="639" y="197" width="86" height="13" fill="#5FB07A" rx="2"/>
 <rect x="18" y="230" width="14" height="12" fill="#C9BCA8" rx="2"/><rect x="18" y="230" width="14" height="12" fill="url(#tAttesa)" rx="2"/>
 <text x="38" y="240" fill="#6B5D4B" font-size="11">non ascolta ancora</text>
 <rect x="228" y="230" width="14" height="12" fill="#A83232" rx="2"/><rect x="228" y="230" width="14" height="12" fill="url(#tMorte)" rx="2"/>
