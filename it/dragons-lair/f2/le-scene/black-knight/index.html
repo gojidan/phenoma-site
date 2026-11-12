@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Black Knight — Dragon’s Lair — Phenoma</title>
-<meta name="description" content="Il Cavaliere Nero — tre cariche da scansare, e a dura anche un fulmine. Black Knight: 9 frammenti, tre morti, pellicola 25480–26033, e 6.602 punti a giocarla alla perfezione. Ogni numero viene dai byte della ROM.">
+<meta name="description" content="Il Black Knight — tre cariche da scansare, e a dura anche un fulmine. Black Knight: 9 frammenti, tre morti, pellicola 25480–26033, e 6.602 punti a giocarla alla perfezione. Ogni numero viene dai byte della ROM.">
 <style>
 :root{
   --fondo:#0B0C0F; --piano:#14161B; --piano2:#191C22; --bordo:#272C35;
@@ -521,14 +521,14 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <header>
   <p class="gioco"><a href="/it/dragons-lair/">Dragon&rsquo;s Lair</a></p><p class="dettaglio">Cinematronics, 1983 &middot; revisione F2</p>
   <h1>Black Knight</h1>
-  <p class="tesi">Il Cavaliere Nero — tre cariche da scansare, e a dura anche un fulmine. <b>Black Knight</b>: 9 frammenti, tre morti, pellicola 25480&ndash;26033, e <b>6.602 punti</b> a giocarla alla perfezione. Ogni numero viene dai byte della ROM.</p>
+  <p class="tesi">Il Black Knight — tre cariche da scansare, e a dura anche un fulmine. <b>Black Knight</b>: 9 frammenti, tre morti, pellicola 25480&ndash;26033, e <b>6.602 punti</b> a giocarla alla perfezione. Ogni numero viene dai byte della ROM.</p>
 </header>
 <p class="min">&#128214; Come si leggono le tabelle, che cosa vogliono dire etichetta, stesura, frammento, finestra, tick, scadere, porta dei morti, e da dove vengono i numeri: <a href="/it/dragons-lair/f2/come-si-legge/">Come si legge una scheda</a>. I nomi dei frammenti sono nostri: la ROM conosce soltanto i numeri.</p>
 <h2>Come la chiama la ROM, e da dove si entra</h2>
 <p>Si entra da <b>due porte</b>: quella di chi arriva vincendo, e quella &mdash; qualche fotogramma prima &mdash; di chi rientra dopo una morte.</p>
 <div class="scroll"><table><thead><tr><th>etichetta</th><th>che cos&rsquo;&egrave;</th><th>quando la usa</th><th>da dove entri (fotogramma)</th></tr></thead><tbody><tr><td><span class="mono">0xA1</span></td><td>la stesura mite</td><td>di fabbrica: sempre, con l&rsquo;interruttore generale spento; se no, finch&eacute; l&rsquo;adattiva non scatta</td><td><b>25536</b> vincendo &middot; <b>25480</b> dopo una morte</td></tr><tr><td><span class="mono">0xCB</span></td><td>la stesura dura</td><td>con l&rsquo;interruttore generale acceso: col dip &laquo;dura sempre&raquo;, oppure quando scatta l&rsquo;adattiva</td><td><b>25536</b> vincendo &middot; <b>25480</b> dopo una morte</td></tr></tbody></table></div>
 <p class="coda-tavola">La porta dei morti sta <b>56 fotogrammi prima</b> dell&rsquo;inizio della scena: la macchina ne mostra <b>49</b> (60 tick) e poi passa al frammento 0.</p>
-<div class="nota caldo"><span class="cap">Che cosa si vede</span><p>Una foresta: un fulmine cade, e da una porta di rovi esce il Cavaliere Nero a cavallo. Dirk si scansa a ogni carica, e all'ultima incrocia la spada con la sua: quella del cavaliere resta piantata in terra.</p><p>Tre mosse a mite: sinistra, sinistra, destra, ogni volta all'ultimo, quando il cavaliere è addosso. Chi va avanti viene travolto, o colpito dalla sua spada; chi si butta dalla parte sbagliata finisce fra i rovi. A dura le mosse diventano quattro: la prima, subito, per scansare il fulmine.</p></div>
+<div class="nota caldo"><span class="cap">Che cosa si vede</span><p>Una foresta: un fulmine cade, e da una porta di rovi esce il Black Knight a cavallo. Dirk si scansa a ogni carica, e all'ultima incrocia la spada con la sua: quella del cavaliere resta piantata in terra.</p><p>Tre mosse a mite: sinistra, sinistra, destra, ogni volta all'ultimo, quando il cavaliere è addosso. Chi va avanti viene travolto, o colpito dalla sua spada; chi si butta dalla parte sbagliata finisce fra i rovi. A dura le mosse diventano quattro: la prima, subito, per scansare il fulmine.</p></div>
 <h2>La via della gloria</h2>
 <div class="legenda-mosse"><span><em style="font-size:17px">&uarr;</em> la leva</span><span><span class="g fuoco">&#9876; SPADA</span> il pulsante &mdash; in Dragon&rsquo;s Lair &egrave; una spada, e non ha secondi significati</span><span><i class="rombo"></i> un bivio: qui si poteva fare altro</span><span><s style="text-decoration:none;color:var(--brace)">morte</s> premi giusto ma nell&rsquo;attimo sbagliato</span></div><div class="legenda-mosse" style="margin-top:-12px"><span><span class="g attesa" style="min-width:0">non premere</span> una mossa ci sarebbe, ma <b>rende meno</b></span><span><span class="g trappola" style="min-width:0">&#9995; NON TOCCARE</span> non c&rsquo;&egrave; niente da dare, e <b>premere ammazza</b></span><span><span class="g nulla" style="min-width:0">il film scorre</span> nessuna finestra: non succede nulla</span></div>
 <div class="partita"><div class="stesura"><div class="testa"><b>Black Knight</b><span class="id">0xA1</span><span class="verso">3 mosse</span><span class="pt">6.602 punti</span></div><ol class="mosse"><li><span class="fr">25536</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 80&ndash;105</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">25624</span><span class="g"><em>&larr;</em>SINISTRA</span><span class="fin">tick 92&ndash;115</span><span class="altre"></span><span class="pt">1.939</span></li><li><span class="fr">25718</span><span class="g"><em>&rarr;</em>DESTRA</span><span class="fin">tick 73&ndash;96</span><span class="altre"></span><span class="pt">2.675</span></li><li><span class="fr">25797</span><span class="g nulla">il film scorre</span><span class="fin"></span><span class="altre"></span><span class="pt"></span></li></ol></div></div>
@@ -545,28 +545,28 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Il fulmine e il cavaliere</b><span class="id">frammento 0, e di nuovo 2: stesso record</span><span class="verso">105 tick</span><span class="pt">+49 punti</span></div>
 <p class="meta">pellicola <b>25536&ndash;25621</b> &middot; allo scadere: &#128128; Travolto</p>
-<p class="prosa">Una foresta con una porta di rovi che brilla; un fulmine cade accanto a Dirk, e dalla luce esce il Cavaliere Nero a cavallo.<br><b>Il gesto:</b> Scansarsi a sinistra quando il cavaliere arriva, alla fine del frammento.</p>
+<p class="prosa">Una foresta con una porta di rovi che brilla; un fulmine cade accanto a Dirk, e dalla luce esce il Black Knight a cavallo.<br><b>Il gesto:</b> Scansarsi a sinistra quando il cavaliere arriva, alla fine del frammento.</p>
 <div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">80&ndash;105 <span class="dim">(scritta fino al 107)</span></td><td class="num">25601&ndash;25621</td><td>&#128128; Travolto</td></tr><tr><td class="dim">&darr; GI&Ugrave;</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr><tr><td><b>&larr; SINISTRA</b></td><td class="num"><b>80&ndash;105</b></td><td class="num"><b>25601&ndash;25621</b></td><td>&rarr; <b>La seconda carica</b> <span class="pt">+1.939</span></td></tr><tr><td>&rarr; DESTRA</td><td class="num">93&ndash;105</td><td class="num">25612&ndash;25621</td><td>&#128128; Fra i rovi</td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
 <figure class="carta"><img src="/img/lair/scene/black-knight-fr0.svg" width="782" height="282" alt="Black Knight · Il fulmine e il cavaliere" loading="lazy" decoding="async"></figure>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>La seconda carica</b><span class="id">frammento 3</span><span class="verso">115 tick</span><span class="pt">+1.939 punti</span></div>
 <p class="meta">pellicola <b>25624&ndash;25717</b> &middot; allo scadere: &#128128; La spada del cavaliere</p>
-<p class="prosa">In una pianura nebbiosa il cavaliere gira il cavallo e carica di nuovo.<br><b>Il gesto:</b> Scansarsi a sinistra, all'ultimo.</p>
+<p class="prosa">In una pianura nebbiosa il Black Knight gira il cavallo e carica di nuovo.<br><b>Il gesto:</b> Scansarsi a sinistra, all'ultimo.</p>
 <div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">92&ndash;113</td><td class="num">25699&ndash;25716</td><td>&#128128; La spada del cavaliere</td></tr><tr><td class="dim">&darr; GI&Ugrave;</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr><tr><td><b>&larr; SINISTRA</b></td><td class="num"><b>92&ndash;115</b></td><td class="num"><b>25699&ndash;25717</b></td><td>&rarr; <b>La terza carica</b> <span class="pt">+1.939</span></td></tr><tr><td>&rarr; DESTRA</td><td class="num">103&ndash;115 <span class="dim">(scritta fino al 203)</span></td><td class="num">25708&ndash;25717</td><td>&#128128; Fra i rovi</td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
 <figure class="carta"><img src="/img/lair/scene/black-knight-fr3.svg" width="782" height="282" alt="Black Knight · La seconda carica" loading="lazy" decoding="async"></figure>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>La terza carica</b><span class="id">frammento 4</span><span class="verso">96 tick</span><span class="pt">+1.939 punti</span></div>
 <p class="meta">pellicola <b>25718&ndash;25796</b> &middot; allo scadere: &#128128; La spada del cavaliere</p>
-<p class="prosa">Il cavaliere cala la spada su Dirk, che rotola via; poi il cavaliere torna alla carica.<br><b>Il gesto:</b> Scansarsi a destra.</p>
+<p class="prosa">Il Black Knight cala la spada su Dirk, che rotola via; poi il cavaliere torna alla carica.<br><b>Il gesto:</b> Scansarsi a destra.</p>
 <div class="scroll"><table><thead><tr><th>mossa</th><th class="num">quando vale (tick)</th><th class="num">sulla pellicola</th><th>esito</th></tr></thead><tbody><tr><td>&uarr; SU</td><td class="num">73&ndash;95</td><td class="num">25777&ndash;25795</td><td>&#128128; La spada del cavaliere</td></tr><tr><td>&darr; GI&Ugrave;</td><td class="num">59&ndash;81</td><td class="num">25766&ndash;25784</td><td>&#128128; Fra i rovi</td></tr><tr><td>&larr; SINISTRA</td><td class="num">73&ndash;95</td><td class="num">25777&ndash;25795</td><td>&#128128; Fra i rovi</td></tr><tr><td><b>&rarr; DESTRA</b></td><td class="num"><b>73&ndash;96</b></td><td class="num"><b>25777&ndash;25796</b></td><td>&rarr; <b>La spada piantata</b> <span class="pt">+2.675</span></td></tr><tr><td class="dim">&#9876; SPADA</td><td class="dim"><i>mai valutata</i></td><td class="dim">&mdash;</td><td class="dim">&mdash;</td></tr></tbody></table></div>
 <figure class="carta"><img src="/img/lair/scene/black-knight-fr4.svg" width="782" height="312" alt="Black Knight · La terza carica" loading="lazy" decoding="async"></figure>
 </div></div>
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>La spada piantata</b><span class="id">frammento 5</span><span class="verso">56 tick</span><span class="pt">+2.675 punti</span></div>
 <p class="meta">pellicola <b>25797&ndash;25842</b> &middot; allo scadere: <b>fine scena, vinta</b></p>
-<p class="prosa">Il cavaliere carica un'ultima volta; Dirk incrocia la spada con la sua, e quella del cavaliere resta piantata in terra: la scena è vinta.</p>
+<p class="prosa">Il Black Knight carica un'ultima volta; Dirk incrocia la spada con la sua, e quella del cavaliere resta piantata in terra: la scena è vinta.</p>
 <p class="prosa dim">Nessuna mossa: la scena &egrave; vinta e scorre fino alla fine.</p>
 </div></div>
 <h3>Dove si finisce sbagliando</h3>
@@ -579,7 +579,7 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <div class="partita frammento"><div class="stesura">
 <div class="testa"><b>Travolto</b><span class="id">frammento 7</span><span class="verso">64 tick</span></div>
 <p class="meta">pellicola <b>25898&ndash;25950</b> &middot; &#128128; <b>&egrave; una morte</b>: qui la vita &egrave; persa &middot; allo scadere: &rarr; <b>L'epilogo</b></p>
-<p class="prosa">Il cavaliere lo travolge col cavallo.</p>
+<p class="prosa">Il Black Knight lo travolge col cavallo.</p>
 <p class="prosa dim">Nessuna mossa: &egrave; il filmato della morte. Porta a: &rarr; <b>L'epilogo</b>.</p>
 </div></div>
 <div class="partita frammento"><div class="stesura">
@@ -648,7 +648,7 @@ header{border-bottom-color:rgba(255,162,43,.34)}
 <li><a href="/it/come-si-difendono/"><span class="dove">Quattro meccanismi, in tre macchine, con lo stesso bersaglio</span>Come le macchine si difendono</a></li>
 </ul></nav>
 <footer>
-<div class="timbro"><span><span class="et">revisione</span><b>7</b></span><span>Pubblicata il <b>20 ottobre 2026</b>, aggiornata l&rsquo;<b>11 novembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>777 su 777</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
+<div class="timbro"><span><span class="et">revisione</span><b>8</b></span><span>Pubblicata il <b>20 ottobre 2026</b>, aggiornata il <b>12 novembre 2026</b></span><span class="stato viva"><span class="et">stato</span><b>in revisione</b></span><span><span class="et">controlli sui byte</span><b>777 su 777</b></span><span class="colore"><span class="et">il colore</span><b>nostro &mdash; la F2 non disegna nulla</b></span></div>
 <p class="stampa">phenoma.org/it/dragons-lair/f2/le-scene/black-knight/</p>
 <p class="conto">83 pagine &middot; Dragon&rsquo;s Lair 51 &middot; Space Ace 5 &middot; Dragon&rsquo;s Lair II: Time Warp 2 &middot; Esh&rsquo;s Aurunmilla 3 &middot; Cliff Hanger 3 &middot; Super Don Quix-ote 5 &middot; Road Blaster 3 &middot; trasversali 2 &middot; <b>0 approvate</b> su 74 &mdash; approvata vuol dire letta e firmata da Alan, non ancora nessuna: le altre sono pubblicate per essere corrette.</p>
   <a href="/">Phenoma</a> &middot; Laserdisc Rom Atlas &middot;
